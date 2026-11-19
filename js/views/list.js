@@ -56,7 +56,7 @@ export function renderList(params) {
       const wrap = h('div', { class: 'opts' });
       const walk = (id, depth) => {
         const n = store.taxo.nodes.get(id);
-        wrap.append(makeOption('ing', id, n.name_zh, `opt-d${Math.min(depth, 3)}`));
+        wrap.append(makeOption('ing', id, n.label, `opt-d${Math.min(depth, 3)}`));
         for (const c of n.children) walk(c, depth + 1);
       };
       for (const id of store.taxo.topIds) walk(id, 0);
@@ -104,7 +104,7 @@ export function renderList(params) {
   function toggleSheet(on) { sheetOpen = on; root.classList.toggle('sheet-open', on); document.body.classList.toggle('no-scroll', on && window.matchMedia('(max-width: 860px)').matches); }
 
   function chipLabel(dim, v) {
-    if (dim === 'ing') return store.taxo.nodes.get(v)?.name_zh || (v === store.UNSET ? '未歸類' : v);
+    if (dim === 'ing') return store.taxo.nodes.get(v)?.label || (v === store.UNSET ? '未歸類' : v);
     if (v === store.UNSET) return `${dimLabel[dim]}：未標示`;
     if (dim === 'cat') return v.replace('>', ' > ');
     return v;
