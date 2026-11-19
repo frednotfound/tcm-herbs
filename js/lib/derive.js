@@ -56,7 +56,7 @@ export function buildTaxonomy(tax, aliasDict) {
   const nodes = new Map();
   const topIds = [];
   const walk = (n, parent, depth) => {
-    const node = { id: n.id, name_zh: n.name_zh, name_en: n.name_en || '', parent, depth, children: [], compounds: n.compounds || [] };
+    const node = { id: n.id, name_zh: n.name_zh, name_en: n.name_en || '', label: n.name_en || n.name_zh, parent, depth, children: [], compounds: n.compounds || [] };
     nodes.set(n.id, node);
     for (const c of n.children || []) { node.children.push(c.id); walk(c, n.id, depth + 1); }
   };
@@ -94,7 +94,7 @@ export function buildTaxonomy(tax, aliasDict) {
     return out;
   };
   const ancestors = (id) => { const out = []; let p = nodes.get(id)?.parent; while (p) { out.push(p); p = nodes.get(p)?.parent; } return out; };
-  const path = (id) => [...ancestors(id).reverse(), id].map(x => nodes.get(x)?.name_zh).filter(Boolean);
+  const path = (id) => [...ancestors(id).reverse(), id].map(x => nodes.get(x)?.label).filter(Boolean);
 
   return { nodes, topIds, compoundIndex, termIndex, synKeys, descendants, ancestors, path };
 }
