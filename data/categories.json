@@ -1,0 +1,837 @@
+[
+  {
+    "id": "cat_jiebiao",
+    "category_path": "解表藥",
+    "title": "解表藥概論",
+    "source_page": [
+      6
+    ],
+    "sections": [
+      {
+        "heading": "風邪",
+        "subsections": [
+          {
+            "subheading": "內風",
+            "items": [
+              "肝風內動",
+              "熱極生風",
+              "肝陽化風",
+              "陰虛風動",
+              "血虛生風"
+            ]
+          },
+          {
+            "subheading": "外風",
+            "items": [
+              "由外而內，透過口鼻或肌表侵犯體內",
+              "先犯肺系，或先侵肌表、經絡，若正氣虛弱則可內傳臟腑",
+              "常見表證 ⇒ 怕風、發熱、頭痛"
+            ]
+          },
+          {
+            "subheading": "特性",
+            "items": [
+              "升發、向上、向外 ⇒ 鼻塞流涕、頭痛、頭暈、發熱、出汗",
+              "風性善行而數變 ⇒ 不固定，病位可改變。發病急驟，病程多變",
+              "主動，導致動搖表現 ⇒ 痙攣、抽搐",
+              "百病之長，六淫之首 ⇒ 常見與其他邪氣並存"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "解表藥",
+        "subsections": [
+          {
+            "subheading": "應用",
+            "items": [
+              "風寒證 ⇒ 溫裏藥（附子、乾薑）",
+              "風熱證 ⇒ 清熱藥（金銀花、連翹）"
+            ]
+          },
+          {
+            "subheading": "使用注意事項",
+            "items": [
+              "中病即止 ⇒ 微似汗出為宜",
+              "含揮發油 ⇒ 不宜久煎",
+              "細辛、蒼耳子等具毒性 ⇒ 慎用"
+            ]
+          },
+          {
+            "subheading": "功效",
+            "items": [
+              "辛溫解表藥 ⇒ 發散風寒、驅風解表",
+              "辛涼解表藥 ⇒ 發散風熱、清熱解表"
+            ]
+          },
+          {
+            "subheading": "性味歸經",
+            "items": [
+              "多為辛味 ⇒ 發散；部分兼苦味 ⇒ 清熱、燥濕",
+              "多歸肺經 ⇒ 肺主皮毛；部分兼歸膀胱經"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cat_jiebiao_xinwen",
+    "category_path": "解表藥>辛溫解表藥",
+    "title": "辛溫解表藥",
+    "source_page": [
+      6
+    ],
+    "characteristics": [
+      "性味辛溫且具發散風寒的藥物",
+      "症狀：惡寒發熱、無汗、頭痛身痛、舌苔薄白、脈浮緊",
+      "主治：止痛、祛風濕、止咳平喘、利尿消腫",
+      "藥效成分：雙硫化合物、揮發油、倍半萜類、木脂素、香豆素類、苯丙醯類、苯乙胺類生物鹼"
+    ],
+    "herb_ids": [
+      "herb_mahuang",
+      "herb_xinyi",
+      "herb_cangerzi",
+      "herb_baizhi",
+      "herb_fangfeng",
+      "herb_qianghuo",
+      "herb_jingjie",
+      "herb_zisuye",
+      "herb_shengjiang",
+      "herb_congbai"
+    ]
+  },
+  {
+    "id": "cat_jiebiao_xinliang",
+    "category_path": "解表藥>辛涼解表藥",
+    "title": "辛涼解表藥",
+    "source_page": [
+      12
+    ],
+    "characteristics": [
+      "性味辛涼且具發散風熱的藥物",
+      "症狀：發熱、微惡風寒、咽乾口渴、舌苔薄黃、脈浮數",
+      "主治：頭昏、頭痛、咽喉腫痛、目赤眼痛、皮膚搔癢、麻疹初期",
+      "藥效成分：三萜類、異黃酮（苷）類、黃酮（苷）類、苯丙醯類、木脂素、揮發油"
+    ],
+    "herb_ids": [
+      "herb_bohe",
+      "herb_niubangzi",
+      "herb_juhua",
+      "herb_manjingzi",
+      "herb_chaihu",
+      "herb_shengma",
+      "herb_gegen",
+      "herb_dandouchi"
+    ]
+  },
+  {
+    "id": "cat_huatan",
+    "category_path": "化痰藥",
+    "title": "化痰藥概論",
+    "source_page": [
+      17
+    ],
+    "sections": [
+      {
+        "heading": "痰",
+        "subsections": [
+          {
+            "subheading": "形成",
+            "items": [
+              "脾－生痰之源（運化）",
+              "肺－儲痰之器（宣發肅降）",
+              "腎－生痰之本（氣化）",
+              "肝－疏瀉",
+              "三焦－輸佈"
+            ]
+          },
+          {
+            "subheading": "熱痰",
+            "items": [
+              "痰黃黏稠",
+              "有熱象－口乾舌燥、發熱、心煩失眠"
+            ]
+          },
+          {
+            "subheading": "燥痰",
+            "items": [
+              "鼻腔乾燥",
+              "口乾舌燥",
+              "乾燥呈塊狀",
+              "不易咳出"
+            ]
+          },
+          {
+            "subheading": "寒痰、濕痰",
+            "items": [
+              "舌苔厚膩",
+              "全身痠痛",
+              "局部腫脹",
+              "清稀、量多、易咳出、咳血"
+            ]
+          }
+        ]
+      }
+    ],
+    "characteristics": [
+      "寒熱之分，依症狀選用溫化寒痰及清化熱痰法",
+      "成分：多醣類、固醇（苷）生物鹼類、三萜羧酸（皂苷）、類黃酮苷及倍半萜內酯、Isothiocyanate、Pyranocoumarin、木脂素類、Phlorotannins"
+    ],
+    "herb_ids": [
+      "herb_banxia",
+      "herb_zaojia_zaojiaoci",
+      "herb_xuanfuhua",
+      "herb_beimu",
+      "herb_jiegeng",
+      "herb_qianhu",
+      "herb_zhuru",
+      "herb_pangdahai",
+      "herb_kunbu",
+      "herb_laifuzi"
+    ]
+  },
+  {
+    "id": "cat_zhike_pingchuan",
+    "category_path": "止咳平喘藥",
+    "title": "止咳平喘藥",
+    "source_page": [
+      23
+    ],
+    "characteristics": [
+      "功效：宣肺平喘、降肺止咳/平喘、潤肺止咳",
+      "性味：以苦為主（沉降藥），少數具辛味、甘味",
+      "歸經：肺經、大腸經、腎經、脾",
+      "藥效成分：雙萜內酯、類黃酮雙聚體、類黃酮、三萜、胜肽、生物鹼、氰苷"
+    ],
+    "herb_ids": [
+      "herb_baiguo",
+      "herb_xingren",
+      "herb_sangbaipi",
+      "herb_pipaye",
+      "herb_ziwan",
+      "herb_baibu"
+    ]
+  },
+  {
+    "id": "cat_qingre",
+    "category_path": "清熱藥",
+    "title": "清熱藥概論",
+    "source_page": [
+      26
+    ],
+    "sections": [
+      {
+        "heading": "簡介",
+        "items": [
+          "以清熱為主要功效（裏熱、氣分、血分、虛實）",
+          "藥性寒涼、味苦、傷脾胃、傷津液 ⇒ 寒清泄、苦清熱",
+          "陰虛者可搭配養陰藥",
+          "中病即止"
+        ]
+      },
+      {
+        "heading": "五大分類總覽",
+        "subsections": [
+          {
+            "subheading": "清熱瀉火藥",
+            "items": [
+              "治氣分熱與臟腑熱氣",
+              "症狀：①高熱 ②汗出 ③口渴 ④脈洪大有力",
+              "現代藥理：解熱"
+            ]
+          },
+          {
+            "subheading": "清熱燥濕藥",
+            "items": [
+              "清濕熱證",
+              "症狀：①濕溫、濕疹、濕痹 ②濕熱痢疾 ③黃疸 ④淋證",
+              "現代藥理：利尿",
+              "最容易傷陰"
+            ]
+          },
+          {
+            "subheading": "清熱解毒藥",
+            "items": [
+              "治熱毒證",
+              "症狀：①瘡癰腫痛 ②痢疾 ③咽喉腫痛 ④溫熱病 ⑤燒燙傷",
+              "現代藥理：抗腫瘤"
+            ]
+          },
+          {
+            "subheading": "清熱涼血藥",
+            "items": [
+              "治營分、血分熱證",
+              "症狀：①斑疹 ②夜晚高熱 ③心煩不眠 ④出血、血熱妄行 ⑤抽搐、舌紫絳 ⑥脈細數"
+            ]
+          },
+          {
+            "subheading": "清虛熱藥",
+            "items": [
+              "治陰虛內熱",
+              "症狀：①除骨蒸 ②退疳熱",
+              "現代藥理：解熱"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cat_qingre_jiedu",
+    "category_path": "清熱藥>清熱解毒藥",
+    "title": "清熱解毒藥",
+    "source_page": [
+      26
+    ],
+    "characteristics": [
+      "治療瘟疫、病毒、癌腫瘤毒",
+      "藥性寒涼；藥味甘或苦 ⇒ 安全性高，用量可較大",
+      "歸經：多歸心經（瘡癰）",
+      "成分：木脂素（苷）、苯丙醯（苷）、類黃酮、異黃酮（苷）、苦參鹼、生物鹼、三萜羧酸（苷）"
+    ],
+    "herb_ids": [
+      "herb_jinyinhua",
+      "herb_lianqiao",
+      "herb_beibanlangen",
+      "herb_pugongying",
+      "herb_baijiangcao",
+      "herb_shandougen",
+      "herb_shegan"
+    ]
+  },
+  {
+    "id": "cat_qingre_xiehuo",
+    "category_path": "清熱藥>清熱瀉火藥",
+    "title": "清熱瀉火藥",
+    "source_page": [
+      31
+    ],
+    "characteristics": [
+      "氣分實熱（溫熱病）、清臟腑熱（內科雜病）",
+      "藥性寒；藥味甘為主 ⇒ 甘生津，適合氣分熱",
+      "歸經：清氣分熱歸肺胃經，清臟腑熱歸對應臟腑",
+      "成分：Iridoid glycoside、三萜羧酸、類黃酮（苷）、天花粉蛋白、多醣"
+    ],
+    "herb_ids": [
+      "herb_gualougen",
+      "herb_lugen",
+      "herb_danzhuye",
+      "herb_zhizi",
+      "herb_xiakucao"
+    ]
+  },
+  {
+    "id": "cat_qingre_zaoshi",
+    "category_path": "清熱藥>清熱燥濕藥",
+    "title": "清熱燥濕藥",
+    "source_page": [
+      34
+    ],
+    "characteristics": [
+      "濕熱、帶下病、抗菌、抗炎、利膽、瀉痢、黃疸、淋證",
+      "藥性寒；藥味苦 ⇒ 苦能瀉能燥",
+      "歸經：中焦、肝膽、膀胱、大腸",
+      "中病即止",
+      "成分：小蘗鹼、單萜生物鹼、苦參鹼、黃酮類"
+    ],
+    "herb_ids": [
+      "herb_huanglian",
+      "herb_huangqin",
+      "herb_huangbai",
+      "herb_longdan",
+      "herb_kushen"
+    ]
+  },
+  {
+    "id": "cat_qingre_liangxue",
+    "category_path": "清熱藥>清熱涼血藥",
+    "title": "清熱涼血藥",
+    "source_page": [
+      38
+    ],
+    "characteristics": [
+      "清血分（實）熱",
+      "藥性寒；藥味苦 ⇒ 甘生津、鹹入腎、入血（玄參）",
+      "歸經：心經、肝經",
+      "成分：單萜苷、酚苷、苯丙醯苷、萘醌"
+    ],
+    "herb_ids": [
+      "herb_xuanshen",
+      "herb_mudanpi",
+      "herb_chishao",
+      "herb_zicao"
+    ]
+  },
+  {
+    "id": "cat_qingxure",
+    "category_path": "清熱藥>清虛熱藥",
+    "title": "清虛熱藥",
+    "source_page": [
+      41
+    ],
+    "characteristics": [
+      "陰虛內熱證（骨蒸潮熱、五心煩熱、疳熱、盜汗、遺精）、溫熱病後期（低熱、夜熱早涼）",
+      "非祛邪藥（與其他清熱藥不同）",
+      "藥性寒；藥味苦 ⇒ 也有甘寒",
+      "歸經：肝經、腎經（肝腎陰虛）",
+      "成分：酚類生物鹼、倍半萜"
+    ],
+    "herb_ids": [
+      "herb_digupi",
+      "herb_qinghao"
+    ]
+  },
+  {
+    "id": "cat_fangxiang_huashi",
+    "category_path": "芳香化濕藥",
+    "title": "芳香化濕藥",
+    "source_page": [
+      43
+    ],
+    "characteristics": [
+      "化濕，治療濕阻中焦（脾胃），多具芳香氣味",
+      "藥性溫；藥味辛、苦 ⇒ 辛：行散水氣、行氣；苦：燥濕",
+      "歸經：脾、胃經 ⇒ 脾主運化，惡濕",
+      "中病即止，易傷陰液",
+      "後下，不宜久煎",
+      "成分：揮發油、木脂素"
+    ],
+    "herb_ids": [
+      "herb_houpo",
+      "herb_guanghuoxiang",
+      "herb_sharen",
+      "herb_cangzhu"
+    ]
+  },
+  {
+    "id": "cat_lishui_shenshi",
+    "category_path": "利水滲濕藥",
+    "title": "利水滲濕藥",
+    "source_page": [
+      45
+    ],
+    "characteristics": [
+      "化濕，治療濕阻下焦（腎、膀胱），能通利水道、滲泄水濕",
+      "性味：甘淡平或微寒",
+      "中病即止，防耗傷正氣",
+      "分類：①利水消腫藥－消除水腫、帶下、濕疹，歸脾、腎、膀胱經 ②利尿通淋藥－通淋止痛、尿急、尿頻、尿痛，歸膀胱、小腸經 ③利濕退黃藥－清利濕熱兼利膽、黃疸、膽石，歸肝、膽、脾、胃經",
+      "成分：多醣類、倍半萜、三萜羧酸苷、Protostane-type 三萜、黃酮苷、固醇皂苷、Iridoid glycoside、Phenanthrene 類"
+    ],
+    "herb_ids": [
+      "herb_baizhu",
+      "herb_fuling",
+      "herb_zhuling",
+      "herb_zexie",
+      "herb_cheqianzi",
+      "herb_mutong",
+      "herb_dengxincao",
+      "herb_qumai",
+      "herb_bianxu",
+      "herb_bixie"
+    ]
+  },
+  {
+    "id": "cat_qufengshi",
+    "category_path": "祛風濕藥",
+    "title": "祛風濕藥",
+    "source_page": [
+      50
+    ],
+    "characteristics": [
+      "祛肌表經絡風濕 ⇒ 減輕痺痛，疏筋通絡、強筋骨",
+      "藥性溫；藥味辛、苦 ⇒ 辛：祛風；苦：燥濕、清泄",
+      "歸經：肝、腎經 ⇒ 肝主筋、腎主骨",
+      "分類：①祛風濕止痛藥－祛風濕散寒藥，溫燥，止痛 ②祛風濕疏筋活絡藥－祛風濕清熱藥，苦寒，疏筋膜，通經，中風後遺症 ③祛風濕強筋健骨藥－補肝腎，補虛藥",
+      "成分：三萜羧酸、黃酮苷、呋喃香豆素、固醇苷"
+    ],
+    "herb_ids": [
+      "herb_duhuo",
+      "herb_weilingxian",
+      "herb_qinjiao",
+      "herb_sangjisheng",
+      "herb_wujiapi"
+    ]
+  },
+  {
+    "id": "cat_liqi",
+    "category_path": "理氣藥",
+    "title": "理氣藥",
+    "source_page": [
+      53
+    ],
+    "characteristics": [
+      "調理氣分疾病、舒暢氣機 ⇒ 用於氣滯（悶脹）、氣逆症（嘔逆）",
+      "藥性溫；藥味辛、苦 ⇒ 辛能散能行，有芳香性",
+      "歸經：肺、肝、脾、胃經 ⇒ 脾主運化、胃主受納",
+      "成分：揮發性物質、生物鹼、類黃酮、苯乙胺類"
+    ],
+    "herb_ids": [
+      "herb_zhishi",
+      "herb_zhiqiao",
+      "herb_chenpi",
+      "herb_wuyao",
+      "herb_xiangfu",
+      "herb_chenxiang"
+    ]
+  },
+  {
+    "id": "cat_xiaoshi",
+    "category_path": "消食藥",
+    "title": "消食藥",
+    "source_page": [
+      57
+    ],
+    "characteristics": [
+      "消食化積而開胃和中，治食積所致之脘腹脹滿、噯氣嘔逆、大便異常",
+      "成分：消化酶、類黃酮（苷）、黃烷醇寡聚體"
+    ],
+    "herb_ids": [
+      "herb_shanzha",
+      "herb_shenqu",
+      "herb_maiya",
+      "herb_guya"
+    ]
+  },
+  {
+    "id": "cat_xiexia",
+    "category_path": "瀉下藥",
+    "title": "瀉下藥",
+    "source_page": [
+      59,
+      60
+    ],
+    "sections": [
+      {
+        "heading": "便秘分型",
+        "subsections": [
+          {
+            "subheading": "實證－氣秘",
+            "items": [
+              "病因：情緒壓力、肝氣鬱滯",
+              "治療：行氣藥 + 疏肝解鬱藥（柴胡）"
+            ]
+          },
+          {
+            "subheading": "實證－熱秘",
+            "items": [
+              "病因：高熱性疾病、飲食嗜辣",
+              "治療：清熱瀉火、攻下藥"
+            ]
+          },
+          {
+            "subheading": "虛證－血虛秘",
+            "items": [
+              "病因：津液缺乏、無血以滋",
+              "治療：活血化瘀、補血、潤下藥"
+            ]
+          },
+          {
+            "subheading": "虛證－氣虛秘",
+            "items": [
+              "病因：脾肺氣虛、肛門脫垂",
+              "治療：補氣、益氣升陽舉陷藥"
+            ]
+          },
+          {
+            "subheading": "虛證－冷秘",
+            "items": [
+              "病因：脾腎陽虛、伴隨脘腹脹滿、倦怠",
+              "治療：補氣、補陽藥"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "廣義潤下藥",
+        "items": [
+          "① 決明子－清肝明目",
+          "② 蘇子、杏仁－止咳平喘",
+          "③ 柏子仁－安神",
+          "④ 當歸、肉蓯蓉、生首烏－補虛"
+        ]
+      }
+    ],
+    "characteristics": [
+      "引起腹瀉或促進排便",
+      "易傷胃氣，病好停藥",
+      "分類：①攻下藥：苦寒猛峻，用於熱結便秘、有形的積滯 ⇒ 蒽醌類 ②潤下藥：滋潤腸道，用於虛弱、津虧便秘 ⇒ 最弱效 ③峻下逐水藥：劇烈峻猛，用於排除水飲、消腫 ⇒ 最強效",
+      "常配伍行氣藥 ⇒ 大黃瀉下無枳實不通",
+      "孕婦不建議使用"
+    ],
+    "herb_ids": [
+      "herb_dahuang",
+      "herb_luhui",
+      "herb_huomaren"
+    ]
+  },
+  {
+    "id": "cat_quchong",
+    "category_path": "驅蟲藥",
+    "title": "驅蟲藥",
+    "source_page": [
+      62
+    ],
+    "characteristics": [
+      "驅除寄生蟲",
+      "配伍消積導滯或瀉下藥有助於蟲體排出",
+      "藥性、藥味與驅蟲效果無直接關係；不具歸經意義",
+      "成分：Pyridine 類生物鹼"
+    ],
+    "herb_ids": [
+      "herb_binglang"
+    ]
+  },
+  {
+    "id": "cat_wenli",
+    "category_path": "溫裏藥",
+    "title": "溫裏藥",
+    "source_page": [
+      64
+    ],
+    "characteristics": [
+      "溫中散寒、溫經散寒（各處疼痛）、溫陽、回陽救逆（亡陽證）",
+      "性溫熱、大熱；味辛，兼甘、苦",
+      "歸經：脾胃經，兼入肝經（溫經散寒）、腎經、心經（溫陽、回陽）",
+      "孕婦慎用",
+      "成分：揮發油、雙萜類生物鹼、Indole 類生物鹼、木脂素、Diarylheptanoid"
+    ],
+    "herb_ids": [
+      "herb_fuzi",
+      "herb_rougui",
+      "herb_wuzhuyu",
+      "herb_xiaohuixiang",
+      "herb_xixin",
+      "herb_dingxiang",
+      "herb_paojiang",
+      "herb_gaoliangjiang"
+    ]
+  },
+  {
+    "id": "cat_huoxue_quyu",
+    "category_path": "活血祛瘀藥",
+    "title": "活血祛瘀藥",
+    "source_page": [
+      70
+    ],
+    "characteristics": [
+      "功效：活血、化瘀、行血、止痛、調經、療傷、消癥、消腫",
+      "性偏溫，少數偏寒（鬱金、丹參、益母草）；味辛、苦（破血）、鹹（入血）",
+      "歸經：肝（藏血）、心（血脈）",
+      "分類：①活血止痛藥：各類瘀血疼痛（跌打、痛經、痹證） ②活血調經藥：婦科瘀血證（月經後期、痛經、產後惡露） ③活血療傷藥：跌打損傷、筋骨損傷 ④破血消癥藥：癥瘕積聚、腫塊",
+      "常配伍行氣藥",
+      "孕婦忌用"
+    ],
+    "herb_ids": [
+      "herb_chuanxiong",
+      "herb_yanhusuo",
+      "herb_ruxiang",
+      "herb_jianghuang",
+      "herb_danshen",
+      "herb_honghua",
+      "herb_taoren",
+      "herb_yimucao",
+      "herb_niuxi",
+      "herb_sumu",
+      "herb_xuejie",
+      "herb_shuizhi"
+    ]
+  },
+  {
+    "id": "cat_zhixue",
+    "category_path": "止血藥",
+    "title": "止血藥",
+    "source_page": [
+      78
+    ],
+    "characteristics": [
+      "功效：直接止血作用，用於各種出血證",
+      "分類：①收斂止血藥：藥性平和，藥味酸、澀 ⇒ 收斂 ②涼血止血藥：藥性寒、涼，藥味甘、苦 ③化瘀止血藥：性味不規律，以辛味為主 ④溫經止血藥：性溫，味辛為主",
+      "中病即止",
+      "炭藥止血",
+      "成分：黃酮類、Phenanthrenes、特殊胺基酸、單萜揮發油"
+    ],
+    "herb_ids": [
+      "herb_baiji",
+      "herb_huaihua",
+      "herb_cebaiye",
+      "herb_sanqi",
+      "herb_aiye"
+    ]
+  },
+  {
+    "id": "cat_pinggan_xifeng",
+    "category_path": "平肝息風藥",
+    "title": "平肝息風藥",
+    "source_page": [
+      81
+    ],
+    "characteristics": [
+      "肝：①肝主疏泄：疏通、條達、升發、宣散 ②肝貯藏血：貯藏血液、調節血量 ③開竅於目",
+      "功效：息風止痙、平肝潛陽",
+      "分類：①平肝潛陽藥：多為礦物動物藥，治肝陽上亢（暈眩頭痛、失眠多夢）。藥性寒涼，歸肝經為主，兼歸心經。配伍補虛藥 ②息風止痙藥：治肝風內動（抽搐痙攣、癲癇）。藥性寒居多，藥味甘居多。歸肝經",
+      "成分：酚類、Indole 類生物鹼、環酯肽"
+    ],
+    "herb_ids": [
+      "herb_gouteng",
+      "herb_tianma",
+      "herb_baijiangcan"
+    ]
+  },
+  {
+    "id": "cat_buqi",
+    "category_path": "補氣藥",
+    "title": "補氣藥",
+    "source_page": [
+      83
+    ],
+    "characteristics": [
+      "功效：補氣為主，治氣虛證（脾氣、肺氣、心氣、腎氣、元氣）",
+      "性平或微溫；味甘 ⇒ 甘能補",
+      "多歸脾（生化之源）、胃經",
+      "成分：三萜皂苷、固醇苷、多醣（增加免疫力）"
+    ],
+    "herb_ids": [
+      "herb_renshen",
+      "herb_xiyangshen",
+      "herb_dangshen",
+      "herb_huangqi",
+      "herb_shanyao",
+      "herb_baibiandou",
+      "herb_dazao",
+      "herb_gancao"
+    ]
+  },
+  {
+    "id": "cat_buxue",
+    "category_path": "補血藥",
+    "title": "補血藥",
+    "source_page": [
+      90
+    ],
+    "characteristics": [
+      "功效：治療心、肝相關的血虛證 ⇒ 心主血、肝藏血",
+      "多偏溫性；甘味為主",
+      "多歸心、肝經",
+      "成分：苯丙烷類、Phthalide、Iridoid glycoside、寡糖、單萜苷、Stilbene、Anthraquinone、膠原蛋白"
+    ],
+    "herb_ids": [
+      "herb_danggui",
+      "herb_dihuang",
+      "herb_baishao",
+      "herb_heshouwu",
+      "herb_ejiao"
+    ]
+  },
+  {
+    "id": "cat_buyin",
+    "category_path": "補陰藥",
+    "title": "補陰藥",
+    "source_page": [
+      94
+    ],
+    "characteristics": [
+      "功效：滋陰養液、糾正陰液虧虛、生津潤燥、制約偏亢之陽氣",
+      "主治：口乾舌燥、黏膜乾燥、骨蒸潮熱、肺心脾胃肝腎陰虛",
+      "多偏寒；多具甘味",
+      "成分：多醣、固醇苷、倍半萜生物鹼、Phenanthrene、固醇生物鹼、三萜羧酸、Iridoid glycoside"
+    ],
+    "herb_ids": [
+      "herb_maimendong",
+      "herb_tianmendong",
+      "herb_zhimu",
+      "herb_shihu",
+      "herb_gouqizi",
+      "herb_nuzhenzi",
+      "herb_huangjing",
+      "herb_baihe",
+      "herb_guiban",
+      "herb_chushizi"
+    ]
+  },
+  {
+    "id": "cat_buyang",
+    "category_path": "補陽藥",
+    "title": "補陽藥",
+    "source_page": [
+      100
+    ],
+    "characteristics": [
+      "功效：治療陽虛證，主要為補腎陽虛",
+      "多偏溫熱；具甘味",
+      "多歸肝、腎經",
+      "分類：①補腎陽益精血藥：治陽氣不足且精血虧虛，補陽兼養精血 ②補腎陽強筋骨藥：治筋骨無力、骨質疏鬆、散風濕（肝、腎） ③補腎陽固腎氣藥：治尿頻、遺尿、滑精等（補脾收斂） ④補肺腎定喘嗽藥：治腎陽虛導致呼吸困難或喘息（補肺）",
+      "熱證慎用",
+      "成分：苯乙醇苷、黃酮類、三萜羧酸、木脂素、Iridoid glycoside、性激素、香豆素、多醣類、Piperazine 類生物鹼"
+    ],
+    "herb_ids": [
+      "herb_lurong",
+      "herb_roucongrong",
+      "herb_suoyang",
+      "herb_bajitian",
+      "herb_yinyanghuo",
+      "herb_duzhong",
+      "herb_xuduan",
+      "herb_buguzhi",
+      "herb_tusizi",
+      "herb_shayuanzi",
+      "herb_dongchongxiacao"
+    ]
+  },
+  {
+    "id": "cat_anshen",
+    "category_path": "安神藥",
+    "title": "安神藥",
+    "source_page": [
+      106
+    ],
+    "characteristics": [
+      "功效：治療失眠、多夢、心悸、心煩",
+      "多歸心（藏神）、肝（藏魂）經",
+      "分類：①重鎮安神藥：安神止驚作用，多為礦物或動物甲殼 ②養心安神藥：兼有滋養補虛作用，安神效果和緩，適虛證",
+      "成分：三萜皂苷、環肽、脂質"
+    ],
+    "herb_ids": [
+      "herb_suanzaoren",
+      "herb_baiziren",
+      "herb_yuanzhi"
+    ]
+  },
+  {
+    "id": "cat_shoulian",
+    "category_path": "收斂藥",
+    "title": "收斂藥",
+    "source_page": [
+      108
+    ],
+    "characteristics": [
+      "功效：收斂固澀",
+      "多具酸、澀",
+      "虛證為主",
+      "成分：鞣質、三萜羧酸、木脂素"
+    ],
+    "herb_ids": [
+      "herb_lianzi",
+      "herb_qianshi",
+      "herb_shanzhuyu",
+      "herb_fupenzi",
+      "herb_wuweizi",
+      "herb_hezi"
+    ]
+  },
+  {
+    "id": "cat_waiyong",
+    "category_path": "外用藥",
+    "title": "外用藥",
+    "source_page": [
+      112
+    ],
+    "characteristics": [
+      "功效：外用為主。解毒消腫、生肌斂瘡、殺蟲止癢、外傷",
+      "成分：香豆素類"
+    ],
+    "herb_ids": [
+      "herb_shechuangzi"
+    ]
+  }
+]

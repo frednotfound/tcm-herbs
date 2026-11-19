@@ -1,0 +1,1417 @@
+{
+  "version": "1.0",
+  "description": "中藥藥物學階層式成分分類樹（點擊父節點涵蓋所有子節點藥材）",
+  "tree": [
+    {
+      "id": "chem_alkaloid",
+      "name_zh": "生物鹼",
+      "name_en": "Alkaloids",
+      "children": [
+        {
+          "id": "chem_alkaloid_phenethylamine",
+          "name_zh": "苯乙胺類與擬生物鹼",
+          "name_en": "Phenethylamine & Protoalkaloids",
+          "compounds": [
+            "l-Ephedrine",
+            "d-Pseudoephedrine",
+            "Synephrine",
+            "N-methyltyramine",
+            "Hordenine",
+            "Betaine",
+            "Sinapine"
+          ]
+        },
+        {
+          "id": "chem_alkaloid_isoquinoline",
+          "name_zh": "異喹啉類生物鹼",
+          "name_en": "Isoquinoline alkaloids",
+          "children": [
+            {
+              "id": "chem_alkaloid_protoberberine",
+              "name_zh": "原小蘗鹼類",
+              "name_en": "Protoberberine alkaloids",
+              "compounds": [
+                "Berberine",
+                "Coptisine",
+                "Worenine",
+                "Palmatine",
+                "Jatrorrhizine",
+                "Epiberberine",
+                "Groenlandicine",
+                "Berberastine",
+                "l-Tetrahydropalmatine",
+                "d-Corydaline",
+                "Dehydrocorydaline",
+                "Corybulbine",
+                "Corydalmine"
+              ]
+            },
+            {
+              "id": "chem_alkaloid_aporphine_biq",
+              "name_zh": "阿朴啡與苄基異喹啉類",
+              "name_en": "Aporphine & Benzylisoquinoline alkaloids",
+              "compounds": [
+                "Magnoflorine",
+                "Phellodendrine",
+                "Magnocurarine",
+                "Boldine",
+                "Laurotetanine",
+                "Reticuline",
+                "Hernandine",
+                "Hernandonine",
+                "Laurolitsine",
+                "7-Oxohernangerine",
+                "Lindechunine A",
+                "Stepharine",
+                "Nornuciferine",
+                "Asimilobine",
+                "Higenamine",
+                "Liensinine",
+                "Isoliensinine"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "chem_alkaloid_indole",
+          "name_zh": "吲哚類生物鹼",
+          "name_en": "Indole alkaloids",
+          "compounds": [
+            "Rhynchophylline",
+            "Isorhynchophylline",
+            "Corynoxeine",
+            "Corynantheine",
+            "Hirsutine",
+            "Hirsuteine",
+            "Evodiamine",
+            "Rutaecarpine",
+            "Dehydroevodiamine",
+            "Indican",
+            "Indirubin",
+            "Tryptanthrin",
+            "Perlolyrine",
+            "Gramine"
+          ]
+        },
+        {
+          "id": "chem_alkaloid_pyridine_piperidine",
+          "name_zh": "吡啶－哌啶類生物鹼（含單萜吡啶類）",
+          "name_en": "Pyridine-Piperidine alkaloids",
+          "compounds": [
+            "Arecoline",
+            "Arecaidine",
+            "Trigonelline",
+            "Anabasine",
+            "Gentianine",
+            "Cantleyine",
+            "Ginkgotoxin"
+          ]
+        },
+        {
+          "id": "chem_alkaloid_quinolizidine",
+          "name_zh": "喹諾里西啶類（苦參鹼類）",
+          "name_en": "Quinolizidine (Matrine-type) alkaloids",
+          "compounds": [
+            "Matrine",
+            "d-Matrine",
+            "Oxymatrine",
+            "Sophoranol",
+            "Cytisine"
+          ]
+        },
+        {
+          "id": "chem_alkaloid_pyrrolidine_guanidine",
+          "name_zh": "吡咯烷與胍類生物鹼",
+          "name_en": "Pyrrolidine & Guanidine alkaloids",
+          "compounds": [
+            "Stachydrine",
+            "Leonurine",
+            "Leonuridine",
+            "Leonurinine"
+          ]
+        },
+        {
+          "id": "chem_alkaloid_terpenoid",
+          "name_zh": "萜類生物鹼",
+          "name_en": "Terpenoid alkaloids",
+          "children": [
+            {
+              "id": "chem_alkaloid_sesquiterpene",
+              "name_zh": "倍半萜類生物鹼",
+              "name_en": "Sesquiterpene alkaloids",
+              "compounds": [
+                "Dendrobine",
+                "Nobilonine",
+                "Dendroxine",
+                "Dendrine"
+              ]
+            },
+            {
+              "id": "chem_alkaloid_diterpene",
+              "name_zh": "雙萜類生物鹼",
+              "name_en": "Diterpene alkaloids",
+              "compounds": [
+                "Aconitine",
+                "Hypaconitine",
+                "Mesaconitine",
+                "Carmichaeline"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "chem_alkaloid_steroidal",
+          "name_zh": "固醇類生物鹼",
+          "name_en": "Steroidal alkaloids",
+          "compounds": [
+            "Peimine",
+            "Peiminine",
+            "Peiminoside",
+            "Sipeimine",
+            "Fritimine",
+            "β-Solamargine"
+          ]
+        },
+        {
+          "id": "chem_alkaloid_stemona",
+          "name_zh": "百部生物鹼",
+          "name_en": "Stemona alkaloids",
+          "compounds": [
+            "Stemonine",
+            "Stemonamine",
+            "Tuberostemonine"
+          ]
+        },
+        {
+          "id": "chem_alkaloid_pyrazine_piperazine",
+          "name_zh": "吡嗪與哌嗪類生物鹼",
+          "name_en": "Pyrazine & Piperazine alkaloids",
+          "compounds": [
+            "Ligustrazine",
+            "3-Acetamino-6-isobutyl-2,5-dioxopiperazine"
+          ]
+        },
+        {
+          "id": "chem_alkaloid_other",
+          "name_zh": "其他與酚胺類生物鹼",
+          "name_en": "Other & Phenolamide alkaloids",
+          "compounds": [
+            "Kukoamine A",
+            "Lyciumamide",
+            "Xanthiazone",
+            "Evocarpine",
+            "Polygonatine",
+            "n-Butyl allophanate"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chem_terpenoid",
+      "name_zh": "萜類",
+      "name_en": "Terpenoids",
+      "children": [
+        {
+          "id": "chem_monoterpene",
+          "name_zh": "單萜類",
+          "name_en": "Monoterpenoids",
+          "children": [
+            {
+              "id": "chem_monoterpene_volatile",
+              "name_zh": "揮發性單萜與單萜酚",
+              "name_en": "Volatile monoterpenes & Monoterpene phenols",
+              "compounds": [
+                "Cineole",
+                "1,8-Cineole",
+                "α-Pinene",
+                "β-Pinene",
+                "d-α-Pinene",
+                "l-Pinene",
+                "Pinene",
+                "Sabinene",
+                "d-Menthone",
+                "l-Menthone",
+                "l-Isomenthone",
+                "l-Pulegone",
+                "Pulegone",
+                "l-Perillaldehyde",
+                "d-Limonene",
+                "l-Limonene",
+                "Limonene",
+                "Perillyl alcohol",
+                "Egomaketone",
+                "l-Menthol",
+                "Menthyl acetate",
+                "d-Neomenthol",
+                "Piperitone",
+                "Carvone",
+                "cis/trans-Carveol",
+                "d-trans-carveol",
+                "Citronellol",
+                "Borneol",
+                "Isoborneol",
+                "d-Camphor",
+                "Camphor",
+                "Bornyl acetate",
+                "l-Bornyl acetate",
+                "Borneyl isovalerate",
+                "Chrysanthenone",
+                "Linalool",
+                "Geraniol",
+                "Ionone",
+                "Thymol",
+                "δ-3-Carene",
+                "4-Cyrene",
+                "β-Ocimene",
+                "Ocimene",
+                "d-Fenchone",
+                "Fenchone",
+                "d-α-phellandrene",
+                "Phellandrene",
+                "Dipentene",
+                "α-thujone",
+                "Thujene",
+                "4-Terpineol",
+                "α-terpineol",
+                "l-Camphene",
+                "Bakuchiol"
+              ]
+            },
+            {
+              "id": "chem_monoterpene_glycoside",
+              "name_zh": "一般單萜苷（非環烯醚萜）",
+              "name_en": "Monoterpene glycosides (Non-iridoid)",
+              "compounds": [
+                "Paeoniflorin",
+                "Albiflorin",
+                "Oxypaeoniflorin",
+                "Paeoniflorigenone",
+                "Benzoylpaeoniflorin",
+                "Lactiflorin",
+                "Shionosides A-C"
+              ]
+            },
+            {
+              "id": "chem_iridoid",
+              "name_zh": "環烯醚萜苷",
+              "name_en": "Iridoid glycosides",
+              "compounds": [
+                "Loganin",
+                "Loganic acid",
+                "Forsythide",
+                "Forsythide methylester",
+                "Villoside",
+                "Geniposide",
+                "Gardenoside",
+                "Shanzhiside",
+                "Harpagide",
+                "Harpagide acetate",
+                "Harpagoside",
+                "Aucubin",
+                "Catalpol",
+                "Rehmannioside D",
+                "Ajugoside",
+                "Ulmoside",
+                "Reptoside",
+                "Morroniside",
+                "Monotropein",
+                "Morindolide",
+                "Asperuloside",
+                "Cantleyoside"
+              ],
+              "children": [
+                {
+                  "id": "chem_secoiridoid",
+                  "name_zh": "裂環烯醚萜苷",
+                  "name_en": "Secoiridoid glycosides",
+                  "compounds": [
+                    "Gentiopicroside",
+                    "Gentiamarin",
+                    "Swertiamarin",
+                    "Sweroside",
+                    "Secologanin",
+                    "Ligustroside",
+                    "Oleuropein",
+                    "Nuzhenide"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "chem_sesquiterpene",
+          "name_zh": "倍半萜類",
+          "name_en": "Sesquiterpenoids",
+          "children": [
+            {
+              "id": "chem_sesquiterpene_volatile",
+              "name_zh": "一般倍半萜與揮發油倍半萜",
+              "name_en": "Sesquiterpenes",
+              "compounds": [
+                "β-Sesquiphellandrene",
+                "Zingiberene",
+                "Zingiberol",
+                "Germacrene D",
+                "β-Caryophyllene",
+                "Caryophyllene",
+                "β-Eudesmol",
+                "Atractylol",
+                "Hinesol",
+                "Atractylon",
+                "Patchouli alcohol",
+                "Seychellene",
+                "α-Guaiene",
+                "Orientalols",
+                "Alismol",
+                "Alismoxide",
+                "Eremophilene",
+                "Valencene",
+                "α-Sinensal",
+                "Linderane",
+                "Linderenol",
+                "Linderic acid",
+                "α-Cyperone",
+                "Cyperene",
+                "Cyperenol",
+                "Cyperolone",
+                "Baimuxinol",
+                "Baimuxinic acid",
+                "Baimuxinal",
+                "α-turmerone",
+                "Pterocarpol",
+                "Elemol",
+                "α-cedrene",
+                "Cedrol",
+                "α/β-Chamigrene",
+                "Mongolicumin B"
+              ]
+            },
+            {
+              "id": "chem_sesquiterpene_lactone",
+              "name_zh": "倍半萜內酯",
+              "name_en": "Sesquiterpene lactones",
+              "compounds": [
+                "Xanthatin",
+                "Britanin",
+                "Inulicin",
+                "Diacetylbritannilactone",
+                "Desacetylinulicin",
+                "Gaillardin",
+                "Artemisinin",
+                "Dihydroartemisinin",
+                "Artemisinic acid",
+                "Arteannuin B"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "chem_diterpene",
+          "name_zh": "雙萜類",
+          "name_en": "Diterpenoids",
+          "compounds": [
+            "ent-Kaurane-16,17-diol",
+            "Lathicin",
+            "Atractyloside",
+            "Carboxyatractyloside",
+            "Ginkgolide A-D",
+            "Cinnzeylanine",
+            "Cinncassiol",
+            "Tanshinone",
+            "Cryptotanshinone",
+            "Isotanshinone",
+            "Galeopsin",
+            "Leoheterin",
+            "Preleoheterin",
+            "Caesalpin",
+            "15-Methoxypinusolidic acid",
+            "Goshonoside",
+            "Sugiol"
+          ]
+        },
+        {
+          "id": "chem_triterpene",
+          "name_zh": "三萜類",
+          "name_en": "Triterpenoids",
+          "children": [
+            {
+              "id": "chem_triterpene_tetra",
+              "name_zh": "四環三萜",
+              "name_en": "Tetracyclic triterpenoids",
+              "children": [
+                {
+                  "id": "chem_triterpene_lanostane",
+                  "name_zh": "Lanostane 型",
+                  "name_en": "Lanostane-type",
+                  "compounds": [
+                    "Pachymic acid",
+                    "Tumulosic acid",
+                    "Dehydrotumulosic acid",
+                    "Eburicoic acid",
+                    "Dehydrotrametenolic acid",
+                    "Poricoic acid"
+                  ]
+                },
+                {
+                  "id": "chem_triterpene_protostane",
+                  "name_zh": "Protostane 型",
+                  "name_en": "Protostane-type",
+                  "compounds": [
+                    "Alisols"
+                  ]
+                },
+                {
+                  "id": "chem_triterpene_cycloartane",
+                  "name_zh": "Cycloartane 型",
+                  "name_en": "Cycloartane-type",
+                  "compounds": [
+                    "Astragaloside",
+                    "Isoastragaloside",
+                    "Cimigenol",
+                    "Cimigenol derivatives",
+                    "Dahurinol",
+                    "Juncosides"
+                  ]
+                },
+                {
+                  "id": "chem_triterpene_dammarane",
+                  "name_zh": "Dammarane 型",
+                  "name_en": "Dammarane-type",
+                  "compounds": [
+                    "Ginsenoside Ra1-2",
+                    "Ginsenoside Ra3",
+                    "Ginsenoside Rb1-2",
+                    "Ginsenoside Rb1-3",
+                    "Ginsenoside Rc-f",
+                    "Ginsenoside Rd",
+                    "Ginsenoside Re",
+                    "Ginsenoside Rf",
+                    "Ginsenoside Rg1-3",
+                    "Ginsenoside Rh2",
+                    "Ginsenoside Rk1",
+                    "Ginsenoside Rp1",
+                    "(20S)-Protopanaxadiol",
+                    "(20S)-Protopanaxatriol",
+                    "Pseudoginsenoside F11",
+                    "Notoginsenoside R1-3",
+                    "Notoginsenoside R6",
+                    "Jujuboside",
+                    "Dammarenolic acid",
+                    "Dipterocarpol"
+                  ]
+                },
+                {
+                  "id": "chem_triterpene_cucurbitane",
+                  "name_zh": "Cucurbitane 型",
+                  "name_en": "Cucurbitane-type",
+                  "compounds": [
+                    "Cucurbitacin",
+                    "Isocucurbitane"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "chem_triterpene_penta",
+              "name_zh": "五環三萜",
+              "name_en": "Pentacyclic triterpenoids",
+              "children": [
+                {
+                  "id": "chem_triterpene_oleanane",
+                  "name_zh": "Oleanane 型（β-Amyrin 型）",
+                  "name_en": "Oleanane-type",
+                  "compounds": [
+                    "Oleanolic acid",
+                    "β-Amyrin",
+                    "Hederagenin",
+                    "Maslinic acid",
+                    "Gleditsioside A-Q",
+                    "Echinocystic acid",
+                    "Platycodin D",
+                    "Polygalacin D",
+                    "Platycogenic acid",
+                    "Platycodigenin",
+                    "Polygalacic acid",
+                    "Glycyrrhizin",
+                    "Glycyrrhetic acid",
+                    "Akeboside",
+                    "Clematichinenosides",
+                    "Onjisaponin",
+                    "Tenuifolin",
+                    "Ginsenoside Ro",
+                    "Saikosaponins A-G",
+                    "Saikogenins A-G",
+                    "Scabioside A-G",
+                    "Dipsacus saponin A",
+                    "Lablaboside",
+                    "Chikusetsusaponin",
+                    "α-boswellic acid"
+                  ]
+                },
+                {
+                  "id": "chem_triterpene_ursane",
+                  "name_zh": "Ursane 型（α-Amyrin 型）",
+                  "name_en": "Ursane-type",
+                  "compounds": [
+                    "Ursolic acid",
+                    "α-Amyrin",
+                    "Asiaticoside",
+                    "β-boswellic acid"
+                  ]
+                },
+                {
+                  "id": "chem_triterpene_lupane",
+                  "name_zh": "Lupane 型",
+                  "name_en": "Lupane-type",
+                  "compounds": [
+                    "Betulin",
+                    "Betulinic acid",
+                    "Lupenone",
+                    "Sophoradiol"
+                  ]
+                },
+                {
+                  "id": "chem_triterpene_other_penta",
+                  "name_zh": "其他五環與特殊三萜",
+                  "name_en": "Other pentacyclic & miscellaneous triterpenoids",
+                  "compounds": [
+                    "Taraxasterol",
+                    "Taraxerol",
+                    "Taraxol",
+                    "Friedelin",
+                    "Friedelan-3-one",
+                    "Shionone",
+                    "Astertarone A&B",
+                    "Arundoin",
+                    "Cylindrin",
+                    "Iridal",
+                    "Isoiridogermanal",
+                    "Belamcandal",
+                    "Roburic acid",
+                    "Fernenone",
+                    "Simiarenol",
+                    "Fupenzic acid",
+                    "Zizyphus saponin"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "chem_triterpene_hexa_steroidal",
+              "name_zh": "六環三萜／固醇類皂苷",
+              "name_en": "Hexacyclic triterpenoids / Steroidal saponins",
+              "compounds": [
+                "Dioscin",
+                "Diosgenin",
+                "Hypoglaucin",
+                "Furostanol glycoside",
+                "Spirostanol glycoside",
+                "Timosaponin",
+                "Sarsasapogenin",
+                "Ophiopogonins",
+                "Asp-IV, V, VI",
+                "Smilagenin",
+                "Sibiricoside",
+                "Saponoside",
+                "Kingianoside",
+                "Brownioside",
+                "Deacylbrownioside",
+                "Lililancifoloside"
+              ]
+            },
+            {
+              "id": "chem_limonoid",
+              "name_zh": "檸檬苦素類（降三萜）",
+              "name_en": "Limonoids (Nortriterpenoids)",
+              "compounds": [
+                "Limonin",
+                "Nomilin",
+                "Obacunone",
+                "Obakunone",
+                "Obakulactone",
+                "Rutaevin"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "chem_tetraterpene",
+          "name_zh": "四萜與類胡蘿蔔素",
+          "name_en": "Tetraterpenoids & Carotenoids",
+          "compounds": [
+            "Zeaxanthin",
+            "Zeaxanthin dipalmitate",
+            "Carotene",
+            "Crocin",
+            "Eriojaposide A"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chem_phenylpropanoid_phenolic",
+      "name_zh": "類苯基丙烷與多酚類",
+      "name_en": "Phenylpropanoids & Phenolics",
+      "children": [
+        {
+          "id": "chem_simple_phenylpropanoid",
+          "name_zh": "簡單苯丙烷、酚酸與簡單酚類",
+          "name_en": "Simple phenylpropanoids, Phenolic acids & Phenols",
+          "compounds": [
+            "Chlorogenic acid",
+            "Ferulic acid",
+            "Isoferulic acid",
+            "Phenethyl ferulate",
+            "Caffeic acid",
+            "Rosmarinic acid",
+            "Salvianolic acid",
+            "Magnesium lithospermate B",
+            "p-Coumaric acid",
+            "Cinnamic acid",
+            "Hydroxycinnamic acid",
+            "Cinnamaldehyde",
+            "Cinnamyl acetate",
+            "Eugenol",
+            "O-Acetyleugenol",
+            "Methyleugenol",
+            "Safrole",
+            "Anethole",
+            "Estragole",
+            "Anisaldehyde",
+            "Syringin",
+            "Tangshenoside",
+            "Ningposide A-C",
+            "Regaloside",
+            "Paeonolide",
+            "Paeonol",
+            "Gastrodin",
+            "Gastrodioside",
+            "Vanillin",
+            "4-methylsalicylaldehyde",
+            "Homogentisic acid",
+            "Ginkgol",
+            "Bilobol",
+            "Ginkgolic acid",
+            "Benzoic acid",
+            "Hydroxyphenethyl alcohol",
+            "Lithospermic acid",
+            "Lithospermoside"
+          ]
+        },
+        {
+          "id": "chem_phenylethanoid",
+          "name_zh": "苯乙醇苷",
+          "name_en": "Phenylethanoid glycosides",
+          "compounds": [
+            "Acteoside",
+            "Verbascoside",
+            "Echinacoside",
+            "Cistanoside",
+            "Forsythiaside"
+          ]
+        },
+        {
+          "id": "chem_coumarin",
+          "name_zh": "香豆素類",
+          "name_en": "Coumarins",
+          "children": [
+            {
+              "id": "chem_coumarin_simple",
+              "name_zh": "簡單香豆素與苯基香豆素",
+              "name_en": "Simple & Phenylcoumarins",
+              "compounds": [
+                "Coumarin",
+                "Coumarins",
+                "Scopoletin",
+                "Cedrelopsin",
+                "Umbelliferone",
+                "7-Hydroxycoumarin",
+                "Osthole",
+                "Cnidimols"
+              ]
+            },
+            {
+              "id": "chem_coumarin_furo",
+              "name_zh": "呋喃香豆素",
+              "name_en": "Furocoumarins",
+              "compounds": [
+                "Imperatorin",
+                "Isoimperatorin",
+                "Psoralen",
+                "Psoralens",
+                "Isopsoralen",
+                "Angelicin",
+                "Bergapten",
+                "Bergamottin",
+                "Notopterol",
+                "Columbianetin acetate",
+                "Columbianadin",
+                "Cnidiadin",
+                "Edultin",
+                "Isopimpinellin",
+                "Psoralidin",
+                "Corylidin",
+                "Qianhucoumarin G"
+              ]
+            },
+            {
+              "id": "chem_coumarin_pyrano",
+              "name_zh": "吡喃香豆素",
+              "name_en": "Pyranocoumarins",
+              "compounds": [
+                "Praeruptorins",
+                "Qianhucoumarins",
+                "Praerosides"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "chem_chromone",
+          "name_zh": "色原酮類",
+          "name_en": "Chromones",
+          "compounds": [
+            "Hamaudol",
+            "Cimifugin",
+            "Divaricatol",
+            "Norcimifugin",
+            "6-Hydroxy-2-(2-phenylethyl)-4-chromone"
+          ]
+        },
+        {
+          "id": "chem_lignan",
+          "name_zh": "木脂素類",
+          "name_en": "Lignans",
+          "compounds": [
+            "Magnolin",
+            "Arctiin",
+            "Arctigenin",
+            "Matairesinol",
+            "Matairesinoside",
+            "Lappaols A-F",
+            "Lappaol H",
+            "Forsythin",
+            "Forsythigenin",
+            "Pinoresinol glucoside",
+            "Pinoresinol diglucoside",
+            "d-Lyoniresinol 9'-O-β-D-glucopyranoside",
+            "Magnolol",
+            "Honokiol",
+            "Tetrahydromagnolol",
+            "Isomagnolol",
+            "l-Asarinin",
+            "Cuscutoside",
+            "Neocuscutoside",
+            "Sesamin",
+            "Euryalin",
+            "Buddlenol",
+            "Schisandrin",
+            "Gomisin"
+          ]
+        },
+        {
+          "id": "chem_flavonoid",
+          "name_zh": "黃酮類",
+          "name_en": "Flavonoids",
+          "children": [
+            {
+              "id": "chem_flavone_flavonol",
+              "name_zh": "黃酮與黃酮醇（含苷類）",
+              "name_en": "Flavones & Flavonols",
+              "compounds": [
+                "Apigenin",
+                "Apigenin-7-O-glucoside",
+                "Luteolin",
+                "Luteolin-7-O-glucoside",
+                "Lonicerin",
+                "Luteoloside",
+                "Vitexicarpin",
+                "Vitexin",
+                "(Iso)Vitexin",
+                "Orientin",
+                "(Iso)Orientin",
+                "Homoorientin",
+                "Isoorientin 4'-O-glucoside",
+                "Tricin",
+                "Gardenin A",
+                "Baicalin",
+                "Baicalein",
+                "Wogonoside",
+                "Wogonin",
+                "Tangeretin",
+                "Nobiletin",
+                "Pachypodol",
+                "Ombuin",
+                "Spinosin",
+                "Acylspinoside",
+                "Eupatilin",
+                "Icariin",
+                "Morusin",
+                "Cyclomorusin",
+                "Quercetin",
+                "Quercetin 3-O-β-glucoside",
+                "Isoquercetin",
+                "Quercitrin",
+                "Rutin",
+                "Hyperin",
+                "Hyperoside",
+                "Avicularin",
+                "Kaempferol",
+                "Kaempferol 3-O-glucoside",
+                "Kaempferide",
+                "Astragalin",
+                "Galangin",
+                "Isorhamnetin",
+                "Rhamnetin",
+                "Azaleatin",
+                "Patuletin-7-O-(6-isobutyroyl) glucoside",
+                "Quercetagitrin",
+                "Complanatoside",
+                "Embinin",
+                "Plantagoside"
+              ]
+            },
+            {
+              "id": "chem_flavanone_chalcone",
+              "name_zh": "二氫黃酮與查爾酮",
+              "name_en": "Flavanones, Dihydroflavonols & Chalcones",
+              "compounds": [
+                "Naringin",
+                "Naringenin",
+                "Hesperidin",
+                "Neohesperidin",
+                "Liquiritin",
+                "Isoliquiritin",
+                "Licoflavanone",
+                "Dihydrokaempferol",
+                "Eriodictyol",
+                "Kurarinol",
+                "Neokurarinol",
+                "Bavachin",
+                "Bavachinin",
+                "Isobavachin",
+                "Isobavachalcone",
+                "Bavachalcone",
+                "Safflor yellow",
+                "Carthamin",
+                "Neocarthamin",
+                "Tonkinochromanes A-L"
+              ]
+            },
+            {
+              "id": "chem_isoflavonoid",
+              "name_zh": "異黃酮與高異黃酮",
+              "name_en": "Isoflavonoids & Homoisoflavonoids",
+              "compounds": [
+                "Daidzein",
+                "Daidzin",
+                "Puerarin",
+                "Irigenin",
+                "Tectorigenin",
+                "Tectoridin",
+                "Irisflorentin",
+                "Retusin",
+                "Formononetin",
+                "Calycosin",
+                "Ononin",
+                "Genistein",
+                "Sophoricoside",
+                "Glabrone",
+                "Ophiopogonone",
+                "Methylophiopogonone",
+                "Isoophiopogonone",
+                "Desmethylophiopogonone"
+              ]
+            },
+            {
+              "id": "chem_biflavonoid",
+              "name_zh": "雙黃酮",
+              "name_en": "Biflavonoids",
+              "compounds": [
+                "Ginkgetin",
+                "Ochnaflavone",
+                "Hinokiflavone",
+                "Amentoflavone"
+              ]
+            },
+            {
+              "id": "chem_anthocyanin_flavanol",
+              "name_zh": "花青素、黃烷醇與特殊黃酮色素",
+              "name_en": "Anthocyanins, Flavanols & Flavylium pigments",
+              "compounds": [
+                "Perillanin",
+                "3-O-[(6-p-E-coumaroyl)-β-D-glucosyl]-5-O-β-D-glucosyl-cyanidin",
+                "Anthocyanin",
+                "Anthocyanidin",
+                "Cyanidin-3-O-glucoside",
+                "Catechin",
+                "d-Catechin",
+                "l-Gallocatechin",
+                "l-Epicatechin",
+                "Dracorubin",
+                "Nordracorubin",
+                "Dracorhodin",
+                "Daemonorol",
+                "Brazilin",
+                "Protosappanin"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "chem_stilbene",
+          "name_zh": "二苯乙烯類",
+          "name_en": "Stilbenes",
+          "compounds": [
+            "Resveratrol",
+            "Piceid",
+            "TSG",
+            "Rhaponticin",
+            "Batatasin",
+            "Dihydrostilbenes"
+          ]
+        },
+        {
+          "id": "chem_diarylheptanoid_gingerol",
+          "name_zh": "二芳基庚烷與薑辣素類",
+          "name_en": "Diarylheptanoids & Gingerols",
+          "compounds": [
+            "Curcumin",
+            "7-(4''-Hydroxy-3''-methoxyphenyl)-1-phenyl-4E-hepten-3-one",
+            "Zingerone",
+            "[6]-Gingerol",
+            "Gingerol",
+            "[6]-Shogaol",
+            "[6]-Gingerdione"
+          ]
+        },
+        {
+          "id": "chem_phenanthrene",
+          "name_zh": "菲類",
+          "name_en": "Phenanthrenes",
+          "compounds": [
+            "Juncusol",
+            "Effusol",
+            "Dehydroeffusol",
+            "Lusianthridin",
+            "Shancidin",
+            "Denbinobin",
+            "Moscatin"
+          ]
+        },
+        {
+          "id": "chem_xanthone",
+          "name_zh": "氧雜蒽酮類",
+          "name_en": "Xanthones",
+          "compounds": [
+            "Mangiferin",
+            "Isomangiferin",
+            "Xanthone"
+          ]
+        },
+        {
+          "id": "chem_tannin",
+          "name_zh": "鞣質類",
+          "name_en": "Tannins",
+          "children": [
+            {
+              "id": "chem_tannin_hydrolyzable",
+              "name_zh": "水解型鞣質與沒食子酸類",
+              "name_en": "Hydrolyzable tannins",
+              "compounds": [
+                "Ellagic acid",
+                "Ellagic acid glycoside",
+                "Gallic acid",
+                "Ethyl gallate",
+                "Luteic acid",
+                "Chebulic acid",
+                "Chebulinic acid",
+                "Chebulagic acid",
+                "Isoterchebin",
+                "Eugeniin",
+                "Gallotannin",
+                "Rhatannin",
+                "Galloylglucosides B"
+              ]
+            },
+            {
+              "id": "chem_tannin_condensed",
+              "name_zh": "縮合型鞣質（原花青素）",
+              "name_en": "Condensed tannins (Proanthocyanidins)",
+              "compounds": [
+                "Procyanidin B2",
+                "Procyanidin B5",
+                "Procyanidin C1",
+                "Procyanidins",
+                "Arecatannins",
+                "Cinnamtannin B1"
+              ]
+            },
+            {
+              "id": "chem_phlorotannin",
+              "name_zh": "褐藻多酚",
+              "name_en": "Phlorotannins",
+              "compounds": [
+                "Eckol",
+                "Phlorofucofuroeckol A"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chem_quinone",
+      "name_zh": "醌類",
+      "name_en": "Quinones",
+      "children": [
+        {
+          "id": "chem_anthraquinone",
+          "name_zh": "蒽醌類",
+          "name_en": "Anthraquinones",
+          "compounds": [
+            "Rhein",
+            "Aloe-emodin",
+            "Emodin",
+            "Chrysophanol",
+            "Physcion",
+            "Rubiadin"
+          ]
+        },
+        {
+          "id": "chem_anthrone_dianthrone",
+          "name_zh": "蒽酮與雙蒽酮苷",
+          "name_en": "Anthrones & Dianthrone glycosides",
+          "compounds": [
+            "Aloin A/B",
+            "Sennosides",
+            "Sennoside A"
+          ]
+        },
+        {
+          "id": "chem_naphthoquinone",
+          "name_zh": "萘醌類",
+          "name_en": "Naphthoquinones",
+          "compounds": [
+            "Shikonin",
+            "Acetylshikonin"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chem_cyanogenic_sulfur",
+      "name_zh": "氰苷與含硫化合物",
+      "name_en": "Cyanogenic glycosides & Organosulfur compounds",
+      "children": [
+        {
+          "id": "chem_cyanogenic",
+          "name_zh": "氰苷類",
+          "name_en": "Cyanogenic glycosides",
+          "compounds": [
+            "Amygdalin",
+            "Prunasin"
+          ]
+        },
+        {
+          "id": "chem_organosulfur",
+          "name_zh": "雙硫化合物與異硫氰酸鹽",
+          "name_en": "Organosulfur compounds & Isothiocyanates",
+          "compounds": [
+            "Allicin",
+            "Diallyl disulfide",
+            "Raphanin"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chem_phthalide_polyacetylene",
+      "name_zh": "苯酞、聚乙炔與小分子內酯",
+      "name_en": "Phthalides, Polyacetylenes & Simple lactones",
+      "children": [
+        {
+          "id": "chem_phthalide",
+          "name_zh": "苯酞類",
+          "name_en": "Phthalides",
+          "compounds": [
+            "Ligustilide",
+            "Butylidene phthalide",
+            "Cnidilide",
+            "Neocnidilide",
+            "Senkyunolide"
+          ]
+        },
+        {
+          "id": "chem_polyacetylene",
+          "name_zh": "聚乙炔類",
+          "name_en": "Polyacetylenes",
+          "compounds": [
+            "Falcarindiol",
+            "Panaxynol",
+            "Panaxydol"
+          ]
+        },
+        {
+          "id": "chem_simple_lactone",
+          "name_zh": "白頭翁素類內酯",
+          "name_en": "Protoanemonin lactones",
+          "compounds": [
+            "Protoanemonin",
+            "Anemonin",
+            "Anemonol"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chem_carbohydrate",
+      "name_zh": "醣類與多醣類",
+      "name_en": "Carbohydrates & Polysaccharides",
+      "children": [
+        {
+          "id": "chem_polysaccharide",
+          "name_zh": "多醣與水膠體",
+          "name_en": "Polysaccharides & Mucilages",
+          "compounds": [
+            "Saposhnikovans A-C",
+            "半夏多醣",
+            "半夏酸性多醣",
+            "Inulin",
+            "Hemicellulose polysaccharide",
+            "Bassorin",
+            "Alginic acid",
+            "Laminarin",
+            "Fucan sulfate",
+            "Pectin",
+            "Zizyphus pectin A",
+            "Trichosans A-D",
+            "蘆根多醣",
+            "Lithospermans A-C",
+            "LA IIa",
+            "β-pachymaran",
+            "Polyporus polysaccharides",
+            "Xylan",
+            "Araban",
+            "Bletilla-glucomannan",
+            "人參多醣",
+            "西洋參多醣",
+            "Astragalan",
+            "α-Glucan",
+            "Dioscoran",
+            "Dioscorea mucilage",
+            "Anemaran",
+            "黃精多醣",
+            "百合多醣",
+            "DAP-4I",
+            "Mannoglucan",
+            "Cordyglucan",
+            "Arabic acid Ca/Mg salt",
+            "澱粉",
+            "Starch"
+          ]
+        },
+        {
+          "id": "chem_sugar_oligo",
+          "name_zh": "單醣、寡醣與糖醇",
+          "name_en": "Monosaccharides, Oligosaccharides & Sugar alcohols",
+          "compounds": [
+            "D-Fructose",
+            "D-Glucose",
+            "Glucose",
+            "Sucrose",
+            "Galactose",
+            "Rhamnose",
+            "Xylose",
+            "麥芽糖",
+            "Gentianose",
+            "Stachyose",
+            "Nystose",
+            "Inulin-like hexa/hepta-oside",
+            "Pentosan",
+            "Dextrin",
+            "Adonitol",
+            "Mannitol",
+            "D-mannitol",
+            "Pinitol",
+            "Inositol",
+            "Polygalitol"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chem_sterol_lipid",
+      "name_zh": "植物固醇與脂質類",
+      "name_en": "Sterols & Lipids",
+      "children": [
+        {
+          "id": "chem_sterol",
+          "name_zh": "固醇類",
+          "name_en": "Sterols & Phytosterols",
+          "compounds": [
+            "β-Sitosterol",
+            "β-Sitosterol-3-O-β-D-glucoside",
+            "Daucosterol",
+            "Stigmasterol",
+            "Campesterol",
+            "α-Spinasterol",
+            "Phytosterols",
+            "Ergosterol",
+            "麥角固醇",
+            "Polyporusterone",
+            "Ecdysterone",
+            "Inokosterone",
+            "Cholesterol"
+          ]
+        },
+        {
+          "id": "chem_lipid",
+          "name_zh": "脂肪酸、脂肪油與鞘脂／磷脂質",
+          "name_en": "Fatty acids, Fixed oils & Phospholipids",
+          "compounds": [
+            "Linoleic acid",
+            "Oleic acid",
+            "Linolenic acid",
+            "Palmitic acid",
+            "Stearic acid",
+            "Arachidonic acid",
+            "Erucic acid",
+            "Petroselinic acid",
+            "Nonacosanoic acid",
+            "2-/3-Hexenoic acid",
+            "Olein",
+            "Linolein",
+            "Linolenin",
+            "Triolein",
+            "β-lecithin",
+            "Sphingomyelin",
+            "Ganglioside",
+            "Lysophosphatidylcholine",
+            "Trigalactosylceramide",
+            "Glycosphingolipids",
+            "Ferocerebroside",
+            "Cetyl alcohol",
+            "Glycerol sinapate"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chem_protein_peptide_aa",
+      "name_zh": "胺基酸、胜肽、蛋白質與酶",
+      "name_en": "Amino acids, Peptides, Proteins & Enzymes",
+      "children": [
+        {
+          "id": "chem_amino_acid",
+          "name_zh": "特殊胺基酸與多胺",
+          "name_en": "Amino acids & Polyamines",
+          "compounds": [
+            "Dencichine",
+            "Laminine",
+            "L-Citrulline",
+            "Citrulline",
+            "L-Asparagine",
+            "Spermidine",
+            "Spermine",
+            "Putrescine"
+          ]
+        },
+        {
+          "id": "chem_peptide",
+          "name_zh": "胜肽與環肽",
+          "name_en": "Peptides & Cyclopeptides",
+          "compounds": [
+            "Aurantiamide acetate",
+            "Astins A-J",
+            "Dianthins",
+            "Hirudin",
+            "Bufrudin",
+            "Whitmanin",
+            "Beauvericin",
+            "Bassianolide",
+            "Frangufoline"
+          ]
+        },
+        {
+          "id": "chem_protein_enzyme",
+          "name_zh": "蛋白質與消化酶",
+          "name_en": "Proteins & Enzymes",
+          "compounds": [
+            "Pinellin",
+            "Trichosanthin",
+            "TKI-III",
+            "桑寄生毒蛋白",
+            "桑寄生凝集素",
+            "Gelatin",
+            "Collagen",
+            "Glycoproteins LBP",
+            "澱粉酶",
+            "α/β-澱粉酶",
+            "催化酶",
+            "Emulsin",
+            "Lipase",
+            "Protease"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chem_misc",
+      "name_zh": "有機酸、維生素、核苷與其他",
+      "name_en": "Organic acids, Vitamins, Nucleosides & Others",
+      "children": [
+        {
+          "id": "chem_organic_acid",
+          "name_zh": "有機酸",
+          "name_en": "Organic acids",
+          "compounds": [
+            "Citric acid",
+            "Malic acid",
+            "Tartaric acid",
+            "Succinic acid"
+          ]
+        },
+        {
+          "id": "chem_vitamin",
+          "name_zh": "維生素",
+          "name_en": "Vitamins",
+          "compounds": [
+            "Vit. A",
+            "Vit. B",
+            "Vit. B1",
+            "Vit. B2",
+            "Vit. B3",
+            "Nicotinic acid",
+            "Vit. C",
+            "Ascorbic acid",
+            "Vit. D",
+            "Vit. E",
+            "Tocopherol"
+          ]
+        },
+        {
+          "id": "chem_nucleoside_misc",
+          "name_zh": "核苷、大麻素與特殊活性物",
+          "name_en": "Nucleosides, Cannabinoids & Miscellaneous",
+          "compounds": [
+            "Cordycepin",
+            "腺嘌呤",
+            "膽鹼",
+            "Choline",
+            "Allantoin",
+            "(-)-Δ9-trans-THC",
+            "Coixol",
+            "Pellitorine",
+            "Dolichin",
+            "Eleutheroside A",
+            "Picrocrocinic acid",
+            "Olibanoresene",
+            "前列腺素"
+          ]
+        }
+      ]
+    }
+  ]
+}

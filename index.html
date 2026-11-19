@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-Hant" data-theme="auto">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>中藥藥物學互動式學習網站</title>
+  <meta name="description" content="中藥藥物學學習與查詢：搜尋、篩選、成分反查、配伍禁忌。整理自老師講義與公開資料，僅供學習使用。">
+  <meta name="theme-color" content="#2f5d46">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip" href="#main">跳到主要內容</a>
+  <header class="topbar">
+    <button id="menu-btn" class="btn btn-ghost menu-btn" type="button" aria-label="開啟選單">☰</button>
+    <a class="brand" href="#/">中藥藥物學</a>
+    <form id="search-form" class="search-form" role="search">
+      <input id="global-search" type="search" placeholder="搜尋藥名、成分、功效、方劑…（按 / 快速搜尋）" aria-label="搜尋" autocomplete="off">
+    </form>
+    <button id="theme-btn" class="btn btn-ghost theme-btn" type="button">主題</button>
+  </header>
+  <div class="shell">
+    <aside class="sidebar" aria-label="導覽">
+      <nav id="side-nav" class="side-nav"></nav>
+      <div id="side-cats" class="side-cats"></div>
+    </aside>
+    <div id="drawer-backdrop" class="drawer-backdrop"></div>
+    <main id="main" tabindex="-1"><p class="muted loading">載入資料中…</p></main>
+  </div>
+  <footer class="site-foot"><span id="foot-note">整理自老師講義與公開資料，僅供學習使用</span> · <a href="#/about">關於</a></footer>
+  <nav id="bottom-nav" class="bottom-nav" aria-label="主要分頁"></nav>
+  <noscript><p style="padding:1rem">本網站需要啟用 JavaScript。</p></noscript>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

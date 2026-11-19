@@ -1,0 +1,1188 @@
+{
+  "chemical_categories": [
+    {
+      "target_id": "chem_alkaloid",
+      "terms": [
+        "生物鹼",
+        "生物鹼類",
+        "alkaloid",
+        "alkaloids"
+      ]
+    },
+    {
+      "target_id": "chem_alkaloid_phenethylamine",
+      "terms": [
+        "苯乙胺類生物鹼",
+        "苯乙胺",
+        "phenethylamine",
+        "phenethylamines",
+        "protoalkaloid"
+      ]
+    },
+    {
+      "target_id": "chem_alkaloid_isoquinoline",
+      "terms": [
+        "異喹啉",
+        "異喹啉生物鹼",
+        "isoquinoline",
+        "isoquinoline alkaloid",
+        "isoquinoline alkaloids"
+      ]
+    },
+    {
+      "target_id": "chem_alkaloid_protoberberine",
+      "terms": [
+        "原小蘗鹼",
+        "小蘗鹼",
+        "小檗鹼",
+        "protoberberine"
+      ]
+    },
+    {
+      "target_id": "chem_alkaloid_indole",
+      "terms": [
+        "吲哚",
+        "吲哚生物鹼",
+        "indole",
+        "indole alkaloid",
+        "indole alkaloids",
+        "β-carboline",
+        "carboline"
+      ]
+    },
+    {
+      "target_id": "chem_alkaloid_pyridine_piperidine",
+      "terms": [
+        "吡啶",
+        "哌啶",
+        "單萜生物鹼",
+        "pyridine",
+        "piperidine",
+        "pyridine-piperidine"
+      ]
+    },
+    {
+      "target_id": "chem_alkaloid_quinolizidine",
+      "terms": [
+        "苦參鹼類",
+        "喹諾里西啶",
+        "quinolizidine",
+        "matrine-type"
+      ]
+    },
+    {
+      "target_id": "chem_alkaloid_steroidal",
+      "terms": [
+        "固醇類生物鹼",
+        "固醇生物鹼",
+        "steroidal alkaloid",
+        "steroidal alkaloids"
+      ]
+    },
+    {
+      "target_id": "chem_alkaloid_diterpene",
+      "terms": [
+        "雙萜類生物鹼",
+        "二萜生物鹼",
+        "diterpene alkaloid",
+        "diterpenoid alkaloid"
+      ]
+    },
+    {
+      "target_id": "chem_alkaloid_sesquiterpene",
+      "terms": [
+        "倍半萜生物鹼",
+        "倍半萜類生物鹼",
+        "sesquiterpene alkaloid"
+      ]
+    },
+    {
+      "target_id": "chem_terpenoid",
+      "terms": [
+        "萜類",
+        "terpene",
+        "terpenes",
+        "terpenoid",
+        "terpenoids"
+      ]
+    },
+    {
+      "target_id": "chem_monoterpene",
+      "terms": [
+        "單萜",
+        "單萜類",
+        "monoterpene",
+        "monoterpenes",
+        "monoterpenoid",
+        "monoterpenoids"
+      ]
+    },
+    {
+      "target_id": "chem_iridoid",
+      "terms": [
+        "環烯醚萜",
+        "環烯醚萜苷",
+        "iridoid",
+        "iridoids",
+        "iridoid glycoside",
+        "iridoid glycosides"
+      ]
+    },
+    {
+      "target_id": "chem_secoiridoid",
+      "terms": [
+        "裂環烯醚萜",
+        "裂環烯醚萜苷",
+        "secoiridoid",
+        "secoiridoids",
+        "secoiridoid glycoside",
+        "secoiridoid glycosides"
+      ]
+    },
+    {
+      "target_id": "chem_sesquiterpene",
+      "terms": [
+        "倍半萜",
+        "倍半萜類",
+        "sesquiterpene",
+        "sesquiterpenes",
+        "sesquiterpenoid",
+        "sesquiterpenoids"
+      ]
+    },
+    {
+      "target_id": "chem_sesquiterpene_lactone",
+      "terms": [
+        "倍半萜內酯",
+        "sesquiterpene lactone",
+        "sesquiterpene lactones"
+      ]
+    },
+    {
+      "target_id": "chem_diterpene",
+      "terms": [
+        "雙萜",
+        "二萜",
+        "雙萜類",
+        "二萜類",
+        "diterpene",
+        "diterpenes",
+        "diterpenoid",
+        "diterpenoids"
+      ]
+    },
+    {
+      "target_id": "chem_triterpene",
+      "terms": [
+        "三萜",
+        "三萜類",
+        "三萜皂苷",
+        "三萜羧酸",
+        "triterpene",
+        "triterpenes",
+        "triterpenoid",
+        "triterpenoids",
+        "saponin",
+        "saponins",
+        "皂苷",
+        "皂素"
+      ]
+    },
+    {
+      "target_id": "chem_triterpene_tetra",
+      "terms": [
+        "四環三萜",
+        "tetracyclic triterpene",
+        "tetracyclic triterpenoid"
+      ]
+    },
+    {
+      "target_id": "chem_triterpene_penta",
+      "terms": [
+        "五環三萜",
+        "pentacyclic triterpene",
+        "pentacyclic triterpenoid"
+      ]
+    },
+    {
+      "target_id": "chem_triterpene_hexa_steroidal",
+      "terms": [
+        "六環三萜",
+        "固醇皂苷",
+        "固醇類皂苷",
+        "steroidal saponin",
+        "steroid glycoside",
+        "steroid glycosides"
+      ]
+    },
+    {
+      "target_id": "chem_limonoid",
+      "terms": [
+        "檸檬苦素",
+        "苦味質",
+        "limonoid",
+        "limonoids"
+      ]
+    },
+    {
+      "target_id": "chem_phenylpropanoid_phenolic",
+      "terms": [
+        "苯丙烷",
+        "類苯基丙烷",
+        "苯丙醯",
+        "苯丙素",
+        "多酚",
+        "酚類",
+        "phenylpropanoid",
+        "phenylpropanoids",
+        "phenolic",
+        "phenolics"
+      ]
+    },
+    {
+      "target_id": "chem_phenylethanoid",
+      "terms": [
+        "苯乙醇苷",
+        "phenylethanoid",
+        "phenylethanoids",
+        "phenylethanoid glycoside",
+        "phenylethanoid glycosides",
+        "phenylethanol glycosides"
+      ]
+    },
+    {
+      "target_id": "chem_coumarin",
+      "terms": [
+        "香豆素",
+        "香豆素類",
+        "coumarin",
+        "coumarins"
+      ]
+    },
+    {
+      "target_id": "chem_coumarin_furo",
+      "terms": [
+        "呋喃香豆素",
+        "furocoumarin",
+        "furocoumarins",
+        "furanocoumarin",
+        "furanocoumarins"
+      ]
+    },
+    {
+      "target_id": "chem_coumarin_pyrano",
+      "terms": [
+        "吡喃香豆素",
+        "pyranocoumarin",
+        "pyranocoumarins"
+      ]
+    },
+    {
+      "target_id": "chem_chromone",
+      "terms": [
+        "色原酮",
+        "色酮",
+        "chromone",
+        "chromones",
+        "furochromone"
+      ]
+    },
+    {
+      "target_id": "chem_lignan",
+      "terms": [
+        "木脂素",
+        "木脂類",
+        "類木脂素",
+        "lignan",
+        "lignans",
+        "lignan glycoside"
+      ]
+    },
+    {
+      "target_id": "chem_flavonoid",
+      "terms": [
+        "黃酮",
+        "黃酮類",
+        "類黃酮",
+        "黃酮苷",
+        "flavonoid",
+        "flavonoids",
+        "flavone",
+        "flavones",
+        "flavonol",
+        "flavonols"
+      ]
+    },
+    {
+      "target_id": "chem_isoflavonoid",
+      "terms": [
+        "異黃酮",
+        "異黃酮類",
+        "高異黃酮",
+        "isoflavone",
+        "isoflavones",
+        "isoflavonoid",
+        "isoflavonoids"
+      ]
+    },
+    {
+      "target_id": "chem_biflavonoid",
+      "terms": [
+        "雙黃酮",
+        "類黃酮雙聚體",
+        "biflavonoid",
+        "biflavonoids",
+        "bisflavone",
+        "bisflavonoid"
+      ]
+    },
+    {
+      "target_id": "chem_stilbene",
+      "terms": [
+        "二苯乙烯",
+        "stilbene",
+        "stilbenes",
+        "dihydrostilbenes"
+      ]
+    },
+    {
+      "target_id": "chem_diarylheptanoid_gingerol",
+      "terms": [
+        "二芳基庚烷",
+        "薑辣素",
+        "diarylheptanoid",
+        "diarylheptanoids"
+      ]
+    },
+    {
+      "target_id": "chem_phenanthrene",
+      "terms": [
+        "菲類",
+        "二氫菲",
+        "phenanthrene",
+        "phenanthrenes",
+        "dihydrophenanthrenes"
+      ]
+    },
+    {
+      "target_id": "chem_xanthone",
+      "terms": [
+        "氧雜蒽酮",
+        "呫噸酮",
+        "xanthone",
+        "xanthones"
+      ]
+    },
+    {
+      "target_id": "chem_tannin",
+      "terms": [
+        "鞣質",
+        "鞣酸",
+        "單寧",
+        "tannin",
+        "tannins",
+        "procyanidin",
+        "procyanidins",
+        "phlorotannin",
+        "phlorotannins"
+      ]
+    },
+    {
+      "target_id": "chem_quinone",
+      "terms": [
+        "醌類",
+        "quinone",
+        "quinones"
+      ]
+    },
+    {
+      "target_id": "chem_anthraquinone",
+      "terms": [
+        "蒽醌",
+        "蒽醌類",
+        "anthraquinone",
+        "anthraquinones"
+      ]
+    },
+    {
+      "target_id": "chem_anthrone_dianthrone",
+      "terms": [
+        "蒽酮",
+        "雙蒽酮",
+        "anthrone",
+        "dianthrone",
+        "dianthrone glycoside"
+      ]
+    },
+    {
+      "target_id": "chem_naphthoquinone",
+      "terms": [
+        "萘醌",
+        "萘醌類",
+        "naphthoquinone",
+        "naphthoquinones"
+      ]
+    },
+    {
+      "target_id": "chem_cyanogenic",
+      "terms": [
+        "氰苷",
+        "氰苷類",
+        "cyanogenic glycoside",
+        "cyanogenic glycosides"
+      ]
+    },
+    {
+      "target_id": "chem_organosulfur",
+      "terms": [
+        "雙硫化合物",
+        "異硫氰酸鹽",
+        "isothiocyanate",
+        "isothiocyanates"
+      ]
+    },
+    {
+      "target_id": "chem_phthalide",
+      "terms": [
+        "苯酞",
+        "phthalide",
+        "phthalides"
+      ]
+    },
+    {
+      "target_id": "chem_polyacetylene",
+      "terms": [
+        "聚乙炔",
+        "polyacetylene",
+        "polyacetylenes"
+      ]
+    },
+    {
+      "target_id": "chem_polysaccharide",
+      "terms": [
+        "多醣",
+        "多糖",
+        "多醣體",
+        "多醣類",
+        "水膠體",
+        "黏液質",
+        "polysaccharide",
+        "polysaccharides"
+      ]
+    },
+    {
+      "target_id": "chem_sterol",
+      "terms": [
+        "固醇",
+        "固醇類",
+        "植物固醇",
+        "類固醇",
+        "sterol",
+        "sterols",
+        "phytosterol",
+        "phytosterols",
+        "steroid"
+      ]
+    },
+    {
+      "target_id": "chem_lipid",
+      "terms": [
+        "脂質",
+        "脂肪油",
+        "脂肪酸",
+        "lipid",
+        "lipids",
+        "fatty acid",
+        "fatty acids"
+      ]
+    },
+    {
+      "target_id": "chem_volatile_general",
+      "terms": [
+        "揮發油",
+        "精油",
+        "essential oil",
+        "volatile oil"
+      ]
+    }
+  ],
+  "compound_synonyms": [
+    {
+      "canonical": "Chlorogenic acid",
+      "aliases": [
+        "綠原酸"
+      ]
+    },
+    {
+      "canonical": "l-Ephedrine",
+      "aliases": [
+        "Ephedrine",
+        "麻黃素",
+        "麻黃鹼"
+      ]
+    },
+    {
+      "canonical": "d-Pseudoephedrine",
+      "aliases": [
+        "Pseudoephedrine",
+        "偽麻黃鹼"
+      ]
+    },
+    {
+      "canonical": "Magnolin",
+      "aliases": [
+        "木蘭脂",
+        "木蘭脂素"
+      ]
+    },
+    {
+      "canonical": "l-Perillaldehyde",
+      "aliases": [
+        "Perillaldehyde",
+        "紫蘇醛"
+      ]
+    },
+    {
+      "canonical": "Egomaketone",
+      "aliases": [
+        "白蘇烯酮"
+      ]
+    },
+    {
+      "canonical": "Perillanin",
+      "aliases": [
+        "Shisonin"
+      ]
+    },
+    {
+      "canonical": "Vitexicarpin",
+      "aliases": [
+        "Casticin"
+      ]
+    },
+    {
+      "canonical": "Norcimifugin",
+      "aliases": [
+        "Angelicain"
+      ]
+    },
+    {
+      "canonical": "Homogentisic acid",
+      "aliases": [
+        "尿黑酸"
+      ]
+    },
+    {
+      "canonical": "Peimine",
+      "aliases": [
+        "Verticine",
+        "浙貝母甲素"
+      ]
+    },
+    {
+      "canonical": "Peiminine",
+      "aliases": [
+        "Verticinone",
+        "浙貝母乙素"
+      ]
+    },
+    {
+      "canonical": "Bassorin",
+      "aliases": [
+        "西黃耆膠黏素"
+      ]
+    },
+    {
+      "canonical": "Amygdalin",
+      "aliases": [
+        "苦杏仁苷"
+      ]
+    },
+    {
+      "canonical": "Iridal",
+      "aliases": [
+        "鳶尾醛"
+      ]
+    },
+    {
+      "canonical": "Trichosanthin",
+      "aliases": [
+        "天花粉蛋白"
+      ]
+    },
+    {
+      "canonical": "Tricin",
+      "aliases": [
+        "苜蓿素"
+      ]
+    },
+    {
+      "canonical": "Berberine",
+      "aliases": [
+        "小蘗鹼",
+        "小檗鹼",
+        "黃連素"
+      ]
+    },
+    {
+      "canonical": "Baicalin",
+      "aliases": [
+        "黃芩苷"
+      ]
+    },
+    {
+      "canonical": "Gentiopicroside",
+      "aliases": [
+        "Gentiopicrin",
+        "龍膽苦苷"
+      ]
+    },
+    {
+      "canonical": "Acteoside",
+      "aliases": [
+        "Verbascoside"
+      ]
+    },
+    {
+      "canonical": "Shikonin",
+      "aliases": [
+        "紫草素"
+      ]
+    },
+    {
+      "canonical": "Artemisinin",
+      "aliases": [
+        "青蒿素"
+      ]
+    },
+    {
+      "canonical": "Atractylon",
+      "aliases": [
+        "蒼朮酮"
+      ]
+    },
+    {
+      "canonical": "Aristolochic acid",
+      "aliases": [
+        "馬兜鈴酸"
+      ]
+    },
+    {
+      "canonical": "Syringin",
+      "aliases": [
+        "Eleutheroside B"
+      ]
+    },
+    {
+      "canonical": "4-methylsalicylaldehyde",
+      "aliases": [
+        "4-甲基水楊醛"
+      ]
+    },
+    {
+      "canonical": "Hesperidin",
+      "aliases": [
+        "Vitamin P",
+        "Vit. P"
+      ]
+    },
+    {
+      "canonical": "Rutin",
+      "aliases": [
+        "Vitamin P",
+        "Vit. P",
+        "芸香苷"
+      ]
+    },
+    {
+      "canonical": "(-)-Δ9-trans-THC",
+      "aliases": [
+        "THC",
+        "Δ9-THC",
+        "Tetrahydrocannabinol"
+      ]
+    },
+    {
+      "canonical": "Aconitine",
+      "aliases": [
+        "烏頭鹼"
+      ]
+    },
+    {
+      "canonical": "Hypaconitine",
+      "aliases": [
+        "次烏頭鹼"
+      ]
+    },
+    {
+      "canonical": "Higenamine",
+      "aliases": [
+        "去甲基烏藥鹼"
+      ]
+    },
+    {
+      "canonical": "Cinnamaldehyde",
+      "aliases": [
+        "Cinnamic aldehyde",
+        "桂皮醛",
+        "肉桂醛"
+      ]
+    },
+    {
+      "canonical": "Ligustrazine",
+      "aliases": [
+        "Tetramethylpyrazine",
+        "川芎嗪"
+      ]
+    },
+    {
+      "canonical": "Magnesium lithospermate B",
+      "aliases": [
+        "Magnesium tanshinoate B"
+      ]
+    },
+    {
+      "canonical": "Carthamin",
+      "aliases": [
+        "紅花苷"
+      ]
+    },
+    {
+      "canonical": "Dencichine",
+      "aliases": [
+        "三七素"
+      ]
+    },
+    {
+      "canonical": "Gastrodin",
+      "aliases": [
+        "天麻素"
+      ]
+    },
+    {
+      "canonical": "Glycyrrhizin",
+      "aliases": [
+        "甘草甜素",
+        "甘草酸"
+      ]
+    },
+    {
+      "canonical": "Catalpol",
+      "aliases": [
+        "梓醇"
+      ]
+    },
+    {
+      "canonical": "Stachyose",
+      "aliases": [
+        "水蘇糖"
+      ]
+    },
+    {
+      "canonical": "TSG",
+      "aliases": [
+        "2,3,5,4'-Tetrahydroxystilbene-2-O-β-D-glucoside"
+      ]
+    },
+    {
+      "canonical": "Mangiferin",
+      "aliases": [
+        "芒果苷"
+      ]
+    },
+    {
+      "canonical": "Zeaxanthin",
+      "aliases": [
+        "玉米黃素"
+      ]
+    },
+    {
+      "canonical": "Lysophosphatidylcholine",
+      "aliases": [
+        "LPC"
+      ]
+    },
+    {
+      "canonical": "Bakuchiol",
+      "aliases": [
+        "類A醇",
+        "補骨脂酚"
+      ]
+    },
+    {
+      "canonical": "Cordycepin",
+      "aliases": [
+        "3'-deoxyadenosine",
+        "蟲草素"
+      ]
+    },
+    {
+      "canonical": "Schisandrin",
+      "aliases": [
+        "Schizandrin",
+        "五味子素"
+      ]
+    },
+    {
+      "canonical": "Tocopherol",
+      "aliases": [
+        "Vit. E",
+        "維生素E"
+      ]
+    },
+    {
+      "canonical": "Forsythin",
+      "aliases": [
+        "Phillyrin"
+      ]
+    }
+  ],
+  "botanical_families": [
+    {
+      "canonical_zh": "菊科",
+      "canonical_latin": "Asteraceae",
+      "aliases": [
+        "Compositae"
+      ]
+    },
+    {
+      "canonical_zh": "唇形科",
+      "canonical_latin": "Lamiaceae",
+      "aliases": [
+        "Labiatae"
+      ]
+    },
+    {
+      "canonical_zh": "繖形科",
+      "canonical_latin": "Apiaceae",
+      "aliases": [
+        "Umbelliferae",
+        "傘形科"
+      ]
+    },
+    {
+      "canonical_zh": "豆科",
+      "canonical_latin": "Fabaceae",
+      "aliases": [
+        "Leguminosae"
+      ]
+    },
+    {
+      "canonical_zh": "十字花科",
+      "canonical_latin": "Brassicaceae",
+      "aliases": [
+        "Cruciferae"
+      ]
+    },
+    {
+      "canonical_zh": "禾本科",
+      "canonical_latin": "Poaceae",
+      "aliases": [
+        "Gramineae"
+      ]
+    },
+    {
+      "canonical_zh": "棕櫚科",
+      "canonical_latin": "Arecaceae",
+      "aliases": [
+        "Palmae"
+      ]
+    },
+    {
+      "canonical_zh": "天門冬科",
+      "canonical_latin": "Asparagaceae",
+      "aliases": [
+        "Liliaceae（舊制）"
+      ]
+    },
+    {
+      "canonical_zh": "石蒜科",
+      "canonical_latin": "Amaryllidaceae",
+      "aliases": [
+        "Liliaceae（舊制）"
+      ]
+    },
+    {
+      "canonical_zh": "阿福花科",
+      "canonical_latin": "Asphodelaceae",
+      "aliases": [
+        "Liliaceae（舊制）"
+      ]
+    },
+    {
+      "canonical_zh": "芍藥科",
+      "canonical_latin": "Paeoniaceae",
+      "aliases": [
+        "Ranunculaceae（舊制）"
+      ]
+    },
+    {
+      "canonical_zh": "列當科",
+      "canonical_latin": "Orobanchaceae",
+      "aliases": [
+        "Scrophulariaceae（舊制）"
+      ]
+    },
+    {
+      "canonical_zh": "忍冬科",
+      "canonical_latin": "Caprifoliaceae",
+      "aliases": [
+        "Loniceraceae",
+        "Dipsacaceae（舊制）",
+        "川續斷科"
+      ]
+    },
+    {
+      "canonical_zh": "木犀科",
+      "canonical_latin": "Oleaceae",
+      "aliases": [
+        "木樨科"
+      ]
+    }
+  ],
+  "herb_and_char_variants": [
+    {
+      "canonical": "白朮",
+      "aliases": [
+        "白术"
+      ]
+    },
+    {
+      "canonical": "蒼朮",
+      "aliases": [
+        "蒼术",
+        "茅蒼朮",
+        "北蒼朮"
+      ]
+    },
+    {
+      "canonical": "栝蔞根",
+      "aliases": [
+        "栝樓根",
+        "天花粉"
+      ]
+    },
+    {
+      "canonical": "燈心草",
+      "aliases": [
+        "燈芯草"
+      ]
+    },
+    {
+      "canonical": "楮實子",
+      "aliases": [
+        "褚實子"
+      ]
+    },
+    {
+      "canonical": "沙苑子",
+      "aliases": [
+        "沙苑蒺藜"
+      ]
+    },
+    {
+      "canonical": "辛夷",
+      "aliases": [
+        "筆頭花"
+      ]
+    },
+    {
+      "canonical": "羌活",
+      "aliases": [
+        "蠶羌"
+      ]
+    },
+    {
+      "canonical": "荊芥",
+      "aliases": [
+        "假蘇"
+      ]
+    },
+    {
+      "canonical": "牛蒡子",
+      "aliases": [
+        "鼠黏子",
+        "惡實",
+        "大力子"
+      ]
+    },
+    {
+      "canonical": "菊花",
+      "aliases": [
+        "甘菊",
+        "真菊",
+        "貢菊"
+      ]
+    },
+    {
+      "canonical": "金銀花",
+      "aliases": [
+        "Honeysuckle"
+      ]
+    },
+    {
+      "canonical": "北板藍根",
+      "aliases": [
+        "板藍根"
+      ]
+    },
+    {
+      "canonical": "淡竹葉",
+      "aliases": [
+        "杭竹葉"
+      ]
+    },
+    {
+      "canonical": "夏枯草",
+      "aliases": [
+        "Selfheal"
+      ]
+    },
+    {
+      "canonical": "黃連",
+      "aliases": [
+        "味連",
+        "川連",
+        "雞爪黃連"
+      ]
+    },
+    {
+      "canonical": "牡丹皮",
+      "aliases": [
+        "丹皮",
+        "洛陽花"
+      ]
+    },
+    {
+      "canonical": "豬苓",
+      "aliases": [
+        "假豬屎"
+      ]
+    },
+    {
+      "canonical": "桑寄生",
+      "aliases": [
+        "廣寄生"
+      ]
+    },
+    {
+      "canonical": "沉香",
+      "aliases": [
+        "Agarwood",
+        "白木香"
+      ]
+    },
+    {
+      "canonical": "大黃",
+      "aliases": [
+        "將軍",
+        "雅黃",
+        "西大黃"
+      ]
+    },
+    {
+      "canonical": "火麻仁",
+      "aliases": [
+        "麻子仁"
+      ]
+    },
+    {
+      "canonical": "丁香",
+      "aliases": [
+        "丁子香",
+        "公丁香"
+      ]
+    },
+    {
+      "canonical": "延胡索",
+      "aliases": [
+        "元胡",
+        "玄胡"
+      ]
+    },
+    {
+      "canonical": "血竭",
+      "aliases": [
+        "木血竭",
+        "龍血"
+      ]
+    },
+    {
+      "canonical": "三七",
+      "aliases": [
+        "山漆",
+        "田七",
+        "金不換"
+      ]
+    },
+    {
+      "canonical": "西洋參",
+      "aliases": [
+        "花旗參",
+        "廣東人參",
+        "洋參"
+      ]
+    },
+    {
+      "canonical": "甘草",
+      "aliases": [
+        "國老",
+        "Licorice"
+      ]
+    },
+    {
+      "canonical": "當歸",
+      "aliases": [
+        "秦歸"
+      ]
+    },
+    {
+      "canonical": "補骨脂",
+      "aliases": [
+        "破故紙"
+      ]
+    },
+    {
+      "canonical": "芡實",
+      "aliases": [
+        "水中人參"
+      ]
+    },
+    {
+      "canonical": "五味子",
+      "aliases": [
+        "Magnolia vine"
+      ]
+    },
+    {
+      "canonical": "訶子",
+      "aliases": [
+        "訶梨勒"
+      ]
+    },
+    {
+      "canonical": "祛",
+      "aliases": [
+        "袪"
+      ]
+    },
+    {
+      "canonical": "癰",
+      "aliases": [
+        "廱"
+      ]
+    },
+    {
+      "canonical": "痺",
+      "aliases": [
+        "痹"
+      ]
+    },
+    {
+      "canonical": "炭",
+      "aliases": [
+        "碳"
+      ]
+    }
+  ]
+}

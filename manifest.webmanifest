@@ -1,0 +1,16 @@
+{
+  "name": "中藥藥物學互動式學習網站",
+  "short_name": "中藥藥物學",
+  "description": "中藥藥物學學習與查詢（整理自老師講義與公開資料，僅供學習使用）",
+  "start_url": "./#/",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7f3ea",
+  "theme_color": "#2f5d46",
+  "lang": "zh-Hant",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

@@ -1,0 +1,871 @@
+{
+  "source_page": [
+    113,
+    114
+  ],
+  "iridoid_glycosides": [
+    {
+      "herb": "金銀花",
+      "herb_id": "herb_jinyinhua",
+      "compounds": [
+        "Loganin",
+        "Secologanin"
+      ]
+    },
+    {
+      "herb": "連翹",
+      "herb_id": "herb_lianqiao",
+      "compounds": [
+        "Forsythide"
+      ]
+    },
+    {
+      "herb": "敗醬草",
+      "herb_id": "herb_baijiangcao",
+      "compounds": [
+        "Villoside"
+      ]
+    },
+    {
+      "herb": "梔子",
+      "herb_id": "herb_zhizi",
+      "compounds": [
+        "Geniposide",
+        "Gardenoside",
+        "Shanzhiside"
+      ]
+    },
+    {
+      "herb": "玄參",
+      "herb_id": "herb_xuanshen",
+      "compounds": [
+        "Harpagide",
+        "Harpagoside"
+      ]
+    },
+    {
+      "herb": "車前子",
+      "herb_id": "herb_cheqianzi",
+      "compounds": [
+        "Aucubin"
+      ]
+    },
+    {
+      "herb": "地黃",
+      "herb_id": "herb_dihuang",
+      "compounds": [
+        "Catalpol",
+        "Rehmannioside D"
+      ]
+    },
+    {
+      "herb": "女貞子",
+      "herb_id": "herb_nuzhenzi",
+      "compounds": [
+        "Ligustroside"
+      ]
+    },
+    {
+      "herb": "續斷",
+      "herb_id": "herb_xuduan",
+      "compounds": [
+        "Sweroside"
+      ]
+    },
+    {
+      "herb": "杜仲",
+      "herb_id": "herb_duzhong",
+      "compounds": [
+        "Geniposide"
+      ]
+    },
+    {
+      "herb": "山茱萸",
+      "herb_id": "herb_shanzhuyu",
+      "compounds": [
+        "Loganin"
+      ]
+    },
+    {
+      "herb": "巴戟天",
+      "herb_id": "herb_bajitian",
+      "compounds": [
+        "Monotropein"
+      ]
+    }
+  ],
+  "secoiridoid_glycosides": [
+    {
+      "herb": "龍膽",
+      "herb_id": "herb_longdan",
+      "compounds": [
+        "Gentiopicroside (Gentiopicrin)"
+      ]
+    },
+    {
+      "herb": "秦艽",
+      "herb_id": "herb_qinjiao",
+      "compounds": [
+        "Gentiopicroside",
+        "Loganic acid",
+        "Swertiamarin",
+        "Sweroside"
+      ]
+    }
+  ],
+  "triterpenoids": {
+    "tetracyclic": {
+      "Lanostane": [
+        {
+          "herb": "茯苓",
+          "herb_id": "herb_fuling",
+          "compounds": [
+            "Pachymic acid"
+          ]
+        }
+      ],
+      "Protostane": [
+        {
+          "herb": "澤瀉",
+          "herb_id": "herb_zexie",
+          "compounds": [
+            "Alisols"
+          ]
+        }
+      ],
+      "Cycloartane": [
+        {
+          "herb": "黃耆",
+          "herb_id": "herb_huangqi",
+          "compounds": [
+            "Astragaloside"
+          ]
+        },
+        {
+          "herb": "升麻",
+          "herb_id": "herb_shengma",
+          "compounds": [
+            "Cimigenol",
+            "Dahurinol"
+          ]
+        }
+      ],
+      "Dammarane": [
+        {
+          "herb": "人參",
+          "herb_id": "herb_renshen",
+          "compounds": [
+            "Ginsenoside"
+          ]
+        },
+        {
+          "herb": "三七",
+          "herb_id": "herb_sanqi",
+          "compounds": [
+            "Notoginsenoside"
+          ]
+        },
+        {
+          "herb": "酸棗仁",
+          "herb_id": "herb_suanzaoren",
+          "compounds": [
+            "Jujuboside"
+          ]
+        }
+      ]
+    },
+    "pentacyclic": {
+      "Oleanane": [
+        {
+          "herb": "大棗",
+          "herb_id": "herb_dazao",
+          "compounds": [
+            "Oleanolic acid"
+          ]
+        },
+        {
+          "herb": "丁香",
+          "herb_id": "herb_dingxiang",
+          "compounds": [
+            "Oleanolic acid"
+          ]
+        },
+        {
+          "herb": "牛膝",
+          "herb_id": "herb_niuxi",
+          "compounds": [
+            "Oleanolic acid"
+          ]
+        },
+        {
+          "herb": "桔梗",
+          "herb_id": "herb_jiegeng",
+          "compounds": [
+            "Platycodin"
+          ]
+        },
+        {
+          "herb": "甘草",
+          "herb_id": "herb_gancao",
+          "compounds": [
+            "Glycyrrhizin",
+            "β-Amyrin"
+          ]
+        },
+        {
+          "herb": "木通",
+          "herb_id": "herb_mutong",
+          "compounds": [
+            "Akeboside"
+          ]
+        },
+        {
+          "herb": "威靈仙",
+          "herb_id": "herb_weilingxian",
+          "compounds": [
+            "Clematichinenoside"
+          ]
+        },
+        {
+          "herb": "皂莢",
+          "herb_id": "herb_zaojia_zaojiaoci",
+          "compounds": [
+            "β-Amyrin"
+          ]
+        },
+        {
+          "herb": "艾葉",
+          "herb_id": "herb_aiye",
+          "compounds": [
+            "β-Amyrin"
+          ]
+        },
+        {
+          "herb": "柴胡",
+          "herb_id": "herb_chaihu",
+          "compounds": [
+            "β-Amyrin"
+          ]
+        },
+        {
+          "herb": "Quillaja",
+          "herb_id": null,
+          "compounds": [
+            "β-Amyrin"
+          ]
+        },
+        {
+          "herb": "遠志",
+          "herb_id": "herb_yuanzhi",
+          "compounds": [
+            "Onjisaponin"
+          ]
+        },
+        {
+          "herb": "人參",
+          "herb_id": "herb_renshen",
+          "compounds": [
+            "Ginsenoside Ro"
+          ]
+        }
+      ],
+      "Ursane": [
+        {
+          "herb": "鎖陽",
+          "herb_id": "herb_suoyang",
+          "compounds": [
+            "Ursolic acid"
+          ]
+        },
+        {
+          "herb": "夏枯草",
+          "herb_id": "herb_xiakucao",
+          "compounds": [
+            "Ursolic acid"
+          ]
+        },
+        {
+          "herb": "枇杷葉",
+          "herb_id": "herb_pipaye",
+          "compounds": [
+            "Ursolic acid"
+          ]
+        },
+        {
+          "herb": "桑白皮",
+          "herb_id": "herb_sangbaipi",
+          "compounds": [
+            "α-Amyrin"
+          ]
+        },
+        {
+          "herb": "艾葉",
+          "herb_id": "herb_aiye",
+          "compounds": [
+            "α-Amyrin"
+          ]
+        },
+        {
+          "herb": "雷公根",
+          "herb_id": null,
+          "compounds": [
+            "Asiaticoside (α-amyrin)"
+          ]
+        }
+      ],
+      "Lupane": [
+        {
+          "herb": "酸棗仁",
+          "herb_id": "herb_suanzaoren",
+          "compounds": [
+            "Betulinic acid",
+            "Betulin"
+          ]
+        },
+        {
+          "herb": "槐花",
+          "herb_id": "herb_huaihua",
+          "compounds": [
+            "Betulin",
+            "Sophoradiol"
+          ]
+        },
+        {
+          "herb": "艾葉",
+          "herb_id": "herb_aiye",
+          "compounds": [
+            "Lupenone"
+          ]
+        }
+      ]
+    },
+    "hexacyclic_steroidal": [
+      {
+        "herb": "薯蕷（山藥）",
+        "herb_id": "herb_shanyao",
+        "compounds": [
+          "Diosgenin"
+        ]
+      },
+      {
+        "herb": "知母",
+        "herb_id": "herb_zhimu",
+        "compounds": [
+          "Timosaponin"
+        ]
+      },
+      {
+        "herb": "菝葜",
+        "herb_id": null,
+        "compounds": [
+          "Sarsasapogenin"
+        ]
+      },
+      {
+        "herb": "瓊麻",
+        "herb_id": null,
+        "compounds": [
+          "Hecogenin"
+        ]
+      }
+    ]
+  },
+  "chlorogenic_acid_herbs": [
+    {
+      "herb": "菊花",
+      "herb_id": "herb_juhua",
+      "note": null
+    },
+    {
+      "herb": "旋覆花",
+      "herb_id": "herb_xuanfuhua",
+      "note": null
+    },
+    {
+      "herb": "金銀花",
+      "herb_id": "herb_jinyinhua",
+      "note": "花苞最多"
+    },
+    {
+      "herb": "蒲公英",
+      "herb_id": "herb_pugongying",
+      "note": null
+    },
+    {
+      "herb": "黃連",
+      "herb_id": "herb_huanglian",
+      "note": null
+    },
+    {
+      "herb": "萹蓄",
+      "herb_id": "herb_bianxu",
+      "note": null
+    }
+  ],
+  "taiwan_produced_herbs": [
+    {
+      "herb": "蒼耳子",
+      "herb_id": "herb_cangerzi",
+      "note": null
+    },
+    {
+      "herb": "菊花",
+      "herb_id": "herb_juhua",
+      "note": null
+    },
+    {
+      "herb": "蔓荊子",
+      "herb_id": "herb_manjingzi",
+      "note": null
+    },
+    {
+      "herb": "葛根",
+      "herb_id": "herb_gegen",
+      "note": null
+    },
+    {
+      "herb": "桑白皮",
+      "herb_id": "herb_sangbaipi",
+      "note": null
+    },
+    {
+      "herb": "百部",
+      "herb_id": "herb_baibu",
+      "note": "大百部"
+    },
+    {
+      "herb": "射干",
+      "herb_id": "herb_shegan",
+      "note": null
+    },
+    {
+      "herb": "黃柏",
+      "herb_id": "herb_huangbai",
+      "note": null
+    },
+    {
+      "herb": "苦參",
+      "herb_id": "herb_kushen",
+      "note": null
+    },
+    {
+      "herb": "燈心草",
+      "herb_id": "herb_dengxincao",
+      "note": null
+    },
+    {
+      "herb": "香附",
+      "herb_id": "herb_xiangfu",
+      "note": null
+    },
+    {
+      "herb": "沉香",
+      "herb_id": "herb_chenxiang",
+      "note": "白木香"
+    },
+    {
+      "herb": "高良薑",
+      "herb_id": "herb_gaoliangjiang",
+      "note": null
+    },
+    {
+      "herb": "薑黃",
+      "herb_id": "herb_jianghuang",
+      "note": null
+    },
+    {
+      "herb": "水蛭",
+      "herb_id": "herb_shuizhi",
+      "note": null
+    },
+    {
+      "herb": "鉤藤",
+      "herb_id": "herb_gouteng",
+      "note": "台灣鉤藤"
+    },
+    {
+      "herb": "鹿茸",
+      "herb_id": "herb_lurong",
+      "note": null
+    }
+  ],
+  "herb_grades": {
+    "上品": [
+      "辛夷",
+      "防風",
+      "升麻",
+      "羌活",
+      "菊花",
+      "黃連",
+      "黃柏",
+      "蒼朮",
+      "茯苓",
+      "澤瀉",
+      "五加皮",
+      "火麻仁",
+      "肉桂",
+      "細辛",
+      "川芎",
+      "丹參",
+      "牛膝",
+      "槐花",
+      "人參",
+      "大棗",
+      "甘草",
+      "地黃",
+      "阿膠",
+      "麥門冬",
+      "天門冬",
+      "石斛",
+      "枸杞子",
+      "女貞子",
+      "續斷",
+      "酸棗仁",
+      "柏子仁",
+      "遠志"
+    ],
+    "中品": [
+      "麻黃",
+      "蒼耳子",
+      "荊芥",
+      "生薑",
+      "葛根",
+      "桑白皮",
+      "栝蔞根",
+      "黃芩",
+      "苦參",
+      "吳茱萸",
+      "貝母",
+      "梔子",
+      "赤芍",
+      "枳實",
+      "當歸",
+      "白芍"
+    ],
+    "下品": [
+      "半夏",
+      "桔梗",
+      "杏仁",
+      "連翹",
+      "水蛭",
+      "附子"
+    ]
+  },
+  "exam_formulas": [
+    {
+      "name": "玉屏風散",
+      "herbs": [
+        "防風",
+        "黃耆",
+        "白朮",
+        "生薑"
+      ],
+      "indication": "治表虛自汗"
+    },
+    {
+      "name": "荊防敗毒散",
+      "herbs": [
+        "荊芥",
+        "防風",
+        "柴胡",
+        "茯苓",
+        "桔梗",
+        "川芎",
+        "羌活",
+        "獨活",
+        "枳殼",
+        "甘草",
+        "生薑"
+      ],
+      "indication": null
+    },
+    {
+      "name": "消風散",
+      "herbs": [
+        "荊芥",
+        "防風",
+        "當歸",
+        "生地",
+        "苦參",
+        "蒼朮",
+        "蟬蛻",
+        "胡麻仁",
+        "牛蒡子",
+        "知母",
+        "石膏",
+        "八月瓜",
+        "甘草"
+      ],
+      "indication": null
+    },
+    {
+      "name": "防風通聖散",
+      "herbs": [
+        "防風",
+        "荊芥",
+        "連翹",
+        "麻黃",
+        "薄荷",
+        "川芎",
+        "當歸",
+        "炒白芍",
+        "白朮",
+        "山梔子炒黑",
+        "酒蒸大黃",
+        "芒硝",
+        "黃芩",
+        "石膏",
+        "桔梗",
+        "甘草",
+        "滑石",
+        "生薑",
+        "蔥白"
+      ],
+      "indication": null
+    },
+    {
+      "name": "當歸補血湯",
+      "herbs": [
+        "黃耆",
+        "當歸"
+      ],
+      "indication": "補氣生血"
+    },
+    {
+      "name": "三子養親湯",
+      "herbs": [
+        "紫蘇子",
+        "萊菔子",
+        "白芥子"
+      ],
+      "indication": null
+    },
+    {
+      "name": "二陳湯",
+      "herbs": [
+        "半夏",
+        "陳皮",
+        "茯苓",
+        "甘草"
+      ],
+      "indication": null
+    },
+    {
+      "name": "六味地黃丸",
+      "herbs": [
+        "熟地黃",
+        "山茱萸",
+        "山藥",
+        "澤瀉",
+        "茯苓",
+        "牡丹皮"
+      ],
+      "indication": null
+    },
+    {
+      "name": "神仙六子丸",
+      "herbs": [
+        "菟絲子",
+        "金鈴子",
+        "覆盆子",
+        "五味子",
+        "枸杞子",
+        "蛇床子"
+      ],
+      "indication": null
+    },
+    {
+      "name": "四君子湯",
+      "herbs": [
+        "人參",
+        "白朮",
+        "茯苓",
+        "甘草"
+      ],
+      "indication": null
+    },
+    {
+      "name": "五苓散",
+      "herbs": [
+        "豬苓",
+        "澤瀉",
+        "白朮",
+        "茯苓",
+        "桂枝"
+      ],
+      "indication": null
+    },
+    {
+      "name": "麻黃湯",
+      "herbs": [
+        "麻黃",
+        "桂枝",
+        "甘草",
+        "杏仁"
+      ],
+      "indication": null
+    },
+    {
+      "name": "三黃瀉心湯",
+      "herbs": [
+        "黃連",
+        "黃芩",
+        "大黃"
+      ],
+      "indication": null
+    },
+    {
+      "name": "黃連解毒湯",
+      "herbs": [
+        "黃芩",
+        "黃連",
+        "黃柏",
+        "梔子"
+      ],
+      "indication": null
+    },
+    {
+      "name": "逍遙散",
+      "herbs": [
+        "柴胡",
+        "當歸",
+        "白芍",
+        "白朮",
+        "茯苓",
+        "甘草",
+        "生薑",
+        "薄荷"
+      ],
+      "indication": null
+    },
+    {
+      "name": "安中散",
+      "herbs": [
+        "桂皮",
+        "延胡索",
+        "牡蠣",
+        "小茴香",
+        "甘草",
+        "良薑"
+      ],
+      "indication": null
+    }
+  ],
+  "seed_herbs": [
+    "牛蒡子",
+    "淡豆豉",
+    "胖大海",
+    "萊菔子",
+    "白果",
+    "車前子",
+    "檳榔",
+    "桃仁",
+    "白扁豆",
+    "菟絲子",
+    "沙苑蒺藜",
+    "酸棗仁",
+    "蓮子",
+    "柏子仁（種仁）",
+    "芡實（種仁）"
+  ],
+  "key_herbs_titles": [
+    {
+      "title": "風病、血病、瘡家聖藥",
+      "herb": "荊芥",
+      "herb_id": "herb_jingjie"
+    },
+    {
+      "title": "嘔家聖藥",
+      "herb": "生薑",
+      "herb_id": "herb_shengjiang"
+    },
+    {
+      "title": "脾胃虛弱泄瀉之聖藥",
+      "herb": "葛根",
+      "herb_id": "herb_gegen"
+    },
+    {
+      "title": "瘡家聖藥",
+      "herb": "連翹",
+      "herb_id": "herb_lianqiao"
+    },
+    {
+      "title": "瘡癰聖藥",
+      "herb": "黃耆",
+      "herb_id": "herb_huangqi"
+    },
+    {
+      "title": "養胃聖藥",
+      "herb": "石斛",
+      "herb_id": "herb_shihu"
+    },
+    {
+      "title": "治諸風、頭痛、祛諸風要藥",
+      "herb": "防風",
+      "herb_id": "herb_fangfeng"
+    },
+    {
+      "title": "中氣下陷諸證要藥",
+      "herb": "升麻",
+      "herb_id": "herb_shengma"
+    },
+    {
+      "title": "腸癰要藥",
+      "herb": "敗醬草",
+      "herb_id": "herb_baijiangcao"
+    },
+    {
+      "title": "喉痺咽痛要藥",
+      "herb": "射干",
+      "herb_id": "herb_shegan"
+    },
+    {
+      "title": "散惡血、順血脈要藥",
+      "herb": "牡丹皮",
+      "herb_id": "herb_mudanpi"
+    },
+    {
+      "title": "行氣消脹第一要藥",
+      "herb": "厚朴",
+      "herb_id": "herb_houpo"
+    },
+    {
+      "title": "治痿要藥",
+      "herb": "蒼朮",
+      "herb_id": "herb_cangzhu"
+    },
+    {
+      "title": "治淋要藥",
+      "herb": "瞿麥",
+      "herb_id": "herb_qumai"
+    },
+    {
+      "title": "男婦要藥",
+      "herb": "續斷",
+      "herb_id": "herb_xuduan"
+    },
+    {
+      "title": "頭痛必用要藥",
+      "herb": "川芎",
+      "herb_id": "herb_chuanxiong"
+    },
+    {
+      "title": "女科要藥",
+      "herb": "丹參",
+      "herb_id": "herb_danshen"
+    },
+    {
+      "title": "金瘡杖瘡要藥",
+      "herb": "三七",
+      "herb_id": "herb_sanqi"
+    },
+    {
+      "title": "回陽救逆第一要藥",
+      "herb": "附子",
+      "herb_id": "herb_fuzi"
+    }
+  ],
+  "legend": {
+    "★": "代表常用中藥第三版修改"
+  }
+}

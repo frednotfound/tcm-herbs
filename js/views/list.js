@@ -1,0 +1,192 @@
+import { h, clear } from '../lib/dom.js';
+import { store } from '../data.js';
+import { DIMS, applyFilters, stateFromParams, stateToParams, optionsFor, categoryTree, activeFilterCount, emptyState } from '../filters.js';
+import { SCOPES, suggest } from '../search.js';
+import { replaceParams, parseHash, herbHref } from '../router.js';
+import { herbCard } from './card.js';
+import { chip } from '../lib/ui.js';
+
+const SORTS = [['rel', '相關度／講義順序'], ['name', '藥名筆畫排序'], ['lecture', '講義順序']];
+
+export function renderList(params) {
+  const s = stateFromParams(params);
+  const dimLabel = Object.fromEntries(DIMS.map(d => [d.key, d.label]));
+  const optionEls = new Map(); // dim -> Map(value -> {label, countEl, input})
+  let sheetOpen = false;
+
+  const root = h('div', { class: 'list-view' });
+  const scopeRow = h('div', { class: 'scope-row', role: 'tablist', 'aria-label': '搜尋範圍' });
+  const sortSel = h('select', { class: 'sort-sel', 'aria-label': '排序', onChange: (e) => { s.sort = e.target.value; commit(); } },
+    SORTS.map(([v, l]) => h('option', { value: v }, l)));
+  sortSel.value = s.sort;
+  const filterBtn = h('button', { type: 'button', class: 'btn filter-btn', onClick: () => toggleSheet(true) }, '篩選');
+  const panel = h('div', { class: 'filter-panel', role: 'group', 'aria-label': '篩選條件' });
+  const backdrop = h('div', { class: 'sheet-backdrop', onClick: () => toggleSheet(false) });
+  const activeRow = h('div', { class: 'active-row' });
+  const noticeBox = h('div', { class: 'notices' });
+  const summary = h('div', { class: 'result-summary', 'aria-live': 'polite' });
+  const results = h('div', { class: 'results' });
+  const applyBtn = h('button', { type: 'button', class: 'btn btn-primary sheet-apply', onClick: () => toggleSheet(false) }, '套用');
+  const clearBtn = h('button', { type: 'button', class: 'btn', onClick: () => { const q = s.q, sc = s.scope; Object.assign(s, emptyState(), { q, scope: sc }); syncInputs(); commit(); } }, '清除全部篩選');
+
+  // ---- 範圍切換 ----
+  for (const sc of SCOPES) {
+    scopeRow.append(h('button', { type: 'button', role: 'tab', class: 'scope-btn', dataset: { scope: sc.key }, 'aria-selected': String(s.scope === sc.key), onClick: () => { s.scope = sc.key; commit(); } }, sc.label));
+  }
+
+  // ---- 篩選面板（一次建立，之後只更新數字與勾選） ----
+  function makeOption(dimKey, value, label, extraClass = '') {
+    const input = h('input', { type: 'checkbox', value, onChange: () => { toggleValue(dimKey, value, input.checked); } });
+    const countEl = h('span', { class: 'opt-count' }, '');
+    const lab = h('label', { class: `opt ${extraClass}` }, input, h('span', { class: 'opt-label' }, label), countEl);
+    if (!optionEls.has(dimKey)) optionEls.set(dimKey, new Map());
+    optionEls.get(dimKey).set(value, { lab, countEl, input });
+    return lab;
+  }
+  function dimBody(d) {
+    if (d.key === 'cat') {
+      const wrap = h('div', { class: 'opts' });
+      for (const t of categoryTree()) {
+        wrap.append(makeOption('cat', t.path, t.name, 'opt-top'));
+        for (const c of t.children) wrap.append(makeOption('cat', c.path, c.name, 'opt-sub'));
+      }
+      return wrap;
+    }
+    if (d.key === 'ing') {
+      const wrap = h('div', { class: 'opts' });
+      const walk = (id, depth) => {
+        const n = store.taxo.nodes.get(id);
+        wrap.append(makeOption('ing', id, n.name_zh, `opt-d${Math.min(depth, 3)}`));
+        for (const c of n.children) walk(c, depth + 1);
+      };
+      for (const id of store.taxo.topIds) walk(id, 0);
+      wrap.append(makeOption('ing', store.UNSET, '未歸類／未標示', 'opt-blank'));
+      return wrap;
+    }
+    const wrap = h('div', { class: 'opts' });
+    let finder = null;
+    if (d.key === 'fam') {
+      finder = h('input', { type: 'search', class: 'opt-find', placeholder: '找科別…', 'aria-label': '找科別', onInput: (e) => {
+        const q = e.target.value.trim();
+        for (const [v, o] of optionEls.get('fam')) o.lab.hidden = q && !v.includes(q);
+      } });
+    }
+    if (finder) wrap.append(finder);
+    for (const o of optionsFor(d.key)) wrap.append(makeOption(d.key, o.value, o.value === store.UNSET ? '未標示' : o.value, o.value === store.UNSET ? 'opt-blank' : ''));
+    if (d.key === 'tag') {
+      const mode = h('label', { class: 'opt opt-mode' }, h('input', { type: 'checkbox', onChange: (e) => { s.tagmode = e.target.checked ? 'all' : 'any'; commit(); } }), h('span', { class: 'opt-label' }, '須全部符合'));
+      mode.firstChild.checked = s.tagmode === 'all';
+      wrap.prepend(mode);
+    }
+    return wrap;
+  }
+  for (const d of DIMS) {
+    const sum = h('summary', { class: 'dd-sum' }, h('span', { class: 'dd-name' }, d.label), h('span', { class: 'dd-n', dataset: { dim: d.key } }, ''));
+    panel.append(h('details', { class: 'dd', dataset: { dim: d.key } }, sum, dimBody(d)));
+  }
+  panel.append(h('div', { class: 'sheet-foot' }, clearBtn, applyBtn));
+  const sheetHead = h('div', { class: 'sheet-head' }, h('strong', null, '篩選'), h('button', { type: 'button', class: 'btn btn-ghost', onClick: () => toggleSheet(false) }, '關閉'));
+  panel.prepend(sheetHead);
+
+  function toggleValue(dim, value, on) {
+    const arr = s[dim];
+    const i = arr.indexOf(value);
+    if (on && i < 0) arr.push(value);
+    if (!on && i >= 0) arr.splice(i, 1);
+    commit();
+  }
+  function syncInputs() {
+    for (const [dim, m] of optionEls) for (const [v, o] of m) o.input.checked = s[dim].includes(v);
+    sortSel.value = s.sort;
+    const globalInput = document.getElementById('global-search');
+    if (globalInput && globalInput.value !== s.q) globalInput.value = s.q;
+  }
+  function toggleSheet(on) { sheetOpen = on; root.classList.toggle('sheet-open', on); document.body.classList.toggle('no-scroll', on && window.matchMedia('(max-width: 860px)').matches); }
+
+  function chipLabel(dim, v) {
+    if (dim === 'ing') return store.taxo.nodes.get(v)?.name_zh || (v === store.UNSET ? '未歸類' : v);
+    if (v === store.UNSET) return `${dimLabel[dim]}：未標示`;
+    if (dim === 'cat') return v.replace('>', ' > ');
+    return v;
+  }
+
+  // ---- 更新結果 ----
+  function update() {
+    const { rows, result, counts, unlisted } = applyFilters(s);
+    // 範圍按鈕
+    for (const b of scopeRow.children) b.setAttribute('aria-selected', String(b.dataset.scope === s.scope));
+    // 選項數字
+    for (const [dim, m] of optionEls) {
+      for (const [v, o] of m) {
+        const n = counts[dim].get(v) || 0;
+        o.countEl.textContent = String(n);
+        o.lab.classList.toggle('zero', n === 0 && !s[dim].includes(v));
+        o.input.checked = s[dim].includes(v);
+      }
+    }
+    for (const el of panel.querySelectorAll('.dd-n')) { const k = el.dataset.dim; el.textContent = s[k].length ? `（${s[k].length}）` : ''; }
+    const nActive = activeFilterCount(s);
+    filterBtn.textContent = nActive ? `篩選（${nActive}）` : '篩選';
+    applyBtn.textContent = `套用（${rows.length} 味）`;
+
+    // 已選條件
+    clear(activeRow);
+    for (const d of DIMS) for (const v of s[d.key]) {
+      activeRow.append(h('button', { type: 'button', class: 'chip chip-active', title: `移除「${chipLabel(d.key, v)}」`, onClick: () => { toggleValue(d.key, v, false); syncInputs(); } }, `${d.key === 'ing' || d.key === 'cat' ? '' : dimLabel[d.key] + '：'}${chipLabel(d.key, v)} ×`));
+    }
+    if (nActive) activeRow.append(h('button', { type: 'button', class: 'btn btn-link', onClick: () => clearBtn.click() }, '清除全部'));
+
+    // 「未標示」提醒
+    clear(noticeBox);
+    for (const d of DIMS) {
+      if (unlisted[d.key]) {
+        noticeBox.append(h('div', { class: 'notice' },
+          `另有 ${unlisted[d.key]} 味未標示${d.label}，未列入。`,
+          h('button', { type: 'button', class: 'btn btn-link', onClick: () => { s[d.key].push(store.UNSET); commit(); } }, `加入「未標示」`)));
+      }
+    }
+    if (s.q && result.fuzzy) noticeBox.append(h('div', { class: 'notice' }, '沒有完全符合的結果，以下是近似結果。'));
+
+    // 摘要
+    summary.textContent = s.q ? `搜尋「${s.q}」共 ${rows.length} 味` : `共 ${rows.length} 味`;
+
+    // 清單
+    clear(results);
+    if (!rows.length) {
+      const sug = s.q ? (result.suggestions?.length ? result.suggestions : suggest(s.q)) : [];
+      results.append(h('div', { class: 'empty-box' },
+        h('p', null, nActive && !result.empty && result.results.length ? '目前的篩選條件下沒有符合的藥材。' : '找不到符合的藥材。'),
+        nActive ? h('button', { type: 'button', class: 'btn', onClick: () => clearBtn.click() }, '清除篩選') : null,
+        sug.length ? h('p', null, '你是不是要找：', ...sug.map(x => chip(x.name_zh, { href: herbHref(x.id) }))) : null));
+    } else {
+      const frag = document.createDocumentFragment();
+      for (const r of rows) frag.append(herbCard(r));
+      results.append(frag);
+    }
+  }
+
+  function commit() {
+    replaceParams('/herbs', stateToParams(s));
+    update();
+  }
+
+  root.append(
+    h('div', { class: 'list-head' }, h('div', { class: 'scope-wrap' }, scopeRow), h('div', { class: 'list-tools' }, filterBtn, sortSel)),
+    backdrop, panel, activeRow, noticeBox, summary, results);
+  syncInputs();
+  update();
+
+  // 全站搜尋框輸入 -> 即時更新
+  const onQuery = (e) => { s.q = e.detail; commit(); };
+  document.addEventListener('tcm:query', onQuery);
+  const onDocClick = (e) => {
+    if (window.matchMedia('(max-width: 860px)').matches) return;
+    for (const d of panel.querySelectorAll('details.dd[open]')) if (!d.contains(e.target)) d.open = false;
+  };
+  document.addEventListener('click', onDocClick);
+  return {
+    node: root,
+    destroy() { document.removeEventListener('tcm:query', onQuery); document.removeEventListener('click', onDocClick); document.body.classList.remove('no-scroll'); },
+    query: s.q,
+  };
+}
