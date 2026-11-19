@@ -83,7 +83,7 @@ export function renderHerb(id) {
     const gp = g.group_pharmacology?.length ? h('div', { class: 'ing-pharm' }, '藥理：', g.group_pharmacology.join('、')) : null;
     const comps = (g.compounds || []).map((c, ci) => {
       const ids = cls.perCompound.get(`${gi}:${ci}`) || [];
-      const nodeChips = ids.length ? ids.map(nid => chip(.lebel, { kind: 'tree', href: `#/ingredients/${encodeURIComponent(nid)}`, title: store.taxo.path(nid).join(' > ') })) : [chip('未歸類', { kind: 'unclassified', title: '成分分類樹尚未收錄這個名稱' })];
+      const nodeChips = ids.length ? ids.map(nid => chip(store.taxo.nodes.get(nid).label, { kind: 'tree', href: `#/ingredients/${encodeURIComponent(nid)}`, title: store.taxo.path(nid).join(' > ') })) : [chip('未歸類', { kind: 'unclassified', title: '成分分類樹尚未收錄這個名稱' })];
       return h('li', null,
         h('span', { class: 'compound' }, c.name),
         c.aliases?.length ? h('span', { class: 'muted' }, `（${c.aliases.join('、')}）`) : null,
