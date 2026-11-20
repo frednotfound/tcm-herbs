@@ -42,7 +42,7 @@ jobs:
       - name: 只打包網站需要的檔案（不含 docs、scripts、gas）
         run: |
           mkdir _site
-          cp -r index.html manifest.webmanifest sw.js css js data icons _site/
+          cp -r index.html manifest.webmanifest sw.js css js data icons structures _site/
           touch _site/.nojekyll
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
