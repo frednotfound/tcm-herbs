@@ -56,7 +56,7 @@ export function renderIngredients(nodeId) {
     main.append(h('div', { class: 'card' },
       h('div', { class: 'muted small' }, taxo.path(selected).join(' > ')),
       h('h1', null, n.label, n.name_zh ? h('span', { class: 'muted en' }, `　${n.name_zh}`) : null),
-      n.children.length ? h('div', { class: 'chips' }, '子類：', ...n.children.map(c => chip(.label, { href: `#/ingredients/${encodeURIComponent(c)}` }))) : null,
+     n.children.length ? h('div', { class: 'chips' }, '子類：', ...n.children.map(c => chip(taxo.nodes.get(c).label, { href: `#/ingredients/${encodeURIComponent(c)}` }))) : null,
       h('p', null, `含此類成分的藥材：${rows.length} 味`)));
     if (!rows.length) main.append(empty('目前 162 味中沒有藥材歸入這一類。'));
     for (const { herb, names } of rows) {
