@@ -1,0 +1,2237 @@
+[
+  {
+    "id": "l-ephedrine",
+    "name": "l-Ephedrine",
+    "aliases": [],
+    "match_names": [
+      "l-Ephedrine"
+    ],
+    "smiles": "CN[C@H](C)[C@@H](O)c1ccccc1",
+    "inchikey": "KWGRBVOPPLSCSI-PSASIEDQSA-N",
+    "pubchem_cid": 9457,
+    "class": "生物鹼",
+    "svg": "structures/l-ephedrine.svg"
+  },
+  {
+    "id": "d-pseudoephedrine",
+    "name": "d-Pseudoephedrine",
+    "aliases": [],
+    "match_names": [
+      "d-Pseudoephedrine"
+    ],
+    "smiles": "CN[C@@H](C)[C@@H](O)c1ccccc1",
+    "inchikey": "KWGRBVOPPLSCSI-WCBMZHEXSA-N",
+    "pubchem_cid": 7028,
+    "class": "生物鹼",
+    "svg": "structures/d-pseudoephedrine.svg"
+  },
+  {
+    "id": "magnolin",
+    "name": "Magnolin",
+    "aliases": [],
+    "match_names": [
+      "Magnolin",
+      "木蘭脂"
+    ],
+    "smiles": "COc1ccc([C@H]2OC[C@H]3[C@@H]2CO[C@@H]3c2cc(OC)c(OC)c(OC)c2)cc1OC",
+    "inchikey": "MFIHSKBTNZNJIK-RZTYQLBFSA-N",
+    "pubchem_cid": 169234,
+    "class": "Lignan",
+    "svg": "structures/magnolin.svg"
+  },
+  {
+    "id": "sabinene",
+    "name": "Sabinene",
+    "aliases": [],
+    "match_names": [
+      "Sabinene"
+    ],
+    "smiles": "C=C1CC[C@]2(C(C)C)C[C@H]12",
+    "inchikey": "NDVASEGYNIMXJL-NXEZZACHSA-N",
+    "pubchem_cid": 10887971,
+    "class": "單萜類揮發油",
+    "svg": "structures/sabinene.svg"
+  },
+  {
+    "id": "pinene",
+    "name": "α-Pinene",
+    "aliases": [],
+    "match_names": [
+      "α-Pinene"
+    ],
+    "smiles": "CC1=CC[C@@H]2C[C@H]1C2(C)C",
+    "inchikey": "GRWFGVWFFZKLTI-RKDXNWHRSA-N",
+    "pubchem_cid": 82227,
+    "class": "單萜類揮發油",
+    "svg": "structures/pinene.svg"
+  },
+  {
+    "id": "cineole",
+    "name": "Cineole",
+    "aliases": [],
+    "match_names": [
+      "Cineole",
+      "1,8-Cineole"
+    ],
+    "smiles": "CC12CCC(CC1)C(C)(C)O2",
+    "inchikey": "WEEGYLXZBRQIMU-UHFFFAOYSA-N",
+    "pubchem_cid": 2758,
+    "class": "單萜類揮發油",
+    "svg": "structures/cineole.svg"
+  },
+  {
+    "id": "xanthiazone",
+    "name": "Xanthiazone",
+    "aliases": [],
+    "match_names": [
+      "Xanthiazone"
+    ],
+    "smiles": "CC1(C)C(CO)=CC(=O)C2=C1SCC(=O)N2",
+    "inchikey": "DNLBWKAXMIGTSS-UHFFFAOYSA-N",
+    "pubchem_cid": 15945057,
+    "class": "生物鹼",
+    "svg": "structures/xanthiazone.svg"
+  },
+  {
+    "id": "isoimperatorin",
+    "name": "Isoimperatorin",
+    "aliases": [],
+    "match_names": [
+      "Isoimperatorin"
+    ],
+    "smiles": "CC(C)=CCOc1c2ccoc2cc2oc(=O)ccc12",
+    "inchikey": "IGWDEVSBEKYORK-UHFFFAOYSA-N",
+    "pubchem_cid": 68081,
+    "class": "Furocoumarins",
+    "svg": "structures/isoimperatorin.svg"
+  },
+  {
+    "id": "imperatorin",
+    "name": "Imperatorin",
+    "aliases": [],
+    "match_names": [
+      "Imperatorin"
+    ],
+    "smiles": "CC(C)=CCOc1c2occc2cc2ccc(=O)oc12",
+    "inchikey": "OLOOJGVNMBJLLR-UHFFFAOYSA-N",
+    "pubchem_cid": 10212,
+    "class": "Furocoumarins",
+    "svg": "structures/imperatorin.svg"
+  },
+  {
+    "id": "hamaudol",
+    "name": "Hamaudol",
+    "aliases": [],
+    "match_names": [
+      "Hamaudol"
+    ],
+    "smiles": "Cc1cc(=O)c2c(O)c3c(cc2o1)OC(C)(C)[C@@H](O)C3",
+    "inchikey": "VOTLUFSYIRHICX-LBPRGKRZSA-N",
+    "pubchem_cid": 164722,
+    "class": "Chromones",
+    "svg": "structures/hamaudol.svg"
+  },
+  {
+    "id": "bergapten",
+    "name": "Bergapten",
+    "aliases": [],
+    "match_names": [
+      "Bergapten"
+    ],
+    "smiles": "COc1c2ccoc2cc2oc(=O)ccc12",
+    "inchikey": "BGEBZHIAGXMEMV-UHFFFAOYSA-N",
+    "pubchem_cid": 2355,
+    "class": "Coumarins",
+    "svg": "structures/bergapten.svg"
+  },
+  {
+    "id": "divaricatol",
+    "name": "Divaricatol",
+    "aliases": [],
+    "match_names": [
+      "Divaricatol"
+    ],
+    "smiles": "CC(=O)O[C@H]1Cc2c(cc3oc(CO)cc(=O)c3c2O)OC1(C)C",
+    "inchikey": "DJEFKGJBMQEDCR-AWEZNQCLSA-N",
+    "pubchem_cid": 9974111,
+    "class": "Chromones",
+    "svg": "structures/divaricatol.svg"
+  },
+  {
+    "id": "notopterol",
+    "name": "Notopterol",
+    "aliases": [],
+    "match_names": [
+      "Notopterol"
+    ],
+    "smiles": "CC(C)=CC(O)C/C(C)=C/COc1c2ccoc2cc2oc(=O)ccc12",
+    "inchikey": "BKIACVAZUKISOR-MKMNVTDBSA-N",
+    "pubchem_cid": 5320227,
+    "class": "Coumarins",
+    "svg": "structures/notopterol.svg"
+  },
+  {
+    "id": "falcarindiol",
+    "name": "Falcarindiol",
+    "aliases": [],
+    "match_names": [
+      "Falcarindiol"
+    ],
+    "smiles": "C=C[C@H](O)C#CC#C[C@@H](O)/C=C\\CCCCCCC",
+    "inchikey": "QWCNQXNAFCBLLV-RCQSYPNMSA-N",
+    "pubchem_cid": 6436239,
+    "class": "Polyacetylene",
+    "svg": "structures/falcarindiol.svg"
+  },
+  {
+    "id": "l-perillaldehyde",
+    "name": "l-Perillaldehyde",
+    "aliases": [],
+    "match_names": [
+      "l-Perillaldehyde",
+      "紫蘇醛"
+    ],
+    "smiles": "C=C(C)C1CC=C(C=O)CC1",
+    "inchikey": "RUMOYJJNUMEFDD-UHFFFAOYSA-N",
+    "pubchem_cid": 16441,
+    "class": "單萜揮發油",
+    "svg": "structures/l-perillaldehyde.svg"
+  },
+  {
+    "id": "d-limonene",
+    "name": "d-Limonene",
+    "aliases": [],
+    "match_names": [
+      "d-Limonene"
+    ],
+    "smiles": "C=C(C)[C@H]1CC=C(C)CC1",
+    "inchikey": "XMGQYMWWDOXHJM-JTQLQIEISA-N",
+    "pubchem_cid": 440917,
+    "class": "單萜揮發油",
+    "svg": "structures/d-limonene.svg"
+  },
+  {
+    "id": "egomaketone",
+    "name": "Egomaketone",
+    "aliases": [],
+    "match_names": [
+      "Egomaketone",
+      "白蘇烯酮"
+    ],
+    "smiles": "CC(C)=CCC(=O)c1ccoc1",
+    "inchikey": "MGIXHQSSTZKVOO-UHFFFAOYSA-N",
+    "pubchem_cid": 42978,
+    "class": "單萜揮發油",
+    "svg": "structures/egomaketone.svg"
+  },
+  {
+    "id": "rosmarinic-acid",
+    "name": "Rosmarinic acid",
+    "aliases": [],
+    "match_names": [
+      "Rosmarinic acid"
+    ],
+    "smiles": "O=C(/C=C/c1ccc(O)c(O)c1)O[C@H](Cc1ccc(O)c(O)c1)C(=O)O",
+    "inchikey": "DOUMFZQKYFQNTF-WUTVXBCWSA-N",
+    "pubchem_cid": 5281792,
+    "class": "苯丙烷類",
+    "svg": "structures/rosmarinic-acid.svg"
+  },
+  {
+    "id": "zingiberene",
+    "name": "Zingiberene",
+    "aliases": [],
+    "match_names": [
+      "Zingiberene"
+    ],
+    "smiles": "[3H][C@]1([C@@H](C)CCC=C(C)C)C=CC(C)=CC1",
+    "inchikey": "KKOXKGNSUHTUBV-QGVOBVMGSA-N",
+    "pubchem_cid": 521253,
+    "class": "倍半萜揮發油",
+    "svg": "structures/zingiberene.svg"
+  },
+  {
+    "id": "6-gingerdione",
+    "name": "[6]-Gingerdione",
+    "aliases": [],
+    "match_names": [
+      "[6]-Gingerdione"
+    ],
+    "smiles": "CCCCCC(=O)CC(=O)CCc1ccc(O)c(OC)c1",
+    "inchikey": "KMNVXQHNIWUUSE-UHFFFAOYSA-N",
+    "pubchem_cid": 162952,
+    "class": "辛味成分",
+    "svg": "structures/6-gingerdione.svg"
+  },
+  {
+    "id": "6-shogaol",
+    "name": "[6]-Shogaol",
+    "aliases": [],
+    "match_names": [
+      "[6]-Shogaol"
+    ],
+    "smiles": "CCCCC/C=C/C(=O)CCc1ccc(O)c(OC)c1",
+    "inchikey": "OQWKEEOHDMUXEO-BQYQJAHWSA-N",
+    "pubchem_cid": 5281794,
+    "class": "辛味成分",
+    "svg": "structures/6-shogaol.svg"
+  },
+  {
+    "id": "6-gingerol",
+    "name": "[6]-Gingerol",
+    "aliases": [],
+    "match_names": [
+      "[6]-Gingerol",
+      "Gingerol"
+    ],
+    "smiles": "CCCCC[C@H](O)CC(=O)CCc1ccc(O)c(OC)c1",
+    "inchikey": "NLDDIKRKFXEWBK-AWEZNQCLSA-N",
+    "pubchem_cid": 442793,
+    "class": "辛味成分",
+    "svg": "structures/6-gingerol.svg"
+  },
+  {
+    "id": "sesquiphellandrene",
+    "name": "β-Sesquiphellandrene",
+    "aliases": [],
+    "match_names": [
+      "β-Sesquiphellandrene"
+    ],
+    "smiles": "[3H][C@@]1([C@@H](C)CCC=C(C)C)C=CC(=C)CC1",
+    "inchikey": "PHWISBHSBNDZDX-HJWAHNHESA-N",
+    "pubchem_cid": 519764,
+    "class": "倍半萜揮發油",
+    "svg": "structures/sesquiphellandrene.svg"
+  },
+  {
+    "id": "allicin",
+    "name": "Allicin",
+    "aliases": [],
+    "match_names": [
+      "Allicin"
+    ],
+    "smiles": "C=CCSS(=O)CC=C",
+    "inchikey": "JDLKFOPOAOFWQN-UHFFFAOYSA-N",
+    "pubchem_cid": 65036,
+    "class": "揮發油",
+    "svg": "structures/allicin.svg"
+  },
+  {
+    "id": "diallyl-disulfide",
+    "name": "Diallyl disulfide",
+    "aliases": [],
+    "match_names": [
+      "Diallyl disulfide"
+    ],
+    "smiles": "C=CCSSCC=C",
+    "inchikey": "PFRGXCVKLLPLIP-UHFFFAOYSA-N",
+    "pubchem_cid": 16590,
+    "class": "揮發油",
+    "svg": "structures/diallyl-disulfide.svg"
+  },
+  {
+    "id": "2-hexyl-5-methyl-3-2h-furanone",
+    "name": "2-Hexyl-5-methyl-3(2H)furanone",
+    "aliases": [],
+    "match_names": [
+      "2-Hexyl-5-methyl-3(2H)furanone"
+    ],
+    "smiles": "CCCCCCC1OC(C)=CC1=O",
+    "inchikey": "AAUWBAWSKVOBFL-UHFFFAOYSA-N",
+    "pubchem_cid": 566912,
+    "class": "揮發油",
+    "svg": "structures/2-hexyl-5-methyl-3-2h-furanone.svg"
+  },
+  {
+    "id": "d-neomenthol",
+    "name": "d-Neomenthol",
+    "aliases": [],
+    "match_names": [
+      "d-Neomenthol"
+    ],
+    "smiles": "CC(C)[C@@H]1CC[C@@H](C)C[C@@H]1O",
+    "inchikey": "NOOLISFMXDJSKH-UTLUCORTSA-N",
+    "pubchem_cid": 439263,
+    "class": "揮發油",
+    "svg": "structures/d-neomenthol.svg"
+  },
+  {
+    "id": "l-isomenthone",
+    "name": "l-Isomenthone",
+    "aliases": [],
+    "match_names": [
+      "l-Isomenthone"
+    ],
+    "smiles": "CC(C)[C@@H]1CC[C@H](C)CC1=O",
+    "inchikey": "NFLGAXVYCFJBMK-IUCAKERBSA-N",
+    "pubchem_cid": 6432469,
+    "class": "揮發油",
+    "svg": "structures/l-isomenthone.svg"
+  },
+  {
+    "id": "l-menthone",
+    "name": "l-Menthone",
+    "aliases": [],
+    "match_names": [
+      "l-Menthone"
+    ],
+    "smiles": "CC(C)[C@@H]1CC[C@@H](C)CC1=O",
+    "inchikey": "NFLGAXVYCFJBMK-BDAKNGLRSA-N",
+    "pubchem_cid": 26447,
+    "class": "揮發油",
+    "svg": "structures/l-menthone.svg"
+  },
+  {
+    "id": "l-menthol",
+    "name": "l-Menthol",
+    "aliases": [],
+    "match_names": [
+      "l-Menthol"
+    ],
+    "smiles": "CC(C)[C@@H]1CC[C@@H](C)C[C@H]1O",
+    "inchikey": "NOOLISFMXDJSKH-KXUCPTDWSA-N",
+    "pubchem_cid": 16666,
+    "class": "揮發油",
+    "svg": "structures/l-menthol.svg"
+  },
+  {
+    "id": "arctigenin",
+    "name": "Arctigenin",
+    "aliases": [],
+    "match_names": [
+      "Arctigenin"
+    ],
+    "smiles": "COc1cc(C[C@H]2C(=O)OC[C@@H]2Cc2ccc(OC)c(OC)c2)ccc1O",
+    "inchikey": "NQWVSMVXKMHKTF-JKSUJKDBSA-N",
+    "pubchem_cid": 64981,
+    "class": "Lignans",
+    "svg": "structures/arctigenin.svg"
+  },
+  {
+    "id": "arctiin",
+    "name": "Arctiin",
+    "aliases": [],
+    "match_names": [
+      "Arctiin"
+    ],
+    "smiles": "COc1ccc(C[C@H]2COC(=O)[C@@H]2Cc2ccc(O[C@@H]3O[C@H](CO)[C@@H](O)[C@H](O)[C@H]3O)c(OC)c2)cc1OC",
+    "inchikey": "XOJVHLIYNSOZOO-SWOBOCGESA-N",
+    "pubchem_cid": 100528,
+    "class": "Lignans",
+    "svg": "structures/arctiin.svg"
+  },
+  {
+    "id": "vitexin",
+    "name": "Vitexin",
+    "aliases": [],
+    "match_names": [
+      "Vitexin"
+    ],
+    "smiles": "O=c1cc(-c2ccc(O)cc2)oc2c([C@@H]3O[C@H](CO)[C@@H](O)[C@H](O)[C@H]3O)c(O)cc(O)c12",
+    "inchikey": "SGEWCQFRYRRZDC-VPRICQMDSA-N",
+    "pubchem_cid": 5280441,
+    "class": "黃酮類",
+    "svg": "structures/vitexin.svg"
+  },
+  {
+    "id": "vitexicarpin",
+    "name": "Vitexicarpin",
+    "aliases": [],
+    "match_names": [
+      "Vitexicarpin",
+      "Casticin"
+    ],
+    "smiles": "COc1ccc(-c2oc3cc(OC)c(OC)c(O)c3c(=O)c2OC)cc1O",
+    "inchikey": "PJQLSMYMOKWUJG-UHFFFAOYSA-N",
+    "pubchem_cid": 5315263,
+    "class": "黃酮類",
+    "svg": "structures/vitexicarpin.svg"
+  },
+  {
+    "id": "cimigenol",
+    "name": "Cimigenol",
+    "aliases": [],
+    "match_names": [
+      "Cimigenol"
+    ],
+    "smiles": "C[C@@H]1C[C@H]2O[C@@]3(O[C@@H]2C(C)(C)O)[C@H](O)[C@@]2(C)[C@@H]4CC[C@H]5C(C)(C)[C@@H](O)CC[C@@]56C[C@@]46CC[C@]2(C)[C@@H]13",
+    "inchikey": "CNBHUROFMYCHGI-IEUUZZHOSA-N",
+    "pubchem_cid": 16020000,
+    "class": "三萜類",
+    "svg": "structures/cimigenol.svg"
+  },
+  {
+    "id": "norcimifugin",
+    "name": "Norcimifugin",
+    "aliases": [],
+    "match_names": [
+      "Norcimifugin",
+      "Angelicain"
+    ],
+    "smiles": "CC(C)(O)[C@@H]1Cc2c(cc3oc(CO)cc(=O)c3c2O)O1",
+    "inchikey": "FHCHSXPHLRBEBR-LBPRGKRZSA-N",
+    "pubchem_cid": 46240156,
+    "class": "Furochromone",
+    "svg": "structures/norcimifugin.svg"
+  },
+  {
+    "id": "daidzin",
+    "name": "Daidzin",
+    "aliases": [],
+    "match_names": [
+      "Daidzin"
+    ],
+    "smiles": "O=c1c(-c2ccc(O)cc2)coc2cc(O[C@@H]3O[C@H](CO)[C@@H](O)[C@H](O)[C@H]3O)ccc12",
+    "inchikey": "KYQZWONCHDNPDP-QNDFHXLGSA-N",
+    "pubchem_cid": 107971,
+    "class": "Isoflavonoids",
+    "svg": "structures/daidzin.svg"
+  },
+  {
+    "id": "daidzein",
+    "name": "Daidzein",
+    "aliases": [],
+    "match_names": [
+      "Daidzein"
+    ],
+    "smiles": "O=c1c(-c2ccc(O)cc2)coc2cc(O)ccc12",
+    "inchikey": "ZQSIJRDFPHDXIC-UHFFFAOYSA-N",
+    "pubchem_cid": 5281708,
+    "class": "Isoflavonoids",
+    "svg": "structures/daidzein.svg"
+  },
+  {
+    "id": "dihydrokaempferol",
+    "name": "Dihydrokaempferol",
+    "aliases": [],
+    "match_names": [
+      "Dihydrokaempferol"
+    ],
+    "smiles": "O=C1c2c(O)cc(O)cc2O[C@H](c2ccc(O)cc2)[C@H]1O",
+    "inchikey": "PADQINQHPQKXNL-LSDHHAIUSA-N",
+    "pubchem_cid": 122850,
+    "class": "類黃酮",
+    "svg": "structures/dihydrokaempferol.svg"
+  },
+  {
+    "id": "eriodictyol",
+    "name": "Eriodictyol",
+    "aliases": [],
+    "match_names": [
+      "Eriodictyol"
+    ],
+    "smiles": "O=C1C[C@@H](c2ccc(O)c(O)c2)Oc2cc(O)cc(O)c21",
+    "inchikey": "SBHXYTNGIZCORC-ZDUSSCGKSA-N",
+    "pubchem_cid": 440735,
+    "class": "類黃酮",
+    "svg": "structures/eriodictyol.svg"
+  },
+  {
+    "id": "echinocystic-acid",
+    "name": "Echinocystic acid",
+    "aliases": [],
+    "match_names": [
+      "Echinocystic acid"
+    ],
+    "smiles": "CC1(C)CC[C@]2(C(=O)O)[C@H](O)C[C@]3(C)C(=CC[C@@H]4[C@@]5(C)CC[C@H](O)C(C)(C)[C@@H]5CC[C@]43C)[C@@H]2C1",
+    "inchikey": "YKOPWPOFWMYZJZ-PRIAQAIDSA-N",
+    "pubchem_cid": 73309,
+    "class": "β-Amyrin型三萜皂苷",
+    "svg": "structures/echinocystic-acid.svg"
+  },
+  {
+    "id": "2-3-4-5-tetrahydro-1-benzoxepin-3-ol",
+    "name": "2,3,4,5-Tetrahydro-1-benzoxepin-3-ol",
+    "aliases": [],
+    "match_names": [
+      "2,3,4,5-Tetrahydro-1-benzoxepin-3-ol"
+    ],
+    "smiles": "OC1CCc2ccccc2OC1",
+    "inchikey": "DEOPESDQXGFICL-UHFFFAOYSA-N",
+    "pubchem_cid": 596274,
+    "class": "揮發油",
+    "svg": "structures/2-3-4-5-tetrahydro-1-benzoxepin-3-ol.svg"
+  },
+  {
+    "id": "taraxasterol",
+    "name": "Taraxasterol",
+    "aliases": [],
+    "match_names": [
+      "Taraxasterol"
+    ],
+    "smiles": "C=C1CC[C@]2(C)CC[C@]3(C)[C@H](CC[C@@H]4[C@@]5(C)CC[C@H](O)C(C)(C)[C@@H]5CC[C@]43C)[C@H]2[C@@H]1C",
+    "inchikey": "XWMMEBCFHUKHEX-ZJJHUPNDSA-N",
+    "pubchem_cid": 115250,
+    "class": "三萜類",
+    "svg": "structures/taraxasterol.svg"
+  },
+  {
+    "id": "inulicin",
+    "name": "Inulicin",
+    "aliases": [],
+    "match_names": [
+      "Inulicin"
+    ],
+    "smiles": "C=C1C(=O)O[C@@H]2CC(C)=C([C@@H](C)CCCOC(C)=O)[C@@H](O)[C@H]12",
+    "inchikey": "QKUFZFLZBUSEHN-CZLJMHDISA-N",
+    "pubchem_cid": 75528891,
+    "class": "倍半萜內酯",
+    "svg": "structures/inulicin.svg"
+  },
+  {
+    "id": "peimine",
+    "name": "Peimine",
+    "aliases": [],
+    "match_names": [
+      "Peimine",
+      "Verticine"
+    ],
+    "smiles": "C[C@H]1CC[C@@H]2N(C1)C[C@H]1[C@@H]3C[C@H]4[C@@H](C[C@H](O)[C@H]5C[C@@H](O)CC[C@@]54C)[C@@H]3CC[C@@H]1[C@]2(C)O",
+    "inchikey": "IUKLSMSEHKDIIP-BZMYINFQSA-N",
+    "pubchem_cid": 131900,
+    "class": "Steroidal alkaloids",
+    "svg": "structures/peimine.svg"
+  },
+  {
+    "id": "qianhucoumarin-g",
+    "name": "Qianhucoumarin G",
+    "aliases": [],
+    "match_names": [
+      "Qianhucoumarin G"
+    ],
+    "smiles": "CC(C)(O)[C@H]1Cc2cc3ccc(=O)oc3c(O)c2O1",
+    "inchikey": "FVFQELHSZVFPDZ-SECBINFHSA-N",
+    "pubchem_cid": 102004675,
+    "class": "Furocoumarin及其皂苷",
+    "svg": "structures/qianhucoumarin-g.svg"
+  },
+  {
+    "id": "d-lyoniresinol-9-o-d-glucopyranoside",
+    "name": "d-Lyoniresinol 9'-O-β-D-glucopyranoside",
+    "aliases": [],
+    "match_names": [
+      "d-Lyoniresinol 9'-O-β-D-glucopyranoside"
+    ],
+    "smiles": "COc1cc([C@@H]2c3c(cc(OC)c(O)c3OC)C[C@H](CO)[C@H]2CO[C@@H]2O[C@H](CO)[C@@H](O)[C@H](O)[C@H]2O)cc(OC)c1O",
+    "inchikey": "PQQRNPDHSJDAGV-UGJKOEBBSA-N",
+    "pubchem_cid": 10031185,
+    "class": "木脂類",
+    "svg": "structures/d-lyoniresinol-9-o-d-glucopyranoside.svg"
+  },
+  {
+    "id": "eckol",
+    "name": "Eckol",
+    "aliases": [],
+    "match_names": [
+      "Eckol"
+    ],
+    "smiles": "Oc1cc(O)cc(Oc2c(O)cc(O)c3c2Oc2c(O)cc(O)cc2O3)c1",
+    "inchikey": "PCZZRBGISTUIOA-UHFFFAOYSA-N",
+    "pubchem_cid": 145937,
+    "class": "Phlorotannins",
+    "svg": "structures/eckol.svg"
+  },
+  {
+    "id": "phlorofucofuroeckol-a",
+    "name": "Phlorofucofuroeckol A",
+    "aliases": [],
+    "match_names": [
+      "Phlorofucofuroeckol A"
+    ],
+    "smiles": "Oc1cc(O)cc(Oc2c(O)cc(O)c3c2Oc2c(O)cc4oc5c(Oc6cc(O)cc(O)c6)c(O)cc(O)c5c4c2O3)c1",
+    "inchikey": "SLWPBUMYPRVYIJ-UHFFFAOYSA-N",
+    "pubchem_cid": 130976,
+    "class": "Phlorotannins",
+    "svg": "structures/phlorofucofuroeckol-a.svg"
+  },
+  {
+    "id": "raphanin",
+    "name": "Raphanin",
+    "aliases": [],
+    "match_names": [
+      "Raphanin"
+    ],
+    "smiles": "CS(=O)/C=C/CCN=C=S",
+    "inchikey": "QKGJFQMGPDVOQE-HWKANZROSA-N",
+    "pubchem_cid": 6433206,
+    "class": "Isothiocyanate",
+    "svg": "structures/raphanin.svg"
+  },
+  {
+    "id": "sinapine",
+    "name": "Sinapine",
+    "aliases": [],
+    "match_names": [
+      "Sinapine"
+    ],
+    "smiles": "COc1cc(/C=C/C(=O)OCC[N+](C)(C)C)cc(OC)c1O",
+    "inchikey": "HUJXHFRXWWGYQH-UHFFFAOYSA-O",
+    "pubchem_cid": 5280385,
+    "class": "生物鹼",
+    "svg": "structures/sinapine.svg"
+  },
+  {
+    "id": "ginkgotoxin",
+    "name": "Ginkgotoxin",
+    "aliases": [],
+    "match_names": [
+      "Ginkgotoxin"
+    ],
+    "smiles": "COCc1c(CO)cnc(C)c1O",
+    "inchikey": "SVINQHQHARVZFF-UHFFFAOYSA-N",
+    "pubchem_cid": 76581,
+    "class": "未標註類別",
+    "svg": "structures/ginkgotoxin.svg"
+  },
+  {
+    "id": "amygdalin",
+    "name": "Amygdalin",
+    "aliases": [],
+    "match_names": [
+      "Amygdalin"
+    ],
+    "smiles": "N#C[C@H](O[C@@H]1OC(CO[C@@H]2OC(CO)[C@@H](O)[C@H](O)C2O)[C@@H](O)[C@H](O)C1O)c1ccccc1",
+    "inchikey": "XUCIJNAGGSZNQT-BKSJRZAGSA-N",
+    "pubchem_cid": 2180,
+    "class": "Cyanogenic glycoside",
+    "svg": "structures/amygdalin.svg"
+  },
+  {
+    "id": "morusin",
+    "name": "Morusin",
+    "aliases": [],
+    "match_names": [
+      "Morusin"
+    ],
+    "smiles": "CC(C)=CCc1c(-c2ccc(O)cc2O)oc2c3c(cc(O)c2c1=O)OC(C)(C)C=C3",
+    "inchikey": "XFFOMNJIDRDDLQ-UHFFFAOYSA-N",
+    "pubchem_cid": 5281671,
+    "class": "黃酮類",
+    "svg": "structures/morusin.svg"
+  },
+  {
+    "id": "quercetin-3-beta-glucoside",
+    "name": "Quercetin 3-beta-glucoside",
+    "aliases": [],
+    "match_names": [
+      "Quercetin 3-beta-glucoside",
+      "Quercetin 3-O-β-glucoside"
+    ],
+    "smiles": "O=c1c(O[C@@H]2O[C@H](CO)[C@@H](O)[C@H](O)[C@H]2O)c(-c2ccc(O)c(O)c2)oc2cc(O)cc(O)c12",
+    "inchikey": "OVSQVDMCBVZWGM-QSOFNFLRSA-N",
+    "pubchem_cid": 5280804,
+    "class": "黃酮類",
+    "svg": "structures/quercetin-3-beta-glucoside.svg"
+  },
+  {
+    "id": "forsythide",
+    "name": "Forsythide",
+    "aliases": [],
+    "match_names": [
+      "Forsythide"
+    ],
+    "smiles": "O=C(O)C1=CO[C@@H](O[C@@H]2O[C@H](CO)[C@@H](O)[C@H](O)[C@H]2O)[C@@H]2[C@@H](C(=O)O)CC[C@H]12",
+    "inchikey": "CBXLCEGPMWRVQS-ALJFVJQCSA-N",
+    "pubchem_cid": 15559328,
+    "class": "單萜",
+    "svg": "structures/forsythide.svg"
+  },
+  {
+    "id": "indirubin",
+    "name": "Indirubin",
+    "aliases": [],
+    "match_names": [
+      "Indirubin"
+    ],
+    "smiles": "O=C1Nc2ccccc2/C1=C1/Nc2ccccc2C1=O",
+    "inchikey": "CRDNMYFJWFXOCH-YPKPFQOOSA-N",
+    "pubchem_cid": 10177,
+    "class": "未標註類別",
+    "svg": "structures/indirubin.svg"
+  },
+  {
+    "id": "isoiridogermanal",
+    "name": "Isoiridogermanal",
+    "aliases": [],
+    "match_names": [
+      "Isoiridogermanal"
+    ],
+    "smiles": "CC(C)=CCC/C(C)=C/C[C@@H](O)/C(C)=C/CC[C@@]1(C)[C@H](CCCO)/C(=C(/C)C=O)CC[C@]1(C)O",
+    "inchikey": "KVTCHSWVSFQOTP-YFPNSAJKSA-N",
+    "pubchem_cid": 44559084,
+    "class": "三萜類",
+    "svg": "structures/isoiridogermanal.svg"
+  },
+  {
+    "id": "irisflorentin",
+    "name": "Irisflorentin",
+    "aliases": [],
+    "match_names": [
+      "Irisflorentin"
+    ],
+    "smiles": "COc1cc(-c2coc3cc4c(c(OC)c3c2=O)OCO4)cc(OC)c1OC",
+    "inchikey": "RISXUTCDCPHJFQ-UHFFFAOYSA-N",
+    "pubchem_cid": 170569,
+    "class": "Isoflavones",
+    "svg": "structures/irisflorentin.svg"
+  },
+  {
+    "id": "tectorigenin",
+    "name": "Tectorigenin",
+    "aliases": [],
+    "match_names": [
+      "Tectorigenin"
+    ],
+    "smiles": "COc1c(O)cc2occ(-c3ccc(O)cc3)c(=O)c2c1O",
+    "inchikey": "OBBCRPUNCUPUOS-UHFFFAOYSA-N",
+    "pubchem_cid": 5281811,
+    "class": "Isoflavones",
+    "svg": "structures/tectorigenin.svg"
+  },
+  {
+    "id": "l-citrulline",
+    "name": "L-Citrulline",
+    "aliases": [],
+    "match_names": [
+      "L-Citrulline"
+    ],
+    "smiles": "NC(=O)NCCC[C@H](N)C(=O)O",
+    "inchikey": "RHGKLRLOHDJJDR-BYPYZUCNSA-N",
+    "pubchem_cid": 9750,
+    "class": "胺基酸",
+    "svg": "structures/l-citrulline.svg"
+  },
+  {
+    "id": "cucurbitacine-b",
+    "name": "Cucurbitacine B",
+    "aliases": [],
+    "match_names": [
+      "Cucurbitacine B",
+      "Cucurbitane"
+    ],
+    "smiles": "CC(=O)OC(C)(C)/C=C/C(=O)[C@](C)(O)[C@H]1[C@H](O)C[C@@]2(C)[C@@H]3CC=C4[C@@H](C[C@H](O)C(=O)C4(C)C)[C@]3(C)C(=O)C[C@]12C",
+    "inchikey": "IXQKXEUSCPEQRD-DKRGWESNSA-N",
+    "pubchem_cid": 5281316,
+    "class": "",
+    "svg": "structures/cucurbitacine-b.svg"
+  },
+  {
+    "id": "coixol",
+    "name": "Coixol",
+    "aliases": [],
+    "match_names": [
+      "Coixol"
+    ],
+    "smiles": "COc1ccc2[nH]c(=O)oc2c1",
+    "inchikey": "MKMCJLMBVKHUMS-UHFFFAOYSA-N",
+    "pubchem_cid": 10772,
+    "class": "其他",
+    "svg": "structures/coixol.svg"
+  },
+  {
+    "id": "tricin",
+    "name": "Tricin",
+    "aliases": [],
+    "match_names": [
+      "Tricin",
+      "苜蓿素"
+    ],
+    "smiles": "COc1cc(-c2cc(=O)c3c(O)cc(O)cc3o2)cc(OC)c1O",
+    "inchikey": "HRGUSFBJBOKSML-UHFFFAOYSA-N",
+    "pubchem_cid": 5281702,
+    "class": "黃酮類",
+    "svg": "structures/tricin.svg"
+  },
+  {
+    "id": "cylindrin",
+    "name": "Cylindrin",
+    "aliases": [],
+    "match_names": [
+      "Cylindrin"
+    ],
+    "smiles": "CO[C@H]1CC[C@]2(C)C3=CC[C@]4(C)[C@H]5CC[C@@H](C(C)C)[C@]5(C)CC[C@@]4(C)[C@@H]3CC[C@H]2C1(C)C",
+    "inchikey": "MRNPHCMRIQYRFU-UWAWSDATSA-N",
+    "pubchem_cid": 189045,
+    "class": "三萜",
+    "svg": "structures/cylindrin.svg"
+  },
+  {
+    "id": "gardenoside",
+    "name": "Gardenoside",
+    "aliases": [],
+    "match_names": [
+      "Gardenoside"
+    ],
+    "smiles": "COC(=O)C1=CO[C@@H](O[C@@H]2O[C@H](CO)[C@@H](O)[C@H](O)[C@H]2O)[C@H]2[C@@H]1C=C[C@@]2(O)CO",
+    "inchikey": "XJMPAUZQVRGFRE-AYDWLWLASA-N",
+    "pubchem_cid": 442423,
+    "class": "Iridoid Glycoside",
+    "svg": "structures/gardenoside.svg"
+  },
+  {
+    "id": "geniposide",
+    "name": "Geniposide",
+    "aliases": [],
+    "match_names": [
+      "Geniposide"
+    ],
+    "smiles": "COC(=O)C1=CO[C@@H](O[C@@H]2O[C@H](CO)[C@@H](O)[C@H](O)[C@H]2O)[C@@H]2C(CO)=CC[C@H]12",
+    "inchikey": "IBFYXTRXDNAPMM-BVTMAQQCSA-N",
+    "pubchem_cid": 107848,
+    "class": "Iridoid Glycoside",
+    "svg": "structures/geniposide.svg"
+  },
+  {
+    "id": "rutin",
+    "name": "Rutin",
+    "aliases": [],
+    "match_names": [
+      "Rutin"
+    ],
+    "smiles": "CC1O[C@@H](OC[C@H]2O[C@@H](Oc3c(-c4ccc(O)c(O)c4)oc4cc(O)cc(O)c4c3=O)C(O)C(O)[C@H]2O)C(O)[C@@H](O)[C@H]1O",
+    "inchikey": "IKGXIBQEEMLURG-TZTXLHHFSA-N",
+    "pubchem_cid": 5293655,
+    "class": "類黃酮",
+    "svg": "structures/rutin.svg"
+  },
+  {
+    "id": "worenine",
+    "name": "Worenine",
+    "aliases": [],
+    "match_names": [
+      "Worenine"
+    ],
+    "smiles": "Cc1c2[n+](cc3cc4c(cc13)OCO4)CCc1cc3c(cc1-2)OCO3",
+    "inchikey": "LCXREBMNASQAOC-UHFFFAOYSA-N",
+    "pubchem_cid": 20055073,
+    "class": "生物鹼",
+    "svg": "structures/worenine.svg"
+  },
+  {
+    "id": "berberine",
+    "name": "Berberine",
+    "aliases": [],
+    "match_names": [
+      "Berberine"
+    ],
+    "smiles": "COc1ccc2cc3[n+](cc2c1OC)CCc1cc2c(cc1-3)OCO2",
+    "inchikey": "YBHILYKTIRIUTE-UHFFFAOYSA-N",
+    "pubchem_cid": 2353,
+    "class": "生物鹼",
+    "svg": "structures/berberine.svg"
+  },
+  {
+    "id": "baicalin",
+    "name": "Baicalin",
+    "aliases": [],
+    "match_names": [
+      "Baicalin",
+      "黃芩苷"
+    ],
+    "smiles": "O=C(O)[C@H]1O[C@@H](Oc2cc3oc(-c4ccccc4)cc(=O)c3c(O)c2O)[C@H](O)[C@@H](O)[C@@H]1O",
+    "inchikey": "IKIIZLYTISPENI-ZFORQUDYSA-N",
+    "pubchem_cid": 64982,
+    "class": "黃酮類",
+    "svg": "structures/baicalin.svg"
+  },
+  {
+    "id": "wogonin",
+    "name": "Wogonin",
+    "aliases": [],
+    "match_names": [
+      "Wogonin"
+    ],
+    "smiles": "COc1c(O)cc(O)c2c(=O)cc(-c3ccccc3)oc12",
+    "inchikey": "XLTFNNCXVBYBSX-UHFFFAOYSA-N",
+    "pubchem_cid": 5281703,
+    "class": "黃酮類",
+    "svg": "structures/wogonin.svg"
+  },
+  {
+    "id": "baicalein",
+    "name": "Baicalein",
+    "aliases": [],
+    "match_names": [
+      "Baicalein"
+    ],
+    "smiles": "O=c1cc(-c2ccccc2)oc2cc(O)c(O)c(O)c12",
+    "inchikey": "FXNFHKRTJBSTCS-UHFFFAOYSA-N",
+    "pubchem_cid": 5281605,
+    "class": "黃酮類",
+    "svg": "structures/baicalein.svg"
+  },
+  {
+    "id": "gentianine",
+    "name": "Gentianine",
+    "aliases": [],
+    "match_names": [
+      "Gentianine"
+    ],
+    "smiles": "C=Cc1cncc2c1CCOC2=O",
+    "inchikey": "DFNZYFAJQPLJFI-UHFFFAOYSA-N",
+    "pubchem_cid": 354616,
+    "class": "生物鹼",
+    "svg": "structures/gentianine.svg"
+  },
+  {
+    "id": "kurarinol",
+    "name": "Kurarinol",
+    "aliases": [],
+    "match_names": [
+      "Kurarinol"
+    ],
+    "smiles": "C=C(C)[C@H](CCC(C)(C)O)Cc1c(O)cc(OC)c2c1O[C@H](c1ccc(O)cc1O)CC2=O",
+    "inchikey": "XMUPAAIHKAIUSU-QRQCRPRQSA-N",
+    "pubchem_cid": 44563198,
+    "class": "黃酮類",
+    "svg": "structures/kurarinol.svg"
+  },
+  {
+    "id": "formononetin",
+    "name": "Formononetin",
+    "aliases": [],
+    "match_names": [
+      "Formononetin"
+    ],
+    "smiles": "COc1ccc(-c2coc3cc(O)ccc3c2=O)cc1",
+    "inchikey": "HKQYGTCOTHHOMP-UHFFFAOYSA-N",
+    "pubchem_cid": 5280378,
+    "class": "黃酮類",
+    "svg": "structures/formononetin.svg"
+  },
+  {
+    "id": "acteoside",
+    "name": "Acteoside",
+    "aliases": [],
+    "match_names": [
+      "Acteoside",
+      "Verbascoside"
+    ],
+    "smiles": "C[C@@H]1O[C@@H](O[C@@H]2[C@@H](O)[C@H](OCCc3ccc(O)c(O)c3)O[C@H](CO)[C@H]2OC(=O)/C=C/c2ccc(O)c(O)c2)[C@H](O)[C@H](O)[C@H]1O",
+    "inchikey": "FBSKJMQYURKNSU-ZLSOWSIRSA-N",
+    "pubchem_cid": 5281800,
+    "class": "Phenylethanoid glycoside",
+    "svg": "structures/acteoside.svg"
+  },
+  {
+    "id": "paeonol",
+    "name": "Paeonol",
+    "aliases": [],
+    "match_names": [
+      "Paeonol"
+    ],
+    "smiles": "COc1ccc(C(C)=O)c(O)c1",
+    "inchikey": "UILPJVPSNHJFIK-UHFFFAOYSA-N",
+    "pubchem_cid": 11092,
+    "class": "酚類與單萜苷",
+    "svg": "structures/paeonol.svg"
+  },
+  {
+    "id": "paeonolide",
+    "name": "Paeonolide",
+    "aliases": [],
+    "match_names": [
+      "Paeonolide"
+    ],
+    "smiles": "COc1ccc(C(C)=O)c(O[C@@H]2O[C@H](CO[C@@H]3OC[C@H](O)[C@H](O)[C@H]3O)[C@@H](O)[C@H](O)[C@H]2O)c1",
+    "inchikey": "IDZZECHGWAZTIB-NYBIBFQCSA-N",
+    "pubchem_cid": 442923,
+    "class": "酚苷",
+    "svg": "structures/paeonolide.svg"
+  },
+  {
+    "id": "lactiflorin",
+    "name": "Lactiflorin",
+    "aliases": [],
+    "match_names": [
+      "Lactiflorin"
+    ],
+    "smiles": "C[C@@]12O[C@H]3[C@@H](O[C@H](CO)[C@@H](O)[C@@H]3O)O[C@@]13C[C@H]1C(=O)C[C@@H](O2)[C@]13COC(=O)c1ccccc1",
+    "inchikey": "AGRYIZUKIKYUFX-DNITZUGTSA-N",
+    "pubchem_cid": 14605198,
+    "class": "單萜苷",
+    "svg": "structures/lactiflorin.svg"
+  },
+  {
+    "id": "shikonin",
+    "name": "Shikonin",
+    "aliases": [],
+    "match_names": [
+      "Shikonin"
+    ],
+    "smiles": "CC(C)=CCC(O)C1=CC(=O)c2c(O)ccc(O)c2C1=O",
+    "inchikey": "NEZONWMXZKDMKF-UHFFFAOYSA-N",
+    "pubchem_cid": 5208,
+    "class": "Naphthoquinones",
+    "svg": "structures/shikonin.svg"
+  },
+  {
+    "id": "betaine",
+    "name": "Betaine",
+    "aliases": [],
+    "match_names": [
+      "Betaine"
+    ],
+    "smiles": "C[N+](C)(C)CC(=O)[O-]",
+    "inchikey": "KWIUHFFTVRNATP-UHFFFAOYSA-N",
+    "pubchem_cid": 247,
+    "class": "生物鹼",
+    "svg": "structures/betaine.svg"
+  },
+  {
+    "id": "kukoamine-a",
+    "name": "Kukoamine A",
+    "aliases": [],
+    "match_names": [
+      "Kukoamine A"
+    ],
+    "smiles": "O=C(CCc1ccc(O)c(O)c1)NCCCNCCCCNCCCNC(=O)CCc1ccc(O)c(O)c1",
+    "inchikey": "IOLDDENZPBFBHV-UHFFFAOYSA-N",
+    "pubchem_cid": 5318865,
+    "class": "生物鹼",
+    "svg": "structures/kukoamine-a.svg"
+  },
+  {
+    "id": "magnolol",
+    "name": "Magnolol",
+    "aliases": [],
+    "match_names": [
+      "Magnolol"
+    ],
+    "smiles": "C=CCc1ccc(O)c(-c2cc(CC=C)ccc2O)c1",
+    "inchikey": "VVOAZFWZEDHOOU-UHFFFAOYSA-N",
+    "pubchem_cid": 72300,
+    "class": "Lignans",
+    "svg": "structures/magnolol.svg"
+  },
+  {
+    "id": "atractylol",
+    "name": "Atractylol",
+    "aliases": [],
+    "match_names": [
+      "Atractylol"
+    ],
+    "smiles": "C=C1CCCC2(C)Cc3occ(C)c3CC12",
+    "inchikey": "TYPSVDGIQAOBAD-UHFFFAOYSA-N",
+    "pubchem_cid": 5321065,
+    "class": "揮發油",
+    "svg": "structures/atractylol.svg"
+  },
+  {
+    "id": "ergosterol",
+    "name": "Ergosterol",
+    "aliases": [],
+    "match_names": [
+      "Ergosterol"
+    ],
+    "smiles": "CC(C)[C@@H](C)/C=C/[C@@H](C)[C@H]1CC[C@H]2C3=CC=C4C[C@@H](O)CC[C@]4(C)[C@H]3CC[C@]12C",
+    "inchikey": "DNVPQKQSNYMLRS-APGDWVJJSA-N",
+    "pubchem_cid": 444679,
+    "class": "固醇",
+    "svg": "structures/ergosterol.svg"
+  },
+  {
+    "id": "juncusol",
+    "name": "Juncusol",
+    "aliases": [],
+    "match_names": [
+      "Juncusol"
+    ],
+    "smiles": "C=Cc1c(C)c(O)cc2c1-c1ccc(O)c(C)c1CC2",
+    "inchikey": "XNVMKPYDOHZJLR-UHFFFAOYSA-N",
+    "pubchem_cid": 72740,
+    "class": "Phenanthrene",
+    "svg": "structures/juncusol.svg"
+  },
+  {
+    "id": "effusol",
+    "name": "Effusol",
+    "aliases": [],
+    "match_names": [
+      "Effusol"
+    ],
+    "smiles": "C=Cc1cc(O)cc2c1-c1ccc(O)c(C)c1CC2",
+    "inchikey": "GEXAPRXWKRZPCK-UHFFFAOYSA-N",
+    "pubchem_cid": 100801,
+    "class": "Phenanthrene",
+    "svg": "structures/effusol.svg"
+  },
+  {
+    "id": "homoorientin",
+    "name": "Homoorientin",
+    "aliases": [],
+    "match_names": [
+      "Homoorientin"
+    ],
+    "smiles": "O=c1cc(-c2ccc(O)c(O)c2)oc2c([C@@H]3OC(CO)[C@@H](O)[C@H](O)C3O)c(O)cc(O)c12",
+    "inchikey": "PLAPMLGJVGLZOV-SZSUEBNWSA-N",
+    "pubchem_cid": 5382105,
+    "class": "黃酮類",
+    "svg": "structures/homoorientin.svg"
+  },
+  {
+    "id": "avicularin",
+    "name": "Avicularin",
+    "aliases": [],
+    "match_names": [
+      "Avicularin"
+    ],
+    "smiles": "O=c1c(O[C@@H]2O[C@@H](CO)[C@H](O)[C@H]2O)c(-c2ccc(O)c(O)c2)oc2cc(O)cc(O)c12",
+    "inchikey": "BDCDNTVZSILEOY-UXYNSRGZSA-N",
+    "pubchem_cid": 5490064,
+    "class": "黃酮類",
+    "svg": "structures/avicularin.svg"
+  },
+  {
+    "id": "osthole",
+    "name": "Osthole",
+    "aliases": [],
+    "match_names": [
+      "Osthole"
+    ],
+    "smiles": "COc1ccc2ccc(=O)oc2c1CC=C(C)C",
+    "inchikey": "MBRLOUHOWLUMFF-UHFFFAOYSA-N",
+    "pubchem_cid": 10228,
+    "class": "Phenylcoumarin",
+    "svg": "structures/osthole.svg"
+  },
+  {
+    "id": "protoanemonin",
+    "name": "Protoanemonin",
+    "aliases": [],
+    "match_names": [
+      "Protoanemonin"
+    ],
+    "smiles": "C=C1C=CC(=O)O1",
+    "inchikey": "RNYZJZKPGHQTJR-UHFFFAOYSA-N",
+    "pubchem_cid": 66948,
+    "class": "Lactones",
+    "svg": "structures/protoanemonin.svg"
+  },
+  {
+    "id": "quercetin",
+    "name": "Quercetin",
+    "aliases": [],
+    "match_names": [
+      "Quercetin"
+    ],
+    "smiles": "O=c1c(O)c(-c2ccc(O)c(O)c2)oc2cc(O)cc(O)c12",
+    "inchikey": "REFJWTPEDVJJIY-UHFFFAOYSA-N",
+    "pubchem_cid": 5280343,
+    "class": "類黃酮(苷)類",
+    "svg": "structures/quercetin.svg"
+  },
+  {
+    "id": "hesperidin",
+    "name": "Hesperidin",
+    "aliases": [],
+    "match_names": [
+      "Hesperidin"
+    ],
+    "smiles": "COc1ccc([C@@H]2CC(=O)c3c(O)cc(O[C@@H]4O[C@H](CO[C@H]5O[C@@H](C)[C@@H](O)[C@@H](O)[C@@H]5O)[C@@H](O)[C@H](O)[C@H]4O)cc3O2)cc1O",
+    "inchikey": "QUQPHWDTPGMPEX-DSKPVWILSA-N",
+    "pubchem_cid": 3594,
+    "class": "Flavones、Flavanones",
+    "svg": "structures/hesperidin.svg"
+  },
+  {
+    "id": "synephrine",
+    "name": "Synephrine",
+    "aliases": [],
+    "match_names": [
+      "Synephrine"
+    ],
+    "smiles": "CNCC(O)c1ccc(O)cc1",
+    "inchikey": "YRCWQPVGYLYSOX-UHFFFAOYSA-N",
+    "pubchem_cid": 7172,
+    "class": "生物鹼",
+    "svg": "structures/synephrine.svg"
+  },
+  {
+    "id": "boldine",
+    "name": "Boldine",
+    "aliases": [],
+    "match_names": [
+      "Boldine"
+    ],
+    "smiles": "COc1cc2c(cc1O)C[C@H]1c3c(cc(O)c(OC)c3-2)CCN1C",
+    "inchikey": "LZJRNLRASBVRRX-ZDUSSCGKSA-N",
+    "pubchem_cid": 10154,
+    "class": "生物鹼",
+    "svg": "structures/boldine.svg"
+  },
+  {
+    "id": "borneol",
+    "name": "Borneol",
+    "aliases": [],
+    "match_names": [
+      "Borneol"
+    ],
+    "smiles": "CC1(C)C2CCC1(C)C(O)C2",
+    "inchikey": "DTGKSKDOIYIVQL-UHFFFAOYSA-N",
+    "pubchem_cid": 64685,
+    "class": "揮發油",
+    "svg": "structures/borneol.svg"
+  },
+  {
+    "id": "linderane",
+    "name": "Linderane",
+    "aliases": [],
+    "match_names": [
+      "Linderane"
+    ],
+    "smiles": "C/C1=C\\CC[C@]23O[C@H]2[C@@H](OC3=O)c2c(C)coc2C1",
+    "inchikey": "KBMSVODXFLAQNJ-DXGHHDSJSA-N",
+    "pubchem_cid": 6915739,
+    "class": "揮發油",
+    "svg": "structures/linderane.svg"
+  },
+  {
+    "id": "cyperone",
+    "name": "α-Cyperone",
+    "aliases": [],
+    "match_names": [
+      "α-Cyperone"
+    ],
+    "smiles": "C=C(C)[C@@H]1CC[C@@]2(C)CCC(=O)C(C)=C2C1",
+    "inchikey": "KUFXJZXMWHNCEH-DOMZBBRYSA-N",
+    "pubchem_cid": 6452086,
+    "class": "倍半萜類（活性成分）",
+    "svg": "structures/cyperone.svg"
+  },
+  {
+    "id": "6-hydroxy-2-2-phenylethyl-chromone",
+    "name": "6-hydroxy-2-(2-phenylethyl)chromone",
+    "aliases": [],
+    "match_names": [
+      "6-hydroxy-2-(2-phenylethyl)chromone",
+      "6-Hydroxy-2-(2-phenylethyl)-4-chromone"
+    ],
+    "smiles": "O=c1cc(CCc2ccccc2)oc2ccc(O)cc12",
+    "inchikey": "QIYUDFMVCDXKBQ-UHFFFAOYSA-N",
+    "pubchem_cid": 5318315,
+    "class": "2-(2-Phenylethyl)-4-chromones",
+    "svg": "structures/6-hydroxy-2-2-phenylethyl-chromone.svg"
+  },
+  {
+    "id": "procyanidin-c1",
+    "name": "Procyanidin C1",
+    "aliases": [],
+    "match_names": [
+      "Procyanidin C1"
+    ],
+    "smiles": "Oc1cc(O)c2c(c1)O[C@H](c1ccc(O)c(O)c1)[C@H](O)[C@H]2c1c(O)cc(O)c2c1O[C@H](c1ccc(O)c(O)c1)[C@H](O)[C@H]2c1c(O)cc(O)c2c1O[C@H](c1ccc(O)c(O)c1)[C@H](O)C2",
+    "inchikey": "MOJZMWJRUKIQGL-XILRTYJMSA-N",
+    "pubchem_cid": 169853,
+    "class": "B-type procyanidins",
+    "svg": "structures/procyanidin-c1.svg"
+  },
+  {
+    "id": "gramine",
+    "name": "Gramine",
+    "aliases": [],
+    "match_names": [
+      "Gramine"
+    ],
+    "smiles": "CN(C)Cc1c[nH]c2ccccc12",
+    "inchikey": "OCDGBSUVYYVKQZ-UHFFFAOYSA-N",
+    "pubchem_cid": 6890,
+    "class": "酶、醣類、生物鹼與維生素",
+    "svg": "structures/gramine.svg"
+  },
+  {
+    "id": "hordenine",
+    "name": "Hordenine",
+    "aliases": [],
+    "match_names": [
+      "Hordenine"
+    ],
+    "smiles": "CN(C)CCc1ccc(O)cc1",
+    "inchikey": "KUBCEEMXQZUPDQ-UHFFFAOYSA-N",
+    "pubchem_cid": 68313,
+    "class": "酶、醣類、生物鹼與維生素",
+    "svg": "structures/hordenine.svg"
+  },
+  {
+    "id": "rhaponticin",
+    "name": "Rhaponticin",
+    "aliases": [],
+    "match_names": [
+      "Rhaponticin"
+    ],
+    "smiles": "COc1ccc(/C=C/c2cc(O)cc(O[C@@H]3O[C@H](CO)[C@@H](O)[C@H](O)[C@H]3O)c2)cc1O",
+    "inchikey": "GKAJCVFOJGXVIA-DXKBKAGUSA-N",
+    "pubchem_cid": 637213,
+    "class": "Stilbene",
+    "svg": "structures/rhaponticin.svg"
+  },
+  {
+    "id": "rhein",
+    "name": "Rhein",
+    "aliases": [],
+    "match_names": [
+      "Rhein"
+    ],
+    "smiles": "O=C(O)c1cc(O)c2c(c1)C(=O)c1cccc(O)c1C2=O",
+    "inchikey": "FCDLCPWAQCPTKC-UHFFFAOYSA-N",
+    "pubchem_cid": 10168,
+    "class": "蒽醌類",
+    "svg": "structures/rhein.svg"
+  },
+  {
+    "id": "aloe-emodin",
+    "name": "Aloe-emodin",
+    "aliases": [],
+    "match_names": [
+      "Aloe-emodin"
+    ],
+    "smiles": "O=C1c2cccc(O)c2C(=O)c2c(O)cc(CO)cc21",
+    "inchikey": "YDQWDHRMZQUTBA-UHFFFAOYSA-N",
+    "pubchem_cid": 10207,
+    "class": "蒽醌類",
+    "svg": "structures/aloe-emodin.svg"
+  },
+  {
+    "id": "procyanidin-b1",
+    "name": "Procyanidin B1",
+    "aliases": [],
+    "match_names": [
+      "Procyanidin B1",
+      "Procyanidins"
+    ],
+    "smiles": "Oc1cc(O)c2c(c1)O[C@H](c1ccc(O)c(O)c1)[C@H](O)[C@H]2c1c(O)cc(O)c2c1O[C@H](c1ccc(O)c(O)c1)[C@@H](O)C2",
+    "inchikey": "XFZJEEAOWLFHDH-UKWJTHFESA-N",
+    "pubchem_cid": 11250133,
+    "class": "Tannins",
+    "svg": "structures/procyanidin-b1.svg"
+  },
+  {
+    "id": "arecoline",
+    "name": "Arecoline",
+    "aliases": [],
+    "match_names": [
+      "Arecoline"
+    ],
+    "smiles": "COC(=O)C1=CCCN(C)C1",
+    "inchikey": "HJJPJSXJAXAIPN-UHFFFAOYSA-N",
+    "pubchem_cid": 2230,
+    "class": "生物鹼",
+    "svg": "structures/arecoline.svg"
+  },
+  {
+    "id": "arecaidine",
+    "name": "Arecaidine",
+    "aliases": [],
+    "match_names": [
+      "Arecaidine"
+    ],
+    "smiles": "CN1CCC=C(C(=O)O)C1",
+    "inchikey": "DNJFTXKSFAMXQF-UHFFFAOYSA-N",
+    "pubchem_cid": 10355,
+    "class": "生物鹼",
+    "svg": "structures/arecaidine.svg"
+  },
+  {
+    "id": "higenamine",
+    "name": "Higenamine",
+    "aliases": [],
+    "match_names": [
+      "Higenamine",
+      "去甲基烏藥鹼"
+    ],
+    "smiles": "Oc1ccc(C[C@@H]2NCCc3cc(O)c(O)cc32)cc1",
+    "inchikey": "WZRCQWQRFZITDX-AWEZNQCLSA-N",
+    "pubchem_cid": 440927,
+    "class": "雙萜類生物鹼",
+    "svg": "structures/higenamine.svg"
+  },
+  {
+    "id": "evodiamine",
+    "name": "Evodiamine",
+    "aliases": [],
+    "match_names": [
+      "Evodiamine"
+    ],
+    "smiles": "CN1c2ccccc2C(=O)N2CCc3c([nH]c4ccccc34)C21",
+    "inchikey": "TXDUTHBFYKGSAH-UHFFFAOYSA-N",
+    "pubchem_cid": 151289,
+    "class": "生物鹼",
+    "svg": "structures/evodiamine.svg"
+  },
+  {
+    "id": "d-fenchone",
+    "name": "d-Fenchone",
+    "aliases": [],
+    "match_names": [
+      "d-Fenchone"
+    ],
+    "smiles": "CC1(C)C(=O)[C@@]2(C)CC[C@H]1C2",
+    "inchikey": "LHXDLQBQYFFVNW-XVKPBYJWSA-N",
+    "pubchem_cid": 14525,
+    "class": "揮發油",
+    "svg": "structures/d-fenchone.svg"
+  },
+  {
+    "id": "l-asarinin",
+    "name": "l-Asarinin",
+    "aliases": [],
+    "match_names": [
+      "l-Asarinin"
+    ],
+    "smiles": "c1cc2c(cc1[C@H]1OC[C@@H]3[C@H]1CO[C@H]3c1ccc3c(c1)OCO3)OCO2",
+    "inchikey": "PEYUIKBAABKQKQ-FQZPYLGXSA-N",
+    "pubchem_cid": 11869417,
+    "class": "Lignan",
+    "svg": "structures/l-asarinin.svg"
+  },
+  {
+    "id": "acetyleugenol",
+    "name": "Acetyleugenol",
+    "aliases": [],
+    "match_names": [
+      "Acetyleugenol",
+      "O-Acetyleugenol"
+    ],
+    "smiles": "C=CCc1ccc(OC(C)=O)c(OC)c1",
+    "inchikey": "SCCDQYPEOIRVGX-UHFFFAOYSA-N",
+    "pubchem_cid": 7136,
+    "class": "揮發油",
+    "svg": "structures/acetyleugenol.svg"
+  },
+  {
+    "id": "eugenol",
+    "name": "Eugenol",
+    "aliases": [],
+    "match_names": [
+      "Eugenol"
+    ],
+    "smiles": "C=CCc1ccc(O)c(OC)c1",
+    "inchikey": "RRAFCDWBNXTKKO-UHFFFAOYSA-N",
+    "pubchem_cid": 3314,
+    "class": "Cinnamon oil",
+    "svg": "structures/eugenol.svg"
+  },
+  {
+    "id": "zingerone",
+    "name": "Zingerone",
+    "aliases": [],
+    "match_names": [
+      "Zingerone"
+    ],
+    "smiles": "COc1cc(CCC(C)=O)ccc1O",
+    "inchikey": "OJYLAHXKWMRDGS-UHFFFAOYSA-N",
+    "pubchem_cid": 31211,
+    "class": "辛味成分",
+    "svg": "structures/zingerone.svg"
+  },
+  {
+    "id": "galangin",
+    "name": "Galangin",
+    "aliases": [],
+    "match_names": [
+      "Galangin"
+    ],
+    "smiles": "O=c1c(O)c(-c2ccccc2)oc2cc(O)cc(O)c12",
+    "inchikey": "VCCRNZQBSJXYJD-UHFFFAOYSA-N",
+    "pubchem_cid": 5281616,
+    "class": "黃酮類",
+    "svg": "structures/galangin.svg"
+  },
+  {
+    "id": "7-4-hydroxy-3-methoxyphenyl-1-phenylhept-4-en-3-one",
+    "name": "7-(4'-Hydroxy-3'-methoxyphenyl)-1-phenylhept-4-en-3-one",
+    "aliases": [],
+    "match_names": [
+      "7-(4'-Hydroxy-3'-methoxyphenyl)-1-phenylhept-4-en-3-one",
+      "7-(4''-Hydroxy-3''-methoxyphenyl)-1-phenyl-4E-hepten-3-one"
+    ],
+    "smiles": "COc1cc(CCC=CC(=O)CCc2ccccc2)ccc1O",
+    "inchikey": "NOHMOWQGVDSLNY-UHFFFAOYSA-N",
+    "pubchem_cid": 3061705,
+    "class": "Diarylheptanoids",
+    "svg": "structures/7-4-hydroxy-3-methoxyphenyl-1-phenylhept-4-en-3-one.svg"
+  },
+  {
+    "id": "ligustrazine",
+    "name": "Ligustrazine",
+    "aliases": [],
+    "match_names": [
+      "Ligustrazine",
+      "Tetramethylpyrazine"
+    ],
+    "smiles": "Cc1nc(C)c(C)nc1C",
+    "inchikey": "FINHMKGKINIASC-UHFFFAOYSA-N",
+    "pubchem_cid": 14296,
+    "class": "生物鹼",
+    "svg": "structures/ligustrazine.svg"
+  },
+  {
+    "id": "ligustilide",
+    "name": "Ligustilide",
+    "aliases": [],
+    "match_names": [
+      "Ligustilide"
+    ],
+    "smiles": "CCC/C=C1\\OC(=O)C2=C1CCC=C2",
+    "inchikey": "IQVQXVFMNOFTMU-FLIBITNWSA-N",
+    "pubchem_cid": 5319022,
+    "class": "Phthalides",
+    "svg": "structures/ligustilide.svg"
+  },
+  {
+    "id": "dehydrocorydaline",
+    "name": "Dehydrocorydaline",
+    "aliases": [],
+    "match_names": [
+      "Dehydrocorydaline"
+    ],
+    "smiles": "COc1cc2c(cc1OC)-c1c(C)c3ccc(OC)c(OC)c3c[n+]1CC2",
+    "inchikey": "RFKQJTRWODZPHF-UHFFFAOYSA-N",
+    "pubchem_cid": 34781,
+    "class": "Protoberberine類生物鹼",
+    "svg": "structures/dehydrocorydaline.svg"
+  },
+  {
+    "id": "d-corydaline",
+    "name": "d-Corydaline",
+    "aliases": [],
+    "match_names": [
+      "d-Corydaline"
+    ],
+    "smiles": "COc1cc2c(cc1OC)[C@H]1[C@@H](C)c3ccc(OC)c(OC)c3CN1CC2",
+    "inchikey": "VRSRXLJTYQVOHC-YEJXKQKISA-N",
+    "pubchem_cid": 101301,
+    "class": "Protoberberine類生物鹼",
+    "svg": "structures/d-corydaline.svg"
+  },
+  {
+    "id": "l-tetrahydropalmatine",
+    "name": "l-Tetrahydropalmatine",
+    "aliases": [],
+    "match_names": [
+      "l-Tetrahydropalmatine"
+    ],
+    "smiles": "COc1cc2c(cc1OC)[C@H]1Cc3ccc(OC)c(OC)c3CN1CC2",
+    "inchikey": "AEQDJSLRWYMAQI-QGZVFWFLSA-N",
+    "pubchem_cid": 969488,
+    "class": "Protoberberine類生物鹼",
+    "svg": "structures/l-tetrahydropalmatine.svg"
+  },
+  {
+    "id": "boswellic-acid",
+    "name": "boswellic acid",
+    "aliases": [],
+    "match_names": [
+      "boswellic acid"
+    ],
+    "smiles": "CC1(C)CC[C@]2(C)CC[C@]3(C)C(=CC[C@@H]4[C@@]5(C)CC[C@@H](O)[C@](C)(C(=O)O)[C@@H]5CC[C@]43C)[C@@H]2C1",
+    "inchikey": "BZXULBWGROURAF-IKNLXHIFSA-N",
+    "pubchem_cid": 637234,
+    "class": "",
+    "svg": "structures/boswellic-acid.svg"
+  },
+  {
+    "id": "turmerone",
+    "name": "α-turmerone",
+    "aliases": [],
+    "match_names": [
+      "α-turmerone"
+    ],
+    "smiles": "CC(C)=CC(=O)CC(C)C1C=CC(C)=CC1",
+    "inchikey": "XOCANRBEOZQNAQ-UHFFFAOYSA-N",
+    "pubchem_cid": 14632996,
+    "class": "揮發油",
+    "svg": "structures/turmerone.svg"
+  },
+  {
+    "id": "tanshinone",
+    "name": "Tanshinone",
+    "aliases": [],
+    "match_names": [
+      "Tanshinone"
+    ],
+    "smiles": "Cc1coc2c1C(=O)C(=O)c1c-2ccc2c(C)cccc12",
+    "inchikey": "AIGAZQPHXLWMOJ-UHFFFAOYSA-N",
+    "pubchem_cid": 114917,
+    "class": "Diterpenoid",
+    "svg": "structures/tanshinone.svg"
+  },
+  {
+    "id": "carthamidin",
+    "name": "Carthamidin",
+    "aliases": [],
+    "match_names": [
+      "Carthamidin",
+      "Carthamin"
+    ],
+    "smiles": "O=C1C[C@@H](c2ccc(O)cc2)Oc2cc(O)c(O)c(O)c21",
+    "inchikey": "NPLTVGMLNDMOQE-NSHDSACASA-N",
+    "pubchem_cid": 188308,
+    "class": "黃色素與類黃酮苷",
+    "svg": "structures/carthamidin.svg"
+  },
+  {
+    "id": "amygdalin-2",
+    "name": "Amygdalin",
+    "aliases": [],
+    "match_names": [
+      "Amygdalin"
+    ],
+    "smiles": "N#CC(OC1OC(COC2OC(CO)C(O)C(O)C2O)C(O)C(O)C1O)c1ccccc1",
+    "inchikey": "XUCIJNAGGSZNQT-UHFFFAOYSA-N",
+    "pubchem_cid": 2180,
+    "class": "Cyanogenic glycosides",
+    "svg": "structures/amygdalin-2.svg"
+  },
+  {
+    "id": "stachydrine",
+    "name": "Stachydrine",
+    "aliases": [],
+    "match_names": [
+      "Stachydrine"
+    ],
+    "smiles": "C[N+]1(C)CCC[C@H]1C(=O)[O-]",
+    "inchikey": "CMUNUTVVOOHQPW-LURJTMIESA-N",
+    "pubchem_cid": 115244,
+    "class": "生物鹼",
+    "svg": "structures/stachydrine.svg"
+  },
+  {
+    "id": "leonurine",
+    "name": "Leonurine",
+    "aliases": [],
+    "match_names": [
+      "Leonurine"
+    ],
+    "smiles": "COc1cc(C(=O)OCCCCN=C(N)N)cc(OC)c1O",
+    "inchikey": "WNGSUWLDMZFYNZ-UHFFFAOYSA-N",
+    "pubchem_cid": 161464,
+    "class": "生物鹼",
+    "svg": "structures/leonurine.svg"
+  },
+  {
+    "id": "dracorhodin",
+    "name": "Dracorhodin",
+    "aliases": [],
+    "match_names": [
+      "Dracorhodin"
+    ],
+    "smiles": "COc1c2ccc(-c3ccccc3)oc-2cc(=O)c1C",
+    "inchikey": "UCZJPQIEFFTIEV-UHFFFAOYSA-N",
+    "pubchem_cid": 69509,
+    "class": "黃酮類",
+    "svg": "structures/dracorhodin.svg"
+  },
+  {
+    "id": "dracorubin",
+    "name": "Dracorubin",
+    "aliases": [],
+    "match_names": [
+      "Dracorubin"
+    ],
+    "smiles": "COc1cc2oc3c(C)c(=O)cc4oc(-c5ccccc5)cc(c2c2c1CC[C@@H](c1ccccc1)O2)c43",
+    "inchikey": "FWKBXSPDFCAHFN-DEOSSOPVSA-N",
+    "pubchem_cid": 160270,
+    "class": "黃酮類",
+    "svg": "structures/dracorubin.svg"
+  },
+  {
+    "id": "dencichine",
+    "name": "Dencichine",
+    "aliases": [],
+    "match_names": [
+      "Dencichine"
+    ],
+    "smiles": "N[C@@H](CNC(=O)C(=O)O)C(=O)O",
+    "inchikey": "NEEQFPMRODQIKX-REOHCLBHSA-N",
+    "pubchem_cid": 440259,
+    "class": "特殊胺基酸",
+    "svg": "structures/dencichine.svg"
+  },
+  {
+    "id": "d-trans-carveol",
+    "name": "d-trans-carveol",
+    "aliases": [],
+    "match_names": [
+      "d-trans-carveol"
+    ],
+    "smiles": "C=C(C)[C@@H]1CC=C(C)[C@@H](O)C1",
+    "inchikey": "BAVONGHXFVOKBV-ZJUUUORDSA-N",
+    "pubchem_cid": 94221,
+    "class": "單萜揮發油",
+    "svg": "structures/d-trans-carveol.svg"
+  },
+  {
+    "id": "eupatilin",
+    "name": "Eupatilin",
+    "aliases": [],
+    "match_names": [
+      "Eupatilin"
+    ],
+    "smiles": "COc1ccc(-c2cc(=O)c3c(O)c(OC)c(O)cc3o2)cc1OC",
+    "inchikey": "DRRWBCNQOKKKOL-UHFFFAOYSA-N",
+    "pubchem_cid": 5273755,
+    "class": "黃酮類",
+    "svg": "structures/eupatilin.svg"
+  },
+  {
+    "id": "rhynchophylline",
+    "name": "Rhynchophylline",
+    "aliases": [],
+    "match_names": [
+      "Rhynchophylline"
+    ],
+    "smiles": "CC[C@H]1CN2CC[C@]3(C(=O)Nc4ccccc43)[C@@H]2C[C@@H]1/C(=C\\OC)C(=O)OC",
+    "inchikey": "DAXYUDFNWXHGBE-KAXDATADSA-N",
+    "pubchem_cid": 5281408,
+    "class": "Indole生物鹼",
+    "svg": "structures/rhynchophylline.svg"
+  },
+  {
+    "id": "o-vanillin",
+    "name": "o-Vanillin",
+    "aliases": [],
+    "match_names": [
+      "o-Vanillin",
+      "Vanillin"
+    ],
+    "smiles": "[3H]C(=O)c1cccc(OC)c1O",
+    "inchikey": "JJVNINGBHGBWJH-XHHURNKPSA-N",
+    "pubchem_cid": 8991,
+    "class": "醛類",
+    "svg": "structures/o-vanillin.svg"
+  },
+  {
+    "id": "perlolyrine",
+    "name": "Perlolyrine",
+    "aliases": [],
+    "match_names": [
+      "Perlolyrine"
+    ],
+    "smiles": "OCc1ccc(-c2nccc3c2[nH]c2ccccc23)o1",
+    "inchikey": "KFUCYPGCMLPUMT-UHFFFAOYSA-N",
+    "pubchem_cid": 160179,
+    "class": "生物鹼",
+    "svg": "structures/perlolyrine.svg"
+  },
+  {
+    "id": "n-butyl-allophanate",
+    "name": "n-Butyl allophanate",
+    "aliases": [],
+    "match_names": [
+      "n-Butyl allophanate"
+    ],
+    "smiles": "CCCCOC(=O)NC(N)=O",
+    "inchikey": "RNXRXBFLIGLDTC-UHFFFAOYSA-N",
+    "pubchem_cid": 5315565,
+    "class": "生物鹼",
+    "svg": "structures/n-butyl-allophanate.svg"
+  },
+  {
+    "id": "dioscin",
+    "name": "Dioscin",
+    "aliases": [],
+    "match_names": [
+      "Dioscin"
+    ],
+    "smiles": "C[C@@H]1CC[C@@]2(OC1)O[C@H]1C[C@H]3[C@@H]4CC=C5C[C@@H](O[C@@H]6O[C@H](CO)[C@@H](O[C@@H]7O[C@@H](C)[C@H](O)[C@@H](O)[C@H]7O)[C@H](O)[C@H]6O[C@@H]6O[C@@H](C)[C@H](O)[C@@H](O)[C@H]6O)CC[C@]5(C)[C@H]4CC[C@]3(C)[C@H]1[C@@H]2C",
+    "inchikey": "VNONINPVFQTJOC-ZGXDEBHDSA-N",
+    "pubchem_cid": 119245,
+    "class": "固醇類皂苷",
+    "svg": "structures/dioscin.svg"
+  },
+  {
+    "id": "ferulic-acid",
+    "name": "Ferulic acid",
+    "aliases": [],
+    "match_names": [
+      "Ferulic acid"
+    ],
+    "smiles": "COc1cc(/C=C/C(=O)O)ccc1O",
+    "inchikey": "KSEBMYQBYZTDHS-HWKANZROSA-N",
+    "pubchem_cid": 445858,
+    "class": "苯丙烷類",
+    "svg": "structures/ferulic-acid.svg"
+  },
+  {
+    "id": "z-butylidenephthalide",
+    "name": "(Z)-Butylidenephthalide",
+    "aliases": [],
+    "match_names": [
+      "(Z)-Butylidenephthalide",
+      "Butylidene phthalide"
+    ],
+    "smiles": "CCC/C=C1\\OC(=O)c2ccccc21",
+    "inchikey": "WMBOCUXXNSOQHM-FLIBITNWSA-N",
+    "pubchem_cid": 642376,
+    "class": "揮發油",
+    "svg": "structures/z-butylidenephthalide.svg"
+  },
+  {
+    "id": "rehmannioside-d",
+    "name": "Rehmannioside D",
+    "aliases": [],
+    "match_names": [
+      "Rehmannioside D"
+    ],
+    "smiles": "OCC1=C[C@@H](O)[C@]2(O[C@@H]3O[C@H](CO)[C@@H](O)[C@H](O)[C@H]3O[C@@H]3O[C@H](CO)[C@@H](O)[C@H](O)[C@H]3O)C=CO[C@@H](O[C@@H]3O[C@H](CO)[C@@H](O)[C@H](O)[C@H]3O)[C@H]12",
+    "inchikey": "JQEFRKPLHFKTFL-SNQOEBIKSA-N",
+    "pubchem_cid": 92044472,
+    "class": "Iridoid glycoside",
+    "svg": "structures/rehmannioside-d.svg"
+  },
+  {
+    "id": "resveratrol",
+    "name": "Resveratrol",
+    "aliases": [],
+    "match_names": [
+      "Resveratrol"
+    ],
+    "smiles": "Oc1ccc(C=Cc2cc(O)cc(O)c2)cc1",
+    "inchikey": "LUKBXSAWLPMMSZ-UHFFFAOYSA-N",
+    "pubchem_cid": 5056,
+    "class": "Stilbene",
+    "svg": "structures/resveratrol.svg"
+  },
+  {
+    "id": "chrysophanol",
+    "name": "Chrysophanol",
+    "aliases": [],
+    "match_names": [
+      "Chrysophanol"
+    ],
+    "smiles": "Cc1cc(O)c2c(c1)C(=O)c1cccc(O)c1C2=O",
+    "inchikey": "LQGUBLBATBMXHT-UHFFFAOYSA-N",
+    "pubchem_cid": 10208,
+    "class": "Anthraquinones",
+    "svg": "structures/chrysophanol.svg"
+  },
+  {
+    "id": "butylidene-phthalide",
+    "name": "Butylidene phthalide",
+    "aliases": [],
+    "match_names": [
+      "Butylidene phthalide"
+    ],
+    "smiles": "CCC/C=C1/OC(=O)c2ccccc21",
+    "inchikey": "WMBOCUXXNSOQHM-DHZHZOJOSA-N",
+    "pubchem_cid": 5352899,
+    "class": "揮發油",
+    "svg": "structures/butylidene-phthalide.svg"
+  },
+  {
+    "id": "l-asparagine",
+    "name": "L-Asparagine",
+    "aliases": [],
+    "match_names": [
+      "L-Asparagine"
+    ],
+    "smiles": "NC(=O)C[C@H](N)C(=O)O",
+    "inchikey": "DCXYFEDJOCDNAF-REOHCLBHSA-N",
+    "pubchem_cid": 6267,
+    "class": "胺基酸",
+    "svg": "structures/l-asparagine.svg"
+  },
+  {
+    "id": "mangiferin",
+    "name": "Mangiferin",
+    "aliases": [],
+    "match_names": [
+      "Mangiferin"
+    ],
+    "smiles": "O=c1c2cc(O)c(O)cc2oc2cc(O)c([C@@H]3O[C@H](CO)[C@@H](O)[C@H](O)[C@H]3O)c(O)c12",
+    "inchikey": "AEDDIBAIWPIIBD-ZJKJAXBQSA-N",
+    "pubchem_cid": 5281647,
+    "class": "Xanthone C-glycoside",
+    "svg": "structures/mangiferin.svg"
+  },
+  {
+    "id": "denbinobin",
+    "name": "Denbinobin",
+    "aliases": [],
+    "match_names": [
+      "Denbinobin"
+    ],
+    "smiles": "COC1=CC(=O)c2ccc3cc(OC)cc(O)c3c2C1=O",
+    "inchikey": "KYOONHCJRPIMJE-UHFFFAOYSA-N",
+    "pubchem_cid": 10423984,
+    "class": "Phenanthrenes",
+    "svg": "structures/denbinobin.svg"
+  },
+  {
+    "id": "moscatin",
+    "name": "Moscatin",
+    "aliases": [],
+    "match_names": [
+      "Moscatin"
+    ],
+    "smiles": "COc1cc(O)cc2ccc3cccc(O)c3c12",
+    "inchikey": "LVOCAIKGDCMNNK-UHFFFAOYSA-N",
+    "pubchem_cid": 194774,
+    "class": "Phenanthrenes",
+    "svg": "structures/moscatin.svg"
+  },
+  {
+    "id": "zeaxanthin",
+    "name": "Zeaxanthin",
+    "aliases": [],
+    "match_names": [
+      "Zeaxanthin"
+    ],
+    "smiles": "CC1=C(/C=C/C(C)=C/C=C/C(C)=C/C=C/C=C(C)/C=C/C=C(C)/C=C/C2=C(C)C[C@@H](O)CC2(C)C)C(C)(C)C[C@H](O)C1",
+    "inchikey": "JKQXZKUSFCKOGQ-QAYBQHTQSA-N",
+    "pubchem_cid": 5280899,
+    "class": "色素",
+    "svg": "structures/zeaxanthin.svg"
+  },
+  {
+    "id": "oleuropein",
+    "name": "Oleuropein",
+    "aliases": [],
+    "match_names": [
+      "Oleuropein"
+    ],
+    "smiles": "C/C=C1/[C@H](O[C@@H]2O[C@H](CO)[C@@H](O)[C@H](O)[C@H]2O)OC=C(C(=O)OC)[C@H]1CC(=O)OCCc1ccc(O)c(O)c1",
+    "inchikey": "RFWGABANNQMHMZ-ZCHJGGQASA-N",
+    "pubchem_cid": 5281544,
+    "class": "Iridoid glycoside",
+    "svg": "structures/oleuropein.svg"
+  },
+  {
+    "id": "ligustroside",
+    "name": "Ligustroside",
+    "aliases": [],
+    "match_names": [
+      "Ligustroside"
+    ],
+    "smiles": "C/C=C1/[C@H](O[C@@H]2O[C@H](CO)[C@@H](O)[C@H](O)[C@H]2O)OC=C(C(=O)OC)[C@H]1CC(=O)OCCc1ccc(O)cc1",
+    "inchikey": "GMQXOLRKJQWPNB-MVVLSVRYSA-N",
+    "pubchem_cid": 14136859,
+    "class": "Iridoid glycoside",
+    "svg": "structures/ligustroside.svg"
+  },
+  {
+    "id": "oleanolic-acid",
+    "name": "Oleanolic acid",
+    "aliases": [],
+    "match_names": [
+      "Oleanolic acid"
+    ],
+    "smiles": "CC1(C)CC[C@]2(C(=O)O)CC[C@]3(C)C(=CC[C@@H]4[C@@]5(C)CC[C@H](O)C(C)(C)[C@@H]5CC[C@]43C)[C@@H]2C1",
+    "inchikey": "MIJYXULNPSFWEK-GTOFXWBISA-N",
+    "pubchem_cid": 10494,
+    "class": "皂素",
+    "svg": "structures/oleanolic-acid.svg"
+  },
+  {
+    "id": "rubiadin",
+    "name": "Rubiadin",
+    "aliases": [],
+    "match_names": [
+      "Rubiadin"
+    ],
+    "smiles": "Cc1c(O)cc2c(c1O)C(=O)c1ccccc1C2=O",
+    "inchikey": "IRZTUXPRIUZXMP-UHFFFAOYSA-N",
+    "pubchem_cid": 124062,
+    "class": "Anthraquinone",
+    "svg": "structures/rubiadin.svg"
+  },
+  {
+    "id": "reptoside",
+    "name": "Reptoside",
+    "aliases": [],
+    "match_names": [
+      "Reptoside"
+    ],
+    "smiles": "CC(=O)O[C@@]1(C)CC[C@]2(O)C=CO[C@@H](O[C@@H]3O[C@H](CO)[C@@H](O)[C@H](O)[C@H]3O)[C@@H]21",
+    "inchikey": "BZSUBLJAJWNODC-JKWMHSRGSA-N",
+    "pubchem_cid": 44584096,
+    "class": "Iridoid glycoside",
+    "svg": "structures/reptoside.svg"
+  },
+  {
+    "id": "aucubin",
+    "name": "Aucubin",
+    "aliases": [],
+    "match_names": [
+      "Aucubin"
+    ],
+    "smiles": "OCC1=C[C@@H](O)[C@@H]2C=CO[C@@H](O[C@@H]3O[C@H](CO)[C@@H](O)[C@H](O)[C@H]3O)[C@H]12",
+    "inchikey": "RJWJHRPNHPHBRN-FKVJWERZSA-N",
+    "pubchem_cid": 91458,
+    "class": "Iridoid glycoside",
+    "svg": "structures/aucubin.svg"
+  },
+  {
+    "id": "pinoresinol-diglucoside",
+    "name": "Pinoresinol diglucoside",
+    "aliases": [],
+    "match_names": [
+      "Pinoresinol diglucoside"
+    ],
+    "smiles": "COc1cc([C@H]2OC[C@H]3[C@@H]2CO[C@@H]3c2ccc(O[C@@H]3O[C@H](CO)[C@@H](O)[C@H](O)[C@H]3O)c(OC)c2)ccc1O[C@@H]1O[C@H](CO)[C@@H](O)[C@H](O)[C@H]1O",
+    "inchikey": "ZJSJQWDXAYNLNS-FUPWJLLWSA-N",
+    "pubchem_cid": 174003,
+    "class": "Lignan glycoside",
+    "svg": "structures/pinoresinol-diglucoside.svg"
+  },
+  {
+    "id": "cantleyine",
+    "name": "Cantleyine",
+    "aliases": [],
+    "match_names": [
+      "Cantleyine"
+    ],
+    "smiles": "COC(=O)c1cncc2c1C[C@H](O)[C@@H]2C",
+    "inchikey": "MJGLQDXKEOEIFB-LDWIPMOCSA-N",
+    "pubchem_cid": 442515,
+    "class": "生物鹼",
+    "svg": "structures/cantleyine.svg"
+  },
+  {
+    "id": "isobavachalcone",
+    "name": "Isobavachalcone",
+    "aliases": [],
+    "match_names": [
+      "Isobavachalcone"
+    ],
+    "smiles": "CC(C)=CCc1c(O)ccc(C(=O)/C=C/c2ccc(O)cc2)c1O",
+    "inchikey": "DUWPGRAKHMEPCM-IZZDOVSWSA-N",
+    "pubchem_cid": 5281255,
+    "class": "Chalcones",
+    "svg": "structures/isobavachalcone.svg"
+  },
+  {
+    "id": "angelicin",
+    "name": "Angelicin",
+    "aliases": [],
+    "match_names": [
+      "Angelicin"
+    ],
+    "smiles": "O=c1ccc2ccc3occc3c2o1",
+    "inchikey": "XDROKJSWHURZGO-UHFFFAOYSA-N",
+    "pubchem_cid": 10658,
+    "class": "Furocoumarin",
+    "svg": "structures/angelicin.svg"
+  },
+  {
+    "id": "psoralen",
+    "name": "Psoralen",
+    "aliases": [],
+    "match_names": [
+      "Psoralen"
+    ],
+    "smiles": "O=c1ccc2cc3ccoc3cc2o1",
+    "inchikey": "ZCCUUQDIBDJBTK-UHFFFAOYSA-N",
+    "pubchem_cid": 6199,
+    "class": "Furocoumarin及其皂苷",
+    "svg": "structures/psoralen.svg"
+  },
+  {
+    "id": "bakuchiol",
+    "name": "Bakuchiol",
+    "aliases": [],
+    "match_names": [
+      "Bakuchiol",
+      "類A醇"
+    ],
+    "smiles": "C=C[C@@](C)(/C=C/c1ccc(O)cc1)CCC=C(C)C",
+    "inchikey": "LFYJSSARVMHQJB-QIXNEVBVSA-N",
+    "pubchem_cid": 5468522,
+    "class": "單萜酚類",
+    "svg": "structures/bakuchiol.svg"
+  },
+  {
+    "id": "bavachin",
+    "name": "Bavachin",
+    "aliases": [],
+    "match_names": [
+      "Bavachin"
+    ],
+    "smiles": "CC(C)=CCc1cc2c(cc1O)O[C@H](c1ccc(O)cc1)CC2=O",
+    "inchikey": "OAUREGNZECGNQS-IBGZPJMESA-N",
+    "pubchem_cid": 14236566,
+    "class": "黃酮類",
+    "svg": "structures/bavachin.svg"
+  },
+  {
+    "id": "ononin",
+    "name": "Ononin",
+    "aliases": [],
+    "match_names": [
+      "Ononin"
+    ],
+    "smiles": "COc1ccc(-c2coc3cc(O[C@@H]4OC(CO)[C@H](O)C(O)C4O)ccc3c2=O)cc1",
+    "inchikey": "MGJLSBDCWOSMHL-ZSMJSOSDSA-N",
+    "pubchem_cid": 3733033,
+    "class": "異黃酮類",
+    "svg": "structures/ononin.svg"
+  },
+  {
+    "id": "calycosin",
+    "name": "Calycosin",
+    "aliases": [],
+    "match_names": [
+      "Calycosin"
+    ],
+    "smiles": "COc1ccc(-c2coc3cc(O)ccc3c2=O)cc1O",
+    "inchikey": "ZZAJQOPSWWVMBI-UHFFFAOYSA-N",
+    "pubchem_cid": 5280448,
+    "class": "黃酮類",
+    "svg": "structures/calycosin.svg"
+  },
+  {
+    "id": "3h-arachidonic-acid",
+    "name": "[3h]-arachidonic acid",
+    "aliases": [],
+    "match_names": [
+      "[3h]-arachidonic acid",
+      "Arachidonic acid"
+    ],
+    "smiles": "CCCCCC=CCC=CCC=CCC=CCCCC(=O)O",
+    "inchikey": "YZXBAPSDXZZRGB-UHFFFAOYSA-N",
+    "pubchem_cid": 231,
+    "class": "脂肪油",
+    "svg": "structures/3h-arachidonic-acid.svg"
+  },
+  {
+    "id": "liensinine",
+    "name": "Liensinine",
+    "aliases": [],
+    "match_names": [
+      "Liensinine"
+    ],
+    "smiles": "COc1cc2c(cc1OC)[C@@H](Cc1ccc(O)c(Oc3cc4c(cc3OC)CCN(C)[C@@H]4Cc3ccc(O)cc3)c1)N(C)CC2",
+    "inchikey": "XCUCMLUTCAKSOZ-FIRIVFDPSA-N",
+    "pubchem_cid": 160644,
+    "class": "生物鹼（蓮子心）",
+    "svg": "structures/liensinine.svg"
+  },
+  {
+    "id": "gallic-acid",
+    "name": "Gallic acid",
+    "aliases": [],
+    "match_names": [
+      "Gallic acid"
+    ],
+    "smiles": "O=C(O)c1cc(O)c(O)c(O)c1",
+    "inchikey": "LNTHITQWFMADLM-UHFFFAOYSA-N",
+    "pubchem_cid": 370,
+    "class": "Phenolics",
+    "svg": "structures/gallic-acid.svg"
+  },
+  {
+    "id": "schisandrin",
+    "name": "Schisandrin",
+    "aliases": [],
+    "match_names": [
+      "Schisandrin",
+      "Schizandrin"
+    ],
+    "smiles": "COc1cc2c(c(OC)c1OC)-c1c(cc(OC)c(OC)c1OC)C[C@](C)(O)[C@@H](C)C2",
+    "inchikey": "YEFOAORQXAOVJQ-RZFZLAGVSA-N",
+    "pubchem_cid": 3001664,
+    "class": "Dibenzocyclooctadiene lignan",
+    "svg": "structures/schisandrin.svg"
+  }
+]
