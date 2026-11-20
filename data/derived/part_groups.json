@@ -1,24 +1,27 @@
 {
- "status": "草稿，待人工審核",
- "note": "由關鍵字規則自動草擬。每筆 mapping 的 key 是 herbs.json 裡 part_used 的原文；groups 是篩選用分組；review 為 true 代表寫法複雜、特別需要你確認。herbs 欄只是方便你對照，網站不使用。",
+ "status": "已審核",
+ "note": "已完成人工審核。每筆 mapping 的 key 是 herbs.json 裡 part_used 的原文；groups 是篩選用分組；herbs 欄只是方便對照，網站不使用。",
  "groups": [
   "根",
   "根莖",
   "皮",
+  "根皮",
   "莖",
   "葉",
   "花",
   "果實",
+  "果皮",
   "種子",
   "全草",
   "菌核",
+  "樹脂／木類",
+  "動物類",
   "其他"
  ],
  "mapping": {
   "草質莖地上部": {
    "groups": [
-    "莖",
-    "全草"
+    "莖"
    ],
    "review": false,
    "herbs": [
@@ -102,7 +105,7 @@
     "花",
     "全草"
    ],
-   "review": true,
+   "review": false,
    "herbs": [
     "荊芥"
    ]
@@ -111,7 +114,7 @@
    "groups": [
     "葉"
    ],
-   "review": true,
+   "review": false,
    "herbs": [
     "紫蘇葉"
    ]
@@ -207,9 +210,9 @@
   },
   "成熟種子加工發酵": {
    "groups": [
-    "種子"
+    "其他"
    ],
-   "review": true,
+   "review": false,
    "herbs": [
     "淡豆豉"
    ]
@@ -228,7 +231,7 @@
     "莖",
     "果實"
    ],
-   "review": true,
+   "review": false,
    "herbs": [
     "皂莢／皂角刺"
    ]
@@ -246,7 +249,7 @@
    "groups": [
     "莖"
    ],
-   "review": true,
+   "review": false,
    "herbs": [
     "竹茹"
    ]
@@ -264,7 +267,7 @@
    "groups": [
     "其他"
    ],
-   "review": true,
+   "review": false,
    "herbs": [
     "昆布"
    ]
@@ -359,16 +362,17 @@
     "莖",
     "葉"
    ],
-   "review": true,
+   "review": false,
    "herbs": [
     "淡竹葉"
    ]
   },
   "乾燥花序或果穗": {
    "groups": [
-    "花"
+    "花",
+    "果實"
    ],
-   "review": true,
+   "review": false,
    "herbs": [
     "夏枯草"
    ]
@@ -508,7 +512,7 @@
   },
   "乾燥成熟果皮": {
    "groups": [
-    "果實"
+    "果皮"
    ],
    "review": false,
    "herbs": [
@@ -517,9 +521,9 @@
   },
   "木部，有多量黑棕色樹脂的心材": {
    "groups": [
-    "其他"
+    "樹脂／木類"
    ],
-   "review": true,
+   "review": false,
    "herbs": [
     "沉香"
    ]
@@ -528,7 +532,7 @@
    "groups": [
     "其他"
    ],
-   "review": true,
+   "review": false,
    "herbs": [
     "神麴"
    ]
@@ -537,7 +541,7 @@
    "groups": [
     "其他"
    ],
-   "review": true,
+   "review": false,
    "herbs": [
     "麥芽"
    ]
@@ -546,7 +550,7 @@
    "groups": [
     "其他"
    ],
-   "review": true,
+   "review": false,
    "herbs": [
     "穀芽"
    ]
@@ -555,7 +559,7 @@
    "groups": [
     "其他"
    ],
-   "review": true,
+   "review": false,
    "herbs": [
     "蘆薈"
    ]
@@ -564,7 +568,7 @@
    "groups": [
     "根"
    ],
-   "review": true,
+   "review": false,
    "herbs": [
     "附子"
    ]
@@ -574,7 +578,7 @@
     "根",
     "根莖"
    ],
-   "review": true,
+   "review": false,
    "herbs": [
     "細辛"
    ]
@@ -583,7 +587,7 @@
    "groups": [
     "花"
    ],
-   "review": true,
+   "review": false,
    "herbs": [
     "丁香"
    ]
@@ -599,9 +603,9 @@
   },
   "樹皮部滲出的樹脂": {
    "groups": [
-    "其他"
+    "樹脂／木類"
    ],
-   "review": true,
+   "review": false,
    "herbs": [
     "乳香"
    ]
@@ -611,7 +615,7 @@
     "根",
     "根莖"
    ],
-   "review": true,
+   "review": false,
    "herbs": [
     "丹參"
    ]
@@ -620,7 +624,7 @@
    "groups": [
     "花"
    ],
-   "review": true,
+   "review": false,
    "herbs": [
     "紅花"
    ]
@@ -637,27 +641,27 @@
   },
   "乾燥心材": {
    "groups": [
-    "其他"
+    "樹脂／木類"
    ],
-   "review": true,
+   "review": false,
    "herbs": [
     "蘇木"
    ]
   },
   "果實滲出的紅色樹脂": {
    "groups": [
-    "其他"
+    "樹脂／木類"
    ],
-   "review": true,
+   "review": false,
    "herbs": [
     "血竭"
    ]
   },
   "乾燥全體": {
    "groups": [
-    "其他"
+    "動物類"
    ],
-   "review": true,
+   "review": false,
    "herbs": [
     "水蛭"
    ]
@@ -675,7 +679,7 @@
    "groups": [
     "花"
    ],
-   "review": true,
+   "review": false,
    "herbs": [
     "槐花"
    ]
@@ -709,9 +713,9 @@
   },
   "幼蟲未吐絲前，感染白殭菌而發病致死的乾燥體": {
    "groups": [
-    "其他"
+    "動物類"
    ],
-   "review": true,
+   "review": false,
    "herbs": [
     "白殭蠶"
    ]
@@ -731,7 +735,7 @@
    "groups": [
     "根"
    ],
-   "review": true,
+   "review": false,
    "herbs": [
     "地黃"
    ]
@@ -740,7 +744,7 @@
    "groups": [
     "根"
    ],
-   "review": true,
+   "review": false,
    "herbs": [
     "白芍"
    ]
@@ -756,9 +760,9 @@
   },
   "皮熬煮加工而成之塊膠": {
    "groups": [
-    "其他"
+    "動物類"
    ],
-   "review": true,
+   "review": false,
    "herbs": [
     "阿膠"
    ]
@@ -776,7 +780,7 @@
    "groups": [
     "莖"
    ],
-   "review": true,
+   "review": false,
    "herbs": [
     "石斛"
    ]
@@ -792,18 +796,18 @@
   },
   "烏龜的甲殼": {
    "groups": [
-    "其他"
+    "動物類"
    ],
-   "review": true,
+   "review": false,
    "herbs": [
     "龜板"
    ]
   },
   "雄鹿未骨化帶絨皮之幼角": {
    "groups": [
-    "其他"
+    "動物類"
    ],
-   "review": true,
+   "review": false,
    "herbs": [
     "鹿茸"
    ]
@@ -828,10 +832,9 @@
   },
   "乾燥葉（過去使用地上部 - Herba）": {
    "groups": [
-    "葉",
-    "全草"
+    "葉"
    ],
-   "review": true,
+   "review": false,
    "herbs": [
     "淫羊藿"
    ]
@@ -849,7 +852,7 @@
    "groups": [
     "其他"
    ],
-   "review": true,
+   "review": false,
    "herbs": [
     "冬蟲夏草"
    ]
@@ -875,10 +878,9 @@
   },
   "根（主要成分在根皮）": {
    "groups": [
-    "根",
-    "皮"
+    "根皮"
    ],
-   "review": true,
+   "review": false,
    "herbs": [
     "遠志"
    ]
@@ -905,7 +907,7 @@
    "groups": [
     "果實"
    ],
-   "review": true,
+   "review": false,
    "herbs": [
     "五味子"
    ]
