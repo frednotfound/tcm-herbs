@@ -11,6 +11,74 @@ const RELATIONS = [
   ['xiang_xu', '相須'], ['shi', '相使'], ['wei', '相畏'], ['wu', '相惡'], ['fan', '相反'], ['sha', '相殺'],
 ];
 
+// ===== 化學結構圖：讀 data/compounds.json，SVG 放在 structures/ =====
+// 檔案不存在或載入失敗時靜默略過，網站維持原樣。
+let structPromise = null;
+const normName = (s) => String(s || '').toLowerCase().replace(/[\s\u3000_\-‐‑–—'’′`"]/g, '');
+
+function loadStructures() {
+  if (!structPromise) {
+    structPromise = fetch('data/compounds.json')
+      .then(r => (r.ok ? r.json() : []))
+      .catch(() => [])
+      .then(list => {
+        const idx = new Map();
+        for (const c of Array.isArray(list) ? list : []) {
+          const keys = new Set([c.name, ...(c.aliases || []), ...(c.match_names || [])].map(normName).filter(Boolean));
+          for (const k of keys) { if (!idx.has(k)) idx.set(k, []); idx.get(k).push(c); }
+        }
+        return idx;
+      });
+  }
+  return structPromise;
+}
+
+function structuresFor(idx, comp) {
+  const found = new Map();
+  for (const key of [comp.name, ...(comp.aliases || [])].map(normName)) {
+    for (const c of idx.get(key) || []) found.set(c.id, c);
+  }
+  return [...found.values()];
+}
+
+function ensureStructStyle() {
+  if (document.getElementById('struct-style')) return;
+  const st = document.createElement('style');
+  st.id = 'struct-style';
+  st.textContent = `
+.struct-row{display:flex;flex-wrap:wrap;gap:.5rem;margin:.4rem 0 .2rem}
+.struct-thumb{display:block;background:#fff;border:1px solid rgba(128,128,128,.35);border-radius:8px;padding:4px;cursor:zoom-in}
+.struct-thumb img{display:block;width:150px;height:120px;object-fit:contain}
+.struct-dialog{max-width:min(92vw,560px);width:100%;border:1px solid rgba(128,128,128,.4);border-radius:12px;padding:1rem;background:var(--card,Canvas);color:inherit}
+.struct-dialog::backdrop{background:rgba(0,0,0,.55)}
+.struct-dialog .sd-img{background:#fff;border-radius:8px;padding:8px;margin:.6rem 0}
+.struct-dialog .sd-img img{display:block;width:100%;max-height:60vh;object-fit:contain}
+.struct-dialog code{display:block;word-break:break-all;font-size:.8rem;margin:.4rem 0}
+.struct-dialog .sd-top{display:flex;justify-content:space-between;align-items:center;gap:.5rem}
+`;
+  document.head.append(st);
+}
+
+function openStructure(c) {
+  ensureStructStyle();
+  const dlg = h('dialog', { class: 'struct-dialog' },
+    h('div', { class: 'sd-top' }, h('strong', null, c.name),
+      h('button', { type: 'button', class: 'btn', onClick: () => dlg.close() }, '關閉')),
+    c.class ? h('div', { class: 'muted small' }, c.class) : null,
+    h('div', { class: 'sd-img' }, h('img', { src: c.svg, alt: `${c.name} 化學結構式` })),
+    c.smiles ? h('code', null, `SMILES：${c.smiles}`) : null,
+    c.pubchem_cid ? h('a', { href: `https://pubchem.ncbi.nlm.nih.gov/compound/${c.pubchem_cid}`, target: '_blank', rel: 'noopener' }, '在 PubChem 查看 ↗') : null);
+  dlg.addEventListener('click', (e) => { if (e.target === dlg) dlg.close(); });
+  dlg.addEventListener('close', () => dlg.remove());
+  document.body.append(dlg);
+  dlg.showModal();
+}
+
+function structThumb(c) {
+  return h('button', { type: 'button', class: 'struct-thumb', title: `${c.name}（點擊放大）`, onClick: () => openStructure(c) },
+    h('img', { src: c.svg, alt: `${c.name} 化學結構式`, loading: 'lazy' }));
+}
+
 function listLinks(names) {
   const out = [];
   names.forEach((n, i) => {
@@ -76,6 +144,7 @@ export function renderHerb(id) {
   // 4. 成分
   const cls = store.cls.byHerb.get(herb.id);
   const ingBody = [];
+  const structJobs = [];
   if (!herb.ingredients?.length) ingBody.push(empty('講義未列成分。'));
   (herb.ingredients || []).forEach((g, gi) => {
     const head = h('div', { class: 'ing-head' }, h('strong', null, g.category_raw || '（未分類）'), g.subgroup ? h('span', { class: 'muted' }, `　${g.subgroup}`) : null,
@@ -84,17 +153,35 @@ export function renderHerb(id) {
     const comps = (g.compounds || []).map((c, ci) => {
       const ids = cls.perCompound.get(`${gi}:${ci}`) || [];
       const nodeChips = ids.length ? ids.map(nid => chip(store.taxo.nodes.get(nid).label, { kind: 'tree', href: `#/ingredients/${encodeURIComponent(nid)}`, title: store.taxo.path(nid).join(' > ') })) : [chip('未歸類', { kind: 'unclassified', title: '成分分類樹尚未收錄這個名稱' })];
+      const structRow = h('div', { class: 'struct-row' });
+      structRow.hidden = true;
+      structJobs.push({ comp: c, row: structRow });
       return h('li', null,
         h('span', { class: 'compound' }, c.name),
         c.aliases?.length ? h('span', { class: 'muted' }, `（${c.aliases.join('、')}）`) : null,
         c.content_spec ? h('span', { class: 'spec' }, ` ${c.content_spec}`) : null,
         c.pharmacology?.length ? h('span', { class: 'pharm' }, ` ‧ ${c.pharmacology.join('、')}`) : null,
         c.note ? h('span', { class: 'muted' }, ` ‧ ${c.note}`) : null,
-        h('span', { class: 'chips inline' }, ...nodeChips));
+        h('span', { class: 'chips inline' }, ...nodeChips),
+        structRow);
     });
     ingBody.push(h('div', { class: 'ing-group' }, head, gp, comps.length ? h('ul', { class: 'compounds' }, comps) : h('p', { class: 'muted small' }, '（講義只列類別，未列化合物）')));
   });
-  ingBody.push(h('p', { class: 'muted small placeholder' }, herb.images?.length ? '' : '化學結構式：預留（第二階段以後提供）'));
+  const structNote = h('p', { class: 'muted small placeholder' }, herb.images?.length ? '' : '化學結構式：預留（第二階段以後提供）');
+  ingBody.push(structNote);
+  loadStructures().then(idx => {
+    if (!idx.size) return;
+    ensureStructStyle();
+    let hits = 0;
+    for (const { comp, row } of structJobs) {
+      const list = structuresFor(idx, comp);
+      if (!list.length) continue;
+      hits += list.length;
+      list.forEach(c => row.append(structThumb(c)));
+      row.hidden = false;
+    }
+    if (hits) structNote.textContent = `本頁已收錄 ${hits} 個化合物的結構式，點圖可放大。`;
+  });
   root.append(section('ingredients', '成分', ingBody, { count: herb.ingredients?.reduce((n, g) => n + (g.compounds?.length || 0), 0) || 0 }));
 
   // 5. 功效
