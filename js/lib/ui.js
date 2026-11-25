@@ -1,6 +1,7 @@
 import { h, highlight } from './dom.js';
 import { herbHref } from '../router.js';
 import { store } from '../data.js';
+import { isThp5OnlyHerb } from './derive.js';
 
 export function chip(text, opts = {}) {
   const { href, kind, onClick, title } = opts;
@@ -12,6 +13,11 @@ export function chip(text, opts = {}) {
 
 export function gradeChip(g) { return g ? chip(g, { kind: 'grade-' + (g === '上品' ? 'top' : g === '中品' ? 'mid' : 'low') }) : null; }
 export function ed3Mark(on) { return on ? h('span', { class: 'ed3', title: '常用中藥第三版修改', 'aria-label': '常用中藥第三版修改' }, '★3版') : null; }
+export function thp5OnlyMark(herb) {
+  return isThp5OnlyHerb(herb)
+    ? h('span', { class: 'thp5-badge', title: '僅出現在臺灣中藥典第五版', 'aria-label': '僅出現在臺灣中藥典第五版' }, '五版增補')
+    : null;
+}
 
 /** 藥名連結：能對應到 id 就連結，否則純文字（不報錯） */
 export function nameLink(name, id) {
