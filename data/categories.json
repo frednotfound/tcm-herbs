@@ -833,5 +833,400 @@
     "herb_ids": [
       "herb_shechuangzi"
     ]
+  },
+  {
+    "id": "cat_thp5_extra",
+    "category_path": "臺灣中藥典增補品項",
+    "title": "臺灣中藥典第五版增補品項",
+    "source_page": [],
+    "characteristics": [
+      "收載《臺灣中藥典第五版》單味中藥材中，未列入原 162 味國考講義之增補品項。",
+      "依臺灣中藥典第五版之「用途分類」自動歸類，供查詢法定基原、性味歸經、指標成分與雜質限量使用。"
+    ]
+  },
+  {
+    "id": "cat_thp5_extra_01",
+    "category_path": "臺灣中藥典增補品項>清熱藥",
+    "title": "清熱藥",
+    "source_page": [],
+    "characteristics": [
+      "臺灣中藥典第五版用途分類「清熱藥」增補品項（共 40 味）。"
+    ],
+    "herb_ids": [
+      "herb_thp5_smilacis_glabrae_rhizoma",
+      "herb_thp5_isatidis_folium",
+      "herb_thp5_lonicerae_flos",
+      "herb_thp5_semiaquilegiae_radix",
+      "herb_thp5_oroxyli_semen",
+      "herb_thp5_bovis_calculus",
+      "herb_thp5_scutellariae_barbatae_herba",
+      "herb_thp5_scleromitrionis_herba",
+      "herb_thp5_pulsatillae_radix",
+      "herb_thp5_vincetoxici_atrati_radix_et_rhizoma",
+      "herb_thp5_dictamni_cortex",
+      "herb_thp5_ampelopsis_radix",
+      "herb_thp5_gypsum_fibrosum",
+      "herb_thp5_lonicerae_japonicae_caulis",
+      "herb_thp5_cassiae_semen",
+      "herb_thp5_celosiae_semen",
+      "herb_thp5_indigo_naturalis",
+      "herb_thp5_strobilanthis_rhizoma_et_radix",
+      "herb_thp5_hoveniae_semen",
+      "herb_thp5_andrographis_herba",
+      "herb_thp5_neopicrorhizae_rhizoma",
+      "herb_thp5_abutili_semen",
+      "herb_thp5_helminthostachydis_radix_et_rhizoma",
+      "herb_thp5_fraxini_cortex",
+      "herb_thp5_portulacae_herba",
+      "herb_thp5_verbenae_herba",
+      "herb_thp5_buddlejae_flos",
+      "herb_thp5_dryopteridis_crassirhizomae_rhizoma",
+      "herb_thp5_houttuyniae_herba",
+      "herb_thp5_pogonatheri_herba",
+      "herb_thp5_violae_herba",
+      "herb_thp5_thlaspis_herba",
+      "herb_thp5_puerariae_flos",
+      "herb_thp5_rhapontici_radix",
+      "herb_thp5_pterisdis_multifidae_herba",
+      "herb_thp5_eriocauli_flos",
+      "herb_thp5_nelumbinis_plumula",
+      "herb_thp5_centellae_herba",
+      "herb_thp5_prinsepiae_nux",
+      "herb_thp5_abri_herba"
+    ]
+  },
+  {
+    "id": "cat_thp5_extra_02",
+    "category_path": "臺灣中藥典增補品項>祛濕藥",
+    "title": "祛濕藥",
+    "source_page": [],
+    "characteristics": [
+      "臺灣中藥典第五版用途分類「祛濕藥」增補品項（共 33 味）。"
+    ],
+    "herb_ids": [
+      "herb_thp5_homalomenae_rhizoma",
+      "herb_thp5_clematidis_caulis",
+      "herb_thp5_chaenomelis_fructus",
+      "herb_thp5_maydis_stylus_et_stigma",
+      "herb_thp5_wurfbainiae_fructus_rotundus",
+      "herb_thp5_pyrrosiae_folium",
+      "herb_thp5_bassiae_fructus",
+      "herb_thp5_lycopodii_herba",
+      "herb_thp5_vignae_semen",
+      "herb_thp5_plantaginis_herba",
+      "herb_thp5_stephaniae_tetrandrae_radix",
+      "herb_thp5_eupatorii_herba",
+      "herb_thp5_lysimachiae_herba",
+      "herb_thp5_mori_ramulus",
+      "herb_thp5_lygodii_spora",
+      "herb_thp5_poria_rubra",
+      "herb_thp5_poriae_cutis",
+      "herb_thp5_artemisiae_herba",
+      "herb_thp5_alpiniae_hainanensis_semen",
+      "herb_thp5_tsaoko_fructus",
+      "herb_thp5_strychnotis_semen",
+      "herb_thp5_tetrapanacis_medulla",
+      "herb_thp5_pyrolae_herba",
+      "herb_thp5_trachelospermi_caulis_cum_folium",
+      "herb_thp5_talcum_kaolinum",
+      "herb_thp5_liquidambaris_fructus",
+      "herb_thp5_sigesbeckiae_herba",
+      "herb_thp5_desmodii_styracifolii_herba",
+      "herb_thp5_visci_herba",
+      "herb_thp5_orthosiphonis_herba",
+      "herb_thp5_coicis_semen",
+      "herb_thp5_agastachis_herba",
+      "herb_thp5_bombycis_faeces"
+    ]
+  },
+  {
+    "id": "cat_thp5_extra_03",
+    "category_path": "臺灣中藥典增補品項>理血藥",
+    "title": "理血藥",
+    "source_page": [],
+    "characteristics": [
+      "臺灣中藥典第五版用途分類「理血藥」增補品項（共 26 味）。"
+    ],
+    "herb_ids": [
+      "herb_thp5_sparganii_tuber",
+      "herb_thp5_cirsii_japonici_herba_seu_radix",
+      "herb_thp5_cirsii_herba",
+      "herb_thp5_cyathulae_radix",
+      "herb_thp5_ilicis_pubescentis_radix_et_caulis",
+      "herb_thp5_vaccariae_semen",
+      "herb_thp5_agrimoniae_herba",
+      "herb_thp5_siphonostegiae_herba",
+      "herb_thp5_imperatae_rhizoma",
+      "herb_thp5_sanguisorbae_radix",
+      "herb_thp5_myrrha",
+      "herb_thp5_selaginellae_herba",
+      "herb_thp5_reynoutriae_rhizoma_et_radix",
+      "herb_thp5_leonuri_fructus",
+      "herb_thp5_rubiae_radix_et_rhizoma",
+      "herb_thp5_nelumbinis_folium",
+      "herb_thp5_curcumae_rhizoma",
+      "herb_thp5_croci_stigma",
+      "herb_thp5_sophorae_fructus",
+      "herb_thp5_sophorae_flos_immaturus",
+      "herb_thp5_typhae_pollen",
+      "herb_thp5_artemisiae_lactiflorae_herba",
+      "herb_thp5_lycopi_herba",
+      "herb_thp5_spatholobi_caulis",
+      "herb_thp5_nelumbinis_rhizomatis_nodus",
+      "herb_thp5_curcumae_radix"
+    ]
+  },
+  {
+    "id": "cat_thp5_extra_04",
+    "category_path": "臺灣中藥典增補品項>補益藥",
+    "title": "補益藥",
+    "source_page": [],
+    "characteristics": [
+      "臺灣中藥典第五版用途分類「補益藥」增補品項（共 16 味）。"
+    ],
+    "herb_ids": [
+      "herb_thp5_pseudostellariae_radix",
+      "herb_thp5_curculiginis_rhizoma",
+      "herb_thp5_glehniae_radix",
+      "herb_thp5_polygonati_odorati_rhizoma",
+      "herb_thp5_cibotii_rhizoma",
+      "herb_thp5_adenophorae_radix",
+      "herb_thp5_hedysari_radix",
+      "herb_thp5_rhodiolae_crenulatae_radix_et_rhizoma",
+      "herb_thp5_sesami_semen_nigrum",
+      "herb_thp5_trigonellae_semen",
+      "herb_thp5_allii_tuberosi_semen",
+      "herb_thp5_alpiniae_oxyphyllae_fructus",
+      "herb_thp5_drynariae_rhizoma",
+      "herb_thp5_gecko",
+      "herb_thp5_ecliptae_herba",
+      "herb_thp5_pelodisci_carapax"
+    ]
+  },
+  {
+    "id": "cat_thp5_extra_05",
+    "category_path": "臺灣中藥典增補品項>理氣藥",
+    "title": "理氣藥",
+    "source_page": [],
+    "characteristics": [
+      "臺灣中藥典第五版用途分類「理氣藥」增補品項（共 14 味）。"
+    ],
+    "herb_ids": [
+      "herb_thp5_arecae_pericarpium",
+      "herb_thp5_dolomiaeae_radix",
+      "herb_thp5_azedarach_fructus",
+      "herb_thp5_citri_maximae_exocarpium",
+      "herb_thp5_aucklandiae_radix",
+      "herb_thp5_citri_sarcodactylis_fructus",
+      "herb_thp5_citri_reticulatae_pericarpium_viride",
+      "herb_thp5_kaki_calyx",
+      "herb_thp5_litchi_semen",
+      "herb_thp5_citri_reticulatae_pericarpium",
+      "herb_thp5_perillae_caulis",
+      "herb_thp5_citri_exocarpium_rubrum",
+      "herb_thp5_fagopyri_semen",
+      "herb_thp5_allii_macrostemonis_bulbus"
+    ]
+  },
+  {
+    "id": "cat_thp5_extra_06",
+    "category_path": "臺灣中藥典增補品項>收澀藥",
+    "title": "收澀藥",
+    "source_page": [],
+    "characteristics": [
+      "臺灣中藥典第五版用途分類「收澀藥」增補品項（共 13 味）。"
+    ],
+    "herb_ids": [
+      "herb_thp5_rhois_galla",
+      "herb_thp5_granati_pericarpium",
+      "herb_thp5_myristicae_semen",
+      "herb_thp5_catechu",
+      "herb_thp5_rosae_laevigatae_fructus",
+      "herb_thp5_schisandrae_sphenantherae_fructus",
+      "herb_thp5_202",
+      "herb_thp5_tritici_fructus_levis",
+      "herb_thp5_sepiae_endoconcha",
+      "herb_thp5_mume_fructus",
+      "herb_thp5_ailanthi_cortex",
+      "herb_thp5_nelumbinis_stamen",
+      "herb_thp5_celosiae_cristatae_flos"
+    ]
+  },
+  {
+    "id": "cat_thp5_extra_07",
+    "category_path": "臺灣中藥典增補品項>祛痰藥",
+    "title": "祛痰藥",
+    "source_page": [],
+    "characteristics": [
+      "臺灣中藥典第五版用途分類「祛痰藥」增補品項（共 13 味）。"
+    ],
+    "herb_ids": [
+      "herb_thp5_bambusae_concretio_silicea",
+      "herb_thp5_arisaematis_tuber",
+      "herb_thp5_benincasae_semen",
+      "herb_thp5_sinapis_albae_semen",
+      "herb_thp5_vincetoxici_stauntonii_rhizoma_et_radix",
+      "herb_thp5_trichosanthis_semen",
+      "herb_thp5_trichosanthis_fructus",
+      "herb_thp5_farfarae_flos",
+      "herb_thp5_perillae_fructus",
+      "herb_thp5_meretricis_seu_cyclinae_concha",
+      "herb_thp5_lepidii_semen_descurainiae_semen",
+      "herb_thp5_gleditsiae_fructus_abnormalis",
+      "herb_thp5_siraitiae_fructus"
+    ]
+  },
+  {
+    "id": "cat_thp5_extra_08",
+    "category_path": "臺灣中藥典增補品項>解表藥",
+    "title": "解表藥",
+    "source_page": [],
+    "characteristics": [
+      "臺灣中藥典第五版用途分類「解表藥」增補品項（共 11 味）。"
+    ],
+    "herb_ids": [
+      "herb_thp5_equiseti_hyemalis_herba",
+      "herb_thp5_origani_vulgaris_herba",
+      "herb_thp5_moslae_herba",
+      "herb_thp5_cinnamomi_ramulus",
+      "herb_thp5_mori_folium",
+      "herb_thp5_spirodelae_herba",
+      "herb_thp5_puerariae_thomsonii_radix",
+      "herb_thp5_nepetae_spica",
+      "herb_thp5_conioselini_rhizoma_et_radix",
+      "herb_thp5_cicadae_periostracum",
+      "herb_thp5_centipedae_herba"
+    ]
+  },
+  {
+    "id": "cat_thp5_extra_09",
+    "category_path": "臺灣中藥典增補品項>溫裏藥",
+    "title": "溫裏藥",
+    "source_page": [],
+    "characteristics": [
+      "臺灣中藥典第五版用途分類「溫裏藥」增補品項（共 9 味）。"
+    ],
+    "herb_ids": [
+      "herb_thp5_anisi_stellati_fructus",
+      "herb_thp5_kaempferiae_rhizoma",
+      "herb_thp5_aconiti_radix",
+      "herb_thp5_zingiberis_rhizoma",
+      "herb_thp5_cinnamomi_cortex_centralis",
+      "herb_thp5_zanthoxyli_pericarpium",
+      "herb_thp5_piperis_fructus",
+      "herb_thp5_aconiti_kusnezoffii_radix",
+      "herb_thp5_litseae_fructus"
+    ]
+  },
+  {
+    "id": "cat_thp5_extra_10",
+    "category_path": "臺灣中藥典增補品項>瀉下藥",
+    "title": "瀉下藥",
+    "source_page": [],
+    "characteristics": [
+      "臺灣中藥典第五版用途分類「瀉下藥」增補品項（共 7 味）。"
+    ],
+    "herb_ids": [
+      "herb_thp5_crotonis_semen",
+      "herb_thp5_kansui_radix",
+      "herb_thp5_natrii_sulfas",
+      "herb_thp5_pruni_semen",
+      "herb_thp5_phytolaccae_radix",
+      "herb_thp5_ipomoeae_semen",
+      "herb_thp5_sennae_folium"
+    ]
+  },
+  {
+    "id": "cat_thp5_extra_11",
+    "category_path": "臺灣中藥典增補品項>平肝熄風藥",
+    "title": "平肝熄風藥",
+    "source_page": [],
+    "characteristics": [
+      "臺灣中藥典第五版用途分類「平肝熄風藥」增補品項（共 6 味）。"
+    ],
+    "herb_ids": [
+      "herb_thp5_haematitum",
+      "herb_thp5_haliotidis_concha",
+      "herb_thp5_scorpio",
+      "herb_thp5_amynthas_et_metaphire",
+      "herb_thp5_magallanae_concha",
+      "herb_thp5_tribuli_fructus"
+    ]
+  },
+  {
+    "id": "cat_thp5_extra_12",
+    "category_path": "臺灣中藥典增補品項>安神藥",
+    "title": "安神藥",
+    "source_page": [],
+    "characteristics": [
+      "臺灣中藥典第五版用途分類「安神藥」增補品項（共 3 味）。"
+    ],
+    "herb_ids": [
+      "herb_thp5_albiziae_cortex",
+      "herb_thp5_pleuropterii_multiflorii_caulis",
+      "herb_thp5_poria_cum_pini_radix"
+    ]
+  },
+  {
+    "id": "cat_thp5_extra_13",
+    "category_path": "臺灣中藥典增補品項>開竅藥",
+    "title": "開竅藥",
+    "source_page": [],
+    "characteristics": [
+      "臺灣中藥典第五版用途分類「開竅藥」增補品項（共 2 味）。"
+    ],
+    "herb_ids": [
+      "herb_thp5_acori_tatarinowii_rhizoma",
+      "herb_thp5_borneolum"
+    ]
+  },
+  {
+    "id": "cat_thp5_extra_14",
+    "category_path": "臺灣中藥典增補品項>驅蟲藥",
+    "title": "驅蟲藥",
+    "source_page": [],
+    "characteristics": [
+      "臺灣中藥典第五版用途分類「驅蟲藥」增補品項（共 2 味）。"
+    ],
+    "herb_ids": [
+      "herb_thp5_quisqualis_fructus",
+      "herb_thp5_carpesii_fructus"
+    ]
+  },
+  {
+    "id": "cat_thp5_extra_15",
+    "category_path": "臺灣中藥典增補品項>癰瘍藥",
+    "title": "癰瘍藥",
+    "source_page": [],
+    "characteristics": [
+      "臺灣中藥典第五版用途分類「癰瘍藥」增補品項（共 1 味）。"
+    ],
+    "herb_ids": [
+      "herb_thp5_momordicae_semen"
+    ]
+  },
+  {
+    "id": "cat_thp5_extra_16",
+    "category_path": "臺灣中藥典增補品項>湧吐藥",
+    "title": "湧吐藥",
+    "source_page": [],
+    "characteristics": [
+      "臺灣中藥典第五版用途分類「湧吐藥」增補品項（共 1 味）。"
+    ],
+    "herb_ids": [
+      "herb_thp5_dichroae_radix"
+    ]
+  },
+  {
+    "id": "cat_thp5_extra_17",
+    "category_path": "臺灣中藥典增補品項>消導藥",
+    "title": "消導藥",
+    "source_page": [],
+    "characteristics": [
+      "臺灣中藥典第五版用途分類「消導藥」增補品項（共 1 味）。"
+    ],
+    "herb_ids": [
+      "herb_thp5_galli_gigerii_endothelium_corneum"
+    ]
   }
 ]
