@@ -168,6 +168,38 @@ details.dd[open] > .dd-sum { border-color: var(--primary); background: var(--pri
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 .toast { position: fixed; left: 50%; bottom: calc(var(--bottom-h) + 12px); transform: translateX(-50%); background: var(--text); color: var(--bg); padding: .5em 1em; border-radius: 999px; z-index: 60; display: flex; gap: .5em; align-items: center; } .toast .btn-link { color: inherit; }
 
+
+/* ---- 臺灣中藥典第五版整合樣式 ---- */
+.thp5-badge { display: inline-block; margin-left: .4em; font-size: .72rem; font-weight: 700; color: var(--primary); background: var(--primary-soft); border: 1px solid var(--primary); border-radius: 4px; padding: 0 .4em; vertical-align: middle; line-height: 1.5; }
+.side-sep { margin: .6rem .5rem; }
+.source-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: .65rem; }
+.src-btn { font: inherit; font-size: .92rem; padding: .38em .85em; min-height: 38px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface); color: var(--text); cursor: pointer; display: inline-flex; align-items: center; gap: .3em; }
+.src-btn:hover { background: var(--surface-2); }
+.src-btn[aria-selected="true"] { background: var(--primary); color: var(--primary-contrast); border-color: var(--primary); font-weight: 600; }
+.src-count { font-size: .82rem; opacity: .8; }
+.toggle-bar { margin: .45rem 0 .6rem; }
+.toggle-pill { display: inline-flex; align-items: center; gap: .45em; padding: .32em .75em; border-radius: 999px; border: 1px solid var(--border); background: var(--bg); cursor: pointer; font-size: .9rem; user-select: none; }
+.toggle-pill:hover { border-color: var(--primary); }
+.toggle-pill input { width: 16px; height: 16px; accent-color: var(--primary); }
+.home-extra-cats { margin-top: 1rem; padding-top: .75rem; border-top: 1px dashed var(--border); }
+.home-extra-cats > summary { cursor: pointer; font: 700 1.05rem var(--serif); list-style: none; display: flex; align-items: center; gap: .5em; }
+.home-extra-cats > summary::-webkit-details-marker { display: none; }
+.home-extra-cats > summary::before { content: "▸"; color: var(--muted); transition: transform .15s; }
+.home-extra-cats[open] > summary::before { transform: rotate(90deg); }
+.home-extra-body { margin-top: .7rem; }
+.home-extra-foot { margin: .7rem 0 0; }
+.thp5-tabs { margin-top: .2rem; }
+.thp5-block { margin-top: .75rem; padding-top: .6rem; border-top: 1px dashed var(--border); }
+.thp5-text { margin: .25rem 0 .45rem; }
+.sub-sec { margin-top: .65rem; border: 1px solid var(--border); border-radius: 8px; padding: .5rem .75rem; background: var(--bg); }
+.sub-sec > summary { cursor: pointer; font-weight: 700; list-style: none; display: flex; align-items: center; gap: .45em; }
+.sub-sec > summary::-webkit-details-marker { display: none; }
+.sub-sec > summary::before { content: "▸"; color: var(--muted); transition: transform .15s; }
+.sub-sec[open] > summary::before { transform: rotate(90deg); }
+.sub-sec-body { margin-top: .5rem; font-size: .93rem; }
+.sub-sec-body p { margin: .35rem 0; }
+.diff-tbl th { white-space: nowrap; }
+
 /* ---- 手機版 ---- */
 @media (max-width: 860px) {
   .shell { display: block; padding: .7rem .6rem calc(var(--bottom-h) + 1.5rem); }
