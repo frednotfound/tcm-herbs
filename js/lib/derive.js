@@ -2,6 +2,19 @@
 // 原則：只從原資料「算出」對照表，絕不寫回、不補資料。
 
 const GREEK = { 'α': 'alpha', 'β': 'beta', 'γ': 'gamma', 'δ': 'delta', 'ω': 'omega', 'κ': 'kappa' };
+const THP5_EXTRACT_NAMES = new Set(['稀乙醇抽提物', '乙醇抽提物', '水抽提物', '乙醚抽提物', '醇抽提物']);
+const IGNORED_TAGS = new Set(['上品', '中品', '下品', '臺灣中藥典第五版修正', '臺灣中藥典第五版增補']);
+
+/** 是否為原課程講義收錄之「常用中藥」（162 味） */
+export function isCommonHerb(herb) { return herb?.in_lecture !== false; }
+
+/** 是否為「僅出現在臺灣中藥典第五版」之增補品項 */
+export function isThp5OnlyHerb(herb) { return herb?.in_lecture === false && Boolean(herb?.in_thp5); }
+
+/** 是否屬於臺灣中藥典抽提物規格（非單一化學成分） */
+export function isThp5ExtractItem(group, comp) {
+  return group?.category_raw === '法定指標／抽提物' && THP5_EXTRACT_NAMES.has(String(comp?.name || '').trim());
+}
 
 /** 去掉括弧備註：款冬花（止咳平喘） -> 款冬花 */
 export function stripParen(s) {
@@ -48,7 +61,7 @@ export function normText(s, variantPairs = []) {
 
 /** 成分名稱用的鍵：小寫、去空白與常見符號，讓 "l-Ephedrine" 與 "L-ephedrine" 相同 */
 export function compoundKey(s) {
-  return normText(s).replace(/[\s ]+/g, '').replace(/[()（）\[\]]/g, '');
+  return normText(s).replace(/[\s ]+/g, '').replace(/[()（）\[\]]/g, '');
 }
 
 /** 建立成分分類樹的查表 */
@@ -101,12 +114,24 @@ export function buildTaxonomy(tax, aliasDict) {
 
 /** 單一化合物對應到哪些樹節點（空陣列＝未歸類） */
 export function matchCompound(taxo, compound) {
-  const names = [compound.name, ...(compound.aliases || [])];
+  const baseNames = [compound.name, ...(compound.aliases || [])];
+  const names = [...baseNames];
+  for (const nm of baseNames) {
+    const s = String(nm ?? '');
+    for (const m of s.matchAll(/[（(]([^）)]+)[）)]/g)) {
+      const inner = m[1].trim();
+      if (inner) names.push(inner);
+    }
+    const stripped = stripParen(s);
+    if (stripped && stripped !== s) names.push(stripped);
+  }
   const hit = new Set();
   for (const nm of names) {
     for (const k of taxo.synKeys(compoundKey(nm))) {
       for (const id of taxo.compoundIndex.get(k) || []) hit.add(id);
     }
+    const tid = taxo.termIndex.get(normText(nm));
+    if (tid) hit.add(tid);
   }
   return [...hit];
 }
@@ -118,11 +143,14 @@ export function classifyHerb(taxo, herb) {
   const unmatched = [];
   let total = 0;
   (herb.ingredients || []).forEach((g, gi) => {
-    // 類別原文若本身就是已知類別詞，也算直接節點（例如只有類別、沒有化合物的情形）
     const catKey = normText(g.category_raw);
     const catNode = taxo.termIndex.get(catKey);
     if (catNode) direct.add(catNode);
     (g.compounds || []).forEach((c, ci) => {
+      if (isThp5ExtractItem(g, c)) {
+        perCompound.set(`${gi}:${ci}`, []);
+        return;
+      }
       total++;
       const ids = matchCompound(taxo, c);
       perCompound.set(`${gi}:${ci}`, ids);
@@ -176,12 +204,12 @@ export function categoryPaths(herb) {
   return out;
 }
 
-/** 小重點標籤：合併重複寫法（種子類（小重點）-> 種子類），不含品級（品級另有篩選） */
+/** 小重點標籤：合併重複寫法（種子類（小重點）-> 種子類），不含品級與藥典來源系統標籤 */
 export function highlightTags(herb) {
   const set = new Set();
   for (const t of herb.tags || []) {
     const k = stripParen(t) || t;
-    if (['上品', '中品', '下品'].includes(k)) continue;
+    if (IGNORED_TAGS.has(k)) continue;
     set.add(k);
   }
   if (herb.ed3_updated) set.add('第三版修改');
