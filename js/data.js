@@ -1,7 +1,7 @@
 // 資料載入與查表。啟動時一次載入全部 JSON，之後全在記憶體內查詢。
 import {
   buildTaxonomy, classifyAll, buildVariantPairs, buildNameGroups, normText, splitNames, stripParen,
-  baseNature, baseFlavors, familiesOf, categoryPaths, highlightTags,
+  baseNature, baseFlavors, familiesOf, categoryPaths, highlightTags, isCommonHerb, isThp5OnlyHerb,
 } from './lib/derive.js';
 
 const FILES = ['herbs', 'general_theory', 'categories', 'exam_highlights', 'ingredient_taxonomy', 'alias_dictionary', 'derived/part_groups'];
@@ -30,6 +30,8 @@ function build() {
   s.variantPairs = buildVariantPairs(s.alias);
   s.nameGroups = buildNameGroups(s.alias, s.variantPairs);
   s.herbById = new Map(s.herbs.map(h => [h.id, h]));
+  s.commonCount = s.herbs.filter(isCommonHerb).length;
+  s.thp5OnlyCount = s.herbs.filter(isThp5OnlyHerb).length;
   s.taxo = buildTaxonomy(s.taxonomy, s.alias);
   s.cls = classifyAll(s.taxo, s.herbs);
 

@@ -1,11 +1,11 @@
-// 配伍禁忌查詢：合併「總論規則」與「各藥材頁的配伍資料」，並支援不在 162 味內的藥名（如烏頭、藜蘆）。
+// 配伍禁忌查詢：合併「總論規則」與「各藥材頁的配伍資料」，並支援未收載藥名（如烏頭、藜蘆）。
 // 只呈現資料裡有的；沒命中不代表安全，頁面固定顯示免責聲明。
 import { h, clear } from '../lib/dom.js';
 import { store, resolveName } from '../data.js';
 import { replaceParams, herbHref, hrefOf } from '../router.js';
-import { normText, splitNames, stripParen } from '../lib/derive.js';
+import { normText, splitNames, stripParen, isCommonHerb } from '../lib/derive.js';
 import { CONFIG } from '../config.js';
-import { chip, nameLink, disclaimer } from '../lib/ui.js';
+import { nameLink, disclaimer, thp5OnlyMark } from '../lib/ui.js';
 
 const REL = [['xiang_xu', '相須'], ['shi', '相使'], ['wei', '相畏'], ['wu', '相惡'], ['fan', '相反'], ['sha', '相殺']];
 let cache = null;
@@ -19,14 +19,10 @@ function prep() {
   for (const g of rules.nineteen_antagonisms) pairs.push({ kind: '十九畏', a: splitNames(g.herb_a), b: splitNames(g.herb_b), label: `${g.herb_a} 畏 ${g.herb_b}` });
   const preg = { forbidden: rules.pregnancy_contraindications.forbidden, caution: rules.pregnancy_contraindications.caution };
 
-  // 候選：162 味 + 規則裡出現但無法對應到 162 味的名稱
   const ruleNames = new Set();
   pairs.forEach(p => [...p.a, ...p.b].forEach(n => ruleNames.add(n)));
   [...preg.forbidden, ...preg.caution].forEach(n => ruleNames.add(n));
   const extras = [...ruleNames].filter(n => !resolveName(n));
-  const entities = store.herbs.map(hh => ({ key: hh.id, name: hh.name_zh, herb: hh, names: nameSet(hh) }));
-  for (const n of extras) entities.push({ key: `n:${n}`, name: n, herb: null, names: new Set([nk(n)]) });
-  const byKey = new Map(entities.map(e => [e.key, e]));
 
   function nameSet(hh) {
     const set = new Set();
@@ -34,6 +30,16 @@ function prep() {
     add(hh.name_zh); (hh.aliases || []).forEach(add);
     return set;
   }
+
+  const entities = store.herbs.map(hh => ({ key: hh.id, name: hh.name_zh, herb: hh, common: isCommonHerb(hh), inRule: false, names: nameSet(hh) }));
+  for (const n of extras) entities.push({ key: `n:${n}`, name: n, herb: null, common: false, inRule: true, names: new Set([nk(n)]) });
+  for (const e of entities) {
+    if (e.herb) {
+      e.inRule = [...ruleNames].some(rn => e.names.has(nk(rn)) || resolveName(rn) === e.herb.id);
+    }
+  }
+  const byKey = new Map(entities.map(e => [e.key, e]));
+
   const strict = (rn, e) => e.names.has(nk(rn)) || (e.herb && resolveName(rn) === e.herb.id);
   const possible = (rn, e) => !strict(rn, e) && e.herb && store.tradeMap.get(nk(rn))?.has(e.herb.id);
   cache = { pairs, preg, entities, byKey, strict, possible, nk, extras };
@@ -45,48 +51,96 @@ function entityFromKey(k) { return prep().byKey.get(k) || null; }
 export function renderCompat(params) {
   const P = prep();
   const tab = params.get('tab') === 'rules' ? 'rules' : 'query';
+  const onlyCommon = params.get('src') === 'common';
   const root = h('div', { class: 'compat-view' });
+
+  const tabHref = (nextTab, nextCommon = onlyCommon) => {
+    const p = new URLSearchParams();
+    if (nextTab === 'rules') p.set('tab', 'rules');
+    if (nextCommon) p.set('src', 'common');
+    const herbsParam = params.get('herbs');
+    if (nextTab === 'query' && herbsParam) p.set('herbs', herbsParam);
+    return hrefOf('/compat', p);
+  };
+
   root.append(h('div', { class: 'tabs', role: 'tablist' },
-    h('a', { class: 'tab', role: 'tab', href: '#/compat', 'aria-selected': String(tab === 'query') }, '查詢'),
-    h('a', { class: 'tab', role: 'tab', href: '#/compat?tab=rules', 'aria-selected': String(tab === 'rules') }, '規則總表')));
-  root.append(tab === 'rules' ? rulesTab(P) : queryTab(P, params));
+    h('a', { class: 'tab', role: 'tab', href: tabHref('query'), 'aria-selected': String(tab === 'query') }, '查詢'),
+    h('a', { class: 'tab', role: 'tab', href: tabHref('rules'), 'aria-selected': String(tab === 'rules') }, '規則總表')));
+
+  root.append(tab === 'rules'
+    ? rulesTab(P, onlyCommon, (next) => { location.hash = tabHref('rules', next); })
+    : queryTab(P, params, onlyCommon));
   return { node: root, title: '配伍禁忌' };
 }
 
-function queryTab(P, params) {
+function queryTab(P, params, initCommon) {
   const wrap = h('div', null);
+  let onlyCommon = initCommon;
   let sel = (params.get('herbs') || '').split(',').filter(Boolean).map(entityFromKey).filter(Boolean);
-  const dedupe = () => { const seen = new Set(); sel = sel.filter(e => !seen.has(e.key) && seen.add(e.key)); };
-  dedupe();
+  const seen = new Set();
+  sel = sel.filter(e => !seen.has(e.key) && seen.add(e.key));
+
+  const desc = h('p', { class: 'muted' }, '');
   const chipsBox = h('div', { class: 'chips sel-chips' });
   const input = h('input', { type: 'search', class: 'compat-input', placeholder: '輸入藥名加入（如：烏頭、半夏、甘草）', 'aria-label': '加入藥名', autocomplete: 'off' });
   const sugBox = h('div', { class: 'sug-box', role: 'listbox' });
   const resultBox = h('div', { class: 'compat-results' });
+
+  const toggle = h('div', { class: 'toggle-bar' },
+    h('label', { class: 'toggle-pill' },
+      h('input', {
+        type: 'checkbox',
+        checked: onlyCommon,
+        onChange: (e) => {
+          onlyCommon = e.target.checked;
+          clear(sugBox);
+          render();
+        },
+      }),
+      h('span', null, `僅顯示常用中藥（${store.commonCount} 味）`)));
 
   function add(e) { if (!sel.some(x => x.key === e.key)) sel.push(e); input.value = ''; clear(sugBox); render(); input.focus(); }
   function remove(key) { sel = sel.filter(e => e.key !== key); render(); }
   function matches(q) {
     const k = normText(q, store.variantPairs); if (!k) return [];
     const out = [];
-    for (const e of P.entities) { if (sel.some(x => x.key === e.key)) continue; let sc = 0; for (const n of e.names) { if (n === k) sc = Math.max(sc, 3); else if (n.startsWith(k)) sc = Math.max(sc, 2); else if (n.includes(k)) sc = Math.max(sc, 1); } if (sc) out.push([sc, e]); }
+    for (const e of P.entities) {
+      if (sel.some(x => x.key === e.key)) continue;
+      if (onlyCommon && e.herb && !e.common && !e.inRule) continue;
+      let sc = 0;
+      for (const n of e.names) { if (n === k) sc = Math.max(sc, 3); else if (n.startsWith(k)) sc = Math.max(sc, 2); else if (n.includes(k)) sc = Math.max(sc, 1); }
+      if (sc) out.push([sc, e]);
+    }
     return out.sort((a, b) => b[0] - a[0]).slice(0, 8).map(x => x[1]);
   }
   input.addEventListener('input', () => {
     clear(sugBox);
-    for (const e of matches(input.value)) sugBox.append(h('button', { type: 'button', role: 'option', class: 'sug', onClick: () => add(e) }, e.name, e.herb ? null : h('span', { class: 'muted small' }, '　（僅規則名單）')));
+    for (const e of matches(input.value)) {
+      let note = null;
+      if (!e.herb) note = h('span', { class: 'muted small' }, '　（僅規則名單）');
+      else if (!e.common) note = h('span', { class: 'muted small' }, onlyCommon ? '　（五版增補／規則名單）' : '　（五版增補）');
+      sugBox.append(h('button', { type: 'button', role: 'option', class: 'sug', onClick: () => add(e) }, e.name, note));
+    }
   });
   input.addEventListener('keydown', (ev) => { if (ev.key === 'Enter') { ev.preventDefault(); const m = matches(input.value)[0]; if (m) add(m); } });
 
   function render() {
-    replaceParams('/compat', sel.length ? new URLSearchParams({ herbs: sel.map(e => e.key).join(',') }) : new URLSearchParams());
+    const p = new URLSearchParams();
+    if (sel.length) p.set('herbs', sel.map(e => e.key).join(','));
+    if (onlyCommon) p.set('src', 'common');
+    replaceParams('/compat', p);
+
+    desc.textContent = onlyCommon
+      ? `選 1 味以上。候選僅顯示常用中藥（${store.commonCount} 味）及總論十八反、十九畏、妊娠規則名單。`
+      : `選 1 味以上。候選包含全部 ${store.herbs.length} 味藥材，以及總論十八反、十九畏、妊娠規則裡出現但本資料庫未收載的藥名。`;
+
     clear(chipsBox);
     for (const e of sel) chipsBox.append(h('button', { type: 'button', class: 'chip chip-active', onClick: () => remove(e.key), title: '移除' }, `${e.name} ×`));
     if (!sel.length) chipsBox.append(h('span', { class: 'muted' }, '尚未選擇藥材'));
     clear(resultBox);
     resultBox.append(...results(P, sel));
   }
-  wrap.append(h('div', { class: 'card' }, h('h1', null, '配伍禁忌查詢'),
-    h('p', { class: 'muted' }, '選 1 味以上。候選包含 162 味，以及總論十八反、十九畏、妊娠規則裡出現但本資料庫未收載的藥名。'),
+  wrap.append(h('div', { class: 'card' }, h('h1', null, '配伍禁忌查詢'), toggle, desc,
     chipsBox, h('div', { class: 'compat-add' }, input, sugBox)), resultBox);
   render();
   return wrap;
@@ -96,18 +150,16 @@ function results(P, sel) {
   const out = [];
   if (!sel.length) { out.push(disclaimer(CONFIG.clinicalDisclaimer)); return out; }
 
-  // 1. 衝突
   const conflicts = [], maybe = [];
   for (const p of P.pairs) {
     for (let i = 0; i < sel.length; i++) for (let j = 0; j < sel.length; j++) {
       if (i === j) continue;
       const ea = sel[i], eb = sel[j];
-      if (p.kind === '十八反' && j < i) { /* 無方向配對，避免重複 */ }
       const aS = p.a.some(n => P.strict(n, ea)), bS = p.b.some(n => P.strict(n, eb));
       const aP = p.a.some(n => P.strict(n, ea) || P.possible(n, ea)), bP = p.b.some(n => P.strict(n, eb) || P.possible(n, eb));
       const key = [p.label, [ea.key, eb.key].sort().join('|')].join('#');
       if (aS && bS) { if (!conflicts.some(c => c.key === key)) conflicts.push({ key, p, ea, eb }); }
-      else if (aP && bP) { if (!maybe.some(c => c.key === key) && !conflicts.some(c => c.key === key)) maybe.push({ key, p, ea, eb, via: [ea, eb].filter(e => e.herb) }); }
+      else if (aP && bP) { if (!maybe.some(c => c.key === key) && !conflicts.some(c => c.key === key)) maybe.push({ key, p, ea, eb }); }
     }
   }
   const box1 = h('section', { class: 'card res-sec' }, h('h2', null, '衝突（十八反、十九畏）'));
@@ -115,10 +167,9 @@ function results(P, sel) {
   else if (!conflicts.length && !maybe.length) box1.append(h('p', null, '本次選擇中，總論的十八反、十九畏沒有命中的配對。'));
   for (const c of conflicts) box1.append(h('div', { class: 'alert alert-danger' }, h('strong', null, `${c.p.kind}命中　`), `${c.ea.name} ↔ ${c.eb.name}`, h('div', { class: 'small' }, `依據：總論「${c.p.label}」`)));
   for (const c of maybe) box1.append(h('div', { class: 'alert alert-warn' }, h('strong', null, `${c.p.kind}可能相關（待確認）　`), `${c.ea.name} ↔ ${c.eb.name}`,
-    h('div', { class: 'small' }, `總論「${c.p.label}」的藥名與其中一味的基原商品名相同，但本資料庫未直接把它們視為同一味藥，請對照講義確認。`)));
+    h('div', { class: 'small' }, `總論「${c.p.label}」的藥名與其中一味的基原商品名相同，但本資料庫未直接把它們視為同一味藥，請對照確認。`)));
   out.push(box1);
 
-  // 2. 妊娠
   const box2 = h('section', { class: 'card res-sec' }, h('h2', null, '妊娠'));
   let anyPreg = false;
   for (const e of sel) {
@@ -131,7 +182,6 @@ function results(P, sel) {
   if (!anyPreg) box2.append(h('p', null, '本次選擇中，總論的妊娠禁服、慎用名單沒有命中。'));
   out.push(box2);
 
-  // 3. 各藥自身配伍
   const box3 = h('section', { class: 'card res-sec' }, h('h2', null, '各藥自身配伍（來自藥材頁）'));
   for (const e of sel) {
     if (!e.herb) { box3.append(h('div', { class: 'own' }, h('strong', null, e.name), h('span', { class: 'muted' }, '　本資料庫未收載（僅有規則名單）'))); continue; }
@@ -148,17 +198,37 @@ function results(P, sel) {
     }
     if (c.taboo?.length) lines.push(h('div', null, h('strong', null, '禁忌：'), c.taboo.join('；')));
     if (c.clinical_pairs?.length) lines.push(h('div', null, h('strong', null, '臨床搭配：'), c.clinical_pairs.join('；')));
-    box3.append(h('div', { class: 'own' }, h('h3', null, h('a', { href: herbHref(e.herb.id) }, e.name)), lines.length ? lines : h('span', { class: 'muted' }, '講義此味未列配伍資料。')));
+    const emptyMsg = e.common ? '講義此味未列配伍資料。' : '本條目為臺灣中藥典第五版增補品項，未另列七情配伍資料。';
+    box3.append(h('div', { class: 'own' }, h('h3', null, h('a', { href: herbHref(e.herb.id) }, e.name), thp5OnlyMark(e.herb)), lines.length ? lines : h('span', { class: 'muted' }, emptyMsg)));
   }
   out.push(box3, disclaimer(`${CONFIG.clinicalDisclaimer}。沒有命中不代表安全。`));
   return out;
 }
 
-function rulesTab(P) {
+function rulesTab(P, onlyCommon, onToggle) {
   const rules = store.theory.compatibility_rules;
-  const nl = (n) => { const parts = splitNames(n); return parts.flatMap((p, i) => [i ? '、' : null, h('a', { href: hrefOf('/compat', new URLSearchParams({ herbs: resolveName(p) || 'n:' + p })), class: resolveName(p) ? 'name-link' : 'name-plain' }, p), resolveName(p) ? null : h('span', { class: 'muted small' }, '（未收載）')]); };
+  const nl = (n) => {
+    const parts = splitNames(n);
+    return parts.flatMap((p, i) => {
+      const id = resolveName(p);
+      const herb = id ? store.herbById.get(id) : null;
+      const inScope = Boolean(herb && (!onlyCommon || isCommonHerb(herb)));
+      const q = new URLSearchParams({ herbs: id || `n:${p}` });
+      if (onlyCommon) q.set('src', 'common');
+      const note = inScope ? null : h('span', { class: 'muted small' }, herb ? '（五版增補）' : '（未收載）');
+      return [i ? '、' : null, h('a', { href: hrefOf('/compat', q), class: inScope ? 'name-link' : 'name-plain' }, p), note];
+    });
+  };
+  const toggle = h('div', { class: 'toggle-bar' },
+    h('label', { class: 'toggle-pill' },
+      h('input', { type: 'checkbox', checked: onlyCommon, onChange: (e) => onToggle(e.target.checked) }),
+      h('span', null, `僅標示常用中藥（${store.commonCount} 味）`)));
+
   const wrap = h('div', null);
-  wrap.append(h('div', { class: 'card' }, h('h1', null, '規則總表'), h('p', { class: 'muted' }, '資料來自總論。名稱在 162 味內可點進配伍查詢，否則標示「未收載」。')),
+  wrap.append(h('div', { class: 'card' }, h('h1', null, '規則總表'), toggle,
+    h('p', { class: 'muted' }, onlyCommon
+      ? `資料來自總論。名稱在常用中藥（${store.commonCount} 味）內會以連結呈現，其餘標示「五版增補」或「未收載」，皆可點擊帶入查詢。`
+      : `資料來自總論。名稱在本資料庫 ${store.herbs.length} 味內會以連結呈現，否則標示「未收載」，皆可點擊帶入查詢。`)),
     h('div', { class: 'card' }, h('h2', null, '十八反'), h('ul', null, rules.eighteen_incompatibles.map(g => h('li', null, h('strong', null, ...nl(g.base)), ' 反 ', ...g.incompatible_with.flatMap((n, i) => [i ? '、' : null, ...nl(n)]))))),
     h('div', { class: 'card' }, h('h2', null, '十九畏'), h('ul', null, rules.nineteen_antagonisms.map(g => h('li', null, ...nl(g.herb_a), ' 畏 ', ...nl(g.herb_b))))),
     h('div', { class: 'card' }, h('h2', null, '妊娠'), h('div', null, h('strong', { class: 'danger' }, '禁服：'), ...rules.pregnancy_contraindications.forbidden.flatMap((n, i) => [i ? '、' : null, ...nl(n)])),

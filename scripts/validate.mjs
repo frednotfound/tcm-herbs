@@ -7,7 +7,7 @@ const root = new URL('../', import.meta.url);
 const errors = [], warnings = [];
 const err = (file, msg) => errors.push(`【錯誤】${file}：${msg}`);
 const warn = (file, msg) => warnings.push(`【提醒】${file}：${msg}`);
-const EXPECTED_HERBS = 162;
+const EXPECTED_HERBS = 360;
 const REQUIRED = ['id', 'name_zh', 'aliases', 'name_latin', 'category', 'family_zh', 'sources', 'part_used', 'properties', 'ingredients', 'effects', 'compatibility', 'processing', 'formulas', 'related_herbs', 'notes', 'tags', 'images', 'source_page'];
 
 function load(rel, required = true) {

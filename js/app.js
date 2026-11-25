@@ -1,11 +1,11 @@
 import { h, clear, safeStorage } from './lib/dom.js';
 import { loadAll, store } from './data.js';
-import { parseHash, hrefOf, replaceParams } from './router.js';
+import { parseHash, hrefOf } from './router.js';
 import { CONFIG } from './config.js';
 import { categoryTree } from './filters.js';
 import { renderHome } from './views/home.js';
 import { renderList } from './views/list.js';
-import { renderHerb, renderNotFound } from './views/herb.js';
+import { renderHerb } from './views/herb.js';
 import { renderCategory } from './views/category.js';
 import { renderIngredients } from './views/ingredients.js';
 import { renderTheory } from './views/theory.js';
@@ -43,17 +43,28 @@ function buildNav() {
   const side = $('side-nav');
   for (const [key, href, label] of NAV) side.append(h('a', { href, class: 'sn', dataset: { nav: key } }, label));
   side.append(h('a', { href: '#/about', class: 'sn', dataset: { nav: 'about' } }, '關於'));
+
   // 分類樹（電腦版側欄；手機版抽屜共用）
   const catBox = $('side-cats'); clear(catBox);
-  catBox.append(h('div', { class: 'side-h' }, '分類'));
-  for (const t of categoryTree()) {
-    const catId = store.catByPath.get(t.path)?.id;
+  const allTree = categoryTree();
+  const commonTree = allTree.filter(t => t.path !== '臺灣中藥典增補品項');
+  const thp5Tree = allTree.find(t => t.path === '臺灣中藥典增補品項');
+
+  catBox.append(h('div', { class: 'side-h' }, '常用中藥分類'));
+  const renderBranch = (t) => {
     const total = store.herbs.filter(hh => store.facets.get(hh.id).cat.has(t.path)).length;
     const top = h('a', { class: 'sc-top', href: hrefOf('/herbs', new URLSearchParams({ cat: t.path })) }, t.name, h('span', { class: 'muted small' }, ` ${total}`));
-    if (!t.children.length) { catBox.append(h('div', { class: 'sc' }, top)); continue; }
-    const d = h('details', { class: 'sc' }, h('summary', null, top), h('div', { class: 'sc-subs' }, t.children.map(c => h('a', { class: 'sc-sub', href: hrefOf('/herbs', new URLSearchParams({ cat: c.path })) }, c.name, h('span', { class: 'muted small' }, ` ${c.count}`)))));
-    catBox.append(d);
-    void catId;
+    if (!t.children.length) return h('div', { class: 'sc' }, top);
+    return h('details', { class: 'sc' },
+      h('summary', null, top),
+      h('div', { class: 'sc-subs' }, t.children.map(c =>
+        h('a', { class: 'sc-sub', href: hrefOf('/herbs', new URLSearchParams({ cat: c.path })) }, c.name, h('span', { class: 'muted small' }, ` ${c.count}`)))));
+  };
+  for (const t of commonTree) catBox.append(renderBranch(t));
+
+  if (thp5Tree) {
+    catBox.append(h('hr', { class: 'side-sep' }), h('div', { class: 'side-h' }, '臺灣中藥典第五版'));
+    catBox.append(renderBranch(thp5Tree));
   }
 }
 function markNav(key) {
@@ -74,7 +85,7 @@ function route() {
     else if (top === 'herbs') { res = renderList(params); current = res; }
     else if (top === 'herb') res = renderHerb(parts[1] || '');
     else if (top === 'cat') { res = renderCategory(parts[1] || ''); navKey = 'herbs'; }
-    else if (top === 'ingredients') res = renderIngredients(parts[1]);
+    else if (top === 'ingredients') res = renderIngredients(parts[1], params);
     else if (top === 'theory') res = renderTheory(parts[1]);
     else if (top === 'compat') res = renderCompat(params);
     else if (top === 'about') res = renderAbout();
@@ -83,7 +94,6 @@ function route() {
     console.error(err);
     res = { node: h('div', { class: 'card' }, h('h1', null, '頁面發生錯誤'), h('p', { class: 'muted' }, String(err.message || err)), h('p', null, h('a', { class: 'btn', href: '#/' }, '回首頁'))), title: '錯誤' };
   }
-  if (top === 'herb' && !store.herbById.has(parts[1])) navKey = 'herbs';
   if (top === 'herb') navKey = 'herbs';
   clear(main); main.append(res.node);
   main.focus({ preventScroll: true });

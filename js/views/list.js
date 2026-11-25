@@ -1,20 +1,23 @@
 import { h, clear } from '../lib/dom.js';
 import { store } from '../data.js';
-import { DIMS, applyFilters, stateFromParams, stateToParams, optionsFor, categoryTree, activeFilterCount, emptyState } from '../filters.js';
+import { SOURCES, DIMS, applyFilters, stateFromParams, stateToParams, optionsFor, categoryTree, activeFilterCount, emptyState } from '../filters.js';
 import { SCOPES, suggest } from '../search.js';
-import { replaceParams, parseHash, herbHref } from '../router.js';
+import { replaceParams, herbHref } from '../router.js';
 import { herbCard } from './card.js';
 import { chip } from '../lib/ui.js';
 
-const SORTS = [['rel', '相關度／講義順序'], ['name', '藥名筆畫排序'], ['lecture', '講義順序']];
+const SORTS = [['rel', '相關度／常用中藥順序'], ['name', '藥名筆畫排序'], ['lecture', '常用中藥順序']];
 
 export function renderList(params) {
   const s = stateFromParams(params);
   const dimLabel = Object.fromEntries(DIMS.map(d => [d.key, d.label]));
-  const optionEls = new Map(); // dim -> Map(value -> {label, countEl, input})
+  const srcLabel = Object.fromEntries(SOURCES.map(x => [x.key, x.label]));
+  const optionEls = new Map();
+  const srcBtns = new Map();
   let sheetOpen = false;
 
   const root = h('div', { class: 'list-view' });
+  const sourceRow = h('div', { class: 'source-row', role: 'tablist', 'aria-label': '收錄來源' });
   const scopeRow = h('div', { class: 'scope-row', role: 'tablist', 'aria-label': '搜尋範圍' });
   const sortSel = h('select', { class: 'sort-sel', 'aria-label': '排序', onChange: (e) => { s.sort = e.target.value; commit(); } },
     SORTS.map(([v, l]) => h('option', { value: v }, l)));
@@ -27,14 +30,26 @@ export function renderList(params) {
   const summary = h('div', { class: 'result-summary', 'aria-live': 'polite' });
   const results = h('div', { class: 'results' });
   const applyBtn = h('button', { type: 'button', class: 'btn btn-primary sheet-apply', onClick: () => toggleSheet(false) }, '套用');
-  const clearBtn = h('button', { type: 'button', class: 'btn', onClick: () => { const q = s.q, sc = s.scope; Object.assign(s, emptyState(), { q, scope: sc }); syncInputs(); commit(); } }, '清除全部篩選');
+  const clearBtn = h('button', { type: 'button', class: 'btn', onClick: () => { const q = s.q, sc = s.scope, src = s.src; Object.assign(s, emptyState(), { q, scope: sc, src }); syncInputs(); commit(); } }, '清除全部篩選');
 
-  // ---- 範圍切換 ----
+  // ---- 收錄來源三態切換 ----
+  for (const sr of SOURCES) {
+    const countSpan = h('span', { class: 'src-count' }, '');
+    const btn = h('button', {
+      type: 'button', role: 'tab', class: 'src-btn', dataset: { src: sr.key },
+      'aria-selected': String(s.src === sr.key),
+      onClick: () => { s.src = sr.key; commit(); },
+    }, sr.label, countSpan);
+    srcBtns.set(sr.key, { btn, countSpan });
+    sourceRow.append(btn);
+  }
+
+  // ---- 搜尋範圍切換 ----
   for (const sc of SCOPES) {
     scopeRow.append(h('button', { type: 'button', role: 'tab', class: 'scope-btn', dataset: { scope: sc.key }, 'aria-selected': String(s.scope === sc.key), onClick: () => { s.scope = sc.key; commit(); } }, sc.label));
   }
 
-  // ---- 篩選面板（一次建立，之後只更新數字與勾選） ----
+  // ---- 篩選面板 ----
   function makeOption(dimKey, value, label, extraClass = '') {
     const input = h('input', { type: 'checkbox', value, onChange: () => { toggleValue(dimKey, value, input.checked); } });
     const countEl = h('span', { class: 'opt-count' }, '');
@@ -47,7 +62,8 @@ export function renderList(params) {
     if (d.key === 'cat') {
       const wrap = h('div', { class: 'opts' });
       for (const t of categoryTree()) {
-        wrap.append(makeOption('cat', t.path, t.name, 'opt-top'));
+        const extraCls = t.path === '臺灣中藥典增補品項' ? 'opt-top opt-blank' : 'opt-top';
+        wrap.append(makeOption('cat', t.path, t.name, extraCls));
         for (const c of t.children) wrap.append(makeOption('cat', c.path, c.name, 'opt-sub'));
       }
       return wrap;
@@ -110,12 +126,13 @@ export function renderList(params) {
     return v;
   }
 
-  // ---- 更新結果 ----
   function update() {
-    const { rows, result, counts, unlisted } = applyFilters(s);
-    // 範圍按鈕
+    const { rows, result, counts, unlisted, srcCounts } = applyFilters(s);
+    for (const [k, { btn, countSpan }] of srcBtns) {
+      btn.setAttribute('aria-selected', String(s.src === k));
+      countSpan.textContent = ` ${srcCounts[k] ?? 0}`;
+    }
     for (const b of scopeRow.children) b.setAttribute('aria-selected', String(b.dataset.scope === s.scope));
-    // 選項數字
     for (const [dim, m] of optionEls) {
       for (const [v, o] of m) {
         const n = counts[dim].get(v) || 0;
@@ -129,14 +146,12 @@ export function renderList(params) {
     filterBtn.textContent = nActive ? `篩選（${nActive}）` : '篩選';
     applyBtn.textContent = `套用（${rows.length} 味）`;
 
-    // 已選條件
     clear(activeRow);
     for (const d of DIMS) for (const v of s[d.key]) {
       activeRow.append(h('button', { type: 'button', class: 'chip chip-active', title: `移除「${chipLabel(d.key, v)}」`, onClick: () => { toggleValue(d.key, v, false); syncInputs(); } }, `${d.key === 'ing' || d.key === 'cat' ? '' : dimLabel[d.key] + '：'}${chipLabel(d.key, v)} ×`));
     }
     if (nActive) activeRow.append(h('button', { type: 'button', class: 'btn btn-link', onClick: () => clearBtn.click() }, '清除全部'));
 
-    // 「未標示」提醒
     clear(noticeBox);
     for (const d of DIMS) {
       if (unlisted[d.key]) {
@@ -147,15 +162,18 @@ export function renderList(params) {
     }
     if (s.q && result.fuzzy) noticeBox.append(h('div', { class: 'notice' }, '沒有完全符合的結果，以下是近似結果。'));
 
-    // 摘要
-    summary.textContent = s.q ? `搜尋「${s.q}」共 ${rows.length} 味` : `共 ${rows.length} 味`;
+    const srcHint = s.src === 'all' ? '' : `（${srcLabel[s.src]}）`;
+    summary.textContent = s.q ? `搜尋「${s.q}」共 ${rows.length} 味${srcHint}` : `共 ${rows.length} 味${srcHint}`;
 
-    // 清單
     clear(results);
     if (!rows.length) {
       const sug = s.q ? (result.suggestions?.length ? result.suggestions : suggest(s.q)) : [];
+      const hasOtherSrc = s.src !== 'all' && srcCounts.all > 0;
       results.append(h('div', { class: 'empty-box' },
-        h('p', null, nActive && !result.empty && result.results.length ? '目前的篩選條件下沒有符合的藥材。' : '找不到符合的藥材。'),
+        h('p', null, hasOtherSrc
+          ? `目前在「${srcLabel[s.src]}」範圍內沒有符合的藥材（全部範圍共有 ${srcCounts.all} 味）。`
+          : (nActive && !result.empty && result.results.length ? '目前的篩選條件下沒有符合的藥材。' : '找不到符合的藥材。')),
+        hasOtherSrc ? h('button', { type: 'button', class: 'btn btn-primary', onClick: () => { s.src = 'all'; commit(); } }, `切回全部（${srcCounts.all} 味）`) : null,
         nActive ? h('button', { type: 'button', class: 'btn', onClick: () => clearBtn.click() }, '清除篩選') : null,
         sug.length ? h('p', null, '你是不是要找：', ...sug.map(x => chip(x.name_zh, { href: herbHref(x.id) }))) : null));
     } else {
@@ -171,12 +189,12 @@ export function renderList(params) {
   }
 
   root.append(
+    sourceRow,
     h('div', { class: 'list-head' }, h('div', { class: 'scope-wrap' }, scopeRow), h('div', { class: 'list-tools' }, filterBtn, sortSel)),
     backdrop, panel, activeRow, noticeBox, summary, results);
   syncInputs();
   update();
 
-  // 全站搜尋框輸入 -> 即時更新
   const onQuery = (e) => { s.q = e.detail; commit(); };
   document.addEventListener('tcm:query', onQuery);
   const onDocClick = (e) => {

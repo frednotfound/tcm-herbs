@@ -1,6 +1,13 @@
 // 多條件篩選：不同篩選之間是「且」，同一篩選內多選是「或」；小重點可切換成「全部符合」。
 import { store } from './data.js';
 import { runSearch } from './search.js';
+import { isCommonHerb, isThp5OnlyHerb } from './lib/derive.js';
+
+export const SOURCES = [
+  { key: 'all', label: '全部' },
+  { key: 'common', label: '常用中藥' },
+  { key: 'thp5_only', label: '僅出現在臺灣中藥典第五版' },
+];
 
 export const DIMS = [
   { key: 'cat', label: '分類', blank: false },
@@ -15,8 +22,14 @@ export const DIMS = [
 ];
 const MULTI = ['cat', 'nat', 'fla', 'mer', 'grade', 'ing', 'fam', 'part', 'tag'];
 
+export function matchSource(herb, src) {
+  if (src === 'common') return isCommonHerb(herb);
+  if (src === 'thp5_only') return isThp5OnlyHerb(herb);
+  return true;
+}
+
 export function emptyState() {
-  const s = { q: '', scope: 'all', tagmode: 'any', sort: 'rel' };
+  const s = { q: '', scope: 'all', src: 'all', tagmode: 'any', sort: 'rel' };
   for (const k of MULTI) s[k] = [];
   return s;
 }
@@ -25,6 +38,8 @@ export function stateFromParams(params) {
   const s = emptyState();
   s.q = params.get('q') || '';
   s.scope = params.get('scope') || 'all';
+  const rawSrc = params.get('src') || 'all';
+  s.src = SOURCES.some(x => x.key === rawSrc) ? rawSrc : 'all';
   s.tagmode = params.get('tagmode') === 'all' ? 'all' : 'any';
   s.sort = params.get('sort') || 'rel';
   for (const k of MULTI) {
@@ -38,6 +53,7 @@ export function stateToParams(s) {
   const p = new URLSearchParams();
   if (s.q) p.set('q', s.q);
   if (s.scope && s.scope !== 'all') p.set('scope', s.scope);
+  if (s.src && s.src !== 'all') p.set('src', s.src);
   if (s.tagmode === 'all') p.set('tagmode', 'all');
   if (s.sort && s.sort !== 'rel') p.set('sort', s.sort);
   for (const k of MULTI) if (s[k].length) p.set(k, s[k].join(','));
@@ -53,16 +69,20 @@ function matchDim(s, dimKey, facet) {
   return sel.some(v => facet.has(v));
 }
 
-/** 回傳 { rows, result, counts, unlisted }
- *  rows：通過搜尋與全部篩選的結果（含命中資訊）
- *  counts[dim][value]：在「其他條件不變」下，選這個選項會有幾味
- *  unlisted[dim]：該面向有選條件、但另有 N 味因為「未標示」而未列入
- */
 export function applyFilters(s) {
   const result = runSearch(s.q, s.scope);
-  const base = result.results;
+  const searched = result.results;
   const facetOf = (row) => store.facets.get(row.herb.id);
   const passAllExcept = (row, except) => MULTI.every(k => k === except || matchDim(s, k, facetOf(row)[k]));
+
+  const srcPool = searched.filter(r => passAllExcept(r, null));
+  const srcCounts = {
+    all: srcPool.length,
+    common: srcPool.filter(r => isCommonHerb(r.herb)).length,
+    thp5_only: srcPool.filter(r => isThp5OnlyHerb(r.herb)).length,
+  };
+
+  const base = searched.filter(r => matchSource(r.herb, s.src));
   const rows = base.filter(r => passAllExcept(r, null));
 
   const counts = {};
@@ -76,7 +96,7 @@ export function applyFilters(s) {
       unlisted[d.key] = pool.filter(r => facetOf(r)[d.key].has(store.UNSET)).length;
     }
   }
-  return { rows: sortRows(rows, s), result, counts, unlisted };
+  return { rows: sortRows(rows, s), result, counts, unlisted, srcCounts };
 }
 
 function sortRows(rows, s) {
@@ -84,11 +104,9 @@ function sortRows(rows, s) {
   const out = [...rows];
   if (s.sort === 'name') out.sort((a, b) => a.herb.name_zh.localeCompare(b.herb.name_zh, 'zh-Hant'));
   else if (s.sort === 'lecture') out.sort((a, b) => order.get(a.herb.id) - order.get(b.herb.id));
-  // 'rel'：沒有搜尋字時維持講義順序（runSearch 已處理）；有搜尋字時依相關度
   return out;
 }
 
-/** 各面向的選項清單（依資料實際出現的值） */
 export function optionsFor(dimKey) {
   const s = store;
   const seen = new Map();
@@ -112,10 +130,9 @@ export function optionsFor(dimKey) {
   return list.map(v => ({ value: v, total: total.get(v) }));
 }
 
-/** 分類樹：[{name, path, children:[{name,path}]}]，數量為整體藥材數 */
-export function categoryTree() {
+export function categoryTree(herbsSubset = store.herbs) {
   const top = new Map();
-  for (const h of store.herbs) {
+  for (const h of herbsSubset) {
     const f = store.facets.get(h.id).cat;
     for (const v of f) {
       const [a, b] = v.split('>');
@@ -129,6 +146,10 @@ export function categoryTree() {
     }
   }
   const order = store.categories.filter(c => !c.category_path.includes('>')).map(c => c.category_path);
+  const subOrder = store.categories.filter(c => c.category_path.includes('>')).map(c => c.category_path);
   const arr = [...top.values()].sort((x, y) => (order.indexOf(x.name) + 1 || 99) - (order.indexOf(y.name) + 1 || 99));
-  return arr.map(t => ({ ...t, children: [...t.children.values()] }));
+  return arr.map(t => ({
+    ...t,
+    children: [...t.children.values()].sort((x, y) => (subOrder.indexOf(x.path) + 1 || 99) - (subOrder.indexOf(y.path) + 1 || 99)),
+  }));
 }

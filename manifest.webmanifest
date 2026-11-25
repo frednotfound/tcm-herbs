@@ -1,7 +1,7 @@
 {
   "name": "中藥藥物學互動式學習網站",
   "short_name": "中藥藥物學",
-  "description": "中藥藥物學學習與查詢（整理自老師講義與公開資料，僅供學習使用）",
+  "description": "中藥藥物學學習與查詢（整理自課程講義與《臺灣中藥典第五版》，僅供學習使用）",
   "start_url": "./#/",
   "scope": "./",
   "display": "standalone",

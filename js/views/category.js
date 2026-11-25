@@ -9,7 +9,7 @@ export function renderCategory(id) {
   const root = h('div', { class: 'cat-view' });
   const path = cat.category_path.split('>');
   root.append(h('div', { class: 'card' },
-    h('div', { class: 'muted small' }, path.length > 1 ? `${path[0]} > ` : '', cat.source_page?.length ? `講義 p.${cat.source_page.join('、')}` : ''),
+    h('div', { class: 'muted small' }, path.length > 1 ? `${path[0]} > ` : '', cat.source_page?.length ? `常用中藥講義 p.${cat.source_page.join('、')}` : ''),
     h('h1', null, cat.title || path.at(-1)),
     h('p', null, h('a', { class: 'btn', href: `#/herbs?cat=${encodeURIComponent(cat.category_path)}` }, '用篩選查看這一類'))));
 
@@ -18,9 +18,14 @@ export function renderCategory(id) {
     root.append(h('details', { class: 'card sec', open: true }, h('summary', null, h('span', { class: 'sec-title' }, sec.heading)),
       h('div', { class: 'sec-body' }, (sec.subsections || []).map(sub => h('div', { class: 'subsec' }, sub.subheading ? h('h3', null, sub.subheading) : null, h('ul', null, (sub.items || []).map(x => h('li', null, x))))))));
   }
-  // 子分類連結
   const subs = store.categories.filter(c => c.category_path.startsWith(cat.category_path + '>'));
-  if (subs.length) root.append(h('div', { class: 'card' }, h('h2', null, '子分類'), h('div', { class: 'chips' }, ...subs.map(c => h('a', { class: 'chip', href: `#/cat/${encodeURIComponent(c.id)}` }, c.title || c.category_path.split('>').at(-1))))));
+  if (subs.length) {
+    root.append(h('div', { class: 'card' }, h('h2', null, '子分類'),
+      h('div', { class: 'chips' }, ...subs.map(c => {
+        const cnt = store.herbs.filter(hh => store.facets.get(hh.id).cat.has(c.category_path)).length;
+        return h('a', { class: 'chip', href: `#/cat/${encodeURIComponent(c.id)}` }, `${c.title || c.category_path.split('>').at(-1)}（${cnt}）`);
+      }))));
+  }
 
   const herbs = store.herbs.filter(hh => store.facets.get(hh.id).cat.has(cat.category_path));
   root.append(h('h2', { class: 'list-h' }, `藥材（${herbs.length} 味）`));

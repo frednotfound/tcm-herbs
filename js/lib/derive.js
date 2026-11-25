@@ -61,7 +61,7 @@ export function normText(s, variantPairs = []) {
 
 /** 成分名稱用的鍵：小寫、去空白與常見符號，讓 "l-Ephedrine" 與 "L-ephedrine" 相同 */
 export function compoundKey(s) {
-  return normText(s).replace(/[\s ]+/g, '').replace(/[()（）\[\]]/g, '');
+  return normText(s).replace(/[\s ]+/g, '').replace(/[()（）\[\]]/g, '');
 }
 
 /** 建立成分分類樹的查表 */

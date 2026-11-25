@@ -1,7 +1,7 @@
-// 中文搜尋：162 筆資料量小，直接對正規化後的欄位做子字串比對（不需要外部套件、不需要建置）。
+// 中文搜尋：全庫資料量小，直接對正規化後的欄位做子字串比對（不需要外部套件、不需要建置）。
 // 比對順序：完全相符 > 開頭相符 > 包含；沒有任何結果時才退到「近似」（雙字詞重疊、拉丁字母差一字）。
 import { store } from './data.js';
-import { normText, compoundKey, stripParen } from './lib/derive.js';
+import { normText, compoundKey, stripParen, isCommonHerb } from './lib/derive.js';
 
 export const SCOPES = [
   { key: 'all', label: '全部' },
@@ -13,15 +13,19 @@ export const SCOPES = [
 const SCOPE_FIELDS = {
   all: null,
   name: new Set(['name', 'latin', 'sci']),
-  ingredient: new Set(['ingredient', 'tree']),
-  effect: new Set(['effect']),
+  ingredient: new Set(['ingredient', 'tree', 'thp5_assay']),
+  effect: new Set(['effect', 'thp5_func']),
   formula: new Set(['formula']),
 };
 export const FIELD_LABEL = {
-  name: '藥名', latin: '拉丁名', sci: '學名', formula: '方劑', ingredient: '成分', tree: '成分類別',
+  name: '藥名', latin: '拉丁／英文名', sci: '學名', formula: '方劑', ingredient: '成分', tree: '成分類別',
   effect: '功效', family: '科名', related: '附藥與近緣品', misc: '炮製／備註／標籤',
+  thp5_assay: '指標成分（五版）', thp5_func: '藥典功能（五版）', thp5_desc: '藥典性狀（五版）',
 };
-const WEIGHT = { name: 10, latin: 6, sci: 6, formula: 4, ingredient: 4, tree: 3, effect: 3, family: 3, related: 3, misc: 1.5 };
+const WEIGHT = {
+  name: 10, latin: 6, sci: 6, formula: 4, ingredient: 4, thp5_assay: 3.5, tree: 3,
+  effect: 3, family: 3, related: 3, thp5_func: 2.5, misc: 1.5, thp5_desc: 1.5,
+};
 
 let docs = null;
 
@@ -29,7 +33,13 @@ function item(field, text, extra) {
   const t = String(text ?? '').trim();
   if (!t) return null;
   const norm = normText(t, store.variantPairs);
-  return { field, text: t, norm, key: field === 'ingredient' ? compoundKey(t) : '', ...extra };
+  const key = (field === 'ingredient' || field === 'thp5_assay') ? compoundKey(t) : '';
+  return { field, text: t, norm, key, ...extra };
+}
+
+function thp5EntriesOf(h) {
+  if (Array.isArray(h.thp5_list) && h.thp5_list.length) return h.thp5_list;
+  return h.thp5 ? [h.thp5] : [];
 }
 
 export function buildDocs() {
@@ -70,6 +80,20 @@ export function buildDocs() {
     for (const p of h.processing || []) add('misc', p);
     for (const n of h.notes || []) add('misc', n);
     for (const t of h.tags || []) add('misc', t);
+    // 臺灣中藥典第五版欄位索引
+    for (const th of thp5EntriesOf(h)) {
+      if (th.name_zh && th.name_zh !== h.name_zh) add('name', th.name_zh);
+      if (th.name_en) add('latin', th.name_en);
+      if (th.assay_summary) add('thp5_assay', th.assay_summary, { show: th.assay_summary });
+      for (const mk of th.assay_markers || []) {
+        if (mk.marker && !/抽提物$/.test(mk.marker)) {
+          const show = mk.limit ? `${mk.marker} ${mk.limit}` : mk.marker;
+          add('thp5_assay', mk.marker, { show });
+        }
+      }
+      if (th.functions && isCommonHerb(h)) add('thp5_func', th.functions, { show: th.functions });
+      if (th.general_description) add('thp5_desc', th.general_description, { show: th.general_description });
+    }
     // 成分樹節點名稱（讓「生物鹼」也能直接比對到該藥的歸類）
     for (const id of store.cls.byHerb.get(h.id).direct) {
       const n = store.taxo.nodes.get(id);
@@ -85,13 +109,10 @@ function expandTerm(term) {
   const variants = new Set([term]);
   const nk = normText(term, store.variantPairs);
   variants.add(nk);
-  // 藥名別名群組（丹皮 <-> 牡丹皮、白术 <-> 白朮）
   const g = store.nameGroups.get(nk);
   if (g) for (const n of g) variants.add(normText(n, store.variantPairs));
-  // 化合物同義詞（chlorogenic acid <-> 綠原酸）
   const syn = store.taxo.synKeys(compoundKey(term));
   const synKeys = new Set(syn);
-  // 科別別名
   for (const f of store.alias.botanical_families || []) {
     const all = [f.canonical_zh, f.canonical_latin, ...(f.aliases || [])].map(x => normText(x, store.variantPairs));
     if (all.includes(nk)) all.forEach(x => variants.add(x));
@@ -112,12 +133,11 @@ function bigrams(s) { const a = [...s.replace(/\s+/g, '')]; const out = []; for 
 function lev1(a, b) {
   if (Math.abs(a.length - b.length) > 1) return false;
   let i = 0; while (i < a.length && i < b.length && a[i] === b[i]) i++;
-  if (a.length === b.length) return a.slice(i + 1) === b.slice(i + 1) || a.slice(i) === b.slice(i); // 取代
+  if (a.length === b.length) return a.slice(i + 1) === b.slice(i + 1) || a.slice(i) === b.slice(i);
   const [s, l] = a.length < b.length ? [a, b] : [b, a];
   return s.slice(i) === l.slice(i + 1);
 }
 
-/** 對單一詞，算某味藥的得分與命中；strict=false 時啟用近似比對 */
 function scoreTerm(doc, term, ex, scopeSet, strict) {
   const hits = [];
   for (const it of doc.items) {
@@ -143,7 +163,6 @@ function scoreTerm(doc, term, ex, scopeSet, strict) {
 }
 
 function treeHits(term, scopeSet) {
-  // 搜「生物鹼」「alkaloid」：用化學類別對照找節點，列出含該節點（含子孫）成分的藥
   if (scopeSet && !scopeSet.has('tree') && !scopeSet.has('ingredient')) return new Map();
   const nk = normText(term, store.variantPairs);
   const nodeId = store.taxo.termIndex.get(nk);
@@ -182,7 +201,6 @@ export function runSearch(query, scope = 'all') {
         hits.push(...hs.slice(0, 3).map(x => ({ ...x, term: terms[i] })));
       }
       if (!ok) continue;
-      // 藥名完全相符排最前
       const exact = terms.length === 1 && d.items.some(it => it.field === 'name' && exps[0].variants.some(v => it.norm === v));
       res.push({ herb: d.herb, score: total + (exact ? 1000 : 0), hits, exact });
     }
@@ -194,7 +212,6 @@ export function runSearch(query, scope = 'all') {
   return { terms, results, fuzzy, empty: false, suggestions: results.length ? [] : suggest(raw) };
 }
 
-/** 找不到時的近似藥名建議 */
 export function suggest(raw, limit = 5) {
   const q = normText(raw, store.variantPairs).replace(/\s+/g, '');
   if (!q) return [];
@@ -216,7 +233,6 @@ export function suggest(raw, limit = 5) {
   return scored.sort((a, b) => b[0] - a[0]).slice(0, limit).map(x => x[1]);
 }
 
-/** 命中片段：最多取 limit 個不同欄位/文字的片段 */
 export function pickSnippets(result, limit = 2) {
   const seen = new Set(); const out = [];
   const hits = [...result.hits].sort((a, b) => b.score - a.score);
