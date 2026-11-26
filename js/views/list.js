@@ -6,7 +6,7 @@ import { replaceParams, herbHref } from '../router.js';
 import { herbCard } from './card.js';
 import { chip, isNarrow } from '../lib/ui.js';
 
-const SORTS = [['rel', '相關度／常用中藥順序'], ['name', '藥名筆畫排序'], ['lecture', '常用中藥順序']];
+const SORTS = [['rel', '預設排序'], ['name', '依藥名筆畫'], ['lecture', '依講義順序']];
 
 export function renderList(params) {
   const s = stateFromParams(params);
@@ -19,7 +19,7 @@ export function renderList(params) {
   // 這兩排是「單選切換鈕」而不是分頁（沒有對應的 tabpanel），用 aria-pressed 讓螢幕閱讀器正確唸出
   const sourceRow = h('div', { class: 'source-row', role: 'group', 'aria-label': '收錄來源' });
   const scopeRow = h('div', { class: 'scope-row', role: 'group', 'aria-label': '搜尋範圍' });
-  const sortSel = h('select', { class: 'sort-sel', 'aria-label': '排序', onChange: (e) => { s.sort = e.target.value; commit(); } },
+  const sortSel = h('select', { class: 'sort-sel', 'aria-label': '排序方式', title: '預設排序：有搜尋時依相關度，沒有時依常用中藥講義順序', onChange: (e) => { s.sort = e.target.value; commit(); } },
     SORTS.map(([v, l]) => h('option', { value: v }, l)));
   sortSel.value = s.sort;
   const filterBtn = h('button', { type: 'button', class: 'btn filter-btn', 'aria-expanded': 'false', onClick: () => toggleSheet(true) }, '篩選');
@@ -37,9 +37,9 @@ export function renderList(params) {
     const countSpan = h('span', { class: 'src-count' }, '');
     const btn = h('button', {
       type: 'button', class: 'src-btn', dataset: { src: sr.key },
-      'aria-pressed': String(s.src === sr.key),
+      'aria-pressed': String(s.src === sr.key), title: sr.label,
       onClick: () => { s.src = sr.key; commit(); },
-    }, sr.label, countSpan);
+    }, h('span', { class: 'lbl-long' }, sr.label), h('span', { class: 'lbl-short', 'aria-hidden': 'true' }, sr.short), countSpan);
     srcBtns.set(sr.key, { btn, countSpan });
     sourceRow.append(btn);
   }
@@ -144,7 +144,7 @@ export function renderList(params) {
     const { rows, result, counts, unlisted, srcCounts } = applyFilters(s);
     for (const [k, { btn, countSpan }] of srcBtns) {
       btn.setAttribute('aria-pressed', String(s.src === k));
-      countSpan.textContent = ` ${srcCounts[k] ?? 0}`;
+      countSpan.textContent = String(srcCounts[k] ?? 0);
     }
     for (const b of scopeRow.children) b.setAttribute('aria-pressed', String(b.dataset.scope === s.scope));
     for (const [dim, m] of optionEls) {

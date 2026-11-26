@@ -24,6 +24,7 @@ data/                                     所有藥學資料（只改這裡就�
   derived/part_groups.json                衍生對照：使用部位分組（待審核）
 gas/Code.gs                               回報錯誤的 Google Apps Script
 structures/                               化學結構式 SVG
+fonts/                                    全站字型：思源宋體（Noto Serif CJK TC）依網站用字切出的子集（SIL OFL，見 fonts/OFL.txt）
 scripts/                                  資料檢查與測試（Node 22）
 .github/workflows/pages.yml               推送時先檢查資料，通過才部署
 docs/                                     部署與維護文件
@@ -40,6 +41,12 @@ docs/                                     部署與維護文件
 ## 技術選擇與原因
 
 與 Step 3 規格不同之處：**未使用 Vite + Preact + TypeScript 與 MiniSearch／vite-plugin-pwa**，改用純原生 ES modules、自寫的搜尋與 Service Worker。原因：開發環境無法安裝套件（沒有網路）。附帶好處是沒有建置步驟，非工程人員改完資料就能上線。若之後頁面增多想改用框架，資料層與搜尋層（`js/data.js`、`js/search.js`、`js/filters.js`、`js/lib/derive.js`）不含 DOM，可原樣沿用。
+
+## 字型與中文斷行
+
+- 全站統一用宋體：`fonts/` 是思源宋體（Noto Serif CJK TC，SIL Open Font License，可自由隨網站散布）只留網站用到的約 2,500 字、依字頻切成 4 片 × 2 字重（一般、粗體），瀏覽器只下載當頁用到的那幾片。
+- 資料新增了字型沒收錄的字時，`node scripts/validate.mjs` 會提醒，執行 `python3 scripts/build_fonts.py <Regular.ttc> <Bold.ttc>` 重新產生（說明在該檔開頭）。
+- 中文換行以「詞」為單位：`js/lib/wrap.js` 用瀏覽器內建的中文分詞在詞與詞之間加斷點，配合 CSS `word-break: keep-all`，手機上不會出現「頭｜暈」「資｜料版本」這種把詞拆開的換行。
 
 ## 新增 JS 模組時
 

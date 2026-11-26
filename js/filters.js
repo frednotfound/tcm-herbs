@@ -4,9 +4,9 @@ import { runSearch, SCOPES } from './search.js';
 import { isCommonHerb, isThp5OnlyHerb } from './lib/derive.js';
 
 export const SOURCES = [
-  { key: 'all', label: '全部' },
-  { key: 'common', label: '常用中藥' },
-  { key: 'thp5_only', label: '僅出現在臺灣中藥典第五版' },
+  { key: 'all', label: '全部', short: '全部' },
+  { key: 'common', label: '常用中藥', short: '常用中藥' },
+  { key: 'thp5_only', label: '僅出現在臺灣中藥典第五版', short: '五版增補' },
 ];
 
 export const DIMS = [

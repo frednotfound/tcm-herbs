@@ -19,16 +19,18 @@ export function nameList(str) {
 
 function development(t) {
   return [h('div', { class: 'card' }, h('h2', null, t.title), pg(t),
-    h('div', { class: 'table-wrap' }, h('table', { class: 'tbl' },
+    // tbl-stack：手機上每一列改成一張小卡片（欄位名稱寫在左邊），不再被擠成一字一行
+    h('div', { class: 'table-wrap' }, h('table', { class: 'tbl tbl-stack' },
       h('thead', null, h('tr', null, ['書名', '朝代', '作者', '卷數', '藥數', '重點'].map(x => h('th', null, x)))),
       h('tbody', null, t.classics.map(c => h('tr', null,
-        h('td', null, h('strong', null, c.title)), h('td', null, c.dynasty), h('td', null, c.author), h('td', null, c.volumes), h('td', null, c.herb_count),
-        h('td', null, ul(c.content), c.exam_markers?.length ? h('div', { class: 'muted small' }, `考題標記：${c.exam_markers.join('、')}`) : null)))))))];
+        h('td', { class: 'stack-title' }, h('strong', null, c.title)), h('td', { 'data-label': '朝代' }, c.dynasty), h('td', { 'data-label': '作者' }, c.author),
+        h('td', { 'data-label': '卷數' }, c.volumes), h('td', { 'data-label': '藥數' }, c.herb_count),
+        h('td', { 'data-label': '重點' }, ul(c.content), c.exam_markers?.length ? h('div', { class: 'muted small' }, `考題標記：${c.exam_markers.join('、')}`) : null)))))))];
 }
 function harvesting(t) {
   return [h('div', { class: 'card' }, h('h2', null, t.title), pg(t), h('h3', null, '原則'), ul(t.principles)),
-    h('div', { class: 'card' }, h('h3', null, '依部位'), h('div', { class: 'table-wrap' }, h('table', { class: 'tbl' }, h('thead', null, h('tr', null, h('th', null, '部位'), h('th', null, '採集時機'))),
-      h('tbody', null, t.by_part.map(r => h('tr', null, h('td', null, h('strong', null, r.part)), h('td', null, ul(r.rules))))))))];
+    h('div', { class: 'card' }, h('h3', null, '依部位'), h('div', { class: 'table-wrap' }, h('table', { class: 'tbl tbl-stack' }, h('thead', null, h('tr', null, h('th', null, '部位'), h('th', null, '採集時機'))),
+      h('tbody', null, t.by_part.map(r => h('tr', null, h('td', { class: 'stack-title' }, h('strong', null, r.part)), h('td', { class: 'stack-full' }, ul(r.rules))))))))];
 }
 function processing(t) {
   return [h('div', { class: 'card' }, h('h2', null, t.title), pg(t), h('h3', null, '目的'), t.purposes.map(p => h('div', null, h('strong', null, p.category), ul(p.items)))),
@@ -46,9 +48,9 @@ function properties(t) {
 function compat(t) {
   const r = t;
   return [h('div', { class: 'card' }, h('h2', null, '配伍規則'), pg(r), h('p', null, h('a', { class: 'btn btn-primary', href: '#/compat' }, '到配伍禁忌查詢頁')),
-    h('h3', null, '七情'), h('div', { class: 'table-wrap' }, h('table', { class: 'tbl' }, h('thead', null, h('tr', null, ['類型', '舉例', '藥'].map(x => h('th', null, x)))),
-      h('tbody', null, r.seven_emotions.map(e => h('tr', null, h('td', null, h('strong', null, e.type)), h('td', null, e.example, e.exam_markers?.length ? h('div', { class: 'muted small' }, `考題標記：${e.exam_markers.join('、')}`) : null),
-        h('td', null, ...(e.herbs || []).flatMap((n, i) => [i ? '、' : null, ...nameList(n)]))))))),
+    h('h3', null, '七情'), h('div', { class: 'table-wrap' }, h('table', { class: 'tbl tbl-stack' }, h('thead', null, h('tr', null, ['類型', '舉例', '藥'].map(x => h('th', null, x)))),
+      h('tbody', null, r.seven_emotions.map(e => h('tr', null, h('td', { class: 'stack-title' }, h('strong', null, e.type)), h('td', { 'data-label': '舉例' }, e.example, e.exam_markers?.length ? h('div', { class: 'muted small' }, `考題標記：${e.exam_markers.join('、')}`) : null),
+        h('td', { 'data-label': '藥' }, ...(e.herbs || []).flatMap((n, i) => [i ? '、' : null, ...nameList(n)]))))))),
     h('h3', null, '十八反'), h('ul', null, r.eighteen_incompatibles.map(g => h('li', null, h('strong', null, ...nameList(g.base)), ' 反 ', ...g.incompatible_with.flatMap((n, i) => [i ? '、' : null, ...nameList(n)])))),
     h('h3', null, '十九畏'), h('ul', null, r.nineteen_antagonisms.map(g => h('li', null, ...nameList(g.herb_a), ' 畏 ', ...nameList(g.herb_b)))),
     h('h3', null, '妊娠'), h('div', null, h('strong', { class: 'danger' }, '禁服：'), ...r.pregnancy_contraindications.forbidden.flatMap((n, i) => [i ? '、' : null, ...nameList(n)])),

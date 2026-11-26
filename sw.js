@@ -3,9 +3,9 @@
 // - 其他檔案（網頁、程式、樣式、結構圖）：先用快取、背景更新（stale-while-revalidate）
 const VERSION = new URL(self.location).searchParams.get('v') || '1';
 const CACHE = `tcm-${VERSION}`;
-const SHELL = ['./', 'index.html', 'css/style.css', 'manifest.webmanifest', 'icons/icon.svg', 'icons/icon-192.png',
+const SHELL = ['./', 'index.html', 'css/style.css', 'fonts/fonts.css', 'fonts/serif-400-0.woff', 'fonts/serif-700-0.woff', 'manifest.webmanifest', 'icons/icon.svg', 'icons/icon-192.png',
   'js/app.js', 'js/config.js', 'js/data.js', 'js/router.js', 'js/search.js', 'js/filters.js',
-  'js/lib/dom.js', 'js/lib/ui.js', 'js/lib/derive.js',
+  'js/lib/dom.js', 'js/lib/ui.js', 'js/lib/derive.js', 'js/lib/wrap.js',
   'js/views/home.js', 'js/views/list.js', 'js/views/card.js', 'js/views/herb.js', 'js/views/category.js',
   'js/views/ingredients.js', 'js/views/theory.js', 'js/views/compat.js', 'js/views/about.js', 'js/views/report.js',
   'data/meta.json', 'data/herbs.json', 'data/general_theory.json', 'data/categories.json', 'data/exam_highlights.json',

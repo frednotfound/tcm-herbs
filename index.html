@@ -10,12 +10,17 @@
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <!-- 字型：思源宋體子集，依字頻切片；先預載最常用的第一片，其餘需要時才下載 -->
+  <link rel="preload" href="fonts/serif-400-0.woff" as="font" type="font/woff" crossorigin>
+  <link rel="preload" href="fonts/serif-700-0.woff" as="font" type="font/woff" crossorigin>
+  <link rel="stylesheet" href="fonts/fonts.css">
   <link rel="stylesheet" href="css/style.css">
   <!-- 預先平行下載所有模組：不然瀏覽器要一層一層解析 import（app → views → filters → search → data → derive），冷啟動多好幾次往返 -->
   <link rel="modulepreload" href="js/config.js">
   <link rel="modulepreload" href="js/router.js">
   <link rel="modulepreload" href="js/lib/dom.js">
   <link rel="modulepreload" href="js/lib/derive.js">
+  <link rel="modulepreload" href="js/lib/wrap.js">
   <link rel="modulepreload" href="js/data.js">
   <link rel="modulepreload" href="js/search.js">
   <link rel="modulepreload" href="js/filters.js">
@@ -34,22 +39,31 @@
 <body>
   <a class="skip" href="#main">跳到主要內容</a>
   <header class="topbar">
-    <button id="menu-btn" class="btn btn-ghost menu-btn" type="button" aria-label="開啟選單" aria-controls="sidebar" aria-expanded="false">☰</button>
+    <button id="menu-btn" class="btn btn-ghost menu-btn icon-btn" type="button" aria-label="開啟選單" aria-controls="sidebar" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
     <a class="brand" href="#/">中藥藥物學</a>
     <form id="search-form" class="search-form" role="search">
-      <input id="global-search" type="search" placeholder="搜尋藥名、成分、功效、方劑、性狀…（按 / 快速搜尋）" aria-label="搜尋" autocomplete="off">
+      <input id="global-search" type="search" placeholder="搜尋藥名、成分、功效、方劑、性狀…（按 / 快速搜尋）" data-short-placeholder="搜尋藥材…" aria-label="搜尋藥名、成分、功效、方劑" autocomplete="off" enterkeyhint="search">
     </form>
     <button id="theme-btn" class="btn btn-ghost theme-btn" type="button">主題</button>
   </header>
   <div class="shell">
     <aside id="sidebar" class="sidebar" aria-label="導覽">
-      <nav id="side-nav" class="side-nav"></nav>
-      <div id="side-cats" class="side-cats"></div>
+      <div class="drawer-head">
+        <strong class="drawer-title">選單</strong>
+        <button id="drawer-close" class="btn btn-ghost drawer-close icon-btn" type="button" aria-label="關閉選單"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+      <div class="sidebar-scroll">
+        <nav id="side-nav" class="side-nav"></nav>
+        <div id="side-cats" class="side-cats"></div>
+      </div>
     </aside>
     <div id="drawer-backdrop" class="drawer-backdrop"></div>
     <main id="main" tabindex="-1"><p class="muted loading">載入資料中…</p></main>
   </div>
-  <footer class="site-foot"><span id="foot-note">整理自課程講義與《臺灣中藥典第五版》，僅供學習使用</span> · <a href="#/about">關於</a></footer>
+  <footer class="site-foot">
+    <p class="foot-line"><span class="nw">整理自課程講義與</span><span class="nw">《臺灣中藥典第五版》，</span><span class="nw">僅供學習使用</span></p>
+    <p class="foot-line muted"><span id="foot-ver" class="nw"></span><span class="foot-sep" aria-hidden="true">·</span><a class="nw" href="#/about">關於本站</a></p>
+  </footer>
   <nav id="bottom-nav" class="bottom-nav" aria-label="主要分頁"></nav>
   <noscript><p style="padding:1rem">本網站需要啟用 JavaScript。</p></noscript>
   <script type="module" src="js/app.js"></script>

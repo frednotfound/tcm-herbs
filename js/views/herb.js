@@ -71,6 +71,13 @@ function structThumb(c, withCid) {
     withCid && c.pubchem_cid ? h('span', { class: 'struct-cap' }, `CID ${c.pubchem_cid}`) : null);
 }
 
+/** 「A · B · C」：每一段是一個不斷行的單位，只在「·」處換行 */
+function refLine(parts) {
+  const out = [];
+  parts.filter(Boolean).forEach((p, i) => { if (i) out.push(h('span', { class: 'sep', 'aria-hidden': 'true' }, ' · ')); out.push(h('span', { class: 'nw' }, p)); });
+  return out;
+}
+
 function listLinks(names) {
   const out = [];
   names.forEach((n, i) => {
@@ -253,7 +260,7 @@ export function renderHerb(id) {
     h('div', { class: 'latin' }, herb.name_latin || '', herb.name_latin_legacy?.length ? h('span', { class: 'muted' }, `（舊：${herb.name_latin_legacy.join('；')}）`) : null),
     (herb.herb_grade || tags.length) ? h('div', { class: 'chips' }, gradeChip(herb.herb_grade),
       ...tags.map(t => chip(t, { href: hrefOf('/herbs', new URLSearchParams({ tag: t })), title: `看所有「${t}」` }))) : null,
-    pageRefs.length ? h('div', { class: 'muted small' }, pageRefs.join(' · ')) : null);
+    pageRefs.length ? h('div', { class: 'muted small' }, refLine(pageRefs)) : null);
   root.append(titleBox);
 
   // 2. 基本資料
@@ -351,8 +358,8 @@ export function renderHerb(id) {
   if (c.clinical_pairs?.length) compBody.push(kv('臨床常用搭配', c.clinical_pairs.join('；')));
   const hasCompat = compBody.length > 0;
   root.append(section('compat', '配伍禁忌', hasCompat ? [h('dl', { class: 'kvs' }, compBody),
-    h('p', null, h('a', { class: 'btn', href: `#/compat?herbs=${encodeURIComponent(herb.id)}` }, '到配伍禁忌頁查詢（含總論十八反、十九畏）')), disclaimer(CONFIG.clinicalDisclaimer)]
-    : [empty(common ? '講義此味未列配伍資料。' : '本條目未另列配伍資料。'), h('p', null, h('a', { href: `#/compat?herbs=${encodeURIComponent(herb.id)}` }, '到配伍禁忌頁查詢總論規則（十八反、十九畏、妊娠）'))], { open: hasCompat || common }));
+    h('p', null, h('a', { class: 'btn', href: `#/compat?herbs=${encodeURIComponent(herb.id)}` }, '到配伍禁忌頁查詢')), disclaimer(CONFIG.clinicalDisclaimer)]
+    : [empty(common ? '講義此味未列配伍資料。' : '本條目未另列配伍資料。'), h('p', null, h('a', { class: 'btn', href: `#/compat?herbs=${encodeURIComponent(herb.id)}` }, '查詢十八反、十九畏、妊娠規則'))], { open: hasCompat || common }));
 
   // 7. 炮製、方劑、附藥、備註
   if (herb.processing?.length) root.append(section('processing', '炮製', h('ul', null, herb.processing.map(x => h('li', null, x))), { open: !narrow }));
@@ -398,21 +405,21 @@ export function renderHerb(id) {
   // 9. 第五版與原講義差異（緊接在後，預設收合）
   if (herb.thp5_changes?.length) {
     const diffTable = h('div', { class: 'table-wrap' },
-      h('table', { class: 'tbl diff-tbl' },
+      h('table', { class: 'tbl diff-tbl tbl-stack' },
         h('thead', null, h('tr', null, ['欄位', '原講義', '修正後', '備註'].map(x => h('th', null, x)))),
         h('tbody', null, herb.thp5_changes.map(ch => h('tr', null,
-          h('th', null, DIFF_FIELD_LABEL[ch.field] || ch.field),
-          h('td', null, ch.old || '—'),
-          h('td', null, ch.new || '—'),
-          h('td', { class: 'muted small' }, ch.note || ''))))));
+          h('th', { class: 'stack-title' }, DIFF_FIELD_LABEL[ch.field] || ch.field),
+          h('td', { 'data-label': '原講義' }, ch.old || '—'),
+          h('td', { 'data-label': '修正後' }, ch.new || '—'),
+          ch.note ? h('td', { 'data-label': '備註', class: 'muted small' }, ch.note) : h('td', { class: 'stack-empty' }, ''))))));
     root.append(section('thp5-diff', '第五版與原講義差異', [diffTable], { open: false, count: herb.thp5_changes.length }));
   }
 
   // 10. 頁尾
+  // 頁尾：出處與品級來源，每一段不在中間斷行；免責聲明已在全站頁尾，不再重複
   root.append(h('footer', { class: 'herb-foot card' },
-    h('div', { class: 'muted small' }, pageRefs.join(' · '), herb.herb_grade_source ? `　品級來源：${herb.herb_grade_source}` : ''),
-    h('div', null, h('button', { type: 'button', class: 'btn', onClick: () => openReport({ type: '藥材', id: herb.id, name: herb.name_zh }) }, '回報錯誤')),
-    h('p', { class: 'disclaimer' }, CONFIG.disclaimer)));
+    h('div', { class: 'muted small' }, refLine([...pageRefs, herb.herb_grade_source ? `品級來源：${herb.herb_grade_source}` : null])),
+    h('div', null, h('button', { type: 'button', class: 'btn', onClick: () => openReport({ type: '藥材', id: herb.id, name: herb.name_zh }) }, '回報錯誤'))));
 
   // 桌面版：頁內目錄
   const toc = h('nav', { class: 'toc card', 'aria-label': '本頁目錄' }, h('strong', null, '本頁目錄'),

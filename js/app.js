@@ -1,4 +1,5 @@
 import { h, clear, safeStorage } from './lib/dom.js';
+import { watchPhraseWrap } from './lib/wrap.js';
 import { loadAll, store } from './data.js';
 import { parseHash, hrefOf } from './router.js';
 import { CONFIG } from './config.js';
@@ -62,14 +63,16 @@ function buildNav() {
   const thp5Tree = allTree.find(t => t.path === '臺灣中藥典增補品項');
 
   catBox.append(h('div', { class: 'side-h' }, '常用中藥分類'));
+  // 每一列：左邊是分類名稱（點了直接看這一類），右邊是數量與展開鈕（有子分類才有）
+  const countOf = (path) => store.herbs.filter(hh => store.facets.get(hh.id).cat.has(path)).length;
+  const catHref = (path) => hrefOf('/herbs', new URLSearchParams({ cat: path }));
   const renderBranch = (t) => {
-    const total = store.herbs.filter(hh => store.facets.get(hh.id).cat.has(t.path)).length;
-    const top = h('a', { class: 'sc-top', href: hrefOf('/herbs', new URLSearchParams({ cat: t.path })) }, t.name, h('span', { class: 'muted small' }, ` ${total}`));
-    if (!t.children.length) return h('div', { class: 'sc' }, top);
+    const link = h('a', { class: 'sc-top', href: catHref(t.path) }, h('span', { class: 'sc-name' }, t.name), h('span', { class: 'sc-count' }, String(countOf(t.path))));
+    if (!t.children.length) return h('div', { class: 'sc sc-leaf' }, link, h('span', { class: 'sc-tog-space', 'aria-hidden': 'true' }));
     return h('details', { class: 'sc' },
-      h('summary', null, top),
+      h('summary', { class: 'sc-row', 'aria-label': `${t.name}：展開子分類` }, link, h('span', { class: 'sc-tog', 'aria-hidden': 'true' })),
       h('div', { class: 'sc-subs' }, t.children.map(c =>
-        h('a', { class: 'sc-sub', href: hrefOf('/herbs', new URLSearchParams({ cat: c.path })) }, c.name, h('span', { class: 'muted small' }, ` ${c.count}`)))));
+        h('a', { class: 'sc-sub', href: catHref(c.path) }, h('span', { class: 'sc-name' }, c.name), h('span', { class: 'sc-count' }, String(c.count))))));
   };
   for (const t of commonTree) catBox.append(renderBranch(t));
 
@@ -81,7 +84,16 @@ function buildNav() {
 function markNav(key) {
   for (const a of document.querySelectorAll('[data-nav]')) { if (a.dataset.nav === key) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); }
 }
-const closeDrawer = () => { document.body.classList.remove('drawer-open'); $('menu-btn')?.setAttribute('aria-expanded', 'false'); };
+const isNarrowScreen = () => matchMedia('(max-width: 860px)').matches;
+function setDrawer(open) {
+  const was = document.body.classList.contains('drawer-open');
+  document.body.classList.toggle('drawer-open', open);
+  document.documentElement.classList.toggle('scroll-lock', open); // 選單開著時，背後的頁面不跟著捲
+  $('menu-btn')?.setAttribute('aria-expanded', String(open));
+  if (open && !was) $('drawer-close')?.focus({ preventScroll: true });
+  else if (!open && was && $('sidebar')?.contains(document.activeElement)) $('menu-btn')?.focus({ preventScroll: true });
+}
+const closeDrawer = () => setDrawer(false);
 
 // ---------- 捲動位置 ----------
 // 每個歷史紀錄用 history.state.k 標記；按「上一頁」回到清單時，回到原本捲動的位置，而不是跳回頂端。
@@ -145,7 +157,12 @@ function initSearchBox() {
   };
   gs.addEventListener('input', () => { clearTimeout(timer); timer = setTimeout(fire, 160); });
   $('search-form').addEventListener('submit', (e) => { e.preventDefault(); clearTimeout(timer); fire(); });
-  $('menu-btn').addEventListener('click', () => { const open = document.body.classList.toggle('drawer-open'); $('menu-btn').setAttribute('aria-expanded', String(open)); });
+  $('menu-btn').addEventListener('click', () => setDrawer(!document.body.classList.contains('drawer-open')));
+  $('drawer-close').addEventListener('click', closeDrawer);
+  // 手機版搜尋框空間小，換成短的提示文字，避免被截斷成「搜尋藥名、成分、功」
+  const longPh = gs.placeholder, shortPh = gs.dataset.shortPlaceholder || longPh;
+  const syncPh = () => { gs.placeholder = isNarrowScreen() ? shortPh : longPh; };
+  syncPh(); matchMedia('(max-width: 860px)').addEventListener?.('change', () => { syncPh(); if (!isNarrowScreen()) closeDrawer(); });
   $('drawer-backdrop').addEventListener('click', closeDrawer);
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeDrawer();
@@ -183,7 +200,8 @@ async function start() {
   }
   buildNav();
   initSearchBox();
-  $('foot-note').textContent = `${CONFIG.disclaimer}　資料版本 ${store.meta.data_version}`;
+  watchPhraseWrap(main); // 中文以詞為單位換行（見 js/lib/wrap.js）
+  $('foot-ver').textContent = `資料版本 ${store.meta.data_version}`;
   window.addEventListener('hashchange', route);
   route();
   registerSW();

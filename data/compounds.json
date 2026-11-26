@@ -9,21 +9,8 @@
     "smiles": "CN[C@@H](C)[C@H](O)c1ccccc1",
     "inchikey": "KWGRBVOPPLSCSI-WPRPVWTQSA-N",
     "pubchem_cid": 9294,
-    "class": "",
-    "svg": "structures/l-ephedrine.svg"
-  },
-  {
-    "id": "l-ephedrine-2",
-    "name": "l-Ephedrine",
-    "aliases": [],
-    "match_names": [
-      "l-Ephedrine"
-    ],
-    "smiles": "CN[C@H](C)[C@@H](O)c1ccccc1",
-    "inchikey": "KWGRBVOPPLSCSI-PSASIEDQSA-N",
-    "pubchem_cid": 9457,
     "class": "生物鹼",
-    "svg": "structures/l-ephedrine-2.svg"
+    "svg": "structures/l-ephedrine.svg"
   },
   {
     "id": "d-pseudoephedrine",
@@ -59,24 +46,11 @@
     "match_names": [
       "Sabinene"
     ],
-    "smiles": "C=C1CC[C@]2(C(C)C)C[C@H]12",
-    "inchikey": "NDVASEGYNIMXJL-NXEZZACHSA-N",
-    "pubchem_cid": 10887971,
+    "smiles": "C=C1CCC2(C(C)C)CC12",
+    "inchikey": "NDVASEGYNIMXJL-UHFFFAOYSA-N",
+    "pubchem_cid": 18818,
     "class": "單萜類揮發油",
     "svg": "structures/sabinene.svg"
-  },
-  {
-    "id": "sabinene-2",
-    "name": "Sabinene",
-    "aliases": [],
-    "match_names": [
-      "Sabinene"
-    ],
-    "smiles": "C=C1CC[C@@]2(C(C)C)C[C@@H]12",
-    "inchikey": "NDVASEGYNIMXJL-UWVGGRQHSA-N",
-    "pubchem_cid": 11051711,
-    "class": "單萜類揮發油",
-    "svg": "structures/sabinene-2.svg"
   },
   {
     "id": "pinene",
@@ -90,19 +64,6 @@
     "pubchem_cid": 82227,
     "class": "單萜類揮發油",
     "svg": "structures/pinene.svg"
-  },
-  {
-    "id": "cineole",
-    "name": "Cineole",
-    "aliases": [],
-    "match_names": [
-      "Cineole"
-    ],
-    "smiles": "CC1(C)O[C@]2(C)CC[C@H]1CC2",
-    "inchikey": "WEEGYLXZBRQIMU-WAAGHKOSSA-N",
-    "pubchem_cid": 2758,
-    "class": "單萜類揮發油",
-    "svg": "structures/cineole.svg"
   },
   {
     "id": "cineole-2",
@@ -986,19 +947,6 @@
     "svg": "structures/lonicerin.svg"
   },
   {
-    "id": "loganin",
-    "name": "Loganin",
-    "aliases": [],
-    "match_names": [
-      "Loganin"
-    ],
-    "smiles": "COC(=O)C1=COC(OC2OC(CO)C(O)C(O)C2O)C2C1CC(O)C2C",
-    "inchikey": "AMBQHHVBBHTQBF-UHFFFAOYSA-N",
-    "pubchem_cid": 601562,
-    "class": "Iridoid glycosides",
-    "svg": "structures/loganin.svg"
-  },
-  {
     "id": "forsythide",
     "name": "Forsythide",
     "aliases": [],
@@ -1459,19 +1407,6 @@
     "svg": "structures/formononetin.svg"
   },
   {
-    "id": "matrine-2",
-    "name": "Matrine",
-    "aliases": [],
-    "match_names": [
-      "Matrine"
-    ],
-    "smiles": "O=C1CCC[C@H]2[C@H]3CCCN4CCC[C@H](CN12)[C@@H]34",
-    "inchikey": "ZSBXGIUJOOQZMP-CXTNEJHOSA-N",
-    "pubchem_cid": 817174,
-    "class": "生物鹼",
-    "svg": "structures/matrine-2.svg"
-  },
-  {
     "id": "acteoside",
     "name": "Acteoside",
     "aliases": [],
@@ -1617,19 +1552,6 @@
     "svg": "structures/artemisinin.svg"
   },
   {
-    "id": "4-5-dihydroeudesman-11-ol",
-    "name": "4β,5α-Dihydroeudesman-11-ol",
-    "aliases": [],
-    "match_names": [
-      "4β,5α-Dihydroeudesman-11-ol"
-    ],
-    "smiles": "C[C@@H]1CCC[C@@]2(C)CC[C@H](C(C)(C)O)C[C@@H]12",
-    "inchikey": "YJHVMPKSUPGGPZ-OSFYFWSMSA-N",
-    "pubchem_cid": 271465,
-    "class": "",
-    "svg": "structures/4-5-dihydroeudesman-11-ol.svg"
-  },
-  {
     "id": "magnolol",
     "name": "Magnolol",
     "aliases": [],
@@ -1654,19 +1576,6 @@
     "pubchem_cid": 10955174,
     "class": "揮發油",
     "svg": "structures/patchouli-alcohol.svg"
-  },
-  {
-    "id": "4-5-dihydroeudesman-11-ol-2",
-    "name": "4β,5α-Dihydroeudesman-11-ol",
-    "aliases": [],
-    "match_names": [
-      "4β,5α-Dihydroeudesman-11-ol"
-    ],
-    "smiles": "C[C@@H]1CCC[C@]2(C)CC[C@@H](C(C)(C)O)C[C@H]12",
-    "inchikey": "YJHVMPKSUPGGPZ-RGCMKSIDSA-N",
-    "pubchem_cid": 271465,
-    "class": "",
-    "svg": "structures/4-5-dihydroeudesman-11-ol-2.svg"
   },
   {
     "id": "atractylol",
@@ -2614,19 +2523,6 @@
     "svg": "structures/prunasin.svg"
   },
   {
-    "id": "amygdalin-2",
-    "name": "Amygdalin",
-    "aliases": [],
-    "match_names": [
-      "Amygdalin"
-    ],
-    "smiles": "N#CC(OC1OC(COC2OC(CO)C(O)C(O)C2O)C(O)C(O)C1O)c1ccccc1",
-    "inchikey": "XUCIJNAGGSZNQT-UHFFFAOYSA-N",
-    "pubchem_cid": 2180,
-    "class": "Cyanogenic glycosides",
-    "svg": "structures/amygdalin-2.svg"
-  },
-  {
     "id": "stachydrine",
     "name": "Stachydrine",
     "aliases": [],
@@ -3044,19 +2940,6 @@
     "svg": "structures/ferulic-acid.svg"
   },
   {
-    "id": "butylidene-phthalide",
-    "name": "Butylidene phthalide",
-    "aliases": [],
-    "match_names": [
-      "Butylidene phthalide"
-    ],
-    "smiles": "CCCC=C1OC(=O)c2ccccc21",
-    "inchikey": "WMBOCUXXNSOQHM-UHFFFAOYSA-N",
-    "pubchem_cid": 62368,
-    "class": "揮發油",
-    "svg": "structures/butylidene-phthalide.svg"
-  },
-  {
     "id": "rehmannioside-d",
     "name": "Rehmannioside D",
     "aliases": [],
@@ -3094,19 +2977,6 @@
     "pubchem_cid": 21631106,
     "class": "單萜苷",
     "svg": "structures/benzoylpaeoniflorin.svg"
-  },
-  {
-    "id": "paeoniflorin-2",
-    "name": "Paeoniflorin",
-    "aliases": [],
-    "match_names": [
-      "Paeoniflorin"
-    ],
-    "smiles": "C[C@]12C[C@]3(O)O[C@H](O1)[C@]1(COC(=O)c4ccccc4)[C@H]3C[C@@]12O[C@@H]1O[C@H](CO)[C@@H](O)[C@H](O)[C@H]1O",
-    "inchikey": "YKRGDOXKVOZESV-VMXFXPQLSA-N",
-    "pubchem_cid": 425990,
-    "class": "",
-    "svg": "structures/paeoniflorin-2.svg"
   },
   {
     "id": "resveratrol",

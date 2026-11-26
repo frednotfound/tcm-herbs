@@ -29,8 +29,12 @@ export function herbCard(row) {
   const nameTerms = nameHits.flatMap(termsOf);
   const snips = pickSnippets({ hits: hits.filter(x => x.field !== 'name') }, 2);
   const cats = categoryPaths(herb)[0] || [];
-  const catText = cats[0] === '臺灣中藥典增補品項' ? ['五版增補', ...cats.slice(1)].join(' > ') : cats.join(' > ');
+  const catSegs = cats[0] === '臺灣中藥典增補品項' ? ['五版增補', ...cats.slice(1)] : cats;
   const fam = familiesOf(herb).join(' / ');
+  // 每個片段不在中間斷行（只在「>」「·」之後換行），手機上不會出現「辛溫解|表藥」
+  const meta = [];
+  catSegs.forEach((seg, i) => { if (i) meta.push(h('span', { class: 'sep', 'aria-hidden': 'true' }, '›')); meta.push(h('span', { class: 'nw' }, seg)); });
+  if (fam) { if (meta.length) meta.push(h('span', { class: 'sep', 'aria-hidden': 'true' }, '·')); meta.push(h('span', { class: 'nw' }, fam)); }
   const body = [];
   if (snips.length) {
     for (const s of snips) {
@@ -52,6 +56,6 @@ export function herbCard(row) {
       h('span', { class: 'hc-name' }, highlight(herb.name_zh, nameTerms)),
       ed3Mark(herb.ed3_updated), thp5OnlyMark(herb), gradeChip(herb.herb_grade),
       h('span', { class: 'hc-latin' }, herb.name_latin || '')),
-    h('div', { class: 'hc-meta muted' }, [catText, fam].filter(Boolean).join(' · ')),
+    meta.length ? h('div', { class: 'hc-meta muted' }, meta) : null,
     ...body);
 }

@@ -91,6 +91,22 @@ if (compounds) {
     if (dups.length) warn('data/compounds.json', `有 ${dups.length} 個化合物名稱對到多張結構（藥材頁會並排顯示並標 CID，請確認是否保留）：${dups.map(v => `${v[0].name}（CID ${v.map(x => x.pubchem_cid).join('／')}）`).join('、')}`);
   }
 }
+// 字型：資料裡出現、但隨網站附帶的宋體子集沒收錄的字，會改用備援字型顯示（看起來不一致）
+const fontCss = existsSync(new URL('fonts/fonts.css', root)) ? readFileSync(new URL('fonts/fonts.css', root), 'utf8') : '';
+if (fontCss) {
+  const covered = new Set();
+  for (const m of fontCss.matchAll(/font-weight:\s*400;[\s\S]*?unicode-range:\s*([^;]+);/g))
+    for (const part of m[1].split(',')) {
+      const [a, b] = part.trim().replace(/^U\+/i, '').split('-').map(x => parseInt(x, 16));
+      for (let cp = a; cp <= (b || a); cp++) covered.add(cp);
+    }
+  const missing = new Set();
+  for (const rel of ['data/herbs.json', 'data/general_theory.json', 'data/categories.json', 'data/compounds.json', 'data/alias_dictionary.json', 'data/ingredient_taxonomy.json']) {
+    const p = new URL(rel, root); if (!existsSync(p)) continue;
+    for (const ch of readFileSync(p, 'utf8')) { const cp = ch.codePointAt(0); if (cp >= 0x2E80 && !covered.has(cp)) missing.add(ch); }
+  }
+  if (missing.size) warn('fonts/fonts.css', `字型沒有收錄 ${missing.size} 個資料裡的字（會用備援字型顯示），請重跑 python3 scripts/build_fonts.py：${[...missing].slice(0, 30).join('')}${missing.size > 30 ? '…' : ''}`);
+}
 if (theory) for (const k of ['development', 'harvesting', 'processing', 'properties_theory', 'compatibility_rules', 'parts_latin_map']) if (!theory[k]) err('data/general_theory.json', `缺少 ${k}`);
 
 warnings.forEach(w => console.log(w));

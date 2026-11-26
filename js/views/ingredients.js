@@ -42,23 +42,24 @@ export function renderIngredients(nodeId, params = new URLSearchParams()) {
       h('span', null, `僅顯示常用中藥（${store.commonCount} 味）`)));
 
   const treeEl = h('nav', { class: 'ing-tree card', 'aria-label': '成分分類樹' }, toggleBar);
+  // 每一列：名稱連結（看這一類的藥材）＋數量＋右側展開鈕（有子類才有），和側欄分類同一套樣式
   const renderNode = (id) => {
     const n = taxo.nodes.get(id);
-    const label = h('a', { href: ingHref(id), class: `tn-link${id === selected ? ' sel' : ''}`, 'aria-current': id === selected ? 'page' : null },
-      n.label, h('span', { class: 'tn-count' }, String(herbCountOf(id))));
-    if (!n.children.length) return h('li', null, label);
-    const d = h('details', { class: 'tn' }, h('summary', null, label), h('ul', null, n.children.map(renderNode)));
+    const label = h('a', { href: ingHref(id), class: `tn-link${id === selected ? ' sel' : ''}`, 'aria-current': id === selected ? 'page' : null, title: n.name_zh && n.name_zh !== n.label ? n.name_zh : null },
+      h('span', { class: 'tn-name' }, n.label), h('span', { class: 'tn-count' }, String(herbCountOf(id))));
+    if (!n.children.length) return h('li', { class: 'tn-leaf' }, label, h('span', { class: 'sc-tog-space', 'aria-hidden': 'true' }));
+    const d = h('details', { class: 'tn' }, h('summary', { class: 'tn-row', 'aria-label': `${n.label}：展開子類` }, label, h('span', { class: 'sc-tog', 'aria-hidden': 'true' })), h('ul', null, n.children.map(renderNode)));
     if (openIds.has(id)) d.open = true;
     return h('li', null, d);
   };
   treeEl.append(h('ul', { class: 'tn-root' }, taxo.topIds.map(renderNode),
-    h('li', null, h('a', { href: ingHref(UNCL), class: `tn-link${selected === UNCL ? ' sel' : ''}` }, '未歸類成分', h('span', { class: 'tn-count' }, String(unmatchedList.length))))));
+    h('li', { class: 'tn-leaf' }, h('a', { href: ingHref(UNCL), class: `tn-link${selected === UNCL ? ' sel' : ''}` }, h('span', { class: 'tn-name' }, '未歸類成分'), h('span', { class: 'tn-count' }, String(unmatchedList.length))), h('span', { class: 'sc-tog-space', 'aria-hidden': 'true' }))));
 
   const main = h('div', { class: 'ing-main' });
   if (!selected) {
     const pct = totalComp ? Math.round(matchedComp / totalComp * 100) : 0;
     main.append(h('div', { class: 'card' }, h('h1', null, '成分樹反查'),
-      h('p', null, '從左側（手機在上方）的分類樹點選一類成分，會列出含有該類化合物的藥材。點父節點會自動包含所有子節點。'),
+      h('p', null, '從分類樹點選一類成分，會列出含有該類化合物的藥材；點上層類別會自動包含所有子類。按右側的箭頭可以展開子類。'),
       h('p', { class: 'muted' }, `目前範圍（${onlyCommon ? `常用中藥 ${store.commonCount} 味` : `全部 ${store.herbs.length} 味`}）：成分共 ${totalComp} 筆，其中 ${matchedComp} 筆（${pct}%）能對應到分類樹；其餘列在「未歸類成分」。`)));
   } else if (selected === UNCL) {
     const byHerb = new Map();
