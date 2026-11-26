@@ -6,7 +6,8 @@
 const seg = (typeof Intl !== 'undefined' && Intl.Segmenter) ? new Intl.Segmenter('zh-Hant', { granularity: 'word' }) : null;
 const HAN = /[㐀-鿿豈-﫿]/;
 const HAN2 = /[㐀-鿿豈-﫿]{3}/;
-const SKIP = 'input, textarea, select, script, style, code, .nw, .chip, .btn, .tab';
+// 按鈕、標籤、膠囊、選項這些「一定單行」的元件不插斷點（<wbr> 在部分瀏覽器會無視 nowrap 而折行）
+const SKIP = 'input, textarea, select, option, script, style, code, button, label, summary, .nw, .chip, .btn, .tab, .badge, .ed3, .thp5-badge, .hit-label, .sec-count';
 
 function accept(node) {
   const t = node.data;

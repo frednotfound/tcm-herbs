@@ -42,6 +42,10 @@ docs/                                     部署與維護文件
 
 與 Step 3 規格不同之處：**未使用 Vite + Preact + TypeScript 與 MiniSearch／vite-plugin-pwa**，改用純原生 ES modules、自寫的搜尋與 Service Worker。原因：開發環境無法安裝套件（沒有網路）。附帶好處是沒有建置步驟，非工程人員改完資料就能上線。若之後頁面增多想改用框架，資料層與搜尋層（`js/data.js`、`js/search.js`、`js/filters.js`、`js/lib/derive.js`）不含 DOM，可原樣沿用。
 
+## 安裝成 App（PWA）
+
+可安裝到 Android、iOS 主畫面與電腦桌面，以獨立視窗開啟、可離線使用。首頁與「關於」頁會依裝置顯示安裝方式；App 模式下頂端列多一個「‹」上一頁、離線時會提示。細節與驗收方式見 `docs/部署教學.md`「安裝成 App」。
+
 ## 字型與中文斷行
 
 - 全站統一用宋體：`fonts/` 是思源宋體（Noto Serif CJK TC，SIL Open Font License，可自由隨網站散布）只留網站用到的約 2,500 字、依字頻切成 4 片 × 2 字重（一般、粗體），瀏覽器只下載當頁用到的那幾片。

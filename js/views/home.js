@@ -4,6 +4,7 @@ import { hrefOf } from '../router.js';
 import { categoryTree } from '../filters.js';
 import { chip } from '../lib/ui.js';
 import { CONFIG } from '../config.js';
+import { installCard } from '../lib/install.js';
 
 const SHORTCUTS = [
   ['上品', { grade: '上品' }], ['中品', { grade: '中品' }], ['下品', { grade: '下品' }],
@@ -33,6 +34,7 @@ export function renderHome() {
       h('p', { class: 'home-extra-foot' }, h('a', { class: 'btn', href: '#/herbs?src=thp5_only' }, `查看全部五版增補品項（${store.thp5OnlyCount} 味）`)))) : null;
 
   return { node: h('div', { class: 'home' },
+    installCard({ banner: true }),
     h('section', { class: 'hero card' },
       h('h1', null, CONFIG.siteName),
       h('p', { class: 'muted hero-sub' },

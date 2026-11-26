@@ -9,7 +9,7 @@ export const CONFIG = {
   // 注意：只要這裡有填任何字，回報表單就會要求先通過驗證；填錯（例如隨便打一個數字）會讓回報永遠送不出去。
   turnstileSiteKey: '',
   // 程式版本：改了程式碼（不是資料）要部署時，把這個數字加一，讓離線快取更新
-  appVersion: '9',
+  appVersion: '11',
   disclaimer: '整理自課程講義與《臺灣中藥典第五版》，僅供學習使用',
   clinicalDisclaimer: '僅為課程整理，非臨床用藥依據',
   report: { cooldownSec: 60, maxPerHour: 5, minLen: 10, maxLen: 500 },

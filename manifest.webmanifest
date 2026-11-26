@@ -1,16 +1,33 @@
 {
+  "id": "./",
   "name": "中藥藥物學互動式學習網站",
   "short_name": "中藥藥物學",
-  "description": "中藥藥物學學習與查詢（整理自課程講義與《臺灣中藥典第五版》，僅供學習使用）",
+  "description": "中藥藥物學學習與查詢：搜尋、篩選、成分反查、配伍禁忌，可離線使用。整理自課程講義與《臺灣中藥典第五版》，僅供學習使用。",
   "start_url": "./#/",
   "scope": "./",
   "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
   "background_color": "#f7f3ea",
   "theme_color": "#2f5d46",
   "lang": "zh-Hant",
+  "dir": "ltr",
+  "categories": ["education", "medical", "reference"],
   "icons": [
-    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
-    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icons/pwa-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/pwa-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/pwa-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "icons/pwa-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
     { "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ],
+  "shortcuts": [
+    { "name": "藥材總覽", "short_name": "藥材", "description": "搜尋與篩選全部藥材", "url": "./#/herbs", "icons": [{ "src": "icons/pwa-192.png", "sizes": "192x192", "type": "image/png" }] },
+    { "name": "成分樹反查", "short_name": "成分", "description": "從成分類別找藥材", "url": "./#/ingredients", "icons": [{ "src": "icons/pwa-192.png", "sizes": "192x192", "type": "image/png" }] },
+    { "name": "配伍禁忌查詢", "short_name": "配伍", "description": "十八反、十九畏、妊娠禁忌", "url": "./#/compat", "icons": [{ "src": "icons/pwa-192.png", "sizes": "192x192", "type": "image/png" }] },
+    { "name": "總論", "short_name": "總論", "description": "本草、採集、炮製、性味歸經", "url": "./#/theory", "icons": [{ "src": "icons/pwa-192.png", "sizes": "192x192", "type": "image/png" }] }
+  ],
+  "screenshots": [
+    { "src": "icons/screenshot-narrow-1.jpg", "sizes": "780x1688", "type": "image/jpeg", "form_factor": "narrow", "label": "首頁：搜尋與分類瀏覽" },
+    { "src": "icons/screenshot-narrow-2.jpg", "sizes": "780x1688", "type": "image/jpeg", "form_factor": "narrow", "label": "藥材詳細頁：成分與化學結構式" },
+    { "src": "icons/screenshot-wide-1.jpg", "sizes": "1280x800", "type": "image/jpeg", "form_factor": "wide", "label": "電腦版：藥材總覽與多條件篩選" }
   ]
 }

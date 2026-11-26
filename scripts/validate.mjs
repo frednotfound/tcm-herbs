@@ -1,6 +1,6 @@
 // 資料檢查：JSON 語法、藥材筆數、必要欄位、id 唯一、ref_id 與核心檔案之間的連結。
 // 用法：node scripts/validate.mjs     （失敗時結束碼為 1，GitHub Actions 會因此擋下部署）
-import { readFileSync, existsSync } from 'node:fs';
+import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import * as D from '../js/lib/derive.js';
 
 const root = new URL('../', import.meta.url);
@@ -101,9 +101,12 @@ if (fontCss) {
       for (let cp = a; cp <= (b || a); cp++) covered.add(cp);
     }
   const missing = new Set();
-  for (const rel of ['data/herbs.json', 'data/general_theory.json', 'data/categories.json', 'data/compounds.json', 'data/alias_dictionary.json', 'data/ingredient_taxonomy.json']) {
+  const jsFiles = [];
+  const walkJs = (u) => { for (const e of readdirSync(u, { withFileTypes: true })) { const c = new URL(e.name + (e.isDirectory() ? '/' : ''), u); if (e.isDirectory()) walkJs(c); else if (e.name.endsWith('.js')) jsFiles.push(c.pathname.slice(root.pathname.length)); } };
+  walkJs(new URL('js/', root));
+  for (const rel of ['data/herbs.json', 'data/general_theory.json', 'data/categories.json', 'data/compounds.json', 'data/alias_dictionary.json', 'data/ingredient_taxonomy.json', 'index.html', ...jsFiles]) {
     const p = new URL(rel, root); if (!existsSync(p)) continue;
-    for (const ch of readFileSync(p, 'utf8')) { const cp = ch.codePointAt(0); if (cp >= 0x2E80 && !covered.has(cp)) missing.add(ch); }
+    for (const ch of readFileSync(p, 'utf8')) { const cp = ch.codePointAt(0); if (cp >= 0x2E80 && cp < 0xF900 && !covered.has(cp)) missing.add(ch); }
   }
   if (missing.size) warn('fonts/fonts.css', `字型沒有收錄 ${missing.size} 個資料裡的字（會用備援字型顯示），請重跑 python3 scripts/build_fonts.py：${[...missing].slice(0, 30).join('')}${missing.size > 30 ? '…' : ''}`);
 }

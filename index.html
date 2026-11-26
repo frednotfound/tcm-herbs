@@ -7,9 +7,17 @@
   <meta name="description" content="中藥藥物學學習與查詢：搜尋、篩選、成分反查、配伍禁忌。整理自課程講義與《臺灣中藥典第五版》，僅供學習使用。">
   <meta name="theme-color" content="#2f5d46">
   <meta name="color-scheme" content="light dark">
+  <!-- 安裝成 App（PWA）：Android／電腦版看 manifest；iOS「加入主畫面」看下面這幾行 -->
   <link rel="manifest" href="manifest.webmanifest">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="中藥藥物學">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="application-name" content="中藥藥物學">
+  <meta name="format-detection" content="telephone=no">
   <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
   <!-- 字型：思源宋體子集，依字頻切片；先預載最常用的第一片，其餘需要時才下載 -->
   <link rel="preload" href="fonts/serif-400-0.woff" as="font" type="font/woff" crossorigin>
   <link rel="preload" href="fonts/serif-700-0.woff" as="font" type="font/woff" crossorigin>
@@ -21,6 +29,7 @@
   <link rel="modulepreload" href="js/lib/dom.js">
   <link rel="modulepreload" href="js/lib/derive.js">
   <link rel="modulepreload" href="js/lib/wrap.js">
+  <link rel="modulepreload" href="js/lib/install.js">
   <link rel="modulepreload" href="js/data.js">
   <link rel="modulepreload" href="js/search.js">
   <link rel="modulepreload" href="js/filters.js">
@@ -40,6 +49,7 @@
   <a class="skip" href="#main">跳到主要內容</a>
   <header class="topbar">
     <button id="menu-btn" class="btn btn-ghost menu-btn icon-btn" type="button" aria-label="開啟選單" aria-controls="sidebar" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <button id="back-btn" class="btn btn-ghost icon-btn back-btn" type="button" aria-label="上一頁" hidden><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
     <a class="brand" href="#/">中藥藥物學</a>
     <form id="search-form" class="search-form" role="search">
       <input id="global-search" type="search" placeholder="搜尋藥名、成分、功效、方劑、性狀…（按 / 快速搜尋）" data-short-placeholder="搜尋藥材…" aria-label="搜尋藥名、成分、功效、方劑" autocomplete="off" enterkeyhint="search">

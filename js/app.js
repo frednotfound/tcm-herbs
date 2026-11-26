@@ -1,5 +1,6 @@
 import { h, clear, safeStorage } from './lib/dom.js';
 import { watchPhraseWrap } from './lib/wrap.js';
+import { initInstall, isStandalone } from './lib/install.js';
 import { loadAll, store } from './data.js';
 import { parseHash, hrefOf } from './router.js';
 import { CONFIG } from './config.js';
@@ -141,6 +142,13 @@ function route() {
   window.scrollTo(0, restoreY);
   document.title = res.title ? `${res.title}｜${CONFIG.shortName}` : CONFIG.siteName;
   markNav(navKey);
+  // App 模式沒有瀏覽器的上一頁按鈕：從站內點進來的頁面，在頂端列顯示「‹」
+  const back = $('back-btn');
+  if (back) {
+    const show = isStandalone() && Boolean(history.state?.inApp) && top !== '';
+    back.hidden = !show;
+    document.documentElement.classList.toggle('has-back', show);
+  }
   // 全站搜尋框與網址同步
   $('global-search').value = top === 'herbs' ? (params.get('q') || '') : '';
   if (res.focus && !restoreY && matchMedia('(min-width: 861px)').matches) res.focus.focus({ preventScroll: true });
@@ -159,6 +167,7 @@ function initSearchBox() {
   $('search-form').addEventListener('submit', (e) => { e.preventDefault(); clearTimeout(timer); fire(); });
   $('menu-btn').addEventListener('click', () => setDrawer(!document.body.classList.contains('drawer-open')));
   $('drawer-close').addEventListener('click', closeDrawer);
+  $('back-btn')?.addEventListener('click', () => history.back());
   // 手機版搜尋框空間小，換成短的提示文字，避免被截斷成「搜尋藥名、成分、功」
   const longPh = gs.placeholder, shortPh = gs.dataset.shortPlaceholder || longPh;
   const syncPh = () => { gs.placeholder = isNarrowScreen() ? shortPh : longPh; };
@@ -172,23 +181,45 @@ function initSearchBox() {
 
 function registerSW() {
   if (!('serviceWorker' in navigator) || location.protocol === 'file:') return;
-  navigator.serviceWorker.register(`sw.js?v=${CONFIG.appVersion}`).then(reg => {
-    reg.addEventListener('updatefound', () => {
-      const nw = reg.installing;
-      nw?.addEventListener('statechange', () => {
-        if (nw.state === 'installed' && navigator.serviceWorker.controller) showToast('網站有新版本。', '重新整理', () => location.reload());
-      });
-    });
-  }).catch(() => {});
+  navigator.serviceWorker.register(`sw.js?v=${CONFIG.appVersion}`).catch(() => {});
+  // 別的分頁或背景更新啟用了較新的 Service Worker，而這個畫面還是舊程式 → 提示重新整理
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    const v = new URL(navigator.serviceWorker.controller?.scriptURL || location.href).searchParams.get('v');
+    if (v && v !== String(CONFIG.appVersion)) showUpdateToast();
+  });
 }
-function showToast(text, action, fn) {
+
+// 已安裝的 App 常常一直開在背景好幾天：回到前景（或恢復連線）時，看看伺服器上有沒有新版程式
+let lastUpdateCheck = Date.now();
+async function checkForUpdate(force = false) {
+  if (!navigator.onLine || (!force && Date.now() - lastUpdateCheck < 30 * 60e3)) return;
+  lastUpdateCheck = Date.now();
+  try {
+    const text = await (await fetch('js/config.js', { cache: 'no-cache' })).text();
+    const m = text.match(/appVersion:\s*'([^']+)'/);
+    if (m && m[1] !== String(CONFIG.appVersion)) showUpdateToast();
+  } catch { /* 離線或伺服器沒回應：下次再試 */ }
+}
+const showUpdateToast = () => showToast('有新版本可以使用。', '重新整理', () => location.reload());
+
+function showToast(text, action, fn, autoHideMs = 0) {
   document.querySelector('.toast')?.remove(); // 同時只顯示一個
   const t = h('div', { class: 'toast', role: 'status' }, text, action ? h('button', { class: 'btn btn-link', type: 'button', onClick: fn }, action) : null, h('button', { class: 'btn btn-link', type: 'button', onClick: () => t.remove(), 'aria-label': '關閉' }, '×'));
   document.body.append(t);
+  if (autoHideMs) setTimeout(() => t.remove(), autoHideMs);
+}
+
+// 離線／恢復連線提示（App 模式下特別有用：沒有網址列可以看狀態）
+function initConnectivity() {
+  addEventListener('offline', () => showToast('目前離線，顯示的是已下載的資料。', null, null, 5000));
+  addEventListener('online', () => { showToast('已恢復連線。', null, null, 2500); checkForUpdate(true); });
+  document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') checkForUpdate(); });
 }
 
 async function start() {
   initTheme();
+  initInstall();
+  document.documentElement.classList.toggle('is-app', isStandalone()); // App 模式（從主畫面開啟）
   try {
     await loadAll();
   } catch (err) {
@@ -205,6 +236,7 @@ async function start() {
   window.addEventListener('hashchange', route);
   route();
   registerSW();
+  initConnectivity();
   window.__tcm = { store, ready: true };
 }
 start();

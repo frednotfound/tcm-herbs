@@ -1,6 +1,7 @@
 import { h } from '../lib/dom.js';
 import { store } from '../data.js';
 import { CONFIG } from '../config.js';
+import { installCard } from '../lib/install.js';
 
 export function renderAbout() {
   return { node: h('div', { class: 'card about' },
@@ -18,6 +19,8 @@ export function renderAbout() {
       h('li', null, '「僅出現在臺灣中藥典第五版」之增補品項，依中藥典第五版用途分類整理，供查詢法定基原、性味歸經、指標成分、一般性狀與雜質限量。'),
       h('li', null, '「使用部位」分組與成分分類樹歸類是為了篩選而衍生的對照，可能與講義寫法不同。'),
       h('li', null, '發現錯誤請用藥材頁的「回報錯誤」按鈕。')),
+    h('h2', null, '安裝成 App'),
+    installCard(),
     h('h2', null, '尚未提供'),
     h('p', { class: 'muted' }, '歷屆國考題、藥材實拍照片（預留位置，之後階段處理）。'),
     h('p', null, h('a', { class: 'btn', href: '#/' }, '回首頁'))), title: '關於' };

@@ -37,6 +37,10 @@
 :root[data-theme="contrast"] .card, :root[data-theme="contrast"] .herb-card { border-width: 2px; }
 
 * { box-sizing: border-box; }
+/* 頁面拉到底或頂端時的回彈區也用同一個底色（深色模式下不會閃白） */
+html { background: var(--bg); }
+/* 觸控：拿掉點擊時的灰色方塊，改用各元件自己的按下效果 */
+a, button, summary, label { -webkit-tap-highlight-color: transparent; }
 html { -webkit-text-size-adjust: 100%; scroll-padding-top: calc(var(--topbar-h) + 8px); }
 body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.7 var(--font); font-kerning: normal;
   /* 中文斷行：標點不放行首（line-break: strict）、避免最後一行只剩一兩個字（text-wrap: pretty）、超長英文字串可斷開 */
@@ -224,6 +228,12 @@ details.dd[open] > .dd-sum { border-color: var(--primary); background: var(--pri
 .source-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: .65rem; }
 .src-btn { font: inherit; font-size: .92rem; padding: .38em .85em; min-height: 38px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface); color: var(--text); cursor: pointer; display: inline-flex; align-items: center; gap: .3em; }
 .src-btn:hover { background: var(--surface-2); }
+/* 膠囊按鈕一律單行：文字再長也只會變寬或截成「…」，不會折成多行把圓角撐成圓形 */
+.src-btn, .scope-btn, .tab, .filter-btn { white-space: nowrap; }
+.src-btn { min-width: 0; height: 38px; overflow: hidden; }
+.src-btn > span:not(.src-count) { overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.src-count { flex: none; }
+.sort-sel { max-width: 100%; text-overflow: ellipsis; }
 .src-btn[aria-pressed="true"] { background: var(--primary); color: var(--primary-contrast); border-color: var(--primary); font-weight: 600; }
 .src-count { font-size: .82rem; opacity: .8; font-variant-numeric: tabular-nums; }
 .lbl-short { display: none; }
@@ -250,10 +260,38 @@ details.dd[open] > .dd-sum { border-color: var(--primary); background: var(--pri
 .sub-sec-body p { margin: .35rem 0; }
 .diff-tbl th { white-space: nowrap; }
 
+/* ---- 安裝成 App ---- */
+.install-card { display: flex; align-items: center; gap: .85rem; }
+.install-banner { padding: .75rem .6rem .75rem .9rem; border-color: color-mix(in srgb, var(--primary) 35%, var(--border)); }
+.install-icon { flex: none; width: 48px; height: 48px; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,.18); }
+.install-text { flex: 1; min-width: 0; } .install-text p { margin: .1rem 0 0; color: var(--muted); font-size: .92rem; line-height: 1.6; }
+.install-actions { flex: none; } .install-close { flex: none; align-self: flex-start; width: 36px; height: 36px; min-height: 36px; padding: 0; justify-content: center; font-size: 1.2rem; color: var(--muted); }
+.inline-ico { width: 1.05em; height: 1.05em; vertical-align: -.15em; margin: 0 .15em; }
+.about .install-card { border: 1px solid var(--border); border-radius: var(--radius); padding: .8rem .9rem; background: var(--bg); }
+.back-btn[hidden] { display: none; }
+html.has-back .herb-head .back-link { visibility: hidden; } /* 頂端列已有「‹」，頁內的「返回」就不重複 */
+.back-btn svg { width: 22px; height: 22px; }
+
+/* ---- 按下的回饋（觸控裝置上看得出「有按到」） ---- */
+.herb-card:active, .entry:active, .cat-tile:active { background: var(--surface-2); }
+.sc-top:active, .sc-sub:active, .sn:active, .tn-link:active:not(.sel), .bn:active { background: var(--surface-2); }
+.btn:active, .chip:active, .src-btn:active, .scope-btn:active, .tab:active { filter: brightness(.94); }
+
+/* ---- App 模式（從主畫面／桌面開啟，沒有網址列） ---- */
+@media (display-mode: standalone) {
+  .topbar { height: calc(var(--topbar-h) + env(safe-area-inset-top)); padding-top: env(safe-area-inset-top); }
+  html { scroll-padding-top: calc(var(--topbar-h) + env(safe-area-inset-top) + 8px); }
+  .sidebar { top: calc(var(--topbar-h) + env(safe-area-inset-top) + 12px); }
+  body { overscroll-behavior-y: none; } /* 不要整個 App 被拉下來回彈 */
+  .topbar, .bottom-nav, .sidebar, .tab, .bn, .sn, .btn { -webkit-user-select: none; user-select: none; }
+}
+
 /* ---- 手機版 ---- */
 @media (max-width: 860px) {
   .shell { display: block; padding: .7rem max(.6rem, env(safe-area-inset-right)) calc(var(--bottom-h) + env(safe-area-inset-bottom) + 1.5rem) max(.6rem, env(safe-area-inset-left)); }
   .menu-btn { display: inline-flex; } .theme-btn { padding: .3em .5em; } .tb-text { display: none; }
+  .topbar { gap: .35rem; }
+  .back-btn { display: inline-flex; margin-right: -.2rem; }
   .brand { font-size: 1rem; }
   /* 抽屜選單：整個高度的面板，蓋在頂端列上面；標題列固定，下面的清單自己捲動（flex 子元素 + min-height:0 才捲得動） */
   /* 注意 align-self: stretch：電腦版的 align-self: start 會讓固定定位的面板縮成「內容高度」（新版瀏覽器對 fixed 也套用對齊），
@@ -319,7 +357,10 @@ details.dd[open] > .dd-sum { border-color: var(--primary); background: var(--pri
 @media (max-width: 600px) {
   h1 { font-size: 1.45rem; } .hero h1 { font-size: 1.5rem; } .herb-head h1 { font-size: 1.65rem; }
   .lbl-long { display: none; } .lbl-short { display: inline; }
-  .source-row { flex-wrap: nowrap; } .src-btn { flex: 1 1 0; justify-content: center; padding-left: .5em; padding-right: .5em; }
+  /* App 模式有「‹ 上一頁」時，窄螢幕把品牌字讓出來給搜尋框 */
+  html.has-back .brand { display: none; }
+  .install-banner .install-actions .btn { padding: .4em .85em; }
+  .source-row { flex-wrap: nowrap; } .src-btn { flex: 1 1 auto; justify-content: center; padding-left: .6em; padding-right: .6em; }
   .cat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   /* 多欄表格在手機上改成一筆一張小卡：第一欄當標題，其他欄前面標欄名 */
   .tbl-stack, .tbl-stack tbody, .tbl-stack tr, .tbl-stack th, .tbl-stack td { display: block; width: 100%; }
@@ -336,3 +377,4 @@ details.dd[open] > .dd-sum { border-color: var(--primary); background: var(--pri
 }
 @media print { .topbar, .sidebar, .bottom-nav, .toc, .btn { display: none !important; } .shell { display: block; } body { background: #fff; color: #000; } }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+.back-btn { width: 40px; padding: 0; justify-content: center; }
