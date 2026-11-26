@@ -4,7 +4,7 @@ import { SOURCES, DIMS, applyFilters, stateFromParams, stateToParams, optionsFor
 import { SCOPES, suggest } from '../search.js';
 import { replaceParams, herbHref } from '../router.js';
 import { herbCard } from './card.js';
-import { chip } from '../lib/ui.js';
+import { chip, isNarrow } from '../lib/ui.js';
 
 const SORTS = [['rel', '相關度／常用中藥順序'], ['name', '藥名筆畫排序'], ['lecture', '常用中藥順序']];
 
@@ -14,15 +14,15 @@ export function renderList(params) {
   const srcLabel = Object.fromEntries(SOURCES.map(x => [x.key, x.label]));
   const optionEls = new Map();
   const srcBtns = new Map();
-  let sheetOpen = false;
 
   const root = h('div', { class: 'list-view' });
-  const sourceRow = h('div', { class: 'source-row', role: 'tablist', 'aria-label': '收錄來源' });
-  const scopeRow = h('div', { class: 'scope-row', role: 'tablist', 'aria-label': '搜尋範圍' });
+  // 這兩排是「單選切換鈕」而不是分頁（沒有對應的 tabpanel），用 aria-pressed 讓螢幕閱讀器正確唸出
+  const sourceRow = h('div', { class: 'source-row', role: 'group', 'aria-label': '收錄來源' });
+  const scopeRow = h('div', { class: 'scope-row', role: 'group', 'aria-label': '搜尋範圍' });
   const sortSel = h('select', { class: 'sort-sel', 'aria-label': '排序', onChange: (e) => { s.sort = e.target.value; commit(); } },
     SORTS.map(([v, l]) => h('option', { value: v }, l)));
   sortSel.value = s.sort;
-  const filterBtn = h('button', { type: 'button', class: 'btn filter-btn', onClick: () => toggleSheet(true) }, '篩選');
+  const filterBtn = h('button', { type: 'button', class: 'btn filter-btn', 'aria-expanded': 'false', onClick: () => toggleSheet(true) }, '篩選');
   const panel = h('div', { class: 'filter-panel', role: 'group', 'aria-label': '篩選條件' });
   const backdrop = h('div', { class: 'sheet-backdrop', onClick: () => toggleSheet(false) });
   const activeRow = h('div', { class: 'active-row' });
@@ -36,8 +36,8 @@ export function renderList(params) {
   for (const sr of SOURCES) {
     const countSpan = h('span', { class: 'src-count' }, '');
     const btn = h('button', {
-      type: 'button', role: 'tab', class: 'src-btn', dataset: { src: sr.key },
-      'aria-selected': String(s.src === sr.key),
+      type: 'button', class: 'src-btn', dataset: { src: sr.key },
+      'aria-pressed': String(s.src === sr.key),
       onClick: () => { s.src = sr.key; commit(); },
     }, sr.label, countSpan);
     srcBtns.set(sr.key, { btn, countSpan });
@@ -46,7 +46,7 @@ export function renderList(params) {
 
   // ---- 搜尋範圍切換 ----
   for (const sc of SCOPES) {
-    scopeRow.append(h('button', { type: 'button', role: 'tab', class: 'scope-btn', dataset: { scope: sc.key }, 'aria-selected': String(s.scope === sc.key), onClick: () => { s.scope = sc.key; commit(); } }, sc.label));
+    scopeRow.append(h('button', { type: 'button', class: 'scope-btn', dataset: { scope: sc.key }, 'aria-pressed': String(s.scope === sc.key), onClick: () => { s.scope = sc.key; commit(); } }, sc.label));
   }
 
   // ---- 篩選面板 ----
@@ -98,7 +98,15 @@ export function renderList(params) {
   }
   for (const d of DIMS) {
     const sum = h('summary', { class: 'dd-sum' }, h('span', { class: 'dd-name' }, d.label), h('span', { class: 'dd-n', dataset: { dim: d.key } }, ''));
-    panel.append(h('details', { class: 'dd', dataset: { dim: d.key } }, sum, dimBody(d)));
+    const body = dimBody(d);
+    const dd = h('details', { class: 'dd', dataset: { dim: d.key } }, sum, body);
+    // 電腦版下拉選單：快超出視窗右緣時改成靠右對齊
+    dd.addEventListener('toggle', () => {
+      if (!dd.open || isNarrow()) return;
+      body.classList.remove('opts-right');
+      if (body.getBoundingClientRect().right > document.documentElement.clientWidth - 8) body.classList.add('opts-right');
+    });
+    panel.append(dd);
   }
   panel.append(h('div', { class: 'sheet-foot' }, clearBtn, applyBtn));
   const sheetHead = h('div', { class: 'sheet-head' }, h('strong', null, '篩選'), h('button', { type: 'button', class: 'btn btn-ghost', onClick: () => toggleSheet(false) }, '關閉'));
@@ -117,7 +125,13 @@ export function renderList(params) {
     const globalInput = document.getElementById('global-search');
     if (globalInput && globalInput.value !== s.q) globalInput.value = s.q;
   }
-  function toggleSheet(on) { sheetOpen = on; root.classList.toggle('sheet-open', on); document.body.classList.toggle('no-scroll', on && window.matchMedia('(max-width: 860px)').matches); }
+  function toggleSheet(on) {
+    root.classList.toggle('sheet-open', on);
+    document.body.classList.toggle('no-scroll', on && isNarrow());
+    filterBtn.setAttribute('aria-expanded', String(on));
+    if (on && isNarrow()) sheetHead.querySelector('button')?.focus({ preventScroll: true });
+    else if (!on && isNarrow() && panel.contains(document.activeElement)) filterBtn.focus({ preventScroll: true });
+  }
 
   function chipLabel(dim, v) {
     if (dim === 'ing') return store.taxo.nodes.get(v)?.label || (v === store.UNSET ? '未歸類' : v);
@@ -129,10 +143,10 @@ export function renderList(params) {
   function update() {
     const { rows, result, counts, unlisted, srcCounts } = applyFilters(s);
     for (const [k, { btn, countSpan }] of srcBtns) {
-      btn.setAttribute('aria-selected', String(s.src === k));
+      btn.setAttribute('aria-pressed', String(s.src === k));
       countSpan.textContent = ` ${srcCounts[k] ?? 0}`;
     }
-    for (const b of scopeRow.children) b.setAttribute('aria-selected', String(b.dataset.scope === s.scope));
+    for (const b of scopeRow.children) b.setAttribute('aria-pressed', String(b.dataset.scope === s.scope));
     for (const [dim, m] of optionEls) {
       for (const [v, o] of m) {
         const n = counts[dim].get(v) || 0;
@@ -198,13 +212,21 @@ export function renderList(params) {
   const onQuery = (e) => { s.q = e.detail; commit(); };
   document.addEventListener('tcm:query', onQuery);
   const onDocClick = (e) => {
-    if (window.matchMedia('(max-width: 860px)').matches) return;
+    if (isNarrow()) return;
     for (const d of panel.querySelectorAll('details.dd[open]')) if (!d.contains(e.target)) d.open = false;
   };
   document.addEventListener('click', onDocClick);
+  // Esc：手機關閉篩選面板；電腦關閉展開中的下拉選單
+  const onKey = (e) => {
+    if (e.key !== 'Escape') return;
+    if (root.classList.contains('sheet-open')) { toggleSheet(false); return; }
+    const openDd = panel.querySelector('details.dd[open]');
+    if (openDd) { openDd.open = false; openDd.querySelector('summary')?.focus(); }
+  };
+  document.addEventListener('keydown', onKey);
   return {
     node: root,
-    destroy() { document.removeEventListener('tcm:query', onQuery); document.removeEventListener('click', onDocClick); document.body.classList.remove('no-scroll'); },
+    destroy() { document.removeEventListener('tcm:query', onQuery); document.removeEventListener('click', onDocClick); document.removeEventListener('keydown', onKey); document.body.classList.remove('no-scroll'); },
     query: s.q,
   };
 }

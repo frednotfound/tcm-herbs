@@ -25,7 +25,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: 檢查資料（JSON 語法、162 味、id、ref_id、連結）
+      - name: 檢查資料（JSON 語法、藥材筆數、id、ref_id、連結、結構圖）
         run: node scripts/validate.mjs
       - name: 搜尋與名稱解析自我測試
         run: node scripts/test_search.mjs > /dev/null

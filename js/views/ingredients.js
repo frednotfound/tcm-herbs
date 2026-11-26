@@ -11,7 +11,6 @@ export function renderIngredients(nodeId, params = new URLSearchParams()) {
   const selected = nodeId && (taxo.nodes.has(nodeId) || nodeId === UNCL) ? nodeId : null;
   const openIds = new Set(selected ? [selected, ...taxo.ancestors(selected)] : []);
   const activeHerbs = onlyCommon ? store.herbs.filter(isCommonHerb) : store.herbs;
-  const activeSet = new Set(activeHerbs.map(hh => hh.id));
 
   const ingHref = (id, nextCommon = onlyCommon) => {
     const path = id ? `/ingredients/${encodeURIComponent(id)}` : '/ingredients';
@@ -76,7 +75,7 @@ export function renderIngredients(nodeId, params = new URLSearchParams()) {
     const desc = taxo.descendants(selected);
     const rows = [];
     for (const herb of activeHerbs) {
-      if (!activeSet.has(herb.id) || !store.facets.get(herb.id).ing.has(selected)) continue;
+      if (!store.facets.get(herb.id).ing.has(selected)) continue;
       const names = [];
       const cls = store.cls.byHerb.get(herb.id);
       (herb.ingredients || []).forEach((g, gi) => (g.compounds || []).forEach((c, ci) => {

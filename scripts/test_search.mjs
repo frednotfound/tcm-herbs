@@ -16,7 +16,7 @@ const show = (q, scope = 'all') => {
 };
 const qs = process.argv.slice(2);
 if (qs.length) qs.forEach(q => show(q)); else {
-  ['麻黃', '丹皮', '白术', '祛風', '生物鹼', 'alkaloid', '綠原酸', 'chlorogenic acid', 'ephedrine', 'ephedrin', '菊科', 'Compositae', '荊防敗毒散', '玉屏風散', 'α-pinene', 'beta', '祛風濕', '麻黄', '黃連素', 'Berberine', '解熱 止痛', '不存在的東西', '甘草酸', 'glycyrrhizin', '大棗 三萜'].forEach(q => show(q));
+  ['麻黃', '麻黄', '当归', '丹皮', '白术', '祛風', '生物鹼', 'alkaloid', '綠原酸', 'chlorogenic acid', 'ephedrine', 'ephedrin', '菊科', 'Compositae', '荊防敗毒散', '玉屏風散', 'α-pinene', 'beta', '祛風濕', '麻黄', '黃連素', 'Berberine', '解熱 止痛', '不存在的東西', '甘草酸', 'glycyrrhizin', '大棗 三萜'].forEach(q => show(q));
   show('防風', 'formula'); show('止痛', 'effect');
 }
 console.log('名稱解析：', ['烏頭', '半夏', '甘草', '水蛭', '丹皮', '川烏', '款冬花（止咳平喘）', '藜蘆', '貝母', '芍藥', '人參', '五靈脂', '附子'].map(n => `${n}->${resolveName(n)}`).join(' '));
@@ -32,6 +32,9 @@ must('成分類別展開：生物鹼 有結果', names('生物鹼').length > 10)
 must('同義詞：綠原酸 與 chlorogenic acid 結果相同', JSON.stringify(names('綠原酸').sort()) === JSON.stringify(names('chlorogenic acid').sort()));
 must('藥名解析：烏頭 不可直接當成附子', resolveName('烏頭') === null);
 must('藥名解析：甘草', resolveName('甘草') === 'herb_gancao');
-must('找不到時有建議', runSearch('麻黄').suggestions.length > 0);
+must('簡體字：麻黄 找得到麻黃', names('麻黄')[0] === '麻黃');
+must('簡體字：生物碱 與 生物鹼 結果相同', JSON.stringify(names('生物碱')) === JSON.stringify(names('生物鹼')));
+must('簡體字：当归 找得到當歸', names('当归').includes('當歸'));
+must('找不到時有建議', runSearch('麻皇').results.length === 0 && runSearch('麻皇').suggestions.length > 0);
 if (bad) process.exit(1);
 console.log('搜尋自我測試通過');

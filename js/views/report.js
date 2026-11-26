@@ -1,12 +1,27 @@
 // 回報錯誤表單（對話框）。資料送到 Google Apps Script，再寫入 Google 試算表。
-import { h, clear } from '../lib/dom.js';
+import { h, safeStorage } from '../lib/dom.js';
 import { CONFIG } from '../config.js';
 import { store } from '../data.js';
-import { safeStorage } from '../lib/dom.js';
 
 const KINDS = ['成分', '功效', '配伍', '基原', '其他'];
 const LOG_KEY = 'tcm_report_log';
 const ls = safeStorage();
+const TS_SRC = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+let tsLoader = null;
+/** Turnstile 腳本整個網站只載入一次（之前每開一次對話框就多插一個 <script>） */
+function loadTurnstile() {
+  if (window.turnstile) return Promise.resolve(window.turnstile);
+  if (!tsLoader) {
+    tsLoader = new Promise((resolve, reject) => {
+      const s = document.createElement('script');
+      s.src = TS_SRC; s.async = true;
+      s.onload = () => (window.turnstile ? resolve(window.turnstile) : reject(new Error('turnstile')));
+      s.onerror = () => { tsLoader = null; s.remove(); reject(new Error('turnstile')); };
+      document.head.append(s);
+    });
+  }
+  return tsLoader;
+}
 
 function readLog() { try { return JSON.parse(ls.get(LOG_KEY) || '[]').filter(t => Number.isFinite(t)); } catch { return []; } }
 function pushLog() { const now = Date.now(); const log = readLog().filter(t => now - t < 3600e3); log.push(now); ls.set(LOG_KEY, JSON.stringify(log)); }
@@ -61,6 +76,7 @@ export function openReport({ type = '藥材', id = '', name = '' } = {}) {
     try {
       // text/plain 是「簡單請求」，不會觸發跨網域預檢（GAS 不支援預檢）
       const res = await fetch(CONFIG.reportEndpoint, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(payloadOf()), redirect: 'follow' });
+      if (!res.ok) throw new Error(`伺服器錯誤 ${res.status}`);
       const data = await res.json();
       if (!data.ok) throw new Error(data.error || '伺服器回報失敗');
       pushLog();
@@ -69,9 +85,12 @@ export function openReport({ type = '藥材', id = '', name = '' } = {}) {
       setTimeout(() => dlg.close(), 1800);
     } catch (err) {
       // 失敗時保留使用者輸入，並提供「複製內容」
-      setMsg(`送出失敗（${err.message || '網路問題'}）。你的內容還在，可以再試一次，或先複製內容。`, 'err');
-      copyBtn.hidden = false; submit.disabled = false;
+      const why = err instanceof SyntaxError ? '伺服器回應格式不對' : (err.message || '網路問題');
+      setMsg(`送出失敗（${why}）。你的內容還在，可以再試一次，或先複製內容。`, 'err');
+      copyBtn.hidden = false;
     } finally { submit.disabled = false; }
+    // 送出後重設驗證（Turnstile 的 token 只能用一次）
+    if (CONFIG.turnstileSiteKey && window.turnstile) { try { window.turnstile.reset(tsBox); } catch { /* 忽略 */ } turnstileToken = ''; }
   } },
     h('p', { class: 'muted small' }, `對象：${type}「${name || id || '（未指定）'}」`),
     h('label', { for: 'rp-kind' }, '問題所在'), kindSel,
@@ -87,9 +106,14 @@ export function openReport({ type = '藥材', id = '', name = '' } = {}) {
   text.focus();
 
   if (CONFIG.turnstileSiteKey) {
-    const s = document.createElement('script');
-    s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit'; s.async = true;
-    s.onload = () => window.turnstile?.render(tsBox, { sitekey: CONFIG.turnstileSiteKey, callback: (t) => { turnstileToken = t; } });
-    document.head.append(s);
+    loadTurnstile().then(ts => {
+      if (!dlg.isConnected) return;
+      ts.render(tsBox, {
+        sitekey: CONFIG.turnstileSiteKey,
+        callback: (t) => { turnstileToken = t; },
+        'expired-callback': () => { turnstileToken = ''; },
+        'error-callback': () => { turnstileToken = ''; setMsg('驗證元件發生錯誤。你可以先複製內容，另外傳給管理者。', 'err'); copyBtn.hidden = false; },
+      });
+    }).catch(() => { setMsg('驗證元件載入失敗（可能是網路或擋廣告外掛）。你可以先複製內容，另外傳給管理者。', 'err'); copyBtn.hidden = false; });
   }
 }

@@ -5,7 +5,18 @@ const GREEK = { 'α': 'alpha', 'β': 'beta', 'γ': 'gamma', 'δ': 'delta', 'ω':
 const THP5_EXTRACT_NAMES = new Set(['稀乙醇抽提物', '乙醇抽提物', '水抽提物', '乙醚抽提物', '醇抽提物']);
 const IGNORED_TAGS = new Set(['上品', '中品', '下品', '臺灣中藥典第五版修正', '臺灣中藥典第五版增補']);
 
-/** 是否為原課程講義收錄之「常用中藥」（162 味） */
+// 簡體 -> 繁體（只收中藥、成分、功效常用字）。搜尋時兩邊都會轉，所以打「麻黄」「当归」「生物碱」也找得到。
+// 刻意不收一對多、容易誤轉的字（干、谷、曲、余、后、里、面、只、系、冲）。
+const S2T_PAIRS = '黄黃参參归歸芪耆枣棗车車叶葉连連乌烏头頭贝貝芦蘆苏蘇荆荊风風龙龍蛎蠣银銀翘翹栀梔药藥泽澤泻瀉猪豬苍蒼陈陳实實槟檳麦麥鸡雞内內莱萊远遠钩鉤蚕蠶蝎蠍'
+  + '补補气氣养養阴陰阳陽热熱凉涼温溫湿濕肾腎脏臟胆膽肠腸经經络絡发發渗滲肿腫调調宁寧镇鎮静靜开開窍竅涩澀敛斂驱驅虫蟲杀殺碱鹼挥揮质質类類鱼魚马馬齿齒苋莧'
+  + '细細独獨蝉蟬蜕蛻决決鲜鮮蓝藍门門贯貫众眾兰蘭姜薑鳖鱉龟龜胶膠蒌蔞楼樓蓟薊诃訶罂罌莲蓮樱櫻欢歡灵靈罗羅当當续續断斷丝絲锁鎖苁蓯郁鬱没沒红紅钱錢铜銅儿兒刘劉'
+  + '侧側苎苧鹤鶴榈櫚节節荚莢沥瀝壳殼铃鈴苈藶败敗酱醬荟薈牵牽肤膚韦韋吴吳荜蓽党黨术朮台臺强強维維壮壯肃肅润潤摄攝纳納痈癰疮瘡疡瘍癣癬疟瘧带帶产產妇婦闭閉'
+  + '遗遺呕嘔胀脹满滿晕暈惊驚痫癇痉痙饮飲鸣鳴聋聾渊淵龈齦虚虛劳勞损損伤傷扑撲脉脈结結疬癧瘿癭积積汤湯丸丸散散膏膏剂劑湾灣';
+const S2T = new Map();
+for (let i = 0; i + 1 < S2T_PAIRS.length; i += 2) if (S2T_PAIRS[i] !== S2T_PAIRS[i + 1]) S2T.set(S2T_PAIRS[i], S2T_PAIRS[i + 1]);
+const S2T_RE = new RegExp(`[${[...S2T.keys()].join('')}]`, 'g');
+
+/** 是否為原課程講義收錄之「常用中藥」（課程講義 162 味） */
 export function isCommonHerb(herb) { return herb?.in_lecture !== false; }
 
 /** 是否為「僅出現在臺灣中藥典第五版」之增補品項 */
@@ -51,10 +62,11 @@ export function buildNameGroups(aliasDict, variantPairs = []) {
   return map;
 }
 
-/** 通用正規化：全半形統一、小寫、希臘字母轉英文、異體字統一、空白壓縮 */
+/** 通用正規化：全半形統一、小寫、希臘字母轉英文、簡體轉繁體、異體字統一、空白壓縮 */
 export function normText(s, variantPairs = []) {
   let t = String(s ?? '').normalize('NFKC').toLowerCase();
   t = t.replace(/[αβγδωκ]/g, c => GREEK[c] || c);
+  t = t.replace(S2T_RE, c => S2T.get(c));
   for (const [a, c] of variantPairs) if (t.includes(a)) t = t.split(a).join(c);
   return t.replace(/\s+/g, ' ').trim();
 }

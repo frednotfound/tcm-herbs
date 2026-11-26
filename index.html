@@ -6,15 +6,35 @@
   <title>中藥藥物學互動式學習網站</title>
   <meta name="description" content="中藥藥物學學習與查詢：搜尋、篩選、成分反查、配伍禁忌。整理自課程講義與《臺灣中藥典第五版》，僅供學習使用。">
   <meta name="theme-color" content="#2f5d46">
+  <meta name="color-scheme" content="light dark">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="icons/icon-192.png">
   <link rel="stylesheet" href="css/style.css">
+  <!-- 預先平行下載所有模組：不然瀏覽器要一層一層解析 import（app → views → filters → search → data → derive），冷啟動多好幾次往返 -->
+  <link rel="modulepreload" href="js/config.js">
+  <link rel="modulepreload" href="js/router.js">
+  <link rel="modulepreload" href="js/lib/dom.js">
+  <link rel="modulepreload" href="js/lib/derive.js">
+  <link rel="modulepreload" href="js/data.js">
+  <link rel="modulepreload" href="js/search.js">
+  <link rel="modulepreload" href="js/filters.js">
+  <link rel="modulepreload" href="js/lib/ui.js">
+  <link rel="modulepreload" href="js/views/card.js">
+  <link rel="modulepreload" href="js/views/home.js">
+  <link rel="modulepreload" href="js/views/list.js">
+  <link rel="modulepreload" href="js/views/herb.js">
+  <link rel="modulepreload" href="js/views/report.js">
+  <link rel="modulepreload" href="js/views/category.js">
+  <link rel="modulepreload" href="js/views/ingredients.js">
+  <link rel="modulepreload" href="js/views/theory.js">
+  <link rel="modulepreload" href="js/views/compat.js">
+  <link rel="modulepreload" href="js/views/about.js">
 </head>
 <body>
   <a class="skip" href="#main">跳到主要內容</a>
   <header class="topbar">
-    <button id="menu-btn" class="btn btn-ghost menu-btn" type="button" aria-label="開啟選單">☰</button>
+    <button id="menu-btn" class="btn btn-ghost menu-btn" type="button" aria-label="開啟選單" aria-controls="sidebar" aria-expanded="false">☰</button>
     <a class="brand" href="#/">中藥藥物學</a>
     <form id="search-form" class="search-form" role="search">
       <input id="global-search" type="search" placeholder="搜尋藥名、成分、功效、方劑、性狀…（按 / 快速搜尋）" aria-label="搜尋" autocomplete="off">
@@ -22,7 +42,7 @@
     <button id="theme-btn" class="btn btn-ghost theme-btn" type="button">主題</button>
   </header>
   <div class="shell">
-    <aside class="sidebar" aria-label="導覽">
+    <aside id="sidebar" class="sidebar" aria-label="導覽">
       <nav id="side-nav" class="side-nav"></nav>
       <div id="side-cats" class="side-cats"></div>
     </aside>

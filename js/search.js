@@ -97,7 +97,7 @@ export function buildDocs() {
     // 成分樹節點名稱（讓「生物鹼」也能直接比對到該藥的歸類）
     for (const id of store.cls.byHerb.get(h.id).direct) {
       const n = store.taxo.nodes.get(id);
-      if (n) { add('tree', n.name_zh, { show: store.taxo.path(id).join(' > ') }); add('tree', n.name_en, { show: store.taxo.path(id).join(' > ') }); }
+      if (n) { const show = store.taxo.path(id).join(' > '); add('tree', n.name_zh, { show }); add('tree', n.name_en, { show }); }
     }
     out.push({ herb: h, items });
   }
@@ -117,7 +117,17 @@ function expandTerm(term) {
     const all = [f.canonical_zh, f.canonical_latin, ...(f.aliases || [])].map(x => normText(x, store.variantPairs));
     if (all.includes(nk)) all.forEach(x => variants.add(x));
   }
-  return { variants: [...variants].filter(Boolean), synKeys: [...synKeys].filter(k => k && k !== compoundKey(term)) };
+  const ck = compoundKey(term);
+  // 近似比對用的資料先算好，不要在每味藥、每個欄位裡重算
+  const isCjk = /[㐀-鿿]/.test(nk) && [...nk].length >= 3;
+  const isLatin = !isCjk && /^[a-z0-9 .\-]+$/.test(nk) && nk.length >= 5;
+  return {
+    variants: [...variants].filter(Boolean),
+    synKeys: [...synKeys].filter(k => k && k !== ck),
+    ck, nk, isCjk, isLatin,
+    bigrams: isCjk ? bigrams(nk) : [],
+    compact: isLatin ? nk.replace(/\s/g, '') : '',
+  };
 }
 
 function quality(text, v) {
@@ -145,16 +155,15 @@ function scoreTerm(doc, term, ex, scopeSet, strict) {
     let q = 0, matched = null, via = '';
     for (const v of ex.variants) { const x = quality(it.norm, v); if (x > q) { q = x; matched = v; } }
     if (it.key) {
-      const ck = compoundKey(term); const x = quality(it.key, ck); if (x > q) { q = x; matched = term; }
+      const x = quality(it.key, ex.ck); if (x > q) { q = x; matched = term; }
       for (const sk of ex.synKeys) { const y = quality(it.key, sk) * 0.9; if (y > q) { q = y; matched = sk; via = '同義詞'; } }
     }
     if (q === 0 && !strict) {
-      const nt = normText(term, store.variantPairs);
-      if (/[㐀-鿿]/.test(nt) && [...nt].length >= 3) {
-        const bg = bigrams(nt); const has = bg.filter(b => it.norm.includes(b)).length;
+      if (ex.isCjk) {
+        const bg = ex.bigrams; const has = bg.filter(b => it.norm.includes(b)).length;
         if (bg.length && has / bg.length >= 0.67) { q = 0.4 * (has / bg.length); matched = null; via = '近似'; }
-      } else if (/^[a-z0-9 .\-]+$/.test(nt) && nt.length >= 5) {
-        for (const tok of it.norm.split(/[^a-z0-9]+/)) if (tok.length >= 4 && lev1(tok, nt.replace(/\s/g, ''))) { q = 0.4; via = '近似'; matched = tok; break; }
+      } else if (ex.isLatin) {
+        for (const tok of it.norm.split(/[^a-z0-9]+/)) if (tok.length >= 4 && lev1(tok, ex.compact)) { q = 0.4; via = '近似'; matched = tok; break; }
       }
     }
     if (q > 0) hits.push({ field: it.field, text: it.text, show: it.show || it.text, q, score: q * WEIGHT[it.field], matched: matched ? [matched] : [], via });
@@ -173,7 +182,7 @@ function treeHits(term, scopeSet) {
     const direct = store.cls.byHerb.get(h.id).direct;
     let best = null;
     for (const d of direct) if (desc.has(d)) { best = d; break; }
-    if (best) out.set(h.id, { field: 'tree', text: store.taxo.path(best).join(' > '), show: store.taxo.path(best).join(' > '), q: 0.7, score: 0.7 * WEIGHT.tree + 1, matched: [term], via: '成分類別展開' });
+    if (best) { const p = store.taxo.path(best).join(' > '); out.set(h.id, { field: 'tree', text: p, show: p, q: 0.7, score: 0.7 * WEIGHT.tree + 1, matched: [term], via: '成分類別展開' }); }
   }
   return out;
 }
@@ -204,7 +213,7 @@ export function runSearch(query, scope = 'all') {
       const exact = terms.length === 1 && d.items.some(it => it.field === 'name' && exps[0].variants.some(v => it.norm === v));
       res.push({ herb: d.herb, score: total + (exact ? 1000 : 0), hits, exact });
     }
-    res.sort((a, b) => b.score - a.score || store.herbs.indexOf(a.herb) - store.herbs.indexOf(b.herb));
+    res.sort((a, b) => b.score - a.score || store.herbIndex.get(a.herb.id) - store.herbIndex.get(b.herb.id));
     return res;
   };
   let results = run(true), fuzzy = false;

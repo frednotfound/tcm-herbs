@@ -6,8 +6,10 @@ import {
 
 const FILES = ['herbs', 'general_theory', 'categories', 'exam_highlights', 'ingredient_taxonomy', 'alias_dictionary', 'derived/part_groups'];
 
-async function getJSON(path, v) {
-  const res = await fetch(`data/${path}.json${v ? `?v=${encodeURIComponent(v)}` : ''}`);
+// cache: 'no-cache'：每次都向伺服器確認是否有新版（沒變只回 304，很快），
+// 所以不必先讀 meta.json 拿版本號再串接其他檔案，所有檔案可以同時下載。
+async function getJSON(path) {
+  const res = await fetch(`data/${path}.json`, { cache: 'no-cache' });
   if (!res.ok) throw new Error(`讀取 data/${path}.json 失敗（${res.status}）`);
   return res.json();
 }
@@ -15,10 +17,8 @@ async function getJSON(path, v) {
 export const store = {};
 
 export async function loadAll() {
-  let meta = { data_version: '?', updated: '', source_note: '' };
-  try { meta = await getJSON('meta'); } catch { /* meta 缺少時仍可運作 */ }
-  const v = meta.data_version;
-  const loaded = await Promise.all(FILES.map(f => getJSON(f, v).catch(e => { if (f.startsWith('derived/')) return null; throw e; })));
+  const metaP = getJSON('meta').catch(() => ({ data_version: '?', updated: '', source_note: '' })); // meta 缺少時仍可運作
+  const [meta, ...loaded] = await Promise.all([metaP, ...FILES.map(f => getJSON(f).catch(e => { if (f.startsWith('derived/')) return null; throw e; }))]);
   const [herbs, theory, categories, highlights, taxonomy, alias, partGroups] = loaded;
   Object.assign(store, { meta, herbs, theory, categories, highlights, taxonomy, alias, partGroups });
   build();
@@ -30,6 +30,7 @@ function build() {
   s.variantPairs = buildVariantPairs(s.alias);
   s.nameGroups = buildNameGroups(s.alias, s.variantPairs);
   s.herbById = new Map(s.herbs.map(h => [h.id, h]));
+  s.herbIndex = new Map(s.herbs.map((h, i) => [h.id, i])); // 講義順序，排序用（避免在排序裡用 indexOf）
   s.commonCount = s.herbs.filter(isCommonHerb).length;
   s.thp5OnlyCount = s.herbs.filter(isThp5OnlyHerb).length;
   s.taxo = buildTaxonomy(s.taxonomy, s.alias);

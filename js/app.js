@@ -19,15 +19,26 @@ let current = null;
 
 // ---------- 主題 ----------
 const THEMES = [['auto', '跟隨系統'], ['light', '淺色'], ['dark', '深色'], ['contrast', '高對比']];
+const darkMQ = matchMedia('(prefers-color-scheme: dark)');
+/** 手機瀏覽器網址列顏色、原生表單元件（捲軸、下拉選單）跟著主題走 */
+function syncThemeChrome() {
+  const t = document.documentElement.dataset.theme || 'auto';
+  const dark = t === 'dark' || t === 'contrast' || (t === 'auto' && darkMQ.matches);
+  document.documentElement.style.colorScheme = dark ? 'dark' : 'light';
+  const meta = document.querySelector('meta[name="theme-color"]');
+  if (meta) meta.content = dark ? (getComputedStyle(document.documentElement).getPropertyValue('--surface').trim() || '#1e2521') : '#2f5d46';
+}
 function applyTheme(t) {
   document.documentElement.dataset.theme = t;
   const name = THEMES.find(x => x[0] === t)?.[1] || '';
   const btn = $('theme-btn'); if (btn) { clear(btn).append(h('span', { 'aria-hidden': 'true' }, '◐'), h('span', { class: 'tb-text' }, ` ${name}`)); btn.setAttribute('aria-label', `切換主題（目前：${name}）`); btn.title = `切換主題（目前：${name}）`; }
+  syncThemeChrome();
 }
 function initTheme() {
   let t = ls.get('tcm_theme') || 'auto';
   if (!THEMES.some(x => x[0] === t)) t = 'auto';
   applyTheme(t);
+  darkMQ.addEventListener?.('change', syncThemeChrome);
   $('theme-btn').addEventListener('click', () => {
     const cur = document.documentElement.dataset.theme || 'auto';
     const next = THEMES[(THEMES.findIndex(x => x[0] === cur) + 1) % THEMES.length][0];
@@ -70,11 +81,29 @@ function buildNav() {
 function markNav(key) {
   for (const a of document.querySelectorAll('[data-nav]')) { if (a.dataset.nav === key) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); }
 }
-const closeDrawer = () => document.body.classList.remove('drawer-open');
+const closeDrawer = () => { document.body.classList.remove('drawer-open'); $('menu-btn')?.setAttribute('aria-expanded', 'false'); };
+
+// ---------- 捲動位置 ----------
+// 每個歷史紀錄用 history.state.k 標記；按「上一頁」回到清單時，回到原本捲動的位置，而不是跳回頂端。
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+const scrollPos = new Map();
+let curKey = null;
+let booted = false;
+const newKey = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
 
 // ---------- 路由 ----------
 function route() {
   closeDrawer();
+  if (curKey) scrollPos.set(curKey, window.scrollY);
+  let restoreY = 0;
+  if (history.state?.k) {
+    curKey = history.state.k;
+    restoreY = scrollPos.get(curKey) || 0;
+  } else {
+    curKey = newKey();
+    history.replaceState({ k: curKey, inApp: booted }, '');
+  }
+  booted = true;
   const { parts, params } = parseHash();
   if (current?.destroy) current.destroy();
   current = null;
@@ -97,13 +126,12 @@ function route() {
   if (top === 'herb') navKey = 'herbs';
   clear(main); main.append(res.node);
   main.focus({ preventScroll: true });
-  window.scrollTo(0, 0);
+  window.scrollTo(0, restoreY);
   document.title = res.title ? `${res.title}｜${CONFIG.shortName}` : CONFIG.siteName;
   markNav(navKey);
   // 全站搜尋框與網址同步
-  const gs = $('global-search');
-  if (top === 'herbs') gs.value = params.get('q') || ''; else if (top !== 'herbs') gs.value = '';
-  if (res.focus && matchMedia('(min-width: 861px)').matches) res.focus.focus();
+  $('global-search').value = top === 'herbs' ? (params.get('q') || '') : '';
+  if (res.focus && !restoreY && matchMedia('(min-width: 861px)').matches) res.focus.focus({ preventScroll: true });
 }
 
 function initSearchBox() {
@@ -117,9 +145,12 @@ function initSearchBox() {
   };
   gs.addEventListener('input', () => { clearTimeout(timer); timer = setTimeout(fire, 160); });
   $('search-form').addEventListener('submit', (e) => { e.preventDefault(); clearTimeout(timer); fire(); });
-  $('menu-btn').addEventListener('click', () => document.body.classList.toggle('drawer-open'));
+  $('menu-btn').addEventListener('click', () => { const open = document.body.classList.toggle('drawer-open'); $('menu-btn').setAttribute('aria-expanded', String(open)); });
   $('drawer-backdrop').addEventListener('click', closeDrawer);
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDrawer(); if (e.key === '/' && !/INPUT|TEXTAREA|SELECT/.test(document.activeElement?.tagName)) { e.preventDefault(); gs.focus(); } });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeDrawer();
+    if (e.key === '/' && !e.ctrlKey && !e.metaKey && !e.altKey && !/INPUT|TEXTAREA|SELECT/.test(document.activeElement?.tagName) && !document.activeElement?.isContentEditable) { e.preventDefault(); gs.focus(); }
+  });
 }
 
 function registerSW() {
@@ -134,6 +165,7 @@ function registerSW() {
   }).catch(() => {});
 }
 function showToast(text, action, fn) {
+  document.querySelector('.toast')?.remove(); // 同時只顯示一個
   const t = h('div', { class: 'toast', role: 'status' }, text, action ? h('button', { class: 'btn btn-link', type: 'button', onClick: fn }, action) : null, h('button', { class: 'btn btn-link', type: 'button', onClick: () => t.remove(), 'aria-label': '關閉' }, '×'));
   document.body.append(t);
 }

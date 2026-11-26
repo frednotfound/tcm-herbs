@@ -83,7 +83,7 @@ function queryTab(P, params, initCommon) {
   const desc = h('p', { class: 'muted' }, '');
   const chipsBox = h('div', { class: 'chips sel-chips' });
   const input = h('input', { type: 'search', class: 'compat-input', placeholder: '輸入藥名加入（如：烏頭、半夏、甘草）', 'aria-label': '加入藥名', autocomplete: 'off' });
-  const sugBox = h('div', { class: 'sug-box', role: 'listbox' });
+  const sugBox = h('div', { class: 'sug-box', 'aria-label': '候選藥名' });
   const resultBox = h('div', { class: 'compat-results' });
 
   const toggle = h('div', { class: 'toggle-bar' },
@@ -119,10 +119,22 @@ function queryTab(P, params, initCommon) {
       let note = null;
       if (!e.herb) note = h('span', { class: 'muted small' }, '　（僅規則名單）');
       else if (!e.common) note = h('span', { class: 'muted small' }, onlyCommon ? '　（五版增補／規則名單）' : '　（五版增補）');
-      sugBox.append(h('button', { type: 'button', role: 'option', class: 'sug', onClick: () => add(e) }, e.name, note));
+      sugBox.append(h('button', { type: 'button', class: 'sug', onClick: () => add(e) }, e.name, note));
     }
   });
-  input.addEventListener('keydown', (ev) => { if (ev.key === 'Enter') { ev.preventDefault(); const m = matches(input.value)[0]; if (m) add(m); } });
+  input.addEventListener('keydown', (ev) => {
+    if (ev.key === 'Enter') { ev.preventDefault(); const m = matches(input.value)[0]; if (m) add(m); }
+    else if (ev.key === 'ArrowDown' && sugBox.firstElementChild) { ev.preventDefault(); sugBox.firstElementChild.focus(); }
+    else if (ev.key === 'Escape' && sugBox.firstElementChild) { ev.preventDefault(); clear(sugBox); }
+  });
+  // 候選清單可以用上下鍵移動、Esc 回到輸入框
+  sugBox.addEventListener('keydown', (ev) => {
+    const cur = document.activeElement;
+    if (!sugBox.contains(cur)) return;
+    if (ev.key === 'ArrowDown') { ev.preventDefault(); (cur.nextElementSibling || cur).focus(); }
+    else if (ev.key === 'ArrowUp') { ev.preventDefault(); (cur.previousElementSibling || input).focus(); }
+    else if (ev.key === 'Escape') { ev.preventDefault(); input.focus(); }
+  });
 
   function render() {
     const p = new URLSearchParams();

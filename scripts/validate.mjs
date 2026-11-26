@@ -25,6 +25,7 @@ const tax = load('data/ingredient_taxonomy.json');
 const alias = load('data/alias_dictionary.json');
 const meta = load('data/meta.json');
 const pg = load('data/derived/part_groups.json', false);
+const compounds = load('data/compounds.json', false);
 
 if (meta && !meta.data_version) err('data/meta.json', '缺少 data_version');
 
@@ -74,6 +75,21 @@ if (pg && herbs) {
   const missing = [...new Set(herbs.map(h => h.part_used).filter(Boolean))].filter(k => !map[k]);
   if (missing.length) warn('data/derived/part_groups.json', `有 ${missing.length} 種使用部位寫法沒有分組（會歸入「其他」）：${missing.slice(0, 5).join('、')}${missing.length > 5 ? '…' : ''}`);
   if (pg.status && /草稿|待/.test(pg.status)) warn('data/derived/part_groups.json', `狀態為「${pg.status}」，請審核後改成「已審核」`);
+}
+if (compounds) {
+  if (!Array.isArray(compounds)) err('data/compounds.json', '最外層必須是陣列');
+  else {
+    const cid = new Set(), byName = new Map();
+    for (const c of compounds) {
+      if (!c?.id) { err('data/compounds.json', `有一筆缺少 id（${c?.name ?? '?'}）`); continue; }
+      if (cid.has(c.id)) err('data/compounds.json', `id 重複：${c.id}`); cid.add(c.id);
+      if (c.svg && !existsSync(new URL(c.svg, root))) err('data/compounds.json', `${c.id} 的結構圖不存在：${c.svg}`);
+      const k = String(c.name || '').toLowerCase().replace(/\s+/g, '');
+      if (!byName.has(k)) byName.set(k, []); byName.get(k).push(c);
+    }
+    const dups = [...byName.values()].filter(v => v.length > 1);
+    if (dups.length) warn('data/compounds.json', `有 ${dups.length} 個化合物名稱對到多張結構（藥材頁會並排顯示並標 CID，請確認是否保留）：${dups.map(v => `${v[0].name}（CID ${v.map(x => x.pubchem_cid).join('／')}）`).join('、')}`);
+  }
 }
 if (theory) for (const k of ['development', 'harvesting', 'processing', 'properties_theory', 'compatibility_rules', 'parts_latin_map']) if (!theory[k]) err('data/general_theory.json', `缺少 ${k}`);
 

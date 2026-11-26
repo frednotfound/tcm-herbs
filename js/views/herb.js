@@ -1,6 +1,6 @@
 import { h } from '../lib/dom.js';
 import { store, resolveNames } from '../data.js';
-import { hrefOf, herbHref } from '../router.js';
+import { hrefOf, herbHref, cameFromInside } from '../router.js';
 import { chip, gradeChip, ed3Mark, thp5OnlyMark, nameLink, section, kv, empty, disclaimer, isNarrow } from '../lib/ui.js';
 import { CONFIG } from '../config.js';
 import { categoryPaths, familiesOf, stripParen, highlightTags, isCommonHerb, isThp5ExtractItem } from '../lib/derive.js';
@@ -25,12 +25,13 @@ const normName = (s) => String(s || '').toLowerCase().replace(/[\s　_\-‐‑�
 
 function loadStructures() {
   if (!structPromise) {
-    structPromise = fetch('data/compounds.json')
+    structPromise = fetch('data/compounds.json', { cache: 'no-cache' })
       .then(r => (r.ok ? r.json() : []))
       .catch(() => [])
       .then(list => {
         const idx = new Map();
         for (const c of Array.isArray(list) ? list : []) {
+          if (!c || !c.svg) continue;
           const keys = new Set([c.name, ...(c.aliases || []), ...(c.match_names || [])].map(normName).filter(Boolean));
           for (const k of keys) { if (!idx.has(k)) idx.set(k, []); idx.get(k).push(c); }
         }
@@ -48,42 +49,26 @@ function structuresFor(idx, comp) {
   return [...found.values()];
 }
 
-function ensureStructStyle() {
-  if (document.getElementById('struct-style')) return;
-  const st = document.createElement('style');
-  st.id = 'struct-style';
-  st.textContent = `
-.struct-row{display:flex;flex-wrap:wrap;gap:.5rem;margin:.4rem 0 .2rem}
-.struct-thumb{display:block;background:#fff;border:1px solid rgba(128,128,128,.35);border-radius:8px;padding:4px;cursor:zoom-in}
-.struct-thumb img{display:block;width:150px;height:120px;object-fit:contain}
-.struct-dialog{max-width:min(92vw,560px);width:100%;border:1px solid rgba(128,128,128,.4);border-radius:12px;padding:1rem;background:var(--surface,Canvas);color:inherit}
-.struct-dialog::backdrop{background:rgba(0,0,0,.55)}
-.struct-dialog .sd-img{background:#fff;border-radius:8px;padding:8px;margin:.6rem 0}
-.struct-dialog .sd-img img{display:block;width:100%;max-height:60vh;object-fit:contain}
-.struct-dialog code{display:block;word-break:break-all;font-size:.8rem;margin:.4rem 0}
-.struct-dialog .sd-top{display:flex;justify-content:space-between;align-items:center;gap:.5rem}
-`;
-  document.head.append(st);
-}
-
 function openStructure(c) {
-  ensureStructStyle();
-  const dlg = h('dialog', { class: 'struct-dialog' },
-    h('div', { class: 'sd-top' }, h('strong', null, c.name),
-      h('button', { type: 'button', class: 'btn', onClick: () => dlg.close() }, '關閉')),
+  const closeBtn = h('button', { type: 'button', class: 'btn', onClick: () => dlg.close() }, '關閉');
+  const dlg = h('dialog', { class: 'struct-dialog', 'aria-label': `${c.name} 化學結構式` },
+    h('div', { class: 'sd-top' }, h('strong', null, c.name), closeBtn),
     c.class ? h('div', { class: 'muted small' }, c.class) : null,
     h('div', { class: 'sd-img' }, h('img', { src: c.svg, alt: `${c.name} 化學結構式` })),
     c.smiles ? h('code', null, `SMILES：${c.smiles}`) : null,
-    c.pubchem_cid ? h('a', { href: `https://pubchem.ncbi.nlm.nih.gov/compound/${c.pubchem_cid}`, target: '_blank', rel: 'noopener' }, '在 PubChem 查看 ↗') : null);
+    c.pubchem_cid ? h('a', { href: `https://pubchem.ncbi.nlm.nih.gov/compound/${c.pubchem_cid}`, target: '_blank', rel: 'noopener' }, `在 PubChem 查看（CID ${c.pubchem_cid}）↗`) : null);
   dlg.addEventListener('click', (e) => { if (e.target === dlg) dlg.close(); });
   dlg.addEventListener('close', () => dlg.remove());
   document.body.append(dlg);
-  dlg.showModal();
+  if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.setAttribute('open', '');
+  closeBtn.focus();
 }
 
-function structThumb(c) {
-  return h('button', { type: 'button', class: 'struct-thumb', title: `${c.name}（點擊放大）`, onClick: () => openStructure(c) },
-    h('img', { src: c.svg, alt: `${c.name} 化學結構式`, loading: 'lazy' }));
+/** withCid：同一個化合物名稱對到多張結構（例如不同立體異構）時，在縮圖下標出 PubChem CID 方便分辨 */
+function structThumb(c, withCid) {
+  return h('button', { type: 'button', class: 'struct-thumb', title: `${c.name}（點擊放大）`, 'aria-label': `放大 ${c.name} 化學結構式`, onClick: () => openStructure(c) },
+    h('img', { src: c.svg, alt: `${c.name} 化學結構式`, loading: 'lazy', decoding: 'async', width: 150, height: 120 }),
+    withCid && c.pubchem_cid ? h('span', { class: 'struct-cap' }, `CID ${c.pubchem_cid}`) : null);
 }
 
 function listLinks(names) {
@@ -259,7 +244,8 @@ export function renderHerb(id) {
 
   const titleBox = h('header', { class: 'herb-head card' },
     h('div', { class: 'hh-top' },
-      h('a', { class: 'back-link', href: '#/herbs', onClick: (e) => { if (history.length > 1) { e.preventDefault(); history.back(); } } }, '‹ 返回'),
+      // 只有從站內點進來才用「上一頁」；從分享連結、書籤直接開啟時改回藥材總覽，避免被帶離本站
+      h('a', { class: 'back-link', href: '#/herbs', onClick: (e) => { if (cameFromInside()) { e.preventDefault(); history.back(); } } }, '‹ 返回'),
       h('button', { type: 'button', class: 'btn btn-report', onClick: () => openReport({ type: '藥材', id: herb.id, name: herb.name_zh }) }, '回報錯誤')),
     h('h1', null, herb.name_zh, ed3Mark(herb.ed3_updated), thp5OnlyMark(herb)),
     nonEnAliases.length ? h('div', { class: 'aliases' }, '別名：', nonEnAliases.join('、')) : null,
@@ -334,20 +320,20 @@ export function renderHerb(id) {
     });
     ingBody.push(h('div', { class: 'ing-group' }, head, gp, comps.length ? h('ul', { class: 'compounds' }, comps) : h('p', { class: 'muted small' }, '（只列類別，未列化合物）')));
   });
-  const structNote = h('p', { class: 'muted small placeholder', hidden: !common }, herb.images?.length ? '' : '化學結構式：預留（第二階段以後提供）');
+  // 結構式說明：有找到結構圖才顯示（原本的「預留（第二階段以後提供）」字樣已過時）
+  const structNote = h('p', { class: 'muted small struct-note', hidden: true });
   ingBody.push(structNote);
-  loadStructures().then(idx => {
-    if (!idx.size) return;
-    ensureStructStyle();
+  if (structJobs.length) loadStructures().then(idx => {
+    if (!idx.size || !structNote.isConnected) return;
     let hits = 0;
     for (const { comp, row } of structJobs) {
       const list = structuresFor(idx, comp);
       if (!list.length) continue;
       hits += list.length;
-      list.forEach(c => row.append(structThumb(c)));
+      list.forEach(c => row.append(structThumb(c, list.length > 1)));
       row.hidden = false;
     }
-    if (hits) { structNote.hidden = false; structNote.textContent = `本頁已收錄 ${hits} 個化合物的結構式，點圖可放大。`; }
+    if (hits) { structNote.hidden = false; structNote.textContent = `本頁已收錄 ${hits} 張化合物結構式，點圖可放大。`; }
   });
   root.append(section('ingredients', '成分', ingBody, { count: visibleCompCount }));
 
@@ -365,8 +351,8 @@ export function renderHerb(id) {
   if (c.clinical_pairs?.length) compBody.push(kv('臨床常用搭配', c.clinical_pairs.join('；')));
   const hasCompat = compBody.length > 0;
   root.append(section('compat', '配伍禁忌', hasCompat ? [h('dl', { class: 'kvs' }, compBody),
-    h('p', null, h('a', { class: 'btn', href: `#/compat?herbs=${herb.id}` }, '到配伍禁忌頁查詢（含總論十八反、十九畏）')), disclaimer(CONFIG.clinicalDisclaimer)]
-    : [empty(common ? '講義此味未列配伍資料。' : '本條目未另列配伍資料。'), h('p', null, h('a', { href: `#/compat?herbs=${herb.id}` }, '到配伍禁忌頁查詢總論規則（十八反、十九畏、妊娠）'))], { open: hasCompat || common }));
+    h('p', null, h('a', { class: 'btn', href: `#/compat?herbs=${encodeURIComponent(herb.id)}` }, '到配伍禁忌頁查詢（含總論十八反、十九畏）')), disclaimer(CONFIG.clinicalDisclaimer)]
+    : [empty(common ? '講義此味未列配伍資料。' : '本條目未另列配伍資料。'), h('p', null, h('a', { href: `#/compat?herbs=${encodeURIComponent(herb.id)}` }, '到配伍禁忌頁查詢總論規則（十八反、十九畏、妊娠）'))], { open: hasCompat || common }));
 
   // 7. 炮製、方劑、附藥、備註
   if (herb.processing?.length) root.append(section('processing', '炮製', h('ul', null, herb.processing.map(x => h('li', null, x))), { open: !narrow }));

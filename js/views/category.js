@@ -8,8 +8,13 @@ export function renderCategory(id) {
   if (!cat) return { node: h('div', { class: 'card' }, h('h1', null, '找不到這個分類'), h('p', null, h('a', { href: '#/herbs' }, '回到藥材總覽'))), title: '找不到分類' };
   const root = h('div', { class: 'cat-view' });
   const path = cat.category_path.split('>');
+  // 子分類頁的麵包屑：上層分類可以點回去
+  const parent = path.length > 1 ? store.catByPath.get(path[0]) : null;
+  const crumb = path.length > 1
+    ? [parent ? h('a', { href: `#/cat/${encodeURIComponent(parent.id)}` }, path[0]) : path[0], ' > ']
+    : [];
   root.append(h('div', { class: 'card' },
-    h('div', { class: 'muted small' }, path.length > 1 ? `${path[0]} > ` : '', cat.source_page?.length ? `常用中藥講義 p.${cat.source_page.join('、')}` : ''),
+    h('div', { class: 'muted small' }, ...crumb, cat.source_page?.length ? `常用中藥講義 p.${cat.source_page.join('、')}` : ''),
     h('h1', null, cat.title || path.at(-1)),
     h('p', null, h('a', { class: 'btn', href: `#/herbs?cat=${encodeURIComponent(cat.category_path)}` }, '用篩選查看這一類'))));
 

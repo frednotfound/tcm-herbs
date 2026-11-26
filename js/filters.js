@@ -1,6 +1,6 @@
 // 多條件篩選：不同篩選之間是「且」，同一篩選內多選是「或」；小重點可切換成「全部符合」。
 import { store } from './data.js';
-import { runSearch } from './search.js';
+import { runSearch, SCOPES } from './search.js';
 import { isCommonHerb, isThp5OnlyHerb } from './lib/derive.js';
 
 export const SOURCES = [
@@ -21,6 +21,7 @@ export const DIMS = [
   { key: 'tag', label: '小重點', blank: false },
 ];
 const MULTI = ['cat', 'nat', 'fla', 'mer', 'grade', 'ing', 'fam', 'part', 'tag'];
+const SORT_KEYS = ['rel', 'name', 'lecture'];
 
 export function matchSource(herb, src) {
   if (src === 'common') return isCommonHerb(herb);
@@ -37,11 +38,13 @@ export function emptyState() {
 export function stateFromParams(params) {
   const s = emptyState();
   s.q = params.get('q') || '';
-  s.scope = params.get('scope') || 'all';
+  const rawScope = params.get('scope') || 'all';
+  s.scope = SCOPES.some(x => x.key === rawScope) ? rawScope : 'all';
   const rawSrc = params.get('src') || 'all';
   s.src = SOURCES.some(x => x.key === rawSrc) ? rawSrc : 'all';
   s.tagmode = params.get('tagmode') === 'all' ? 'all' : 'any';
-  s.sort = params.get('sort') || 'rel';
+  const rawSort = params.get('sort') || 'rel';
+  s.sort = SORT_KEYS.includes(rawSort) ? rawSort : 'rel';
   for (const k of MULTI) {
     const v = params.get(k);
     s[k] = v ? v.split(',').filter(Boolean) : [];
@@ -100,7 +103,7 @@ export function applyFilters(s) {
 }
 
 function sortRows(rows, s) {
-  const order = new Map(store.herbs.map((h, i) => [h.id, i]));
+  const order = store.herbIndex;
   const out = [...rows];
   if (s.sort === 'name') out.sort((a, b) => a.herb.name_zh.localeCompare(b.herb.name_zh, 'zh-Hant'));
   else if (s.sort === 'lecture') out.sort((a, b) => order.get(a.herb.id) - order.get(b.herb.id));
